@@ -1,0 +1,577 @@
+// SimplyCPA — Prisma schema
+// See docs/RESEARCH.md for the reasoning behind the content model, and
+// CONTENT-MANAGEMENT-GUIDE.md for how non-technical edits map to these tables.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Auth (Auth.js / NextAuth v5 Prisma adapter shape) + roles/tiers
+// ─────────────────────────────────────────────────────────────────────────
+
+enum Role {
+  STUDENT
+  MODERATOR
+  EDITOR
+  ADMIN
+}
+
+enum Tier {
+  FREE
+  PRO
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String? // null for OAuth-only accounts
+  role          Role      @default(STUDENT)
+  tier          Tier      @default(FREE)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+
+  progress       UserProgress[]
+  bookmarks      Bookmark[]
+  comments       Comment[]
+  commentUpvotes CommentUpvote[]
+  mcqAttempts    MCQAttempt[]
+  practiceSessions PracticeSession[]
+  auditLogs      AuditLog[]
+
+  authoredStudyMaterials  StudyMaterial[] @relation("StudyMaterialAuthor")
+  reviewedStudyMaterials  StudyMaterial[] @relation("StudyMaterialReviewer")
+  authoredRevisionNotes   RevisionNote[]  @relation("RevisionNoteAuthor")
+  reviewedRevisionNotes   RevisionNote[]  @relation("RevisionNoteReviewer")
+  authoredBlogPosts       BlogPost[]
+  contentVersions         ContentVersion[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Content status shared across editable content types
+// ─────────────────────────────────────────────────────────────────────────
+
+enum ContentStatus {
+  DRAFT
+  AI_DRAFT
+  UNDER_REVIEW
+  APPROVED
+  PUBLISHED
+  NEEDS_UPDATE
+  ARCHIVED
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum BlueprintStatus {
+  CONFIRMED // cross-checked against the official AICPA Blueprint PDF
+  PROVISIONAL // derived from secondary research, needs a pass against the official Blueprint
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// CPA Exam structure: Subject -> Topic -> {StudyMaterial, RevisionNote, MCQ, Comment}
+// ─────────────────────────────────────────────────────────────────────────
+
+enum SubjectType {
+  CORE
+  DISCIPLINE
+}
+
+model Subject {
+  id              String      @id @default(cuid())
+  slug            String      @unique // "far", "aud", "reg", "bar", "isc", "tcp"
+  name            String // "Financial Accounting and Reporting"
+  shortName       String // "FAR"
+  type            SubjectType
+  description     String      @db.Text
+  difficulty      Difficulty  @default(MEDIUM)
+  estimatedHours  Int?
+  blueprintUrl    String? // link to the official AICPA Blueprint PDF
+  colorAccent     String? // small hex token for subject-specific accents
+  order           Int         @default(0)
+  lastUpdated     DateTime    @default(now())
+
+  topics Topic[]
+
+  @@index([type])
+}
+
+model Topic {
+  id              String          @id @default(cuid())
+  subjectId       String
+  subject         Subject         @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  slug            String
+  order           Int             @default(0)
+  title           String
+  shortDescription String         @db.Text
+  blueprintArea   String? // e.g. "Area II: Select Balance Sheet Accounts"
+  blueprintStatus BlueprintStatus @default(PROVISIONAL)
+  difficulty      Difficulty      @default(MEDIUM)
+  estimatedMinutes Int?
+  status          ContentStatus   @default(DRAFT)
+  isComingSoon    Boolean         @default(false)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  studyMaterial StudyMaterial?
+  revisionNote  RevisionNote?
+  mcqs          MCQ[]
+  comments      Comment[]
+  progress      UserProgress[]
+  practiceSessions PracticeSession[]
+
+  @@unique([subjectId, slug])
+  @@index([subjectId])
+}
+
+// Independently versioned/editable content blocks. Kept as two separate
+// models (rather than one generic "content block") because Study Material
+// and Revision Notes have different authoring cadences and lengths, and the
+// brief explicitly requires editing one without touching the other.
+
+model StudyMaterial {
+  id             String        @id @default(cuid())
+  topicId        String        @unique
+  topic          Topic         @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  content        String        @db.Text // sanitized HTML from the Tiptap editor
+  status         ContentStatus @default(DRAFT)
+  version        Int           @default(1)
+  authorId       String?
+  author         User?         @relation("StudyMaterialAuthor", fields: [authorId], references: [id])
+  reviewerId     String?
+  reviewer       User?         @relation("StudyMaterialReviewer", fields: [reviewerId], references: [id])
+  lastReviewedAt DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  sources Source[]
+}
+
+model RevisionNote {
+  id             String        @id @default(cuid())
+  topicId        String        @unique
+  topic          Topic         @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  content        String        @db.Text
+  status         ContentStatus @default(DRAFT)
+  version        Int           @default(1)
+  authorId       String?
+  author         User?         @relation("RevisionNoteAuthor", fields: [authorId], references: [id])
+  reviewerId     String?
+  reviewer       User?         @relation("RevisionNoteReviewer", fields: [reviewerId], references: [id])
+  lastReviewedAt DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  sources Source[]
+}
+
+enum VersionedContentType {
+  STUDY_MATERIAL
+  REVISION_NOTE
+  BLOG_POST
+  FAQ
+}
+
+// Polymorphic version history: one row per saved snapshot, addressed by
+// (contentType, contentId) rather than a Prisma relation, since it spans
+// several unrelated content tables.
+model ContentVersion {
+  id             String               @id @default(cuid())
+  contentType    VersionedContentType
+  contentId      String
+  content        String               @db.Text
+  changeSummary  String?
+  changedById    String?
+  changedBy      User?                @relation(fields: [changedById], references: [id])
+  createdAt      DateTime             @default(now())
+
+  @@index([contentType, contentId])
+}
+
+enum SourceType {
+  PRIMARY_AICPA
+  PRIMARY_NASBA
+  PRIMARY_OTHER_OFFICIAL
+  SECONDARY_PROVIDER
+  OTHER
+}
+
+model Source {
+  id          String     @id @default(cuid())
+  name        String
+  url         String
+  sourceType  SourceType
+  dateChecked DateTime   @default(now())
+  notes       String?    @db.Text
+
+  studyMaterials StudyMaterial[]
+  revisionNotes  RevisionNote[]
+  mcqs           MCQ[]
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// MCQ engine
+// ─────────────────────────────────────────────────────────────────────────
+
+enum QuestionType {
+  CONCEPTUAL
+  CALCULATION
+  APPLICATION
+  EXCEPTION
+  EXAM_TRAP
+  FORMULA
+}
+
+model MCQ {
+  id                String        @id @default(cuid())
+  topicId           String
+  topic             Topic         @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  subtopic          String?
+  question          String        @db.Text
+  explanation       String        @db.Text
+  learningObjective String?       @db.Text
+  difficulty        Difficulty    @default(MEDIUM)
+  questionType      QuestionType  @default(CONCEPTUAL)
+  tags              String[]      @default([])
+  status            ContentStatus @default(DRAFT)
+  isRetiredOfficial Boolean       @default(false) // true only for genuinely licensed/retired AICPA questions
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  options MCQOption[]
+  source  Source?     @relation(fields: [sourceId], references: [id])
+  sourceId String?
+  attempts MCQAttempt[]
+
+  @@index([topicId])
+  @@index([status])
+}
+
+model MCQOption {
+  id        String  @id @default(cuid())
+  mcqId     String
+  mcq       MCQ     @relation(fields: [mcqId], references: [id], onDelete: Cascade)
+  label     String // "A" | "B" | "C" | "D"
+  text      String  @db.Text
+  isCorrect Boolean @default(false)
+  // "why this is wrong" shown only in the post-submission review
+  rationale String? @db.Text
+
+  attempts MCQAttempt[]
+
+  @@index([mcqId])
+}
+
+enum PracticeMode {
+  TOPIC
+  SUBJECT
+  CUSTOM
+  MOCK
+  INCORRECT_REVIEW
+  BOOKMARKED
+  TIMED
+}
+
+model PracticeSession {
+  id             String        @id @default(cuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subjectId      String?
+  topicId        String?
+  topic          Topic?        @relation(fields: [topicId], references: [id])
+  mode           PracticeMode
+  totalQuestions Int
+  score          Int?
+  startedAt      DateTime      @default(now())
+  completedAt    DateTime?
+
+  attempts MCQAttempt[]
+
+  @@index([userId])
+}
+
+model MCQAttempt {
+  id                String           @id @default(cuid())
+  userId            String
+  user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mcqId             String
+  mcq               MCQ              @relation(fields: [mcqId], references: [id], onDelete: Cascade)
+  sessionId         String?
+  session           PracticeSession? @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  selectedOptionId  String?
+  selectedOption    MCQOption?       @relation(fields: [selectedOptionId], references: [id])
+  isCorrect         Boolean
+  markedForReview   Boolean          @default(false)
+  timeSpentSeconds  Int?
+  attemptedAt       DateTime         @default(now())
+
+  @@index([userId, mcqId])
+  @@index([sessionId])
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Progress, bookmarks, community
+// ─────────────────────────────────────────────────────────────────────────
+
+enum ProgressStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+model UserProgress {
+  id                  String         @id @default(cuid())
+  userId              String
+  user                User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topicId             String
+  topic               Topic          @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  status              ProgressStatus @default(NOT_STARTED)
+  studyCompletedAt    DateTime?
+  revisionCompletedAt DateTime?
+  updatedAt           DateTime       @updatedAt
+
+  @@unique([userId, topicId])
+}
+
+enum BookmarkTargetType {
+  TOPIC
+  STUDY_MATERIAL
+  REVISION_NOTE
+  MCQ
+  BLOG_POST
+}
+
+model Bookmark {
+  id         String             @id @default(cuid())
+  userId     String
+  user       User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  targetType BookmarkTargetType
+  targetId   String
+  createdAt  DateTime           @default(now())
+
+  @@unique([userId, targetType, targetId])
+}
+
+enum CommentKind {
+  QUESTION
+  EXPLANATION
+  TIP
+  DOUBT
+}
+
+model Comment {
+  id        String      @id @default(cuid())
+  topicId   String
+  topic     Topic       @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parentId  String?
+  parent    Comment?    @relation("CommentReplies", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  replies   Comment[]   @relation("CommentReplies")
+  kind      CommentKind @default(QUESTION)
+  body      String      @db.Text
+  isPinned  Boolean     @default(false)
+  isDeleted Boolean     @default(false)
+  isLocked  Boolean     @default(false)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  upvotes CommentUpvote[]
+
+  @@index([topicId])
+}
+
+model CommentUpvote {
+  id        String   @id @default(cuid())
+  commentId String
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([commentId, userId])
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Editorial: blog, FAQ, CPA Radar updates
+// ─────────────────────────────────────────────────────────────────────────
+
+model BlogPost {
+  id            String        @id @default(cuid())
+  slug          String        @unique
+  title         String
+  excerpt       String        @db.Text
+  content       String        @db.Text
+  category      String
+  status        ContentStatus @default(DRAFT)
+  authorId      String?
+  author        User?         @relation(fields: [authorId], references: [id])
+  coverImageUrl String?
+  publishedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model FAQ {
+  id        String        @id @default(cuid())
+  category  String
+  question  String        @db.Text
+  answer    String        @db.Text
+  order     Int           @default(0)
+  status    ContentStatus @default(PUBLISHED)
+  updatedAt DateTime      @updatedAt
+
+  @@index([category])
+}
+
+model Update {
+  id          String    @id @default(cuid())
+  title       String
+  body        String    @db.Text
+  category    String // "Blueprint Change" | "Policy" | "Tax Change" | "Deadline" | ...
+  sourceUrl   String?
+  lastVerified DateTime
+  publishedAt DateTime  @default(now())
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Structured "changeable facts" — never hard-code these into copy
+// ─────────────────────────────────────────────────────────────────────────
+
+model Jurisdiction {
+  id    String @id @default(cuid())
+  name  String @unique // e.g. "Colorado", "Guam", "NASBA (International)"
+  notes String? @db.Text
+
+  fees         Fee[]
+  requirements EligibilityRequirement[]
+}
+
+enum FeeType {
+  APPLICATION
+  EXAM_SECTION
+  REGISTRATION
+  INTERNATIONAL_ADMIN
+  EVALUATION
+  ETHICS_EXAM
+  OTHER
+}
+
+model Fee {
+  id             String       @id @default(cuid())
+  jurisdictionId String?
+  jurisdiction   Jurisdiction? @relation(fields: [jurisdictionId], references: [id])
+  feeType        FeeType
+  label          String // "NASBA section fee", "India international administration fee"
+  amount         Decimal      @db.Decimal(10, 2)
+  currency       String       @default("USD")
+  effectiveFrom  DateTime
+  sourceUrl      String
+  lastVerified   DateTime
+  notes          String?      @db.Text
+}
+
+enum RequirementType {
+  CREDIT_HOURS
+  EDUCATION
+  EXPERIENCE
+  ETHICS
+  RESIDENCY
+  OTHER
+}
+
+model EligibilityRequirement {
+  id             String          @id @default(cuid())
+  jurisdictionId String
+  jurisdiction   Jurisdiction    @relation(fields: [jurisdictionId], references: [id])
+  requirementType RequirementType
+  description    String          @db.Text
+  sourceUrl      String
+  lastVerified   DateTime
+}
+
+model TestingLocation {
+  id                  String   @id @default(cuid())
+  city                String
+  country             String   @default("India")
+  prometricCenterName String?
+  notes               String?  @db.Text
+  sourceUrl           String
+  lastVerified        DateTime
+}
+
+model ImportantDate {
+  id          String   @id @default(cuid())
+  title       String
+  date        DateTime
+  description String   @db.Text
+  category    String
+  sourceUrl   String?
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Ops
+// ─────────────────────────────────────────────────────────────────────────
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  action     String // "publish", "delete", "approve", ...
+  entityType String
+  entityId   String
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+}

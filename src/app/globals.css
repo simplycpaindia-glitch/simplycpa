@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+:root {
+  /* Core palette — near-black navy, warm off-white, restrained gold accent.
+     No coaching-site red/green/yellow; status colors are used sparingly and
+     only where they carry real meaning (correct/incorrect, needs review). */
+  --color-ink-950: #05070d;
+  --color-ink-900: #0b101c;
+  --color-ink-800: #131a2b;
+  --color-ink-700: #1c2540;
+  --color-ink-600: #2a3358;
+  --color-ink-400: #6b7494;
+  --color-ink-200: #c7cbdb;
+
+  --color-paper-50: #fbfaf7;
+  --color-paper-100: #f5f2ea;
+  --color-paper-200: #ece6d8;
+  --color-paper-300: #ded5bf;
+
+  --color-gold-400: #d8b262;
+  --color-gold-500: #c19a44;
+  --color-gold-600: #a17f35;
+
+  --color-signal-green: #2f6d4f;
+  --color-signal-red: #a33f3f;
+  --color-signal-amber: #a17f35;
+
+  --background: var(--color-paper-50);
+  --foreground: var(--color-ink-950);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-ink-950: var(--color-ink-950);
+  --color-ink-900: var(--color-ink-900);
+  --color-ink-800: var(--color-ink-800);
+  --color-ink-700: var(--color-ink-700);
+  --color-ink-600: var(--color-ink-600);
+  --color-ink-400: var(--color-ink-400);
+  --color-ink-200: var(--color-ink-200);
+
+  --color-paper-50: var(--color-paper-50);
+  --color-paper-100: var(--color-paper-100);
+  --color-paper-200: var(--color-paper-200);
+  --color-paper-300: var(--color-paper-300);
+
+  --color-gold-400: var(--color-gold-400);
+  --color-gold-500: var(--color-gold-500);
+  --color-gold-600: var(--color-gold-600);
+
+  --color-signal-green: var(--color-signal-green);
+  --color-signal-red: var(--color-signal-red);
+  --color-signal-amber: var(--color-signal-amber);
+
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tiptap-rendered study material / revision content */
+.prose-cpa {
+  max-width: 68ch;
+  line-height: 1.7;
+}
+.prose-cpa h2 {
+  font-family: var(--font-display), serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-ink-950);
+}
+.prose-cpa h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-cpa p {
+  margin-bottom: 1rem;
+}
+.prose-cpa ul,
+.prose-cpa ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+.prose-cpa ul {
+  list-style: disc;
+}
+.prose-cpa ol {
+  list-style: decimal;
+}
+.prose-cpa table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+.prose-cpa th,
+.prose-cpa td {
+  border: 1px solid var(--color-paper-300);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose-cpa th {
+  background: var(--color-paper-100);
+  font-weight: 600;
+}
+.prose-cpa strong {
+  font-weight: 600;
+}
+.prose-cpa a {
+  color: var(--color-gold-600);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Callout boxes authored via the Tiptap callout node */
+.callout {
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  border: 1px solid;
+  font-size: 0.95rem;
+}
+.callout-tip {
+  background: #f3f8f5;
+  border-color: #c9dfd2;
+}
+.callout-warning {
+  background: #fbf3ec;
+  border-color: #e8cba9;
+}
+.callout-example {
+  background: #f3f4fb;
+  border-color: #ccd0ee;
+}
+.callout-important {
+  background: #fbf6e3;
+  border-color: var(--color-gold-400);
+}
