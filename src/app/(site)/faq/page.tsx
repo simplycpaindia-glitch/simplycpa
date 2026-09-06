@@ -26,7 +26,6 @@ export default async function FaqPage() {
 
   return (
     <Container className="py-16">
-      {/* eslint-disable-next-line react/no-danger */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <SectionHeading
         eyebrow="Resources"

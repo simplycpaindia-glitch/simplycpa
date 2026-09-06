@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { auth, signOut } from "@/lib/auth";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/site/MobileNav";
+import { SearchBox } from "@/components/site/SearchBox";
 
 export async function Navbar() {
   const [subjects, session] = await Promise.all([
@@ -15,8 +16,8 @@ export async function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ink-950/10 bg-paper-50/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="font-display text-xl font-semibold tracking-tight">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="font-display text-xl font-semibold tracking-tight shrink-0">
           Simply<span className="text-gold-600">CPA</span>
         </Link>
 
@@ -34,31 +35,31 @@ export async function Navbar() {
             </NavSection>
           </NavGroup>
 
-          <NavGroup label="Practice">
-            <DropdownLink href="/practice" label="MCQ Practice" sub="Topic and subject practice" />
-            <DropdownLink href="/practice/question-of-the-day" label="Question of the Day" sub="One question, every day" />
-          </NavGroup>
-
-          <NavGroup label="Learn">
-            <DropdownLink href="/indian-candidates" label="CPA for Indian Students" sub="Eligibility, cost, process" />
-            <DropdownLink href="/blog" label="Blog" sub="Strategy, career, updates" />
-            <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
-          </NavGroup>
-
-          <NavGroup label="Resources">
-            <DropdownLink href="/faq" label="FAQs" />
-            <DropdownLink href="/roadmap" label="Roadmap" />
+          <NavGroup label="Practice" wide={false}>
+            <DropdownLink href="/#question-of-the-day" label="Question of the Day" sub="One question, every day" />
+            <DropdownLink href="/cpa" label="MCQs" sub="Practice by subject and topic" />
+            <DropdownLink href="/quick-sheets" label="Quick Sheets" sub="5-minute revision sheets" />
           </NavGroup>
 
           <Link
-            href="/community"
+            href="/indian-candidates"
             className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950"
           >
-            Community
+            CPA for Indians
           </Link>
+
+          <NavGroup label="Resources" wide={false}>
+            <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
+            <DropdownLink href="/roadmap" label="Roadmap" />
+            <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
+            <DropdownLink href="/sources" label="Official Sources" />
+            <DropdownLink href="/faq" label="FAQs" />
+            <DropdownLink href="/blog" label="Blog" />
+          </NavGroup>
         </nav>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex flex-1 items-center justify-end gap-3">
+          <SearchBox className="w-48" />
           {session?.user ? (
             <>
               <Button href="/dashboard" size="sm" variant="outline">
@@ -100,13 +101,15 @@ export async function Navbar() {
   );
 }
 
-function NavGroup({ label, children }: { label: string; children: React.ReactNode }) {
+function NavGroup({ label, children, wide = true }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
     <div className="group relative">
       <button className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950">
         {label}
       </button>
-      <div className="invisible absolute left-0 top-full flex w-[560px] gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100">
+      <div
+        className={`invisible absolute left-0 top-full flex gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 ${wide ? "w-[560px]" : "w-64 flex-col"}`}
+      >
         {children}
       </div>
     </div>

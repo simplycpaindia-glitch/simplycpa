@@ -51,7 +51,6 @@ export default async function BlogPostPage({
 
   return (
     <Container className="max-w-3xl py-16">
-      {/* eslint-disable-next-line react/no-danger */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="mb-4 flex items-center gap-2 text-xs text-ink-400">
         <Link href="/blog" className="hover:text-ink-950">Blog</Link>

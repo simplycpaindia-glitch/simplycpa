@@ -1,27 +1,29 @@
 import { Hero } from "@/components/home/Hero";
-import { CoreDisciplineExplainer } from "@/components/home/CoreDisciplineExplainer";
 import { SubjectGrid } from "@/components/home/SubjectGrid";
+import { StartHereTeaser } from "@/components/home/StartHereTeaser";
 import { QuestionOfTheDay } from "@/components/home/QuestionOfTheDay";
-import { WhyCpa } from "@/components/home/WhyCpa";
-import { IndianCandidatesTeaser } from "@/components/home/IndianCandidatesTeaser";
+import { RadarPreview } from "@/components/home/RadarPreview";
 import { StudySystem } from "@/components/home/StudySystem";
-import { BlogAndRadarPreview } from "@/components/home/BlogAndRadarPreview";
+import { QuickSheetsPreview } from "@/components/home/QuickSheetsPreview";
+import { IndianCandidatesTeaser } from "@/components/home/IndianCandidatesTeaser";
+import { OfficialSourcesStrip } from "@/components/home/OfficialSourcesStrip";
 import { FaqPreview } from "@/components/home/FaqPreview";
-import { FinalCta } from "@/components/home/FinalCta";
+import { BlogPreview } from "@/components/home/BlogPreview";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <CoreDisciplineExplainer />
       <SubjectGrid />
+      <StartHereTeaser />
       <QuestionOfTheDay />
-      <WhyCpa />
-      <IndianCandidatesTeaser />
+      <RadarPreview />
       <StudySystem />
-      <BlogAndRadarPreview />
+      <QuickSheetsPreview />
+      <IndianCandidatesTeaser />
+      <OfficialSourcesStrip />
       <FaqPreview />
-      <FinalCta />
+      <BlogPreview />
     </>
   );
 }

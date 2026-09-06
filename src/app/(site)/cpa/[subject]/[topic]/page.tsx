@@ -5,6 +5,7 @@ import { Clock } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { Badge, DifficultyBadge } from "@/components/ui/Badge";
 import { Tabs } from "@/components/ui/Tabs";
 import { RichContent } from "@/components/content/RichContent";
@@ -122,17 +123,23 @@ export default async function TopicPage({
     },
     topic.revisionNote && {
       id: "revision",
-      label: "Revision",
+      label: "5-Minute Revision",
       content: (
         <div>
+          <p className="mb-6 flex items-center gap-1.5 text-sm text-ink-400">
+            <Clock className="size-4" /> Read time: ~5 minutes
+          </p>
           <RichContent html={topic.revisionNote.content} />
-          <div className="mt-8 flex gap-2">
+          <div className="mt-8 flex flex-wrap gap-2">
             <MarkCompleteButton
               isComplete={!!progress?.revisionCompletedAt}
               topicId={topic.id}
               path={path}
               kind="revision"
             />
+            <Button href={`/quick-sheets/${subject.slug}/${topic.slug}`} variant="outline" size="sm">
+              Open as Quick Sheet
+            </Button>
           </div>
         </div>
       ),
@@ -179,7 +186,6 @@ export default async function TopicPage({
 
   return (
     <>
-      {/* eslint-disable-next-line react/no-danger */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="border-b border-ink-950/10 bg-paper-100 py-8">
         <Container>

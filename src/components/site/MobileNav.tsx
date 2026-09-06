@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { SearchBox } from "@/components/site/SearchBox";
 import { signOutAction } from "@/lib/actions/auth";
 
 type SubjectLink = { slug: string; shortName: string; name: string };
@@ -31,6 +32,7 @@ export function MobileNav({
 
       {open && (
         <div className="fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-paper-50 px-4 py-6">
+          <SearchBox className="mb-6" />
           <MobileSection title="Core sections">
             {core.map((s) => (
               <MobileLink key={s.slug} href={`/cpa/${s.slug}`} onClick={() => setOpen(false)}>
@@ -46,18 +48,20 @@ export function MobileNav({
             ))}
           </MobileSection>
           <MobileSection title="Practice">
-            <MobileLink href="/practice" onClick={() => setOpen(false)}>MCQ Practice</MobileLink>
-            <MobileLink href="/practice/question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
+            <MobileLink href="/#question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
+            <MobileLink href="/cpa" onClick={() => setOpen(false)}>MCQs</MobileLink>
+            <MobileLink href="/quick-sheets" onClick={() => setOpen(false)}>Quick Sheets</MobileLink>
           </MobileSection>
-          <MobileSection title="Learn">
-            <MobileLink href="/indian-candidates" onClick={() => setOpen(false)}>CPA for Indian Students</MobileLink>
-            <MobileLink href="/blog" onClick={() => setOpen(false)}>Blog</MobileLink>
-            <MobileLink href="/radar" onClick={() => setOpen(false)}>CPA Radar</MobileLink>
+          <MobileSection title="CPA for Indians">
+            <MobileLink href="/indian-candidates" onClick={() => setOpen(false)}>Eligibility, Cost & Process</MobileLink>
           </MobileSection>
           <MobileSection title="Resources">
-            <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>
+            <MobileLink href="/start-here" onClick={() => setOpen(false)}>Start Here</MobileLink>
             <MobileLink href="/roadmap" onClick={() => setOpen(false)}>Roadmap</MobileLink>
-            <MobileLink href="/community" onClick={() => setOpen(false)}>Community</MobileLink>
+            <MobileLink href="/radar" onClick={() => setOpen(false)}>CPA Radar</MobileLink>
+            <MobileLink href="/sources" onClick={() => setOpen(false)}>Official Sources</MobileLink>
+            <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>
+            <MobileLink href="/blog" onClick={() => setOpen(false)}>Blog</MobileLink>
           </MobileSection>
 
           <div className="mt-6 flex flex-col gap-2">

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -48,13 +47,12 @@ const sections = [
 export default function IndianCandidatesPage() {
   return (
     <>
-      <div className="bg-ink-950 py-16 text-paper-50">
+      <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
           <SectionHeading
             eyebrow="CPA for Indian Students"
             title="The process, explained without the sales pitch"
             description="Eligibility, state selection, credential evaluation, cost, and what comes after — the parts that are usually scattered across ten different forums."
-            className="[&_h2]:text-paper-50 [&_p]:text-paper-50/70"
           />
         </Container>
       </div>

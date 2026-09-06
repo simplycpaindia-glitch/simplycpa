@@ -13,15 +13,17 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Practice",
     links: [
-      { label: "MCQ Practice", href: "/practice" },
-      { label: "Question of the Day", href: "/practice/question-of-the-day" },
+      { label: "Question of the Day", href: "/#question-of-the-day" },
+      { label: "Quick Sheets", href: "/quick-sheets" },
+      { label: "Community", href: "/community" },
     ],
   },
   {
     title: "Learn",
     links: [
-      { label: "Blog", href: "/blog" },
+      { label: "Start Here", href: "/start-here" },
       { label: "CPA for Indians", href: "/indian-candidates" },
+      { label: "Blog", href: "/blog" },
       { label: "CPA Radar", href: "/radar" },
     ],
   },

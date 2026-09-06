@@ -1,29 +1,44 @@
+import { BookOpen, Zap, PenSquare } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/Container";
 
 const steps = [
-  { n: "01", title: "Study", body: "Clear, exam-oriented explanations — headings, tables, examples, and callouts, not walls of text." },
-  { n: "02", title: "Revise", body: "A separate, much shorter revision page per topic — the 20% you actually need the night before." },
-  { n: "03", title: "Practice", body: "Topic-wise and mixed MCQs with full explanations, server-graded so answers are never exposed early." },
-  { n: "04", title: "Discuss", body: "Ask doubts, read explanations from other candidates, and get moderated, spam-free answers." },
-  { n: "05", title: "Track", body: "See what's done, what's weak, and what to revisit — without a wall of gamified badges." },
+  {
+    icon: BookOpen,
+    title: "Study",
+    body: "Complete, exam-oriented explanations for every topic — headings, tables, examples, and callouts.",
+  },
+  {
+    icon: Zap,
+    title: "Revise",
+    body: "A separate 5-minute revision page per topic — the key rules, formulas, and traps, not a second copy of the full material.",
+  },
+  {
+    icon: PenSquare,
+    title: "Practice",
+    body: "Topic-specific MCQs with full explanations, graded on the server so answers are never exposed early.",
+  },
 ];
 
 export function StudySystem() {
   return (
-    <section className="py-20 bg-paper-100">
+    <section className="py-16 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="The study system"
-          title="One loop, repeated until you're ready"
+          eyebrow="How to use SimplyCPA"
+          title="Study. Revise. Practice."
+          description="One loop, repeated topic by topic until you're ready for the exam."
           align="center"
           className="mx-auto"
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map((s) => (
-            <div key={s.n}>
-              <p className="font-display text-3xl text-gold-500 mb-2">{s.n}</p>
+        <div className="mt-12 grid gap-px overflow-hidden rounded-lg border border-ink-950/10 bg-ink-950/10 sm:grid-cols-3">
+          {steps.map((s, i) => (
+            <div key={s.title} className="relative bg-paper-50 p-6">
+              <span className="absolute top-6 right-6 font-display text-2xl text-ink-950/10">
+                {i + 1}
+              </span>
+              <s.icon className="size-5 text-gold-600 mb-3" />
               <h3 className="font-semibold text-ink-950">{s.title}</h3>
-              <p className="mt-1 text-sm text-ink-400 leading-relaxed">{s.body}</p>
+              <p className="mt-1.5 text-sm text-ink-400 leading-relaxed">{s.body}</p>
             </div>
           ))}
         </div>

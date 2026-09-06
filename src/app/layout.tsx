@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
   ),
   title: {
-    default: "SimplyCPA — The US CPA Exam, Organized for Indian Candidates",
+    default: "SimplyCPA — The Free US CPA Study Library",
     template: "%s · SimplyCPA",
   },
   description:
-    "Study, revise, and practice for the US CPA Exam in one place — built for Indian CA students, commerce graduates, and working professionals.",
+    "Free, exam-focused study material, revision notes, and practice questions for every US CPA section — organized topic by topic. No expensive coaching. No scattered PDFs. Just CPA.",
   openGraph: {
     type: "website",
     siteName: "SimplyCPA",

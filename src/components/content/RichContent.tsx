@@ -15,7 +15,6 @@ export function RichContent({
   return (
     <div
       className={cn("prose-cpa", className)}
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

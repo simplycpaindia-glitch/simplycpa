@@ -7,6 +7,9 @@ import { formatDate } from "@/lib/utils";
 const REVIEW_STALE_DAYS = 120;
 
 export default async function AdminOverviewPage() {
+  // eslint-disable-next-line react-hooks/purity -- Server Component: runs once per request, not a render loop.
+  const staleThreshold = new Date(Date.now() - REVIEW_STALE_DAYS * 86_400_000);
+
   const [
     subjectCount,
     topicCount,
@@ -32,7 +35,7 @@ export default async function AdminOverviewPage() {
     prisma.topic.groupBy({ by: ["status"], _count: true }),
     prisma.mCQ.count({ where: { explanation: "" } }),
     prisma.studyMaterial.findMany({
-      where: { lastReviewedAt: { lt: new Date(Date.now() - REVIEW_STALE_DAYS * 86_400_000) } },
+      where: { lastReviewedAt: { lt: staleThreshold } },
       include: { topic: { include: { subject: true } } },
       take: 5,
     }),

@@ -53,13 +53,12 @@ const steps = [
 export default function RoadmapPage() {
   return (
     <>
-      <div className="bg-ink-950 py-16 text-paper-50">
+      <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
           <SectionHeading
             eyebrow="Roadmap"
             title="How to become a CPA"
             description="Passing the CPA Exam and holding a CPA license are two different milestones. Here's the full path, in order."
-            className="[&_h2]:text-paper-50 [&_p]:text-paper-50/70"
           />
         </Container>
       </div>
