@@ -148,7 +148,9 @@ export default async function SubjectPage({
                     </td>
                     <td className="px-4 py-3 text-center">
                       <Link href={`${base}#mcqs`} className="text-ink-800 hover:underline">
-                        {topic.mcqs.length > 0 ? `${topic.mcqs.length} MCQs` : "→"}
+                        {topic.mcqs.length > 0
+                          ? `${topic.mcqs.length} MCQ${topic.mcqs.length === 1 ? "" : "s"}`
+                          : "→"}
                       </Link>
                     </td>
                   </tr>

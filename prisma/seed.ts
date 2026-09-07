@@ -131,6 +131,34 @@ async function seedSubjects(adminId: string) {
         }
       }
     }
+    // Remove topics that are no longer part of this subject's structure — but only
+    // empty "Coming Soon" shells, never anything carrying real content or activity.
+    const seededSlugs = subjectSeed.topics.map((t) => t.slug);
+    const orphans = await prisma.topic.findMany({
+      where: { subjectId: subject.id, slug: { notIn: seededSlugs } },
+      include: {
+        studyMaterial: true,
+        revisionNote: true,
+        _count: { select: { mcqs: true, comments: true, progress: true } },
+      },
+    });
+
+    for (const orphan of orphans) {
+      const isEmptyShell =
+        !orphan.studyMaterial &&
+        !orphan.revisionNote &&
+        orphan._count.mcqs === 0 &&
+        orphan._count.comments === 0 &&
+        orphan._count.progress === 0;
+
+      if (isEmptyShell) {
+        await prisma.topic.delete({ where: { id: orphan.id } });
+        console.log(`  removed obsolete empty topic: ${subjectSeed.shortName} / ${orphan.slug}`);
+      } else {
+        console.log(`  KEPT obsolete topic with content/activity (review manually): ${subjectSeed.shortName} / ${orphan.slug}`);
+      }
+    }
+
     console.log(`Seeded subject ${subjectSeed.shortName} with ${subjectSeed.topics.length} topics`);
   }
 }
