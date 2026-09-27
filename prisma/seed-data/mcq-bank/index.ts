@@ -1,10 +1,13 @@
 import type { McqBank } from "./types";
 import { farBankA } from "./far-a";
 import { farBankB } from "./far-b";
+import { farBankC } from "./far-c";
 import { audBankA } from "./aud-a";
 import { audBankB } from "./aud-b";
+import { audBankC } from "./aud-c";
 import { regBankA } from "./reg-a";
 import { regBankB } from "./reg-b";
+import { regBankC } from "./reg-c";
 import { barBank } from "./bar";
 import { iscBank } from "./isc";
 import { tcpBank } from "./tcp";
@@ -20,10 +23,13 @@ import { tcpBank } from "./tcp";
 const banks: McqBank[] = [
   farBankA,
   farBankB,
+  farBankC,
   audBankA,
   audBankB,
+  audBankC,
   regBankA,
   regBankB,
+  regBankC,
   barBank,
   iscBank,
   tcpBank,
