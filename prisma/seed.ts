@@ -12,11 +12,40 @@ import { tcp } from "./seed-data/tcp";
 import { faqs } from "./seed-data/faqs";
 import { blogPosts } from "./seed-data/blog";
 import { jurisdictions, fees, testingLocations, sources, updates } from "./seed-data/facts";
+import { mcqBank } from "./seed-data/mcq-bank";
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
 
 const subjects: SubjectSeed[] = [far, aud, reg, bar, isc, tcp];
+
+let mcqsCreated = 0;
+let mcqsRemoved = 0;
+
+/**
+ * Seeding the full question bank means hundreds of sequential inserts, and a
+ * serverless Postgres will sometimes drop the connection partway through
+ * ("Connection terminated unexpectedly"). Retrying the individual write lets
+ * the adapter reconnect instead of losing the whole run. Because the seed is
+ * idempotent, a retried insert can never duplicate a question.
+ */
+async function withRetry<T>(fn: () => Promise<T>, attempts = 5): Promise<T> {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await fn();
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      const isTransient =
+        /Connection terminated|connection closed|ECONNRESET|socket hang up|Timed out|terminating connection/i.test(
+          message,
+        );
+      if (!isTransient || attempt >= attempts) throw error;
+      const backoffMs = 500 * 2 ** (attempt - 1);
+      console.log(`  transient DB error (attempt ${attempt}/${attempts}), retrying in ${backoffMs}ms: ${message}`);
+      await new Promise((resolve) => setTimeout(resolve, backoffMs));
+    }
+  }
+}
 
 async function seedAdminUser() {
   const email = process.env.SEED_ADMIN_EMAIL ?? "admin@simplycpa.local";
@@ -110,11 +139,23 @@ async function seedSubjects(adminId: string) {
         });
       }
 
-      if (topicSeed.mcqs?.length) {
-        const existingCount = await prisma.mCQ.count({ where: { topicId: topic.id } });
-        if (existingCount === 0) {
-          for (const mcqSeed of topicSeed.mcqs) {
-            await prisma.mCQ.create({
+      // Questions defined inline on the topic, plus anything in the separate
+      // question bank for this slug. Matching on question text keeps re-seeding
+      // idempotent: existing questions are left alone, new ones are appended.
+      const bankMcqs = mcqBank[topicSeed.slug] ?? [];
+      const allMcqs = [...(topicSeed.mcqs ?? []), ...bankMcqs];
+
+      if (allMcqs.length) {
+        const existing = await prisma.mCQ.findMany({
+          where: { topicId: topic.id },
+          select: { question: true },
+        });
+        const existingQuestions = new Set(existing.map((m) => m.question.trim()));
+
+        for (const mcqSeed of allMcqs) {
+          if (existingQuestions.has(mcqSeed.question.trim())) continue;
+          await withRetry(() =>
+            prisma.mCQ.create({
               data: {
                 topicId: topic.id,
                 question: mcqSeed.question,
@@ -126,8 +167,31 @@ async function seedSubjects(adminId: string) {
                 status: "PUBLISHED",
                 options: { create: mcqSeed.options },
               },
-            });
+            }),
+          );
+          existingQuestions.add(mcqSeed.question.trim());
+          mcqsCreated++;
+        }
+
+        // Because inserts are matched on question text, editing a question's
+        // wording in the seed data creates a new row and leaves the superseded
+        // one behind. Remove those stragglers so the bank stays declarative —
+        // but never touch a question a student has already answered, since that
+        // would destroy their attempt history.
+        const seededQuestions = new Set(allMcqs.map((m) => m.question.trim()));
+        const stale = await prisma.mCQ.findMany({
+          where: { topicId: topic.id },
+          select: { id: true, question: true, _count: { select: { attempts: true } } },
+        });
+
+        for (const candidate of stale) {
+          if (seededQuestions.has(candidate.question.trim())) continue;
+          if (candidate._count.attempts > 0) {
+            console.log(`  KEPT superseded MCQ with ${candidate._count.attempts} attempt(s): ${candidate.question.slice(0, 70)}...`);
+            continue;
           }
+          await withRetry(() => prisma.mCQ.delete({ where: { id: candidate.id } }));
+          mcqsRemoved++;
         }
       }
     }
@@ -279,6 +343,9 @@ async function main() {
   await seedFaqs();
   await seedBlog(admin.id);
   await seedFacts();
+
+  const totalMcqs = await prisma.mCQ.count();
+  console.log(`\nMCQs created this run: ${mcqsCreated}, superseded removed: ${mcqsRemoved}. Total in bank: ${totalMcqs}.`);
 }
 
 main()
