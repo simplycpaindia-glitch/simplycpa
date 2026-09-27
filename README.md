@@ -20,7 +20,10 @@ Non-technical? See [CONTENT-MANAGEMENT-GUIDE.md](CONTENT-MANAGEMENT-GUIDE.md) in
 prisma/
   schema.prisma          # data model
   seed.ts                # seed script orchestrator
-  seed-data/              # actual seed content (FAR, AUD, REG, BAR, ISC, TCP, FAQs, blog, fees...)
+  seed-data/              # seed data: subject and topic structure (far.ts, aud.ts, ...), FAQs, blog, fees...
+    content/              # study page + revision sheet for each topic, one file per topic
+    mcq-bank/             # practice questions, keyed by topic slug
+  check-abbreviations.ts  # checks short forms are written out in full on first use (npm run content:check)
 src/
   app/
     (site)/               # public site — homepage, /cpa/*, /blog, /faq, /login, /dashboard, ...

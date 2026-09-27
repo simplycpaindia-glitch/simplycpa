@@ -157,3 +157,24 @@ body {
   background: #fbf6e3;
   border-color: var(--color-gold-400);
 }
+.callout > :last-child {
+  margin-bottom: 0;
+}
+.callout table {
+  background: var(--color-paper-50);
+  margin-top: 0.75rem;
+}
+
+/* Wide tables (journal entries, comparisons) scroll sideways on phones instead of
+   pushing the whole page wider than the screen. */
+@media (max-width: 640px) {
+  .prose-cpa table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .prose-cpa th,
+  .prose-cpa td {
+    min-width: 7rem;
+  }
+}
