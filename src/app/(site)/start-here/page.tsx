@@ -15,7 +15,7 @@ const steps: { title: string; body: string; link?: { href: string; label: string
   },
   {
     title: "Check eligibility",
-    body: "Eligibility is set by individual US state boards, not by nationality or residency. Most require the equivalent of 120-150 US semester hours of education — an Indian B.Com alone often falls short, while CA or a postgraduate degree usually helps close the gap.",
+    body: "Eligibility is set by individual US state boards, not by nationality or residency. Most want at least 120 US semester hours to sit for the exam. For the license, you'll need either 150 hours plus one year of experience, or, in a growing number of states, 120 hours plus two years. A 3-year Indian B.Com alone is often evaluated below 120 hours, while CA or a postgraduate degree usually closes the gap.",
     link: { href: "/indian-candidates", label: "Eligibility for Indian candidates" },
   },
   {
@@ -30,10 +30,11 @@ const steps: { title: string; body: string; link?: { href: string; label: string
   {
     title: "Apply",
     body: "Submit your application, transcripts, and evaluation report to your chosen state board, along with the relevant fees.",
+    link: { href: "/fees", label: "Estimate what it will cost" },
   },
   {
     title: "Schedule your exam",
-    body: "Once approved, you'll receive a Notice to Schedule (NTS) for each section, which lets you book a Prometric appointment — including at one of several testing centers in India.",
+    body: "Once approved, you'll receive a Notice to Schedule (NTS) for each section, which lets you book a Prometric appointment, including at one of several testing centers in India. Core sections can be booked year-round; Discipline sections only in January, April, July, and October.",
   },
   {
     title: "Start studying",

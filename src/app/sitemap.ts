@@ -28,6 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/faq",
     "/blog",
     "/roadmap",
+    "/fees",
     "/indian-candidates",
     "/radar",
     "/sources",

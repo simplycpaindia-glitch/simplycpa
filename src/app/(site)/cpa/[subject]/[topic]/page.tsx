@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { Container } from "@/components/ui/Container";
@@ -70,6 +70,15 @@ export default async function TopicPage({
     : null;
 
   const path = `/cpa/${subject.slug}/${topic.slug}`;
+
+  const siblings = await prisma.topic.findMany({
+    where: { subjectId: subject.id, isComingSoon: false },
+    orderBy: { order: "asc" },
+    select: { id: true, slug: true, title: true },
+  });
+  const index = siblings.findIndex((t) => t.id === topic.id);
+  const prevTopic = index > 0 ? siblings[index - 1] : null;
+  const nextTopic = index >= 0 && index < siblings.length - 1 ? siblings[index + 1] : null;
 
   if (topic.isComingSoon) {
     return (
@@ -212,6 +221,38 @@ export default async function TopicPage({
 
       <Container className="py-10">
         <Tabs tabs={tabs} />
+
+        {(prevTopic || nextTopic) && (
+          <nav
+            aria-label={`More ${subject.shortName} topics`}
+            className="mt-16 grid gap-3 border-t border-ink-950/10 pt-8 sm:grid-cols-2"
+          >
+            {prevTopic ? (
+              <Link
+                href={`/cpa/${subject.slug}/${prevTopic.slug}`}
+                className="group rounded-lg border border-ink-950/10 p-4 hover:border-ink-950/25"
+              >
+                <span className="flex items-center gap-1 text-xs text-ink-400">
+                  <ArrowLeft className="size-3.5" /> Previous topic
+                </span>
+                <span className="mt-1 block font-medium text-ink-950 group-hover:underline">{prevTopic.title}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+            {nextTopic && (
+              <Link
+                href={`/cpa/${subject.slug}/${nextTopic.slug}`}
+                className="group rounded-lg border border-ink-950/10 p-4 text-right hover:border-ink-950/25"
+              >
+                <span className="flex items-center justify-end gap-1 text-xs text-ink-400">
+                  Next topic <ArrowRight className="size-3.5" />
+                </span>
+                <span className="mt-1 block font-medium text-ink-950 group-hover:underline">{nextTopic.title}</span>
+              </Link>
+            )}
+          </nav>
+        )}
       </Container>
     </>
   );

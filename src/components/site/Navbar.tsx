@@ -51,6 +51,7 @@ export async function Navbar() {
           <NavGroup label="Resources" wide={false}>
             <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
             <DropdownLink href="/roadmap" label="Roadmap" />
+            <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
             <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
             <DropdownLink href="/sources" label="Official Sources" />
             <DropdownLink href="/faq" label="FAQs" />
@@ -104,11 +105,11 @@ export async function Navbar() {
 function NavGroup({ label, children, wide = true }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
     <div className="group relative">
-      <button className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950">
+      <button type="button" aria-haspopup="true" className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950">
         {label}
       </button>
       <div
-        className={`invisible absolute left-0 top-full flex gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 ${wide ? "w-[560px]" : "w-64 flex-col"}`}
+        className={`invisible absolute left-0 top-full flex gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${wide ? "w-[560px]" : "w-64 flex-col"}`}
       >
         {children}
       </div>

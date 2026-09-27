@@ -16,7 +16,7 @@ const sections = [
   },
   {
     title: "CPA after B.Com or M.Com?",
-    body: "Commerce graduates are eligible in many US states, though most state boards require 120–150 semester hours of education (roughly equivalent to a bachelor's plus some additional credit), which a 3-year Indian B.Com often falls short of on its own. An M.Com, additional certifications, or a bridge course can close the gap depending on the state — this is exactly what credential evaluation determines.",
+    body: "Commerce graduates can qualify, but the number that matters is your evaluated US semester hours. Most boards want at least 120 hours to sit for the exam. For the license, the traditional route is 150 hours plus one year of experience, and a growing number of states also accept 120 hours plus two years of experience. A 3-year B.Com on its own is often evaluated below 120 hours. An M.Com, CA or CMA coursework, or additional credits usually close the gap, and a credential evaluation tells you exactly where you stand.",
   },
   {
     title: "CPA vs CA vs ACCA vs CMA",
@@ -36,11 +36,11 @@ const sections = [
   },
   {
     title: "How much does it cost, really?",
-    body: "Application/registration fees, per-section exam fees, an international administration fee (if testing in India), and a one-time evaluation fee. These numbers change and vary by state — always confirm current figures directly with NASBA and your state board before paying anything.",
+    body: "Application/registration fees, per-section exam fees, an international administration fee (if testing in India), and a one-time evaluation fee. These numbers change and vary by state. Our Fee Estimator adds up the figures we track, each with its source and verification date, but always confirm current amounts with NASBA and your state board before paying anything.",
   },
   {
     title: "What happens after you pass all four sections?",
-    body: "Passing the Exam and holding a CPA license are different milestones. Most states also require a verified period of relevant work experience (often under a licensed CPA's supervision) and sometimes a separate ethics exam before they'll issue the license itself.",
+    body: "Passing the Exam and holding a CPA license are different milestones. You typically have 30 months from your first passed section to pass the rest. For the license itself, most states also require verified work experience (usually one year under the 150-credit pathway, or two years under the 120-credit pathway, generally supervised by a licensed CPA) and sometimes a separate ethics exam.",
   },
 ];
 
@@ -69,6 +69,7 @@ export default function IndianCandidatesPage() {
 
         <div className="mt-12 flex flex-wrap gap-3">
           <Button href="/roadmap" variant="primary">View the full Roadmap</Button>
+          <Button href="/fees" variant="outline">Estimate your fees</Button>
           <Button href="/faq" variant="outline">Browse all FAQs</Button>
         </div>
 

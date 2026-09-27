@@ -230,7 +230,10 @@ async function seedSubjects(adminId: string) {
 async function seedFaqs() {
   for (const faq of faqs) {
     const existing = await prisma.fAQ.findFirst({ where: { question: faq.question } });
-    if (!existing) {
+    if (existing) {
+      // Keep answers in sync with the seed so factual corrections reach existing databases.
+      await prisma.fAQ.update({ where: { id: existing.id }, data: { answer: faq.answer, category: faq.category, order: faq.order } });
+    } else {
       await prisma.fAQ.create({ data: { ...faq, status: "PUBLISHED" } });
     }
   }
@@ -319,18 +322,19 @@ async function seedFacts() {
     }
   }
 
-  const existingUpdateCount = await prisma.update.count();
-  if (existingUpdateCount === 0) {
-    for (const u of updates) {
-      await prisma.update.create({
-        data: {
-          title: u.title,
-          body: u.body,
-          category: u.category,
-          sourceUrl: u.sourceUrl,
-          lastVerified: new Date(u.lastVerified),
-        },
-      });
+  for (const u of updates) {
+    const data = {
+      title: u.title,
+      body: u.body,
+      category: u.category,
+      sourceUrl: u.sourceUrl,
+      lastVerified: new Date(u.lastVerified),
+    };
+    const existing = await prisma.update.findFirst({ where: { title: u.title } });
+    if (existing) {
+      await prisma.update.update({ where: { id: existing.id }, data });
+    } else {
+      await prisma.update.create({ data });
     }
   }
 

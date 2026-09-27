@@ -32,6 +32,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "FAQs", href: "/faq" },
       { label: "Roadmap", href: "/roadmap" },
+      { label: "Fee Estimator", href: "/fees" },
       { label: "Official Sources", href: "/sources" },
     ],
   },

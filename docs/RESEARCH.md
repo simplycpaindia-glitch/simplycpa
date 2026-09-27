@@ -41,8 +41,16 @@ This is exactly the scenario the brief anticipated, and it's why every fee in th
 
 1. **Discipline topic lists (BAR/ISC/TCP) are provisional.** They were built from secondary-source descriptions of each Discipline's scope, not a line-by-line pass against the official AICPA Blueprint PDF for each. Before relying on them as a study plan, cross-check against the current Blueprint.
 2. **State-specific eligibility detail is intentionally generic.** The `/indian-candidates` and `/roadmap` pages describe the *process* accurately but avoid asserting specific state-by-state credit-hour thresholds, since these vary by board and change. The `EligibilityRequirement` model exists for this data but was not populated with real per-state rows in the initial seed — that's a good next content task.
-3. **Only FAR received full-depth content in this build.** Per the "flagship-deep" scope decision, FAR has all 20 topics fully written (study material + revision notes), with MCQs on a representative subset. AUD, REG, BAR, ISC, and TCP each have one fully-worked demo topic and real (but not yet content-complete) topic lists for the rest, marked "Coming Soon" on the public site. This is intentional V1 scoping, not an oversight — see `CONTENT-MANAGEMENT-GUIDE.md` for how to fill these in via the admin panel.
-4. **MCQ count is well below the "50+ per topic" long-term target** described in the brief — the seed data demonstrates the full MCQ engine (server-graded, explained, tagged) with a realistic but small starter set. Building the bank out to depth is ongoing content work, not an architecture limitation.
+3. **All six sections now have full-depth content.** Every topic across FAR, AUD, REG, BAR, ISC, and TCP has study material and revision notes, and the MCQ bank has 388+ questions across all 93 topics (see `prisma/seed-data/mcq-bank/`, validated by `npm run mcq:validate`).
+4. **MCQ depth is still below the long-term "50+ per topic" target.** Most topics have 3–8 questions. Growing the bank, especially for high-weight FAR, AUD, and REG topics, is ongoing content work.
+
+## Licensure and exam-window changes (verified September 2026)
+
+- **30-month credit window.** Most jurisdictions have replaced the old 18-month rule with a rolling 30-month window, generally measured from the score release of the first passed section.
+- **120-credit licensure pathway.** Alongside the traditional 150 hours + 1 year of experience, many boards now license with a bachelor's (120 hours) + 2 years of experience. About two dozen jurisdictions had it in force by July 2026; New York's takes effect in November 2026. For Indian candidates, a 3-year B.Com alone is often evaluated below 120 hours, so the pathway doesn't remove the need for additional education in most cases.
+- **Testing windows.** Core sections are offered year-round (continuous testing). Discipline sections are offered only in January, April, July, and October.
+
+**Sources:** UWorld "120 vs. 150" licensure-pathways guide, 300Hours state-by-state requirements, Atlas CPA Index, Becker 2026–2027 testing schedule.
 
 ## Competitive/UX research (informing information architecture, not content)
 

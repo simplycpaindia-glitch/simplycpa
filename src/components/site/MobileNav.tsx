@@ -58,6 +58,7 @@ export function MobileNav({
           <MobileSection title="Resources">
             <MobileLink href="/start-here" onClick={() => setOpen(false)}>Start Here</MobileLink>
             <MobileLink href="/roadmap" onClick={() => setOpen(false)}>Roadmap</MobileLink>
+            <MobileLink href="/fees" onClick={() => setOpen(false)}>Fee Estimator</MobileLink>
             <MobileLink href="/radar" onClick={() => setOpen(false)}>CPA Radar</MobileLink>
             <MobileLink href="/sources" onClick={() => setOpen(false)}>Official Sources</MobileLink>
             <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>

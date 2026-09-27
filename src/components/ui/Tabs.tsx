@@ -28,13 +28,20 @@ export function Tabs({
 
   return (
     <div>
-      <div className="flex gap-1 overflow-x-auto border-b border-ink-950/10">
+      <div role="tablist" className="flex gap-1 overflow-x-auto border-b border-ink-950/10">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             type="button"
             id={tab.id}
-            onClick={() => setActive(tab.id)}
+            role="tab"
+            aria-selected={active === tab.id}
+            aria-controls={`${tab.id}-panel`}
+            onClick={() => {
+              setActive(tab.id);
+              // Keep the URL in sync so a specific tab (e.g. #mcqs) can be shared or bookmarked.
+              window.history.replaceState(null, "", `#${tab.id}`);
+            }}
             className={cn(
               "whitespace-nowrap border-b-2 px-4 py-3 text-sm font-medium transition-colors",
               active === tab.id
@@ -46,7 +53,9 @@ export function Tabs({
           </button>
         ))}
       </div>
-      <div className="pt-6">{activeTab?.content}</div>
+      <div role="tabpanel" id={`${activeTab?.id}-panel`} aria-labelledby={activeTab?.id} className="pt-6">
+        {activeTab?.content}
+      </div>
     </div>
   );
 }
