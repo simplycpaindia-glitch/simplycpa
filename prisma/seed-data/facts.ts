@@ -114,7 +114,7 @@ export type SourceSeed = {
 };
 
 export const sources: SourceSeed[] = [
-  { name: "AICPA & CIMA — CPA Exam Blueprints", url: "https://www.aicpa-cima.com/resources/download/cpa-exam-blueprints", sourceType: "PRIMARY_AICPA", notes: "Authoritative source for exam content areas, task statements, and skill levels." },
+  { name: "AICPA & CIMA — CPA Exam Blueprints", url: "https://www.aicpa-cima.com/resources/article/learn-what-is-tested-on-the-cpa-exam", sourceType: "PRIMARY_AICPA", notes: "Authoritative source for exam content areas, task statements, and skill levels." },
   { name: "NASBA — CPA Exam Available in India", url: "https://nasba.org/cpaexam-india/", sourceType: "PRIMARY_NASBA" },
   { name: "NASBA — International Administration", url: "https://nasba.org/internationalexam/", sourceType: "PRIMARY_NASBA" },
   { name: "NASBA — International Evaluation Services (NIES)", url: "https://nasba.org/", sourceType: "PRIMARY_NASBA" },

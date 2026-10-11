@@ -1,3 +1,5 @@
+import { keywordPosts } from "./blog-keywords";
+
 export type BlogSeed = {
   slug: string;
   title: string;
@@ -143,4 +145,5 @@ export const blogPosts: BlogSeed[] = [
 <p>CPA pass rates reflect a demanding exam, not a broken one. Structured, topic-by-topic study with real practice — not just re-reading material — is what separates candidates who pass on their first attempt from those who don't.</p>
 `,
   },
+  ...keywordPosts,
 ];
