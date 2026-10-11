@@ -39,8 +39,26 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
+  // Public community identity ("What I Studied This Week"). The email address is
+  // never shown publicly; only the username is.
+  username             String?   @unique
+  ageConfirmedAt       DateTime? // confirmed 18 or older
+  guidelinesAcceptedAt DateTime?
+  guidelinesVersion    String?
+  marketingOptIn       Boolean   @default(false) // optional, unticked by default
+  marketingOptInAt     DateTime?
+  isBanned             Boolean   @default(false)
+  bannedAt             DateTime?
+  bannedReason         String?
+
   accounts Account[]
   sessions Session[]
+
+  journalPosts      JournalPost[]
+  journalReactions  JournalReaction[]
+  journalReports    JournalReport[]    @relation("JournalReporter")
+  blockedPostTries  BlockedPostAttempt[]
+  signInEvents      SignInEvent[]
 
   progress       UserProgress[]
   bookmarks      Bookmark[]
@@ -574,4 +592,129 @@ model AuditLog {
   createdAt  DateTime @default(now())
 
   @@index([entityType, entityId])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Community: "What I Studied This Week" (text-only microblog) and sign-in records
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum JournalTag {
+  GENERAL
+  FAR
+  AUD
+  REG
+  BAR
+  ISC
+  TCP
+  EXAM_DEBRIEF
+}
+
+enum JournalPostStatus {
+  PUBLISHED
+  HELD_FOR_REVIEW   // an automatic check wants a human look before it is shown
+  HIDDEN_BY_REPORTS // enough distinct users reported it; hidden until reviewed
+  REMOVED           // removed by a moderator
+}
+
+model JournalPost {
+  id          String            @id @default(cuid())
+  userId      String
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  body        String            @db.Text // plain text only — rendered escaped, never as HTML
+  tag         JournalTag        @default(GENERAL)
+  status      JournalPostStatus @default(PUBLISHED)
+  flagReasons String[]          @default([]) // automatic-check codes that held it for review
+  contentHash String            // normalised-text hash, used to reject duplicate posts
+  reviewedAt  DateTime?
+  reviewedBy  String?           // staff user id
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  reactions JournalReaction[]
+  reports   JournalReport[]
+
+  @@index([status, createdAt])
+  @@index([userId, createdAt])
+  @@index([tag, status, createdAt])
+}
+
+model JournalReaction {
+  id        String      @id @default(cuid())
+  postId    String
+  post      JournalPost @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime    @default(now())
+
+  @@unique([postId, userId])
+}
+
+enum JournalReportReason {
+  SPAM
+  SEXUAL
+  OFFENSIVE
+  HARASSMENT
+  EXAM_CONTENT // discloses actual exam questions (breaks candidate confidentiality)
+  OFF_TOPIC
+  OTHER
+}
+
+model JournalReport {
+  id         String              @id @default(cuid())
+  postId     String
+  post       JournalPost         @relation(fields: [postId], references: [id], onDelete: Cascade)
+  reporterId String
+  reporter   User                @relation("JournalReporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  reason     JournalReportReason
+  details    String?             @db.Text
+  resolvedAt DateTime?
+  createdAt  DateTime            @default(now())
+
+  @@unique([postId, reporterId])
+  @@index([resolvedAt])
+}
+
+// A post that the automatic checks rejected. Kept so moderators can spot repeat
+// abusers; only a short excerpt is stored.
+model BlockedPostAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reasons   String[]
+  excerpt   String   @db.Text
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
+}
+
+// One-time sign-in codes. Only an HMAC of the code is stored; codes expire after
+// 10 minutes and allow at most 5 wrong guesses.
+model EmailLoginCode {
+  id        String    @id @default(cuid())
+  email     String
+  codeHash  String
+  expiresAt DateTime
+  attempts  Int       @default(0)
+  usedAt    DateTime?
+  ipHash    String?
+  createdAt DateTime  @default(now())
+
+  @@index([email, createdAt])
+  @@index([ipHash, createdAt])
+}
+
+// Record of every successful sign-in. The IP address is stored only as a keyed hash.
+model SignInEvent {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  method    String   // "google" | "email-code" | "password"
+  isNewUser Boolean  @default(false)
+  ipHash    String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([createdAt])
 }

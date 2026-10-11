@@ -16,10 +16,10 @@ export default auth((req) => {
     }
   }
 
-  if (pathname.startsWith("/dashboard")) {
+  if (pathname.startsWith("/dashboard") || pathname.startsWith("/account") || pathname.startsWith("/welcome")) {
     if (!isLoggedIn) {
       const loginUrl = new URL("/login", req.nextUrl);
-      loginUrl.searchParams.set("callbackUrl", pathname);
+      loginUrl.searchParams.set("callbackUrl", pathname + req.nextUrl.search);
       return NextResponse.redirect(loginUrl);
     }
   }
@@ -31,5 +31,5 @@ export default auth((req) => {
 // session and role server-side (see src/lib/dal.ts) since proxy runs on
 // prefetches too and must stay cheap.
 export const config = {
-  matcher: ["/admin/:path*", "/dashboard/:path*"],
+  matcher: ["/admin/:path*", "/dashboard/:path*", "/account/:path*", "/welcome/:path*"],
 };

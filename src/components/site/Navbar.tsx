@@ -43,7 +43,7 @@ export async function Navbar() {
 
           <Link
             href="/indian-candidates"
-            className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950"
+            className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3"
           >
             CPA for Indians
           </Link>
@@ -57,15 +57,25 @@ export async function Navbar() {
             <DropdownLink href="/faq" label="FAQs" />
             <DropdownLink href="/blog" label="Blog" />
           </NavGroup>
+
+          <Link
+            href="/what-i-studied"
+            className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3"
+          >
+            What I Studied
+          </Link>
         </nav>
 
         <div className="hidden lg:flex flex-1 items-center justify-end gap-3">
-          <SearchBox className="w-48" />
+          <SearchBox className="w-32 xl:w-48" />
           {session?.user ? (
             <>
               <Button href="/dashboard" size="sm" variant="outline">
                 Dashboard
               </Button>
+              <Link href="/account" className="px-2 py-2 text-sm font-medium text-ink-400 hover:text-ink-950">
+                Account
+              </Link>
               <form
                 action={async () => {
                   "use server";
@@ -82,10 +92,10 @@ export async function Navbar() {
             </>
           ) : (
             <>
-              <Button href="/login" size="sm" variant="ghost">
+              <Button href="/login" size="sm" variant="ghost" className="whitespace-nowrap">
                 Log in
               </Button>
-              <Button href="/register" size="sm" variant="primary">
+              <Button href="/register" size="sm" variant="primary" className="whitespace-nowrap">
                 Start Studying
               </Button>
             </>
@@ -105,7 +115,7 @@ export async function Navbar() {
 function NavGroup({ label, children, wide = true }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
     <div className="group relative">
-      <button type="button" aria-haspopup="true" className="px-3 py-2 text-sm font-medium text-ink-800 hover:text-ink-950">
+      <button type="button" aria-haspopup="true" className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3">
         {label}
       </button>
       <div

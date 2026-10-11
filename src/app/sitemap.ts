@@ -33,6 +33,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/radar",
     "/sources",
     "/community",
+    "/what-i-studied",
+    "/community-guidelines",
     "/about",
     "/privacy",
     "/terms",

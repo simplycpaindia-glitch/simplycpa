@@ -10,6 +10,7 @@ const navItems = [
   { href: "/admin/blog", label: "Blog" },
   { href: "/admin/faq", label: "FAQ" },
   { href: "/admin/comments", label: "Comments" },
+  { href: "/admin/journal", label: "Study wall" },
   { href: "/admin/sources", label: "Sources" },
 ];
 

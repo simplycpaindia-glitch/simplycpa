@@ -15,7 +15,8 @@
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
     "mcq:validate": "tsx prisma/validate-mcq-bank.ts",
-    "content:check": "tsx prisma/check-abbreviations.ts"
+    "content:check": "tsx prisma/check-abbreviations.ts",
+    "test:moderation": "tsx prisma/test-journal-moderation.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

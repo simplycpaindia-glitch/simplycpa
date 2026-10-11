@@ -64,12 +64,18 @@ export function MobileNav({
             <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>
             <MobileLink href="/blog" onClick={() => setOpen(false)}>Blog</MobileLink>
           </MobileSection>
+          <MobileSection title="Community">
+            <MobileLink href="/what-i-studied" onClick={() => setOpen(false)}>What I Studied This Week</MobileLink>
+          </MobileSection>
 
           <div className="mt-6 flex flex-col gap-2">
             {isLoggedIn ? (
               <>
                 <Button href="/dashboard" variant="primary" onClick={() => setOpen(false)}>
                   Dashboard
+                </Button>
+                <Button href="/account" variant="outline" onClick={() => setOpen(false)}>
+                  Account
                 </Button>
                 <form action={signOutAction}>
                   <button
