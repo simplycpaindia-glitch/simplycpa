@@ -23,7 +23,7 @@ const AICPA_BLUEPRINTS: [string, string] = [
 export const auditPosts: BlogSeed[] = [
   {
     slug: "types-of-audit-opinions",
-    title: "Types of Audit Opinions: Unmodified, Qualified, Adverse and Disclaimer",
+    title: "Audit Reports Under US GAAS: Unmodified vs Modified Opinions",
     category: "Auditing",
     excerpt:
       "The four audit opinions, the two questions that decide which one is issued, and a decision table you can use on the AUD exam.",
@@ -60,7 +60,22 @@ export const auditPosts: BlogSeed[] = [
 <p><strong>Exam trap:</strong> An emphasis-of-matter paragraph (for example, about a major lawsuit that is properly disclosed) does <em>not</em> modify the opinion. Neither does substantial doubt about going concern when it's adequately disclosed. Both leave you with an unmodified opinion plus extra paragraphs.</p>
 </div>
 
-<h2>What changes in the report</h2>
+<h2>Structure of the auditor's report (AU-C 700)</h2>
+<p>Since SAS No. 134, the opinion comes first. An unmodified report for a private company contains, in this order:</p>
+<ol>
+<li><strong>Title</strong> — including the word "independent".</li>
+<li><strong>Addressee</strong> — usually the board or shareholders.</li>
+<li><strong>Opinion</strong> — identifies the entity and the statements audited, and states that they present fairly, in all material respects, in accordance with the framework.</li>
+<li><strong>Basis for Opinion</strong> — states that the audit was conducted under generally accepted auditing standards (GAAS), that the auditor is independent and has met other ethical responsibilities, and that the evidence obtained is sufficient and appropriate.</li>
+<li>Where applicable: <strong>Substantial Doubt About Going Concern</strong>, <strong>Key Audit Matters</strong>, <strong>Emphasis of Matter</strong> or <strong>Other Matter</strong> sections.</li>
+<li><strong>Responsibilities of Management</strong> for the financial statements, including the going concern evaluation.</li>
+<li><strong>Auditor's Responsibilities</strong> for the audit — reasonable assurance, professional judgement and scepticism, risk assessment, internal control, and communication with those charged with governance.</li>
+<li><strong>Other information</strong> included in an annual report, where applicable.</li>
+<li><strong>Signature</strong>, <strong>city and state</strong>, and <strong>date</strong> — no earlier than the date sufficient appropriate evidence was obtained.</li>
+</ol>
+<p>PCAOB reports for public companies follow AS 3101 and also include the auditor's tenure and any critical audit matters.</p>
+
+<h2>What changes in a modified report</h2>
 <ul>
 <li>The <strong>Opinion</strong> section heading changes to "Qualified Opinion", "Adverse Opinion" or "Disclaimer of Opinion".</li>
 <li>A <strong>Basis for Qualified (or Adverse, or Disclaimer of) Opinion</strong> section describes the matter and, where practicable, quantifies its effect.</li>
@@ -81,7 +96,7 @@ ${sources([
   },
   {
     slug: "audit-risk-model-explained",
-    title: "The Audit Risk Model Explained: AR = IR × CR × DR",
+    title: "Audit Risk Model Explained: Inherent, Control and Detection Risk",
     category: "Auditing",
     excerpt:
       "Inherent risk, control risk and detection risk — what each means, which one the auditor controls, and how to rearrange the formula on the exam.",
@@ -119,6 +134,29 @@ ${sources([
 <h2>What changed with SAS No. 145</h2>
 <p>For audits of periods ending on or after December 15, 2023, the AICPA's risk assessment standard (AU-C 315, as amended by SAS No. 145) requires a <strong>separate assessment</strong> of inherent risk and control risk. Inherent risk is assessed on a spectrum, and a <strong>significant risk</strong> is one at the upper end of that spectrum. If the auditor doesn't plan to test controls, control risk is assessed at maximum, so RMM equals inherent risk.</p>
 
+<h2>Factors that raise inherent risk</h2>
+<ul>
+<li><strong>Complexity</strong> — derivatives, revenue contracts with multiple obligations, consolidations.</li>
+<li><strong>Subjectivity</strong> — estimates such as fair value, impairment, warranty and litigation reserves.</li>
+<li><strong>Change</strong> — new systems, new regulations, rapid growth or acquisitions.</li>
+<li><strong>Uncertainty</strong> — going concern pressures, volatile markets.</li>
+<li><strong>Susceptibility to bias or fraud</strong> — cash, revenue near targets, management incentives.</li>
+</ul>
+<p>These are the "inherent risk factors" named in AU-C 315 after SAS No. 145.</p>
+
+<h2>Practice questions</h2>
+<div class="callout callout-example">
+<p><strong>1.</strong> The auditor assesses control risk as high for inventory. What is the most likely response?<br>
+(A) Increase acceptable detection risk (B) Perform more tests of controls (C) Perform more extensive substantive tests at year-end (D) Reduce materiality for the whole audit<br>
+<strong>Answer: C.</strong> Higher control risk raises RMM, so detection risk must be lower — more, better-timed substantive work.</p>
+<p><strong>2.</strong> Which component of audit risk can the auditor change?<br>
+(A) Inherent risk (B) Control risk (C) Detection risk (D) All three<br>
+<strong>Answer: C.</strong></p>
+<p><strong>3.</strong> Audit risk is set at 4%, inherent risk 80% and control risk 50%. Acceptable detection risk is:<br>
+(A) 10% (B) 5% (C) 2% (D) 20%<br>
+<strong>Answer: A.</strong> 0.04 ÷ (0.80 × 0.50) = 0.10.</p>
+</div>
+
 <h2>Exam tips</h2>
 <ul>
 <li>Detection risk is the only component that changes because of what the <em>auditor</em> does. If an answer choice says the auditor "reduces inherent risk", it's wrong.</li>
@@ -137,7 +175,7 @@ ${sources([
   },
   {
     slug: "management-assertions-in-auditing",
-    title: "Management Assertions in Auditing: The Complete List With Examples",
+    title: "Audit Assertions Explained With Practical Examples",
     category: "Auditing",
     excerpt:
       "Existence, completeness, rights and obligations, accuracy and valuation, cutoff, classification and presentation — what each assertion means and which procedure tests it.",
@@ -189,6 +227,21 @@ ${sources([
 <p><strong>Direction matters:</strong> Starting from the ledger and going back to invoices (<em>vouching</em>) can only prove that what's recorded is real — it tests existence or occurrence. Starting from shipping documents and following them into the ledger (<em>tracing</em>) proves nothing was left out — it tests completeness.</p>
 </div>
 
+<h2>Practical examples by audit area</h2>
+<table>
+<thead><tr><th>Area</th><th>Key risk</th><th>Assertion</th><th>Practical procedure</th></tr></thead>
+<tbody>
+<tr><td>Revenue</td><td>Sales recorded before goods ship to hit a target</td><td>Cutoff, occurrence</td><td>Match the last and first shipments around year-end to invoices and the ledger</td></tr>
+<tr><td>Receivables</td><td>Old balances that won't be collected</td><td>Valuation</td><td>Review the ageing; test cash received after year-end; challenge the allowance</td></tr>
+<tr><td>Inventory</td><td>Goods held on consignment counted as owned</td><td>Rights and obligations</td><td>Review consignment agreements; confirm goods held by third parties</td></tr>
+<tr><td>Inventory</td><td>Obsolete stock carried at cost</td><td>Valuation</td><td>Compare cost with recent selling prices; review slow-moving reports</td></tr>
+<tr><td>Payables</td><td>Invoices left unrecorded to boost profit</td><td>Completeness</td><td>Examine payments and invoices received after year-end; obtain supplier statements</td></tr>
+<tr><td>Cash</td><td>Overstated balances</td><td>Existence</td><td>Confirm balances with banks; review bank reconciliations</td></tr>
+<tr><td>Debt</td><td>A loan presented as noncurrent despite a covenant breach</td><td>Classification, presentation</td><td>Read loan agreements; test covenant calculations; review waivers</td></tr>
+<tr><td>Related parties</td><td>Undisclosed transactions</td><td>Presentation (completeness of disclosure)</td><td>Review minutes, inquiries and large or unusual transactions</td></tr>
+</tbody>
+</table>
+
 <h2>Assets vs liabilities</h2>
 <p>Management is usually more tempted to <strong>overstate assets</strong> and <strong>understate liabilities</strong>. So the auditor focuses on existence for assets and completeness for liabilities — a pattern that answers a lot of exam questions on its own.</p>
 
@@ -202,7 +255,7 @@ ${sources([
   },
   {
     slug: "tests-of-controls-vs-substantive-procedures",
-    title: "Tests of Controls vs Substantive Procedures: What's the Difference?",
+    title: "Internal Controls vs Substantive Procedures: Key Differences",
     category: "Auditing",
     excerpt:
       "One asks whether a control works; the other looks for misstatements directly. When each is required, how they interact, and the dual-purpose test.",
@@ -230,6 +283,19 @@ ${sources([
 <tr><td>Required?</td><td>Only when relying on controls, or when substantive procedures alone are insufficient</td><td>Always, for each relevant assertion of each material item</td></tr>
 </tbody>
 </table>
+
+<h2>Choosing an approach: controls reliance vs substantive</h2>
+<table>
+<thead><tr><th></th><th>Controls-reliance (combined) approach</th><th>Substantive approach</th></tr></thead>
+<tbody>
+<tr><td>When it fits</td><td>Large volumes of routine transactions processed by reliable systems (sales, purchases, payroll in a large company)</td><td>Small entities, few transactions, weak or undocumented controls, or where testing controls would cost more than it saves</td></tr>
+<tr><td>Control risk</td><td>Assessed below maximum, supported by tests of controls</td><td>Assessed at maximum</td></tr>
+<tr><td>Substantive work</td><td>Reduced in nature, timing or extent</td><td>Extensive, often at year-end</td></tr>
+</tbody>
+</table>
+<div class="callout callout-example">
+<p><strong>Example:</strong> A retailer processes 2 million card transactions a year through an automated point-of-sale system. Vouching enough of them substantively would be impractical, so the auditor tests the automated controls and IT general controls, then performs targeted substantive analytics on revenue. A small family business with 300 invoices a year is audited substantively instead.</p>
+</div>
 
 <h2>Relying on prior-year testing</h2>
 <p>Under AICPA standards, if a control hasn't changed, the auditor may rely on evidence from earlier audits but must test it at least once every third audit. That shortcut is not available for controls that address a <strong>significant risk</strong> — those must be tested in the current period.</p>
@@ -430,7 +496,7 @@ ${sources([
   },
   {
     slug: "audit-sampling-explained",
-    title: "Audit Sampling Explained: Attribute, Variables and Monetary-Unit Sampling",
+    title: "Audit Sampling Explained: Risk, Sample Size and Evaluation",
     category: "Auditing",
     excerpt:
       "Sampling risk, the two kinds of wrong conclusion, what drives sample size, and a worked monetary-unit sampling example.",
@@ -480,6 +546,30 @@ Sampling interval = $3,000,000 ÷ 100 = <strong>$30,000</strong>. Every item of 
 <tr><td>Population size</td><td>Little effect, except for very small populations</td></tr>
 </tbody>
 </table>
+
+<h2>Selecting the sample</h2>
+<ul>
+<li><strong>Random selection</strong> — every item has an equal chance (random number generator).</li>
+<li><strong>Systematic selection</strong> — every <em>n</em>th item after a random start; MUS uses this on cumulative dollars.</li>
+<li><strong>Haphazard selection</strong> — no conscious bias, but not statistical; acceptable for non-statistical sampling.</li>
+<li><strong>Block selection</strong> — a contiguous group; rarely appropriate because it's unlikely to be representative.</li>
+</ul>
+
+<h2>Evaluating the results</h2>
+<h3>Tests of controls</h3>
+<div class="callout callout-example">
+<p>Tolerable deviation rate 6%; sample of 60; 2 deviations found. Sample rate = 3.3%. Using the AICPA table for the chosen confidence level, the upper deviation limit is, say, 8%. Because 8% exceeds the 6% tolerable rate, the auditor <strong>cannot rely</strong> on the control as planned — even though the sample rate looks low. It increases substantive testing instead.</p>
+</div>
+<h3>Monetary-unit sampling</h3>
+<p>Project each misstatement to the population:</p>
+<ul>
+<li>For an item with a book value <em>at or above</em> the sampling interval, the projected misstatement is the actual misstatement.</li>
+<li>For a smaller item, calculate the <strong>tainting percentage</strong> (misstatement ÷ book value) and multiply it by the sampling interval.</li>
+</ul>
+<div class="callout callout-example">
+<p>Using the interval of $30,000 from above: an item recorded at $5,000 is found to be worth $4,000 — tainting = 20%, projected misstatement = 20% × $30,000 = <strong>$6,000</strong>. The <strong>upper limit on misstatement</strong> = projected misstatements + an allowance for sampling risk (basic precision of the reliability factor × interval = 3.0 × $30,000 = $90,000, plus incremental allowances). If that upper limit exceeds tolerable misstatement, the auditor concludes the balance may be materially misstated.</p>
+</div>
+<p>Deviations and misstatements must also be evaluated <strong>qualitatively</strong> — a single deviation caused by fraud matters far more than its rate suggests.</p>
 
 <p>Full coverage, including classical variables sampling and selection methods, is in our <a href="/cpa/aud/audit-sampling">AUD audit sampling</a> notes.</p>
 
@@ -552,7 +642,7 @@ ${sources([
   },
   {
     slug: "auditor-independence-rules",
-    title: "Auditor Independence Rules: AICPA, SEC and PCAOB Compared",
+    title: "Professional Ethics and Independence for the US CPA Exam",
     category: "Auditing",
     excerpt:
       "Independence in fact and in appearance, the threats-and-safeguards approach, prohibited financial interests and non-audit services, and partner rotation.",
@@ -564,7 +654,26 @@ ${sources([
       "Rotation: For SEC registrants, the lead and concurring partners rotate after five years, followed by a five-year time-out.",
     ],
     content: `
-<h2>Who sets the rules</h2>
+<h2>The AICPA Code of Professional Conduct</h2>
+<p>The Code has a set of <strong>principles</strong> (responsibilities, the public interest, integrity, objectivity and independence, due care, and scope and nature of services) and three parts of rules: Part 1 for members in public practice, Part 2 for members in business, and Part 3 for other members. The rules in Part 1 most often tested are:</p>
+<table>
+<thead><tr><th>Rule</th><th>Core requirement</th></tr></thead>
+<tbody>
+<tr><td>Integrity and Objectivity (1.100)</td><td>No knowing misrepresentation, conflicts of interest must be managed, no subordinating judgement to others</td></tr>
+<tr><td>Independence (1.200)</td><td>Required for attest engagements — audits, reviews, examinations and some agreed-upon procedures</td></tr>
+<tr><td>General Standards (1.300)</td><td>Professional competence, due care, planning and supervision, sufficient relevant data</td></tr>
+<tr><td>Compliance With Standards (1.310) and Accounting Principles (1.320)</td><td>Follow standards issued by designated bodies; don't report that statements follow GAAP if they materially depart from it (unless unusual circumstances justify it)</td></tr>
+<tr><td>Acts Discreditable (1.400)</td><td>Includes failing to return client records, discrimination, and failing to file tax returns or pay taxes</td></tr>
+<tr><td>Contingent Fees (1.510)</td><td>Prohibited for attest clients and for preparing original tax returns; allowed for some other services</td></tr>
+<tr><td>Commissions and Referral Fees (1.520)</td><td>Prohibited for attest clients; must be disclosed for other clients</td></tr>
+<tr><td>Advertising (1.600)</td><td>Not false, misleading or deceptive</td></tr>
+<tr><td>Confidential Client Information (1.700)</td><td>No disclosure without client consent, with exceptions (subpoena, peer review, ethics investigations)</td></tr>
+<tr><td>Form of Organization and Name (1.800)</td><td>Firm names can't be misleading; non-CPA ownership limits apply</td></tr>
+</tbody>
+</table>
+<p>Government audits also follow the US Government Accountability Office's <em>Government Auditing Standards</em> ("Yellow Book"), which has its own independence framework.</p>
+
+<h2>Who sets the independence rules</h2>
 <ul>
 <li><strong>AICPA Code of Professional Conduct</strong> — applies to AICPA members and, through state board adoption, to most private-company audits.</li>
 <li><strong>SEC Rule 2-01 of Regulation S-X</strong> — applies to audits of public companies and other SEC registrants.</li>
@@ -608,6 +717,7 @@ ${sources([
 ${sources([
   ["AICPA — Code of Professional Conduct", "https://pub.aicpa.org/codeofconduct/"],
   ["US SEC (eCFR) — Regulation S-X Rule 2-01, Qualifications of accountants", "https://www.ecfr.gov/current/title-17/chapter-II/part-210/section-210.2-01"],
+  ["US Government Accountability Office — Government Auditing Standards (Yellow Book)", "https://www.gao.gov/yellowbook"],
 ])}
 `,
   },
@@ -724,7 +834,7 @@ ${sources([
   },
   {
     slug: "soc-1-vs-soc-2-reports",
-    title: "SOC 1 vs SOC 2 Reports (and Type 1 vs Type 2) Explained",
+    title: "SOC 1 vs SOC 2 Reports: Purpose, Scope and Differences",
     category: "Auditing",
     excerpt:
       "What service organisation control reports are, who uses SOC 1 and SOC 2, the difference between Type 1 and Type 2, and why they matter for ISC and AUD.",
@@ -828,120 +938,6 @@ ${sources([
 ${sources([
   ["Ministry of Corporate Affairs, Government of India — Indian Accounting Standards (Ind AS)", "https://www.mca.gov.in/MinistryV2/Stand.html"],
   ["FASB — Accounting Standards Codification", "https://asc.fasb.org/"],
-  AICPA_BLUEPRINTS,
-])}
-`,
-  },
-  {
-    slug: "revenue-recognition-five-step-model",
-    title: "Revenue Recognition: The ASC 606 Five-Step Model With Examples",
-    category: "Concepts Explained",
-    excerpt:
-      "Identify the contract, find the performance obligations, set the price, allocate it and recognise revenue — each step of ASC 606 explained with a worked example.",
-    crux: [
-      "Core principle: Recognise revenue to depict the transfer of promised goods or services, at the amount the entity expects to be entitled to.",
-      "Step 1–2: Identify the contract, then the distinct performance obligations in it.",
-      "Step 3: Determine the transaction price, including variable consideration — but only to the extent a significant reversal is not probable.",
-      "Step 4: Allocate the price to each obligation based on relative standalone selling prices.",
-      "Step 5: Recognise revenue when (or as) each obligation is satisfied — at a point in time, or over time if one of three criteria is met.",
-    ],
-    content: `
-<h2>The five steps</h2>
-<ol>
-<li><strong>Identify the contract</strong> — approved, with identifiable rights and payment terms, commercial substance, and collection of the consideration probable.</li>
-<li><strong>Identify the performance obligations</strong> — each promise to transfer a good or service that is <em>distinct</em>: the customer can benefit from it on its own (or with readily available resources), and it's separately identifiable in the contract.</li>
-<li><strong>Determine the transaction price</strong> — fixed amounts, plus variable consideration (discounts, rebates, bonuses) estimated using the expected value or most likely amount, constrained so that a significant reversal isn't probable. Adjust for a significant financing component and non-cash consideration.</li>
-<li><strong>Allocate the price</strong> — to each performance obligation in proportion to its standalone selling price.</li>
-<li><strong>Recognise revenue</strong> — when control transfers.</li>
-</ol>
-
-<h2>Over time or at a point in time?</h2>
-<p>Revenue is recognised <strong>over time</strong> if any one of these is true:</p>
-<ul>
-<li>the customer simultaneously receives and consumes the benefit as the entity performs (for example, cleaning services);</li>
-<li>the entity's work creates or enhances an asset the customer controls (for example, construction on the customer's land);</li>
-<li>the asset has no alternative use to the entity <em>and</em> the entity has an enforceable right to payment for work completed to date.</li>
-</ul>
-<p>Otherwise revenue is recognised at the <strong>point in time</strong> control transfers — indicated by a right to payment, legal title, physical possession, transfer of risks and rewards, and customer acceptance.</p>
-
-<div class="callout callout-example">
-<p><strong>Worked example:</strong> A company sells a machine with two years of maintenance for $110,000. Standalone selling prices are $100,000 for the machine and $20,000 for maintenance (total $120,000).<br>
-Allocation: machine $110,000 × 100/120 = <strong>$91,667</strong>; maintenance $110,000 × 20/120 = <strong>$18,333</strong>.<br>
-Revenue: $91,667 on delivery (point in time) and $18,333 spread evenly over 24 months (over time) — about $764 a month.</p>
-</div>
-
-<h2>Common exam traps</h2>
-<ul>
-<li><strong>Principal vs agent:</strong> If the entity doesn't control the good before transfer, it's an agent and records only its commission (net).</li>
-<li><strong>Contract modifications:</strong> A modification adding distinct goods at their standalone price is a separate contract.</li>
-<li><strong>Costs of obtaining a contract</strong> (such as sales commissions) are capitalised if expected to be recovered; a practical expedient allows expensing if the amortisation period is a year or less.</li>
-<li><strong>Bill-and-hold</strong>, consignment and repurchase agreements often mean control hasn't transferred yet.</li>
-</ul>
-
-<p>Full coverage, including licences, warranties and disclosures, is in our <a href="/cpa/far/revenue-recognition">FAR revenue recognition</a> notes.</p>
-
-${sources([
-  ["FASB — ASC 606, Revenue from Contracts with Customers", "https://asc.fasb.org/606"],
-  AICPA_BLUEPRINTS,
-])}
-`,
-  },
-  {
-    slug: "asc-842-leases-explained",
-    title: "Lease Accounting Under ASC 842: Finance vs Operating Leases",
-    category: "Concepts Explained",
-    excerpt:
-      "How lessees classify leases under ASC 842, the five classification tests, what goes on the balance sheet and how the expense pattern differs — with a worked example.",
-    crux: [
-      "On the balance sheet: Lessees recognise a right-of-use (ROU) asset and a lease liability for almost all leases longer than 12 months.",
-      "Finance lease if any one test is met: Ownership transfers; a purchase option is reasonably certain to be exercised; the lease covers a major part of the asset's economic life; the present value of payments is substantially all of fair value; or the asset is specialised.",
-      "Finance lease expense: Separate amortisation and interest — front-loaded.",
-      "Operating lease expense: A single straight-line lease cost.",
-      "Ind AS contrast: Ind AS 116 has no operating-lease category for lessees — every lease is accounted for like a finance lease.",
-    ],
-    content: `
-<h2>Initial measurement (both types)</h2>
-<ul>
-<li><strong>Lease liability</strong> = present value of the remaining lease payments, discounted at the rate implicit in the lease if readily determinable, otherwise the lessee's incremental borrowing rate. (Private companies may elect a risk-free rate.)</li>
-<li><strong>ROU asset</strong> = lease liability + prepaid lease payments + initial direct costs − lease incentives received.</li>
-<li>For leases of 12 months or less with no purchase option the lessee is reasonably certain to exercise, a lessee may elect not to recognise an asset or liability (short-term lease exemption).</li>
-</ul>
-
-<h2>The five classification tests ("OWNES")</h2>
-<table>
-<thead><tr><th>Test</th><th>Question</th></tr></thead>
-<tbody>
-<tr><td><strong>O</strong>ption to purchase</td><td>Is the lessee reasonably certain to exercise a purchase option?</td></tr>
-<tr><td><strong>W</strong>hole transfer of ownership</td><td>Does ownership pass to the lessee by the end of the term?</td></tr>
-<tr><td><strong>N</strong>o alternative use</td><td>Is the asset so specialised that the lessor has no alternative use for it?</td></tr>
-<tr><td><strong>E</strong>conomic life</td><td>Is the term a major part of the remaining economic life? (75% or more is a common benchmark)</td></tr>
-<tr><td><strong>S</strong>ubstantially all of fair value</td><td>Does the present value of payments (plus any guaranteed residual) equal substantially all of fair value? (90% or more is a common benchmark)</td></tr>
-</tbody>
-</table>
-<p>Meet any one test and it's a finance lease. Meet none and it's an operating lease.</p>
-
-<h2>Subsequent measurement</h2>
-<table>
-<thead><tr><th></th><th>Finance lease</th><th>Operating lease</th></tr></thead>
-<tbody>
-<tr><td>Income statement</td><td>Amortisation of the ROU asset + interest on the liability, shown separately</td><td>Single lease cost, straight-line over the term</td></tr>
-<tr><td>Expense pattern</td><td>Front-loaded (interest is higher early)</td><td>Even</td></tr>
-<tr><td>Cash flow statement</td><td>Principal in financing; interest in operating (US GAAP)</td><td>All payments in operating</td></tr>
-</tbody>
-</table>
-
-<div class="callout callout-example">
-<p><strong>Worked example:</strong> A lessee signs a 3-year lease with annual payments of $10,000 in arrears; the discount rate is 6%. Lease liability = $10,000 × 2.6730 (present value of an ordinary annuity, 3 periods at 6%) = <strong>$26,730</strong>, and the ROU asset is the same.<br>
-Year 1 interest = $26,730 × 6% = $1,604. As a <em>finance</em> lease, Year 1 expense is $1,604 interest + $8,910 amortisation ($26,730 ÷ 3) = $10,514. As an <em>operating</em> lease, Year 1 expense is simply $10,000.</p>
-</div>
-
-<h2>Lessor accounting in one line</h2>
-<p>Lessors classify leases as sales-type, direct financing or operating. Sales-type leases derecognise the asset and may recognise selling profit at commencement.</p>
-
-<p>See our full <a href="/cpa/far/leases">FAR leases</a> notes, and <a href="/blog/us-gaap-vs-ind-as-key-differences">US GAAP vs Ind AS</a> for how Ind AS 116 differs.</p>
-
-${sources([
-  ["FASB — ASC 842, Leases", "https://asc.fasb.org/842"],
   AICPA_BLUEPRINTS,
 ])}
 `,

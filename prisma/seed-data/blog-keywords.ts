@@ -160,7 +160,7 @@ ${sources([
   },
   {
     slug: "free-cpa-study-material",
-    title: "Free CPA Study Material: What's Genuinely Useful in 2026",
+    title: "Best Free US CPA Study Materials and Practice Questions",
     category: "Study Strategy",
     excerpt:
       "You don't need to spend thousands before you know how you study. These are the free CPA resources worth your time — and what each one is actually good for.",
@@ -183,13 +183,21 @@ ${sources([
 <h2>3. Free trials of commercial review courses</h2>
 <p>Most major providers offer a free trial, usually a week or two of access to a sample of lectures, practice questions and simulations. A trial is the cheapest way to test-drive a teaching style before paying for it. Try two or three, one after another, rather than all at once, and judge them on how well the explanations stick — not on the size of the question bank.</p>
 
-<h2>4. Free question banks</h2>
-<p>Several sites offer free multiple-choice questions in exchange for an email address. They're useful for reinforcement — not as your only preparation, because the exam is half task-based simulations by score weight in most sections.</p>
+<h2>4. Free practice questions</h2>
+<ul>
+<li><strong>AICPA released questions and retired simulations</strong> — the AICPA publishes retired task-based simulations for FAR and AUD alongside the blueprints. They show exactly how real simulations are built.</li>
+<li><strong>SimplyCPA topic questions</strong> — every topic in our <a href="/cpa">study library</a> has practice MCQs with explanations of why each wrong option is wrong.</li>
+<li><strong>Free question banks</strong> — several sites offer free questions in exchange for an email address. They're useful for reinforcement, but not as your only preparation, because simulations carry half the score in most sections.</li>
+</ul>
+<p>Whatever you use, track your first-attempt accuracy by topic and review every wrong answer — see <a href="/blog/how-to-review-cpa-mcqs-wrong-answers">how to review CPA MCQs</a>.</p>
 
-<h2>5. Scholarships</h2>
+<h2>5. Official primary sources</h2>
+<p>For specific rules, go to the source: the FASB's Accounting Standards Codification (free basic view) for US GAAP, the AICPA's auditing standards, PCAOB standards for public company audits, and IRS publications for tax. Learning to navigate them also prepares you for research tasks in simulations.</p>
+
+<h2>6. Scholarships</h2>
 <p>The AICPA Foundation and many state CPA societies run scholarships for accounting students and exam candidates. Most are limited to US residents or students at US universities, so check eligibility before you apply. Some review providers also run their own scholarship programmes.</p>
 
-<h2>6. SimplyCPA (that's us)</h2>
+<h2>7. SimplyCPA (that's us)</h2>
 <p>Everything on this site is free: <a href="/cpa">study material and revision notes for every topic</a> in all six sections, organised to match the blueprints, a <a href="/quick-sheets">set of quick sheets</a> and topic-wise practice questions. We built it because good material shouldn't be locked behind a paywall.</p>
 
 <div class="callout callout-tip">
@@ -202,6 +210,8 @@ ${sources([
 ${sources([
   ["AICPA & CIMA — CPA Exam Blueprints", "https://www.aicpa-cima.com/resources/article/learn-what-is-tested-on-the-cpa-exam"],
   ["AICPA & CIMA — CPA Exam practice and preparation", "https://www.aicpa-cima.com/resources/landing/cpa-exam-practice-and-preparation"],
+  ["AICPA & CIMA — Retired task-based simulation from the FAR section", "https://www.aicpa-cima.com/resources/download/retired-task-based-simulation-from-the-far-section-of-the-uniform-cpa"],
+  ["FASB — Accounting Standards Codification", "https://asc.fasb.org/"],
 ])}
 `,
   },
@@ -212,10 +222,10 @@ ${sources([
     excerpt:
       "Application, registration and exam fees, international testing, the ethics exam and review courses — what the CPA really costs, line by line.",
     crux: [
-      "Exam fees: About $268.59 per section (NASBA's 2026 figure), so roughly $1,075 for all four, plus a one-time application fee set by your state board.",
+      "Exam fees: $268.59 per section (NASBA's 2026 figure), so about $1,075 for all four — plus the board's application fee for each section ($96–$171 on the boards we checked) and a one-time education evaluation fee.",
       "Testing in India: NASBA adds an international administration fee of $460 per section — about $1,840 for four sections.",
-      "After you pass: An ethics exam (most states), the licence fee and, for Indian candidates, a credential evaluation.",
-      "Realistic totals: About $1,300–$2,000 for a US candidate using free material; roughly $3,200–$3,600 for an Indian candidate before any review course.",
+      "After you pass: An ethics exam (most states) and the licence fee; Indian candidates also pay for a credential evaluation ($250 at NIES).",
+      "Realistic totals: About $1,900–$2,600 for a US candidate using free material (including ethics and licence); about $3,650–$4,000 for an Indian candidate before any review course.",
       "Biggest risk: Retakes — each failed section means paying the exam and international fees again.",
     ],
     content: `
@@ -225,23 +235,24 @@ ${sources([
 <table>
 <thead><tr><th>Fee</th><th>Typical range</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>Application / registration</td><td>Roughly $100–$200</td><td>Set by each state board. NASBA's state pages list application fees of about $96–$103 for many boards; some boards charge more or add a per-section registration fee.</td></tr>
+<tr><td>Education evaluation application</td><td>$96–$146 (one time)</td><td>Paid to the board when you first apply; amounts from NASBA's state pages.</td></tr>
+<tr><td>Exam application</td><td>$96–$171 per section</td><td>Paid each time you apply for a section, including retakes.</td></tr>
 <tr><td>Examination fee</td><td>$268.59 per section</td><td>The figure shown on NASBA's state exam pages for 2026.</td></tr>
 </tbody>
 </table>
-<p>For a candidate who passes all four sections first time, that's about <strong>$1,075 in exam fees</strong> (4 × $268.59) plus the board's application fees — typically $1,200–$1,300 in total.</p>
+<p>For a candidate who passes all four sections first time, that's about <strong>$1,075 in exam fees</strong> (4 × $268.59) plus four application fees and the evaluation fee — typically <strong>$1,550–$1,900</strong> in total.</p>
 
 <h2>2. Testing outside the US</h2>
 <p>If you sit in India, NASBA charges an <strong>international administration fee of $460 per section</strong> (other international locations are $390). It's paid separately, before you can book an international appointment, it's non-refundable, and it applies every time you sit — so budget about <strong>$1,840</strong> for four sections on top of the exam fees above.</p>
 
 <h2>3. Retakes and rescheduling</h2>
-<p>Fail a section and you pay registration and exam fees again. Rescheduling inside 30 days of your appointment also carries a fee. Retakes are where budgets break, which is why preparing properly for the first attempt is also the cheapest strategy.</p>
+<p>Fail a section and you pay the application and exam fees again (and the international fee, if testing abroad). Rescheduling is free 61 or more days before your appointment; inside 60 days Prometric charges a fee, inside 5 days you pay the full seat fee, and inside 24 hours no changes are allowed. Retakes are where budgets break, which is why preparing properly for the first attempt is also the cheapest strategy.</p>
 
 <h2>4. After you pass</h2>
 <ul>
 <li><strong>Ethics exam:</strong> most states require an ethics exam — usually the AICPA's self-study course — which costs a few hundred dollars.</li>
 <li><strong>Licence fee:</strong> set by your state board; varies widely.</li>
-<li><strong>Credential evaluation</strong> (international candidates): typically a few hundred dollars, depending on the agency and the type of report.</li>
+<li><strong>Credential evaluation</strong> (international candidates): $250 at NASBA International Evaluation Services; other approved agencies set their own prices.</li>
 </ul>
 
 <h2>5. Review course (optional)</h2>
@@ -249,9 +260,9 @@ ${sources([
 
 <h2>Realistic totals</h2>
 <ul>
-<li><strong>Minimum (US candidate, all first-time passes, free material):</strong> about $1,300–$2,000 including ethics and licence.</li>
-<li><strong>Typical (with a review course):</strong> about $3,500–$7,000.</li>
-<li><strong>Indian candidate (all first-time passes, before any review course):</strong> about $1,200–$1,300 in exam and application fees, plus $1,840 in international fees, plus credential evaluation — roughly <strong>$3,200–$3,600</strong>.</li>
+<li><strong>Minimum (US candidate, all first-time passes, free material):</strong> about $1,900–$2,600 including ethics and licence.</li>
+<li><strong>Typical (with a review course):</strong> several thousand dollars more, depending on the course.</li>
+<li><strong>Indian candidate (all first-time passes, before any review course):</strong> about $1,550–$1,900 in exam, application and board evaluation fees, plus $1,840 in international fees, plus $250 for NIES — roughly <strong>$3,650–$4,000</strong>. See <a href="/blog/how-much-does-us-cpa-cost-for-indian-student">the full India breakdown</a>.</li>
 </ul>
 
 <div class="callout callout-important">
@@ -741,7 +752,7 @@ ${sources([
   },
   {
     slug: "what-is-materiality-in-auditing",
-    title: "What Is Materiality in Auditing? The Definition and How It's Set",
+    title: "Materiality in Auditing: Overall Materiality vs Performance Materiality",
     category: "Concepts Explained",
     excerpt:
       "Materiality decides what an auditor cares about. Here's the current AICPA definition, how planning and performance materiality are set, and how AUD tests it.",
@@ -778,6 +789,24 @@ ${sources([
 <li><strong>Clearly trivial threshold</strong> — below this, misstatements needn't even be accumulated.</li>
 </ul>
 
+<h2>Worked example: setting and using materiality</h2>
+<div class="callout callout-example">
+<p>A stable, profitable manufacturer reports pre-tax income of $4,000,000.</p>
+<ul>
+<li><strong>Overall materiality</strong> = 5% × $4,000,000 = <strong>$200,000</strong>.</li>
+<li><strong>Performance materiality</strong> — the auditor expects a few misstatements based on prior years and sets it at 70%: <strong>$140,000</strong>. Sample sizes and scoping for each account are driven by this lower figure.</li>
+<li><strong>Specific materiality</strong> for related-party disclosures, which the lender scrutinises: <strong>$50,000</strong>.</li>
+<li><strong>Clearly trivial threshold</strong> — 5% of overall: <strong>$10,000</strong>. Misstatements below this aren't accumulated.</li>
+</ul>
+<p>At the end of the audit, the auditor has accumulated uncorrected misstatements of $120,000 (an inventory overstatement of $90,000 and an unrecorded accrual of $30,000). That's below $200,000, so the statements aren't materially misstated <em>quantitatively</em> — but the auditor still asks management to correct them, considers qualitative factors, and reassesses whether the remaining undetected misstatement could push the total over materiality.</p>
+</div>
+
+<h2>Revising materiality during the audit</h2>
+<p>Materiality is set at planning using estimates, often before year-end figures are final. If the actual results turn out materially different (for example, profit falls sharply) or new information emerges, the auditor revises overall and performance materiality and considers whether the planned procedures are still sufficient.</p>
+
+<h2>Communicating misstatements</h2>
+<p>All accumulated misstatements (other than clearly trivial ones) must be communicated to management on a timely basis, with a request to correct them. Uncorrected misstatements are communicated to those charged with governance, and management's written representations include a statement that it believes their effects are immaterial.</p>
+
 <h2>Qualitative materiality</h2>
 <p>A small misstatement can still be material if it turns a loss into a profit, hides a covenant breach, affects a trend, involves fraud or illegal acts, or relates to management compensation. Expect at least one AUD question built around this idea.</p>
 
@@ -792,63 +821,6 @@ ${sources([
 ${sources([
   ["AICPA & CIMA — SAS No. 138, Amendments to the Description of the Concept of Materiality", "https://www.aicpa-cima.com/resources/download/aicpa-statement-on-auditing-standards-no-138"],
   ["PCAOB — AS 2105, Consideration of Materiality in Planning and Performing an Audit", "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2105"],
-])}
-`,
-  },
-  {
-    slug: "deferred-tax-assets-explained",
-    title: "Deferred Tax Assets Explained: Causes, Valuation Allowance and Examples",
-    category: "Concepts Explained",
-    excerpt:
-      "A deferred tax asset is tax you've effectively prepaid. Here's what creates one, how to measure it, when you need a valuation allowance and how FAR tests it.",
-    crux: [
-      "Meaning: A deferred tax asset (DTA) is a future tax saving — from deductible temporary differences or from loss and credit carryforwards.",
-      "Common causes: Warranty and bad-debt accruals, unearned revenue, accrued compensation and net operating loss carryforwards.",
-      "Measurement: Deductible temporary difference × the enacted tax rate expected when it reverses.",
-      "Valuation allowance: Required if it is more likely than not (over 50%) that some or all of the DTA won't be realised.",
-      "Presentation: All deferred taxes are noncurrent, netted within each tax jurisdiction.",
-    ],
-    content: `
-<h2>What is a deferred tax asset?</h2>
-<p>A <strong>deferred tax asset (DTA)</strong> is the future tax benefit a company expects because it has paid — or will pay — more tax now than its book income implies, or because it has losses or credits it can use later. Put simply: a DTA represents taxes you'll save in the future.</p>
-<p>The rules sit in the Accounting Standards Codification (ASC) Topic 740, Income Taxes.</p>
-
-<h2>What creates one?</h2>
-<p>A DTA arises from <strong>deductible temporary differences</strong> — items that reduce taxable income in a later year than they reduce book income — and from carryforwards.</p>
-<ul>
-<li><strong>Warranty and bad-debt expenses</strong> accrued for books but deductible for tax only when paid or written off.</li>
-<li><strong>Unearned revenue</strong> taxed when the cash is received but recognised for books later.</li>
-<li><strong>Net operating loss (NOL) carryforwards</strong> and tax credit carryforwards.</li>
-<li><strong>Accrued compensation</strong> deducted for tax only when paid.</li>
-</ul>
-<p>The opposite — taxable temporary differences such as accelerated tax depreciation — creates a deferred tax <em>liability</em>.</p>
-
-<h2>Measuring it</h2>
-<p><strong>DTA = deductible temporary difference × the enacted tax rate expected to apply when it reverses.</strong> Use the enacted rate for the reversal year, not the current rate, and never an expected-but-not-yet-enacted rate.</p>
-
-<div class="callout callout-example">
-<p><strong>Example:</strong> A company accrues $100,000 of warranty expense in 2026; it will be deductible when paid in 2027. The enacted rate is 21%. The company records a DTA of $21,000 (and a matching deferred tax benefit in the income statement).</p>
-</div>
-
-<h2>The valuation allowance</h2>
-<p>A DTA is only useful if there will be enough taxable income to absorb it. If it is <strong>more likely than not</strong> (a likelihood of more than 50%) that some or all of it won't be realised, the company records a <strong>valuation allowance</strong> to reduce it.</p>
-<ul>
-<li><strong>Positive evidence:</strong> existing taxable temporary differences that will reverse, a strong earnings history, tax-planning strategies.</li>
-<li><strong>Negative evidence:</strong> cumulative losses in recent years, expiring carryforwards, a history of unused losses.</li>
-</ul>
-
-<h2>Presentation</h2>
-<p>All deferred tax assets and liabilities are classified as <strong>noncurrent</strong> on the balance sheet, and within each tax jurisdiction they're netted to a single amount.</p>
-
-<h2>Exam tips</h2>
-<ul>
-<li>Distinguish <strong>temporary</strong> differences (create deferred taxes) from <strong>permanent</strong> differences such as municipal bond interest or fines (never do).</li>
-<li>Total income tax expense = current tax expense + deferred tax expense (or − benefit).</li>
-</ul>
-<p>Work through the full topic in our <a href="/cpa/far/income-taxes">FAR income taxes</a> notes.</p>
-
-${sources([
-  ["Financial Accounting Standards Board — ASC 740, Income Taxes", "https://asc.fasb.org/740"],
 ])}
 `,
   },
