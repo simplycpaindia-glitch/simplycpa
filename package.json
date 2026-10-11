@@ -11,6 +11,7 @@
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
     "db:seed-new-blog": "tsx prisma/seed-new-blog-posts.ts",
+    "db:sync-blog": "tsx prisma/sync-blog-posts.ts",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
     "mcq:validate": "tsx prisma/validate-mcq-bank.ts",

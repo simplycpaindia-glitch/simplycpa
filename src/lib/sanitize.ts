@@ -23,7 +23,7 @@ export function sanitizeContentHtml(html: string): string {
       td: ["colspan", "rowspan"],
     },
     allowedClasses: {
-      div: ["callout", "callout-tip", "callout-warning", "callout-example", "callout-important"],
+      div: ["callout", "callout-tip", "callout-warning", "callout-example", "callout-important", "callout-crux"],
       span: ["callout-label"],
     },
     allowedSchemes: ["http", "https", "mailto"],

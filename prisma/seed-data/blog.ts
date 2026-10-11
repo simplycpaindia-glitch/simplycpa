@@ -1,4 +1,5 @@
 import { keywordPosts } from "./blog-keywords";
+import { auditPosts } from "./blog-audit";
 
 export type BlogSeed = {
   slug: string;
@@ -6,14 +7,42 @@ export type BlogSeed = {
   excerpt: string;
   category: string;
   content: string;
+  /**
+   * "The Crux": 4–6 numbered takeaways shown in a box above the article, for readers
+   * who want the answer before the explanation. Each point starts with a short label
+   * followed by a colon, e.g. "Meaning: ...". Rendered into the content by withCrux().
+   */
+  crux: string[];
 };
 
-export const blogPosts: BlogSeed[] = [
+/** Prepends the Crux summary box to the post body. */
+function withCrux(post: BlogSeed): BlogSeed {
+  const items = post.crux
+    .map((point) => {
+      const [label, ...rest] = point.split(": ");
+      return rest.length
+        ? `<li><strong>${label}:</strong> ${rest.join(": ")}</li>`
+        : `<li>${point}</li>`;
+    })
+    .join("\n");
+  return {
+    ...post,
+    content: `<div class="callout callout-crux">\n<ol>\n${items}\n</ol>\n</div>\n${post.content.trim()}\n`,
+  };
+}
+
+const corePosts: BlogSeed[] = [
   {
     slug: "is-us-cpa-worth-it-for-an-indian-ca",
     title: "Is US CPA Worth It for an Indian CA?",
     category: "CPA vs Other Qualifications",
     excerpt: "CA gives you Indian regulatory depth. CPA adds a US-facing layer. Here's how to think about whether the second credential earns its keep.",
+    crux: [
+      "Different jurisdictions: CA certifies Indian standards, tax and company law; CPA certifies US GAAP, US auditing standards and US federal tax.",
+      "When it pays off: US-facing work — Big 4 US audit or tax practices in India, global capability centres (GCCs) and multinationals reporting under US GAAP.",
+      "When it doesn't: A purely domestic career in Indian statutory audit or Indian tax gains little that CA doesn't already cover.",
+      "The test: If you can name the roles where US GAAP or US tax knowledge matters, the 300+ study hours are usually worth it.",
+    ],
     content: `
 <h2>Start with what each credential actually certifies</h2>
 <p>Indian CA certifies deep competence in Ind AS, Indian tax law, and Indian company law — it's the credential required for statutory audit work in India, and it carries enormous weight domestically. US CPA certifies competence in US GAAP, SEC reporting, and US federal tax. They're not competing for the same job description; they're built for different regulatory jurisdictions.</p>
@@ -30,6 +59,11 @@ export const blogPosts: BlogSeed[] = [
     title: "CPA After B.Com: Complete Roadmap",
     category: "Indian Students",
     excerpt: "A 3-year Indian B.Com often falls short of the standard 120-150 semester-hour requirement. Here's how to close the gap.",
+    crux: [
+      "The problem: US boards count semester hours — usually 120 to sit for the exam and 150 to be licensed. A 3-year B.Com typically converts to fewer.",
+      "The fixes: Add an M.Com or other postgraduate degree, choose a board that accepts your qualifications, or take extra accredited credits.",
+      "First step: Get a formal credential evaluation before choosing a state or a study plan — don't plan around assumptions.",
+    ],
     content: `
 <h2>The core issue: semester hours, not just a degree</h2>
 <p>Most US state boards require the equivalent of 120-150 US semester hours of education (roughly a bachelor's degree, sometimes closer to a master's worth of credit). A standard 3-year Indian B.Com typically converts to fewer semester-hour equivalents than a 4-year US bachelor's degree, which is why many B.Com-only candidates come up short during credential evaluation.</p>
@@ -48,6 +82,12 @@ export const blogPosts: BlogSeed[] = [
     title: "CPA vs CA: What Actually Matters",
     category: "CPA vs Other Qualifications",
     excerpt: "Less a rivalry, more a question of jurisdiction. Here's a practical comparison Indian candidates can actually use.",
+    crux: [
+      "Scope: CA covers Ind AS, Indian tax and Indian company law; CPA covers US GAAP, US tax and US auditing standards.",
+      "Structure: CA is a multi-level course with articleship over several years; CPA is four computer-based sections, often passed in 12–18 months.",
+      "Licence: Passing the CPA Exam isn't enough — most states also require verified work experience.",
+      "Career signal: CA is the domestic gold standard; CPA signals US accounting competence. Together they show dual-market capability.",
+    ],
     content: `
 <h2>Different exams for different regulatory worlds</h2>
 <p>CA (India) is built around Ind AS, Indian tax law (direct and indirect), auditing standards issued by ICAI, and Indian company law — it's what qualifies you to sign an audit report under Indian regulation. CPA (US) is built around US GAAP, US federal tax, and US auditing standards (or PCAOB standards for public company audits) — it's what qualifies you under US state board regulation.</p>
@@ -62,6 +102,12 @@ export const blogPosts: BlogSeed[] = [
     title: "How Much Does US CPA Cost for an Indian Student?",
     category: "Indian Students",
     excerpt: "Application fees, per-section exam fees, international administration fees, and evaluation costs — what actually goes into the total.",
+    crux: [
+      "Four cost buckets: Credential evaluation, state board application, a per-section exam fee (×4) and an international fee per section when testing in India.",
+      "Why no single number: Every fee varies by state board and changes over time.",
+      "Live figures: Our Fee Estimator stores each fee with its official source and the date it was last checked.",
+      "Budget tip: The India fee applies to every section, every time you sit — including retakes.",
+    ],
     content: `
 <h2>The four cost buckets</h2>
 <p>Total CPA cost for an Indian candidate typically comes from four sources: a one-time <strong>credential evaluation fee</strong> (paid to a NACES-member agency), a <strong>state board application/registration fee</strong>, a <strong>per-section exam fee</strong> (×4 sections), and an <strong>international administration fee</strong> per section if you test in India rather than the US.</p>
@@ -80,6 +126,13 @@ export const blogPosts: BlogSeed[] = [
     title: "How to Choose Your CPA Discipline",
     category: "Exam Updates",
     excerpt: "BAR, ISC, or TCP — the choice matters more than it might seem, since you can't switch mid-attempt without forfeiting it.",
+    crux: [
+      "Same licence: BAR, ISC and TCP all lead to an identical CPA licence — the choice is about fit.",
+      "BAR: An extension of FAR. Suits financial reporting, valuation and advisory careers.",
+      "ISC: Information systems, data and SOC engagements. Suits IT audit and risk roles.",
+      "TCP: An extension of REG. Suits anyone heading into tax.",
+      "Rule of thumb: Liked FAR? Pick BAR. Liked REG? Pick TCP. Drawn to systems and controls? Pick ISC.",
+    ],
     content: `
 <h2>All three lead to the same license — the choice is about fit</h2>
 <p>Whichever Discipline you pick, you end up with an identical CPA license. The real question is which one plays to your strengths and career direction, since Discipline sections are only offered in four testing windows a year and switching after registering means forfeiting that attempt.</p>
@@ -98,6 +151,12 @@ export const blogPosts: BlogSeed[] = [
     title: "FAR vs AUD vs REG: Which Should You Start With?",
     category: "Study Strategy",
     excerpt: "There's no universally correct order — but there are good reasons to prefer one path over another depending on your background.",
+    crux: [
+      "FAR first: The broadest section; it builds a base for AUD and BAR.",
+      "AUD first: Largely standalone content — some candidates clear it while motivation is highest.",
+      "REG first: Best if TCP is your Discipline, so tax knowledge carries straight over.",
+      "What matters more: Steady, consistent study beats chasing the perfect order.",
+    ],
     content: `
 <h2>The case for FAR first</h2>
 <p>FAR is the broadest Core section and shares a lot of foundational content with BAR. Starting here builds a base that makes AUD (which frequently references financial statement concepts) and your Discipline section easier later.</p>
@@ -114,6 +173,13 @@ export const blogPosts: BlogSeed[] = [
     title: "US CPA Exam Explained in Simple English",
     category: "CPA Basics",
     excerpt: "No jargon, no acronyms assumed — what the exam actually is, in plain terms.",
+    crux: [
+      "What it is: A US professional licensing exam, written by the AICPA and delivered at Prometric test centres.",
+      "What it covers: Three compulsory Core sections (FAR, AUD, REG) plus one Discipline of your choice (BAR, ISC or TCP).",
+      "How it's tested: Each four-hour section mixes multiple-choice questions with task-based simulations.",
+      "Passing isn't licensing: Most states also require verified work experience before issuing a licence.",
+      "From India: Yes — you can sit at Prometric centres in several Indian cities.",
+    ],
     content: `
 <h2>What it is</h2>
 <p>The CPA Exam is a professional licensing exam, not a university exam — you take it to become licensed to practice as a Certified Public Accountant in a specific US state. It's created by AICPA, administered by Prometric testing centers, and coordinated by NASBA and individual state boards of accountancy.</p>
@@ -132,6 +198,13 @@ export const blogPosts: BlogSeed[] = [
     title: "What Nobody Tells Indian Students About CPA",
     category: "Indian Students",
     excerpt: "The parts that don't show up in the glossy brochures — state selection headaches, evaluation delays, and the licensing-vs-passing gap.",
+    crux: [
+      "State selection: Your degree may not meet every board's rules — get evaluated before you pick a state.",
+      "Paperwork takes time: Evaluation, application and NTS issue can take weeks to months before your first exam.",
+      "Passing isn't licensing: Most states require verified experience as well — plan for it alongside your studies.",
+      "Hidden costs: Testing in India adds an international fee for every section.",
+      "It's hard by design: Structured topic-by-topic study with real practice is what gets first-attempt passes.",
+    ],
     content: `
 <h2>1. State selection is a real decision, not a formality</h2>
 <p>Many first-time candidates pick a state board almost at random, then discover mid-application that their specific degree combination doesn't clear that state's requirements. Get a credential evaluation and understand your options <em>before</em> you pick.</p>
@@ -145,5 +218,6 @@ export const blogPosts: BlogSeed[] = [
 <p>CPA pass rates reflect a demanding exam, not a broken one. Structured, topic-by-topic study with real practice — not just re-reading material — is what separates candidates who pass on their first attempt from those who don't.</p>
 `,
   },
-  ...keywordPosts,
 ];
+
+export const blogPosts: BlogSeed[] = [...corePosts, ...keywordPosts, ...auditPosts].map(withCrux);

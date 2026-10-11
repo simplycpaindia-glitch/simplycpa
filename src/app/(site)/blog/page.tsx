@@ -7,8 +7,10 @@ import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "CPA basics, career guidance, study strategy, and updates — written for Indian candidates.",
+  title: "US CPA Blog: Auditing, FAR Concepts, Exam Guides and Careers",
+  description:
+    "Plain-English explainers on auditing, US GAAP and tax concepts, CPA exam guides, fees, eligibility and careers — written for Indian candidates and sourced from official bodies.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogIndexPage() {

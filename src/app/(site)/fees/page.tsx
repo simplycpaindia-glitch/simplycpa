@@ -30,13 +30,16 @@ export default async function FeesPage() {
   const amountOf = (predicate: (f: (typeof fees)[number]) => boolean) =>
     Number(fees.find(predicate)?.amount ?? 0);
 
+  const intlCore = amountOf((f) => f.feeType === "INTERNATIONAL_ADMIN" && !/discipline/i.test(f.label));
   const estimatorFees: EstimatorFees = {
     application: amountOf((f) => f.feeType === "APPLICATION"),
     evaluation: amountOf((f) => f.feeType === "EVALUATION"),
     registration: amountOf((f) => f.feeType === "REGISTRATION"),
     examSection: amountOf((f) => f.feeType === "EXAM_SECTION"),
-    intlCore: amountOf((f) => f.feeType === "INTERNATIONAL_ADMIN" && !/discipline/i.test(f.label)),
-    intlDiscipline: amountOf((f) => f.feeType === "INTERNATIONAL_ADMIN" && /discipline/i.test(f.label)),
+    intlCore,
+    // NASBA currently charges one flat per-section fee; a Discipline-specific row overrides it.
+    intlDiscipline:
+      amountOf((f) => f.feeType === "INTERNATIONAL_ADMIN" && /discipline/i.test(f.label)) || intlCore,
   };
 
   const latestVerified = fees.reduce<Date | null>(

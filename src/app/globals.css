@@ -157,6 +157,29 @@ body {
   background: #fbf6e3;
   border-color: var(--color-gold-400);
 }
+/* "The Crux": the numbered summary box at the top of each blog post */
+.callout-crux {
+  background: var(--color-paper-100);
+  border-color: var(--color-gold-400);
+  border-left-width: 4px;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+.callout-crux::before {
+  content: "The Crux";
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-gold-600);
+}
+.callout-crux ol {
+  margin-bottom: 0;
+}
+.callout-crux li + li {
+  margin-top: 0.4rem;
+}
 .callout > :last-child {
   margin-bottom: 0;
 }
