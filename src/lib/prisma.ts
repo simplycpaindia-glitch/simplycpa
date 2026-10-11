@@ -11,6 +11,10 @@ export const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
     adapter,
+    // The database is remote (Neon), and pages run several queries in parallel. Prisma's
+    // default 2s wait for a free connection is too tight for that, so transactions
+    // could fail with P2028 under normal load.
+    transactionOptions: { maxWait: 10_000, timeout: 15_000 },
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
   });
 

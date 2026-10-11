@@ -70,25 +70,37 @@ export async function Navbar() {
           <SearchBox className="w-32 xl:w-48" />
           {session?.user ? (
             <>
-              <Button href="/dashboard" size="sm" variant="outline">
+              <Button href="/dashboard" size="sm" variant="outline" className="whitespace-nowrap">
                 Dashboard
               </Button>
-              <Link href="/account" className="px-2 py-2 text-sm font-medium text-ink-400 hover:text-ink-950">
-                Account
-              </Link>
-              <form
-                action={async () => {
-                  "use server";
-                  await signOut({ redirectTo: "/" });
-                }}
-              >
+              {/* Account and Log out share one menu so the header fits at 1024px. */}
+              <div className="group relative">
                 <button
-                  type="submit"
-                  className="px-3 py-2 text-sm font-medium text-ink-400 hover:text-ink-950"
+                  type="button"
+                  aria-haspopup="true"
+                  className="whitespace-nowrap px-2 py-2 text-sm font-medium text-ink-400 hover:text-ink-950"
                 >
-                  Log out
+                  Account ▾
                 </button>
-              </form>
+                <div className="invisible absolute right-0 top-full flex w-48 flex-col gap-1 rounded-xl border border-ink-950/10 bg-paper-50 p-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <Link href="/account" className="rounded-md px-3 py-2 text-sm text-ink-950 hover:bg-ink-950/5">
+                    Account settings
+                  </Link>
+                  <Link href="/what-i-studied" className="rounded-md px-3 py-2 text-sm text-ink-950 hover:bg-ink-950/5">
+                    Study wall
+                  </Link>
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signOut({ redirectTo: "/" });
+                    }}
+                  >
+                    <button type="submit" className="w-full rounded-md px-3 py-2 text-left text-sm text-ink-950 hover:bg-ink-950/5">
+                      Log out
+                    </button>
+                  </form>
+                </div>
+              </div>
             </>
           ) : (
             <>

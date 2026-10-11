@@ -47,7 +47,7 @@ export default async function AdminJournalPage() {
       include: { user: { select: { email: true, username: true } } },
     }),
     prisma.user.findMany({ where: { isBanned: true }, select: { id: true, email: true, username: true, bannedAt: true, bannedReason: true } }),
-    prisma.$transaction([
+    Promise.all([
       prisma.journalPost.count({ where: { status: "PUBLISHED" } }),
       prisma.user.count({ where: { username: { not: null } } }),
       prisma.signInEvent.count({ where: { createdAt: { gte: since } } }),
