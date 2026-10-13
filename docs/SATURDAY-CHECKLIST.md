@@ -93,8 +93,8 @@ Your domain's DNS is hosted at Hostinger (nameservers `*.dns-parking.com`).
 1. Sign up / sign in → **Billing** → add a card and a small prepaid credit, and set a
    monthly spend limit you're comfortable with.
 2. **API keys** → **Create key** → name `simplycpa-moderation` → copy it (`sk-ant-…`).
-3. Decide the model: `claude-opus-5-5` (default, most accurate) or `claude-haiku-5-5`
-   (roughly 40× cheaper; fine for this kind of check).
+3. The model is already set to `claude-haiku-5-5` (your choice — the low-cost one), so
+   there's nothing to decide here.
 
 Without this step everything still works — posts just get the word checks only.
 
@@ -114,8 +114,8 @@ Project `simplycpa` → **Settings** → **Environment Variables**. Add each one
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile site key (step 4, optional) |
 | `TURNSTILE_SECRET_KEY` | Turnstile secret key (step 4, optional) |
 | `ANTHROPIC_API_KEY` | Anthropic key (step 4b, optional) |
-| `MODERATION_MODEL` | `claude-haiku-5-5` if you chose it (step 4b; leave unset for the default) |
-| `MODERATOR_ALERT_EMAILS` | Optional: where "post held" alerts go, e.g. your email. Unset = all admin/moderator accounts |
+| `MODERATION_MODEL` | Not needed — leave unset (defaults to `claude-haiku-5-5`) |
+| `MODERATOR_ALERT_EMAILS` | **Your own email address** — where "post held for review" alerts go. Needed: the only admin account in the database is `admin@simplycpa.local`, which can't receive mail, so without this alerts go nowhere |
 
 **Also change `NEXT_PUBLIC_SITE_URL` to `https://www.simplycpa.in`** in Production (it is
 currently `https://simplycpa.in`). The live site is served at `www`, and `simplycpa.in`

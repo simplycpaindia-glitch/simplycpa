@@ -9,7 +9,7 @@ import { z } from "zod";
  * harassment, off-topic or promotional posts, and paraphrased real exam questions.
  *
  * Enabled only when ANTHROPIC_API_KEY is set. MODERATION_MODEL picks the model
- * (default claude-opus-5-5; claude-haiku-5-5 is far cheaper — the site owner's choice).
+ * (default claude-haiku-5-5, chosen for cost; claude-opus-5-5 is more capable but ~40× the price).
  *
  * Design rules:
  *  - The AI never deletes or rejects on its own. "reject" holds the post for a human;
@@ -52,7 +52,7 @@ export function isAiModerationEnabled() {
 }
 
 export function moderationModel() {
-  return process.env.MODERATION_MODEL?.trim() || "claude-opus-5-5";
+  return process.env.MODERATION_MODEL?.trim() || "claude-haiku-5-5";
 }
 
 // Stable system prompt (kept byte-identical between requests so it can be cached).

@@ -74,7 +74,7 @@ set their `role` to `MODERATOR` (e.g. with `npx prisma studio`).
 
 1. console.anthropic.com → add billing → **API keys** → create a key.
 2. Vercel environment variables: `ANTHROPIC_API_KEY`, and optionally `MODERATION_MODEL`
-   (default `claude-opus-5-5`; `claude-haiku-5-5` costs roughly 40× less).
+   (default `claude-haiku-5-5`; `claude-opus-5-5` is more capable but costs roughly 40× more).
 3. Redeploy, then run `npm run check:community` with the same values in `.env`.
 
 How it behaves (`src/lib/journal/ai-moderation.ts`, `src/lib/actions/journal.ts`):

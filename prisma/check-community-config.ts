@@ -113,7 +113,7 @@ async function checkTurnstile() {
 
 async function checkAnthropic() {
   const key = env("ANTHROPIC_API_KEY");
-  const model = env("MODERATION_MODEL") || "claude-opus-5-5";
+  const model = env("MODERATION_MODEL") || "claude-haiku-5-5";
   if (!key) return add("AI post check (Anthropic)", "skip", "not configured — posts get the automatic word checks only");
   // Looking up the model is free and proves both the key and the model name.
   const res = await fetch(`https://api.anthropic.com/v1/models/${encodeURIComponent(model)}`, {
@@ -123,8 +123,27 @@ async function checkAnthropic() {
   else if (res.status === 404) add("MODERATION_MODEL", false, `"${model}" not found — check the model name`);
   else add("AI post check (Anthropic)", res.ok, res.ok ? `key valid, model ${model}` : `Anthropic returned ${res.status}`);
 
-  const alerts = env("MODERATOR_ALERT_EMAILS");
-  add("Moderator alert emails", "skip", alerts ? `sent to ${alerts}` : "sent to ADMIN/MODERATOR accounts (MODERATOR_ALERT_EMAILS not set)");
+}
+
+async function checkAlertRecipients() {
+  const configured = env("MODERATOR_ALERT_EMAILS").split(",").map((e) => e.trim()).filter(Boolean);
+  if (configured.length) return add("Moderator alert emails", configured.every((e) => /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(e)), `sent to ${configured.join(", ")}`);
+  if (!env("DATABASE_URL")) return add("Moderator alert emails", false, "MODERATOR_ALERT_EMAILS not set");
+  // Fallback is every ADMIN/MODERATOR account; seed accounts often use addresses that can't receive mail.
+  const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString: env("DATABASE_URL") }) });
+  try {
+    const staff = (await prisma.user.findMany({ where: { role: { in: ["ADMIN", "MODERATOR"] } }, select: { email: true } })).map((u) => u.email);
+    const deliverable = staff.filter((e) => !/\.(local|test|example|invalid|localhost)$/i.test(e) && !/@example\.(com|org|net)$/i.test(e));
+    add(
+      "Moderator alert emails",
+      deliverable.length > 0,
+      deliverable.length
+        ? `MODERATOR_ALERT_EMAILS not set — sent to staff accounts: ${deliverable.join(", ")}`
+        : `MODERATOR_ALERT_EMAILS not set and no staff account has a real address (${staff.join(", ") || "none"}) — set MODERATOR_ALERT_EMAILS`,
+    );
+  } finally {
+    await prisma.$disconnect();
+  }
 }
 
 async function main() {
@@ -137,6 +156,7 @@ async function main() {
   await checkResend(sendTo);
   await checkTurnstile();
   await checkAnthropic();
+  await checkAlertRecipients();
 
   for (const r of results) {
     const mark = r.ok === "skip" ? "•" : r.ok ? "✓" : "✗";
