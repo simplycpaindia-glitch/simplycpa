@@ -7,17 +7,10 @@ Do them in this order. Tick each box as you go.
 
 ---
 
-## ☐ 0. (Optional, 2 min) Deploy what's already built
+## ✓ 0. Deploy what's already built — done
 
-The study wall, sign-in pages and fixes are committed but not live. The site is safe to
-deploy **before** steps 1–4: until the keys exist, the login page simply shows password
-login (tested in production mode). To deploy, either tell Claude "push", or run:
-
-```bash
-git push origin main
-```
-
-The database migration is already applied, so nothing else is needed for this.
+Deployed on 13 October 2026. The study wall is live with password login until the keys
+below are added.
 
 ---
 
@@ -39,12 +32,12 @@ The database migration is already applied, so nothing else is needed for this.
 5. **Credentials** (or "Clients") → **Create credentials** → **OAuth client ID**:
    - Application type: **Web application**
    - Name: `SimplyCPA web`
-   - Authorised JavaScript origins: `https://simplycpa.in`
-   - Authorised redirect URIs — add **both**:
+   - Authorised JavaScript origins: `https://www.simplycpa.in` and `https://simplycpa.in`
+   - Authorised redirect URIs — add **all three** (the live site is served at **www**;
+     `simplycpa.in` redirects to it):
+     - `https://www.simplycpa.in/api/auth/callback/google`
      - `https://simplycpa.in/api/auth/callback/google`
      - `http://localhost:3000/api/auth/callback/google`
-   - If the site is also served at `https://www.simplycpa.in`, add
-     `https://www.simplycpa.in/api/auth/callback/google` as well.
 6. Copy the **Client ID** (ends in `.apps.googleusercontent.com`) and **Client secret**
    (starts with `GOCSPX-`). Keep them private.
 
@@ -109,7 +102,12 @@ Project `simplycpa` → **Settings** → **Environment Variables**. Add each one
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile site key (step 4, optional) |
 | `TURNSTILE_SECRET_KEY` | Turnstile secret key (step 4, optional) |
 
-Also check that `NEXT_PUBLIC_SITE_URL` is `https://simplycpa.in` in Production.
+**Also change `NEXT_PUBLIC_SITE_URL` to `https://www.simplycpa.in`** in Production (it is
+currently `https://simplycpa.in`). The live site is served at `www`, and `simplycpa.in`
+redirects there, so today every canonical link and sitemap URL points at an address that
+redirects — Google treats that as a weaker signal. (Alternative: in Vercel → Settings →
+Domains, make `simplycpa.in` the primary domain instead, and leave the variable as is.
+Either works; just make the two match.)
 
 Then **Deployments** → latest deployment → **⋯** → **Redeploy** (new variables only
 take effect after a redeploy).
@@ -146,7 +144,7 @@ npm run check:community -- --send-test your-email@example.com
 
 ## ☐ 7. One live test on simplycpa.in (5 min)
 
-1. Open https://simplycpa.in/what-i-studied in a private/incognito window.
+1. Open https://www.simplycpa.in/what-i-studied in a private/incognito window.
 2. **Sign in to post** → **Continue with Google** → choose a username → post a short
    test entry → delete it.
 3. Sign out → **Email me a sign-in code** with a different email → enter the code.
@@ -156,7 +154,9 @@ npm run check:community -- --send-test your-email@example.com
 
 ## ☐ 8. Google Search Console (5 min) — search.google.com/search-console
 
-Property `simplycpa.in` → **Sitemaps** → submit `https://simplycpa.in/sitemap.xml`.
+Do this **after** fixing `NEXT_PUBLIC_SITE_URL` in step 5, so the sitemap lists the
+`www` addresses. Property `simplycpa.in` → **Sitemaps** → submit
+`https://www.simplycpa.in/sitemap.xml`.
 This picks up the 92 new blog posts, the study wall and the guidelines page.
 
 ---
