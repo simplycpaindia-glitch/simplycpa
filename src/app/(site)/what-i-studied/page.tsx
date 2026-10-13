@@ -8,6 +8,8 @@ import { PostCard } from "@/components/journal/PostCard";
 import { cn } from "@/lib/utils";
 import { getCommunityUser } from "@/lib/journal/profile";
 import { getSignInMethods } from "@/lib/sign-in-methods";
+import { getStudyStats } from "@/lib/journal/stats";
+import { isAiModerationEnabled } from "@/lib/journal/ai-moderation";
 import { getFeed, parseTag, postsLeftFor } from "@/lib/journal/queries";
 import { JOURNAL_TAGS, POST_MAX_CHARS, POSTS_PER_24H, REPORTS_TO_HIDE, TAG_LABEL } from "@/lib/journal/constants";
 
@@ -29,11 +31,13 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
   const cursor = typeof params.cursor === "string" ? params.cursor : null;
 
   const methods = getSignInMethods();
+  const aiEnabled = isAiModerationEnabled();
   const session = await auth();
   const viewer = session?.user ? await getCommunityUser(session.user.id) : null;
-  const [{ posts, nextCursor }, postsLeft] = await Promise.all([
+  const [{ posts, nextCursor }, postsLeft, myStats] = await Promise.all([
     getFeed({ viewerId: viewer?.id, tag, cursor }),
     viewer?.isProfileComplete ? postsLeftFor(viewer.id) : Promise.resolve(0),
+    viewer?.isProfileComplete ? getStudyStats(viewer.id) : Promise.resolve(null),
   ]);
 
   const qs = (next: Record<string, string | null>) => {
@@ -132,6 +136,22 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
           </main>
 
           <aside className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
+            {myStats && viewer?.username && (
+              <div className="rounded-xl border border-gold-400/50 bg-gold-500/5 p-5 text-sm">
+                <p className="font-semibold text-ink-950">Your study streak</p>
+                <p className="mt-2 font-display text-3xl font-medium text-ink-950">
+                  {myStats.currentStreak} week{myStats.currentStreak === 1 ? "" : "s"}
+                </p>
+                <p className="mt-1 text-ink-400">
+                  {myStats.hoursThisWeek > 0 ? `${myStats.hoursThisWeek} h logged this week · ` : ""}
+                  {myStats.totalHours} h in total
+                </p>
+                <p className="mt-2 text-xs text-ink-400">Post at least once each week (Monday–Sunday, India time) to keep your streak going.</p>
+                <Link href={`/what-i-studied/u/${viewer.username}`} className="mt-3 inline-block text-sm font-medium text-gold-600 hover:underline">
+                  Your profile →
+                </Link>
+              </div>
+            )}
             <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-5 text-sm">
               <p className="font-semibold text-ink-950">How this wall works</p>
               <ul className="mt-3 space-y-2 text-ink-800">
@@ -139,8 +159,8 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
                 <li><strong>Up to {POSTS_PER_24H} posts</strong> in any 24 hours, up to {POST_MAX_CHARS.toLocaleString("en-IN")} characters each.</li>
                 <li><strong>No links</strong>, email addresses or phone numbers.</li>
                 <li><strong>Never share real exam questions</strong> — every candidate agrees to keep them confidential.</li>
-                <li>Every post is <strong>checked automatically</strong> for explicit, abusive and spam content. A few are held for a quick human review.</li>
-                <li>Posts reported by {REPORTS_TO_HIDE} members are hidden until a moderator reviews them.</li>
+                <li>Every post is <strong>checked automatically</strong>{aiEnabled ? " (including an AI review)" : ""} for explicit, abusive and spam content. A few are held for a quick human review.</li>
+                <li>Posts reported by {REPORTS_TO_HIDE} established members are hidden until a moderator reviews them.</li>
               </ul>
               <Link href="/community-guidelines" className="mt-4 inline-block font-medium text-gold-600 hover:underline">
                 Read the full guidelines →

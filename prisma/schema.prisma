@@ -625,6 +625,12 @@ model JournalPost {
   status      JournalPostStatus @default(PUBLISHED)
   flagReasons String[]          @default([]) // automatic-check codes that held it for review
   contentHash String            // normalised-text hash, used to reject duplicate posts
+  studyHours  Float?            // optional "hours studied this week", 0.5–100
+  // AI content check (optional; runs only when ANTHROPIC_API_KEY is set)
+  aiVerdict    String?          // "allow" | "review" | "reject" | "error" | "refused"
+  aiCategories String[]         @default([])
+  aiReason     String?          // short staff-facing explanation
+  aiModel      String?
   reviewedAt  DateTime?
   reviewedBy  String?           // staff user id
   createdAt   DateTime          @default(now())

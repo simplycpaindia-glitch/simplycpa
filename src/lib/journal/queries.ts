@@ -13,6 +13,7 @@ export type FeedPost = {
   createdAtIso: string;
   createdAgo: string;
   helpfulCount: number;
+  studyHours: number | null;
   viewerFoundHelpful: boolean;
   isOwn: boolean;
 };
@@ -50,6 +51,7 @@ export async function getFeed(opts: { viewerId?: string | null; tag?: JournalTag
       tag: true,
       status: true,
       createdAt: true,
+      studyHours: true,
       userId: true,
       user: { select: { username: true } },
       _count: { select: { reactions: true } },
@@ -68,6 +70,7 @@ export async function getFeed(opts: { viewerId?: string | null; tag?: JournalTag
     createdAtIso: p.createdAt.toISOString(),
     createdAgo: formatDistanceToNowStrict(p.createdAt, { addSuffix: true }),
     helpfulCount: p._count.reactions,
+    studyHours: p.studyHours,
     viewerFoundHelpful: Array.isArray(p.reactions) && p.reactions.length > 0,
     isOwn: !!opts.viewerId && p.userId === opts.viewerId,
   }));

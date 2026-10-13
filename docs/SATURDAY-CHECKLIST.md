@@ -88,6 +88,18 @@ Your domain's DNS is hosted at Hostinger (nameservers `*.dns-parking.com`).
 
 ---
 
+## ☐ 4b. (Optional, paid) AI review of posts — console.anthropic.com
+
+1. Sign up / sign in → **Billing** → add a card and a small prepaid credit, and set a
+   monthly spend limit you're comfortable with.
+2. **API keys** → **Create key** → name `simplycpa-moderation` → copy it (`sk-ant-…`).
+3. Decide the model: `claude-opus-5-5` (default, most accurate) or `claude-haiku-5-5`
+   (roughly 40× cheaper; fine for this kind of check).
+
+Without this step everything still works — posts just get the word checks only.
+
+---
+
 ## ☐ 5. Add the keys to Vercel (5 min) — vercel.com
 
 Project `simplycpa` → **Settings** → **Environment Variables**. Add each one for the
@@ -101,6 +113,9 @@ Project `simplycpa` → **Settings** → **Environment Variables**. Add each one
 | `EMAIL_FROM` | `SimplyCPA <signin@mail.simplycpa.in>` |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Turnstile site key (step 4, optional) |
 | `TURNSTILE_SECRET_KEY` | Turnstile secret key (step 4, optional) |
+| `ANTHROPIC_API_KEY` | Anthropic key (step 4b, optional) |
+| `MODERATION_MODEL` | `claude-haiku-5-5` if you chose it (step 4b; leave unset for the default) |
+| `MODERATOR_ALERT_EMAILS` | Optional: where "post held" alerts go, e.g. your email. Unset = all admin/moderator accounts |
 
 **Also change `NEXT_PUBLIC_SITE_URL` to `https://www.simplycpa.in`** in Production (it is
 currently `https://simplycpa.in`). The live site is served at `www`, and `simplycpa.in`

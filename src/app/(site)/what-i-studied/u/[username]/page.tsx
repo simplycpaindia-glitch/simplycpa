@@ -9,6 +9,18 @@ import { formatDate } from "@/lib/utils";
 import { getCommunityUser } from "@/lib/journal/profile";
 import { getFeed, getMemberProfile } from "@/lib/journal/queries";
 import { normaliseUsername } from "@/lib/journal/moderation";
+import { getStudyStats } from "@/lib/journal/stats";
+import { getTrustLevel, TRUST_LABEL } from "@/lib/journal/trust";
+import { Badge } from "@/components/ui/Badge";
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-3">
+      <dt className="text-xs text-ink-400">{label}</dt>
+      <dd className="mt-1 font-display text-xl font-medium text-ink-950">{value}</dd>
+    </div>
+  );
+}
 
 export async function generateMetadata({ params }: PageProps<"/what-i-studied/u/[username]">): Promise<Metadata> {
   const { username } = await params;
@@ -28,11 +40,11 @@ export default async function MemberPage({ params, searchParams }: PageProps<"/w
 
   const session = await auth();
   const viewer = session?.user ? await getCommunityUser(session.user.id) : null;
-  const { posts, nextCursor } = await getFeed({
-    viewerId: viewer?.id,
-    username,
-    cursor: typeof cursor === "string" ? cursor : null,
-  });
+  const [{ posts, nextCursor }, stats, trust] = await Promise.all([
+    getFeed({ viewerId: viewer?.id, username, cursor: typeof cursor === "string" ? cursor : null }),
+    getStudyStats(profile.id),
+    getTrustLevel(profile.id),
+  ]);
 
   return (
     <div className="bg-paper-100/50">
@@ -43,13 +55,23 @@ export default async function MemberPage({ params, searchParams }: PageProps<"/w
         <div className="mt-6 flex items-center gap-4 rounded-xl border border-ink-950/10 bg-paper-50 p-5">
           <Avatar username={profile.username} size="lg" />
           <div>
-            <h1 className="font-display text-2xl font-medium text-ink-950">@{profile.username}</h1>
+            <div className="flex flex-wrap items-center gap-2">
+              <h1 className="font-display text-2xl font-medium text-ink-950">@{profile.username}</h1>
+              {trust === "TRUSTED" && <Badge tone="green">{TRUST_LABEL.TRUSTED}</Badge>}
+            </div>
             <p className="mt-1 text-sm text-ink-400">
               Joined {formatDate(profile.joined)} · {profile.postCount} post{profile.postCount === 1 ? "" : "s"} ·{" "}
               {profile.helpfulReceived} found helpful
             </p>
           </div>
         </div>
+
+        <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <Stat label="Current streak" value={`${stats.currentStreak} week${stats.currentStreak === 1 ? "" : "s"}`} />
+          <Stat label="Longest streak" value={`${stats.longestStreak} week${stats.longestStreak === 1 ? "" : "s"}`} />
+          <Stat label="Weeks active" value={String(stats.weeksActive)} />
+          <Stat label="Hours logged" value={`${stats.totalHours} h`} />
+        </dl>
 
         <div className="mt-6 flex flex-col gap-4">
           {posts.length === 0 ? (

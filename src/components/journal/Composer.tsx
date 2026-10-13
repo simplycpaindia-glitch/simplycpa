@@ -7,11 +7,20 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { createJournalPost } from "@/lib/actions/journal";
 import { checkPost, type Issue } from "@/lib/journal/moderation";
-import { JOURNAL_TAGS, POST_MAX_CHARS, POSTS_PER_24H, TAG_LABEL, type JournalTagValue } from "@/lib/journal/constants";
+import {
+  JOURNAL_TAGS,
+  POST_MAX_CHARS,
+  POSTS_PER_24H,
+  STUDY_HOURS_MAX,
+  STUDY_HOURS_MIN,
+  TAG_LABEL,
+  type JournalTagValue,
+} from "@/lib/journal/constants";
 
 export function Composer({ username, postsLeft }: { username: string; postsLeft: number }) {
   const [body, setBody] = useState("");
   const [tag, setTag] = useState<JournalTagValue>("GENERAL");
+  const [hours, setHours] = useState("");
   const [left, setLeft] = useState(postsLeft);
   const [serverIssues, setServerIssues] = useState<Issue[]>([]);
   const [message, setMessage] = useState<{ tone: "ok" | "warn" | "error"; text: string } | null>(null);
@@ -32,7 +41,7 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
     setServerIssues([]);
     if (live.blocked.length) return;
     startTransition(async () => {
-      const res = await createJournalPost({ body, tag });
+      const res = await createJournalPost({ body, tag, studyHours: hours.trim() ? Number(hours) : null });
       setHelpline(res.helpline ?? null);
       if (!res.ok) {
         setServerIssues(res.issues ?? []);
@@ -41,6 +50,7 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
       }
       setBody("");
       setTag("GENERAL");
+      setHours("");
       setTouched(false);
       setLeft(res.postsLeft);
       setMessage(
@@ -91,6 +101,23 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
               </button>
             ))}
           </div>
+
+          <label className="mt-3 flex flex-wrap items-center gap-2 text-xs text-ink-400">
+            <span>Hours this update covers</span>
+            <input
+              type="number"
+              inputMode="decimal"
+              min={STUDY_HOURS_MIN}
+              max={STUDY_HOURS_MAX}
+              step={0.5}
+              value={hours}
+              onChange={(e) => setHours(e.target.value)}
+              placeholder="e.g. 6"
+              className="w-20 rounded-md border border-ink-950/15 bg-white px-2 py-1 text-sm text-ink-950 outline-none focus:border-ink-950/40"
+              disabled={left === 0}
+            />
+            <span>(optional — added to your study hours and weekly streak)</span>
+          </label>
 
           {issues.length > 0 && (
             <ul role="alert" className="mt-3 space-y-1 rounded-lg bg-signal-red/10 px-3 py-2 text-sm text-signal-red">

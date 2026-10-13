@@ -15,9 +15,12 @@ export const REPORTS_PER_24H = 10;
 /** Rejected attempts in 24 hours before posting is paused for that user. */
 export const BLOCKED_ATTEMPTS_BEFORE_COOLDOWN = 10;
 export const FEED_PAGE_SIZE = 20;
+/** Optional "hours this update covers" on a post. */
+export const STUDY_HOURS_MIN = 0.5;
+export const STUDY_HOURS_MAX = 100;
 
 /** Bump when the community guidelines change materially; users re-accept. */
-export const GUIDELINES_VERSION = "2026-10-11";
+export const GUIDELINES_VERSION = "2026-10-13";
 
 export const USERNAME_MIN = 3;
 export const USERNAME_MAX = 20;

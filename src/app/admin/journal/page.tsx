@@ -2,6 +2,8 @@ import { requireStaff } from "@/lib/dal";
 import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/Badge";
 import { daysAgo } from "@/lib/utils";
+import { getTrustLevel, TRUST_LABEL } from "@/lib/journal/trust";
+import { isAiModerationEnabled, moderationModel } from "@/lib/journal/ai-moderation";
 import { PostModerationButtons, UnbanButton } from "@/components/admin/JournalModerationButtons";
 import { REPORT_REASON_LABEL, TAG_LABEL, type JournalTagValue, type ReportReasonValue } from "@/lib/journal/constants";
 
@@ -11,6 +13,9 @@ const FLAG_LABEL: Record<string, string> = {
   EXAM_DISCLOSURE: "May disclose exam questions",
   SENSITIVE_WORD: "Contains a word checked by hand",
   WELLBEING: "Self-harm language — consider reaching out",
+  AI_REJECT: "AI check: likely breaks the guidelines",
+  AI_REVIEW: "AI check: unsure (new member)",
+  AI_REFUSED: "AI check declined to classify",
 };
 
 export default async function AdminJournalPage() {
@@ -54,11 +59,19 @@ export default async function AdminJournalPage() {
     ]),
   ]);
 
+  const authorTrust = new Map(
+    await Promise.all([...new Set(queue.map((p) => p.user.id))].map(async (id) => [id, await getTrustLevel(id)] as const)),
+  );
+  const aiEnabled = isAiModerationEnabled();
+
   return (
     <div className="max-w-5xl">
       <h1 className="font-display text-3xl font-medium">Study wall moderation</h1>
       <p className="mt-2 text-sm text-ink-400">
         {counts[0]} published posts · {counts[1]} members with a username · {counts[2]} sign-ins in the last 7 days. Times in IST.
+      </p>
+      <p className="mt-1 text-xs text-ink-400">
+        AI check: {aiEnabled ? `on (${moderationModel()})` : "off — set ANTHROPIC_API_KEY to enable"}.
       </p>
 
       <Section title={`Needs review (${queue.length})`}>
@@ -71,9 +84,17 @@ export default async function AdminJournalPage() {
               <span>· {ist(p.createdAt)}</span>
               <Badge tone="amber">{p.status === "HELD_FOR_REVIEW" ? "Held by automatic check" : "Hidden after reports"}</Badge>
               <Badge>{TAG_LABEL[p.tag as JournalTagValue]}</Badge>
+              <Badge tone={authorTrust.get(p.user.id) === "NEW" ? "amber" : "green"}>{TRUST_LABEL[authorTrust.get(p.user.id) ?? "NEW"]}</Badge>
             </div>
             {p.flagReasons.length > 0 && (
               <p className="mt-2 text-xs font-medium text-signal-amber">{p.flagReasons.map((f) => FLAG_LABEL[f] ?? f).join(" · ")}</p>
+            )}
+            {p.aiVerdict && (
+              <p className="mt-1 text-xs text-ink-400">
+                AI: <strong>{p.aiVerdict}</strong>
+                {p.aiCategories.length > 0 && <> ({p.aiCategories.join(", ")})</>}
+                {p.aiReason && <> — {p.aiReason}</>}
+              </p>
             )}
             <p className="mt-2 whitespace-pre-wrap break-words text-sm text-ink-950">{p.body}</p>
             {p.reports.length > 0 && (

@@ -17,12 +17,14 @@
     "mcq:validate": "tsx prisma/validate-mcq-bank.ts",
     "content:check": "tsx prisma/check-abbreviations.ts",
     "test:moderation": "tsx prisma/test-journal-moderation.ts",
+    "test:stats": "tsx prisma/test-journal-stats.ts",
     "check:community": "tsx prisma/check-community-config.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
     "@auth/prisma-adapter": "^2.11.3",
     "@hookform/resolvers": "^5.9.1",
     "@prisma/adapter-pg": "^7.10.0",

@@ -8,7 +8,7 @@ export default function PrivacyPage() {
   return (
     <Container className="max-w-2xl py-16 prose-cpa">
       <h1 className="font-display text-3xl font-medium mb-6">Privacy Policy</h1>
-      <p className="text-sm text-ink-400">Last updated 11 October 2026.</p>
+      <p className="text-sm text-ink-400">Last updated 13 October 2026.</p>
 
       <h2>What we collect</h2>
       <ul>
@@ -34,7 +34,9 @@ export default function PrivacyPage() {
         <li>
           <strong>What you post and do.</strong> Study-wall posts, &ldquo;helpful&rdquo; reactions and reports you send;
           study progress, practice attempts, bookmarks and comments. When a post is rejected by our automatic checks we keep
-          the first 200 characters and the reason, so moderators can spot repeated abuse.
+          the first 200 characters and the reason, so moderators can spot repeated abuse. With each post we also store the
+          study hours you add (if any) and the result of the AI check (allow, review or reject, the category and a short
+          reason), which only moderators can see.
         </li>
       </ul>
 
@@ -50,6 +52,11 @@ export default function PrivacyPage() {
         <li>Our hosting and database providers, which store the data for us.</li>
         <li>Our email provider, which delivers sign-in codes to your inbox.</li>
         <li>Google, if you choose to sign in with Google.</li>
+        <li>
+          Anthropic, if AI review is enabled. The text of each study-wall post (and nothing else — not your email, username
+          or account details) is sent to Anthropic&apos;s Claude model to check it against the community guidelines.
+          Under Anthropic&apos;s commercial terms, this data is not used to train its models by default.
+        </li>
         <li>Cloudflare Turnstile, if enabled, which checks that sign-in requests come from a person rather than a bot.</li>
         <li>Vercel Web Analytics, which measures page views without cookies.</li>
       </ul>

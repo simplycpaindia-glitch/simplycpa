@@ -35,6 +35,12 @@ async function checkDatabase() {
     add("Database community tables", true, "migration applied");
   } catch (e) {
     add("Database community tables", false, `not found — run "npx prisma migrate deploy" (${(e as Error).message.split("\n")[0]})`);
+  }
+  try {
+    await prisma.journalPost.findFirst({ select: { studyHours: true, aiVerdict: true } });
+    add("Database phase 2 columns", true, "migration applied");
+  } catch {
+    add("Database phase 2 columns", false, 'study hours / AI columns missing — run "npx prisma migrate deploy"');
   } finally {
     await prisma.$disconnect();
   }
@@ -105,6 +111,22 @@ async function checkTurnstile() {
   else add("Turnstile secret", true, "accepted by Cloudflare");
 }
 
+async function checkAnthropic() {
+  const key = env("ANTHROPIC_API_KEY");
+  const model = env("MODERATION_MODEL") || "claude-opus-5-5";
+  if (!key) return add("AI post check (Anthropic)", "skip", "not configured — posts get the automatic word checks only");
+  // Looking up the model is free and proves both the key and the model name.
+  const res = await fetch(`https://api.anthropic.com/v1/models/${encodeURIComponent(model)}`, {
+    headers: { "x-api-key": key, "anthropic-version": "2023-06-01" },
+  });
+  if (res.status === 401 || res.status === 403) add("ANTHROPIC_API_KEY", false, `rejected by Anthropic (${res.status})`);
+  else if (res.status === 404) add("MODERATION_MODEL", false, `"${model}" not found — check the model name`);
+  else add("AI post check (Anthropic)", res.ok, res.ok ? `key valid, model ${model}` : `Anthropic returned ${res.status}`);
+
+  const alerts = env("MODERATOR_ALERT_EMAILS");
+  add("Moderator alert emails", "skip", alerts ? `sent to ${alerts}` : "sent to ADMIN/MODERATOR accounts (MODERATOR_ALERT_EMAILS not set)");
+}
+
 async function main() {
   const sendIdx = process.argv.indexOf("--send-test");
   const sendTo = sendIdx > -1 ? process.argv[sendIdx + 1] : undefined;
@@ -114,6 +136,7 @@ async function main() {
   checkGoogle();
   await checkResend(sendTo);
   await checkTurnstile();
+  await checkAnthropic();
 
   for (const r of results) {
     const mark = r.ok === "skip" ? "•" : r.ok ? "✓" : "✗";

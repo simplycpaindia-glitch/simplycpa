@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Flag, Heart, Trash2 } from "lucide-react";
+import { Clock, Flag, Heart, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/journal/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
@@ -87,6 +87,12 @@ export function PostCard({ post, viewer }: { post: FeedPost; viewer: { signedIn:
               {post.createdAgo}
             </time>
             {post.tag !== "GENERAL" && <Badge tone="gold">{TAG_LABEL[post.tag]}</Badge>}
+            {post.studyHours !== null && (
+              <Badge tone="neutral">
+                <Clock className="mr-1 h-3 w-3" aria-hidden />
+                {post.studyHours} h studied
+              </Badge>
+            )}
             {post.isOwn && post.status !== "PUBLISHED" && (
               <Badge tone="amber">{post.status === "HELD_FOR_REVIEW" ? "Waiting for review — only you can see this" : "Hidden after reports — under review"}</Badge>
             )}

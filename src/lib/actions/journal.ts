@@ -1,7 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { aiModeratePost, isAiModerationEnabled, type AiVerdict } from "@/lib/journal/ai-moderation";
+import { notifyModeratorsOfQueue } from "@/lib/journal/alerts";
+import { getTrustLevel } from "@/lib/journal/trust";
 import { auth } from "@/lib/auth";
 import {
   BLOCKED_ATTEMPTS_BEFORE_COOLDOWN,
@@ -11,6 +15,8 @@ import {
   REPORT_REASONS,
   REPORTS_PER_24H,
   REPORTS_TO_HIDE,
+  STUDY_HOURS_MAX,
+  STUDY_HOURS_MIN,
   type JournalTagValue,
   type ReportReasonValue,
 } from "@/lib/journal/constants";
@@ -38,7 +44,7 @@ export type CreatePostResult =
   | { ok: true; status: "PUBLISHED" | "HELD_FOR_REVIEW"; heldReasons: string[]; helpline?: string; postsLeft: number }
   | { ok: false; error: string; issues?: Issue[]; helpline?: string; needsProfile?: boolean; requiresAuth?: boolean };
 
-export async function createJournalPost(input: { body: string; tag: string }): Promise<CreatePostResult> {
+export async function createJournalPost(input: { body: string; tag: string; studyHours?: number | null }): Promise<CreatePostResult> {
   const g = await gate();
   if (!g.ok) return g;
   const user = g.user;
@@ -48,8 +54,25 @@ export async function createJournalPost(input: { body: string; tag: string }): P
     return { ok: false, error: "That post is too long." };
   }
 
+  // Optional hours studied: 0.5–100, in half-hour steps.
+  let studyHours: number | null = null;
+  if (input.studyHours !== undefined && input.studyHours !== null) {
+    const h = Number(input.studyHours);
+    if (!Number.isFinite(h) || h < STUDY_HOURS_MIN || h > STUDY_HOURS_MAX) {
+      return { ok: false, error: `Hours must be between ${STUDY_HOURS_MIN} and ${STUDY_HOURS_MAX}.` };
+    }
+    studyHours = Math.round(h * 2) / 2;
+  }
+
   const now = Date.now();
   const since24h = new Date(now - DAY_MS);
+
+  // Cheap early check so we don't run (and pay for) the AI check when the user is at
+  // the limit anyway. The locked check inside the transaction below is authoritative.
+  const postsToday = await prisma.journalPost.count({ where: { userId: user.id, createdAt: { gte: since24h } } });
+  if (postsToday >= POSTS_PER_24H) {
+    return { ok: false, error: `You've reached the limit of ${POSTS_PER_24H} posts in 24 hours. Please try again later.` };
+  }
 
   // Repeated rejected attempts pause posting for a day (stops people probing the filters).
   const blockedRecently = await prisma.blockedPostAttempt.count({ where: { userId: user.id, createdAt: { gte: since24h } } });
@@ -78,7 +101,25 @@ export async function createJournalPost(input: { body: string; tag: string }): P
     return { ok: false, error: "Your post wasn't published.", issues: blocked, helpline };
   }
 
-  const status = result.held.length ? "HELD_FOR_REVIEW" : "PUBLISHED";
+  // AI check (optional) — only for posts the free checks didn't already hold.
+  const held = [...result.held];
+  let ai: AiVerdict | null = null;
+  if (!held.length && isAiModerationEnabled()) {
+    ai = await aiModeratePost(result.text);
+    const trust = await getTrustLevel(user.id);
+    // Self-harm is always held (whatever the trust level) so a moderator sees it, matching the word check.
+    const selfHarm = ai.categories.includes("self_harm");
+    if (selfHarm || ai.verdict === "reject" || ai.verdict === "refused" || (ai.verdict === "review" && trust === "NEW")) {
+      held.push({
+        code: selfHarm ? "WELLBEING" : `AI_${ai.verdict.toUpperCase()}`,
+        message: selfHarm
+          ? "We'll have a person look at this post before it appears."
+          : "Our automatic review wants a person to look at this post before it appears. A moderator will check it shortly.",
+      });
+    }
+  }
+  const showHelplineNow = !!helpline || !!ai?.categories.includes("self_harm");
+  const status = held.length ? "HELD_FOR_REVIEW" : "PUBLISHED";
 
   // Rate limit and insert under a per-user lock, so parallel requests can't exceed it.
   const outcome = await prisma.$transaction(async (tx) => {
@@ -92,7 +133,19 @@ export async function createJournalPost(input: { body: string; tag: string }): P
       return { limited: true as const, nextAt: new Date(recent[0]!.createdAt.getTime() + DAY_MS) };
     }
     await tx.journalPost.create({
-      data: { userId: user.id, body: result.text, tag, status, flagReasons: result.held.map((h) => h.code), contentHash: hash },
+      data: {
+        userId: user.id,
+        body: result.text,
+        tag,
+        status,
+        studyHours,
+        flagReasons: held.map((h) => h.code),
+        contentHash: hash,
+        aiVerdict: ai?.verdict ?? null,
+        aiCategories: ai?.categories ?? [],
+        aiReason: ai?.reason ?? null,
+        aiModel: ai?.model ?? null,
+      },
     });
     return { limited: false as const, postsLeft: POSTS_PER_24H - recent.length - 1 };
   });
@@ -103,9 +156,17 @@ export async function createJournalPost(input: { body: string; tag: string }): P
     return { ok: false, error: `You've reached the limit of ${POSTS_PER_24H} posts in 24 hours. You can post again in about ${wait}.` };
   }
 
+  if (status === "HELD_FOR_REVIEW") after(() => notifyModeratorsOfQueue("held"));
+
   revalidatePath(FEED_PATH);
   if (user.username) revalidatePath(`${FEED_PATH}/u/${user.username}`);
-  return { ok: true, status, heldReasons: result.held.map((h) => h.message), helpline, postsLeft: outcome.postsLeft };
+  return {
+    ok: true,
+    status,
+    heldReasons: held.map((h) => h.message),
+    helpline: showHelplineNow ? HELPLINE_TEXT : undefined,
+    postsLeft: outcome.postsLeft,
+  };
 }
 
 /** Authors can permanently delete their own posts; staff remove posts via the moderation queue. */
@@ -155,9 +216,17 @@ export async function reportJournalPost(input: { postId: string; reason: string;
     return { ok: true as const, alreadyReported: true }; // unique (postId, reporterId)
   }
 
-  const openReports = await prisma.journalReport.count({ where: { postId: post.id, resolvedAt: null } });
-  if (openReports >= REPORTS_TO_HIDE && post.status === "PUBLISHED") {
-    await prisma.journalPost.update({ where: { id: post.id }, data: { status: "HIDDEN_BY_REPORTS" } });
+  // Only reports from established members (trust MEMBER or above) count towards hiding,
+  // so a batch of brand-new accounts can't take a post down. Every report still reaches
+  // moderators.
+  if (post.status === "PUBLISHED") {
+    const reporters = await prisma.journalReport.findMany({ where: { postId: post.id, resolvedAt: null }, select: { reporterId: true } });
+    const levels = await Promise.all(reporters.map((r) => getTrustLevel(r.reporterId)));
+    const counted = levels.filter((l) => l !== "NEW").length;
+    if (counted >= REPORTS_TO_HIDE) {
+      const hidden = await prisma.journalPost.updateMany({ where: { id: post.id, status: "PUBLISHED" }, data: { status: "HIDDEN_BY_REPORTS" } });
+      if (hidden.count === 1) after(() => notifyModeratorsOfQueue("reported"));
+    }
   }
   revalidatePath(FEED_PATH, "layout");
   return { ok: true as const, alreadyReported: false };

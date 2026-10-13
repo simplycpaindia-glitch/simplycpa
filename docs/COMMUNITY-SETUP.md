@@ -70,6 +70,44 @@ When both are set, the email-code form requires the check. When they're not, it'
 Moderators (and admins/editors) see **Admin → Study wall**. To make a member a moderator,
 set their `role` to `MODERATOR` (e.g. with `npx prisma studio`).
 
+## 6. AI review of posts (optional, paid per post — Anthropic)
+
+1. console.anthropic.com → add billing → **API keys** → create a key.
+2. Vercel environment variables: `ANTHROPIC_API_KEY`, and optionally `MODERATION_MODEL`
+   (default `claude-opus-5-5`; `claude-haiku-5-5` costs roughly 40× less).
+3. Redeploy, then run `npm run check:community` with the same values in `.env`.
+
+How it behaves (`src/lib/journal/ai-moderation.ts`, `src/lib/actions/journal.ts`):
+
+- Runs only after a post has passed every word/limit/duplicate check, so blocked posts cost nothing.
+- Only the post text is sent — never the email, username or account details.
+- The AI never blocks a post. **reject** or a model refusal → held for review.
+  **review** → held for *new* members, published for Members/Trusted. **allow** → published.
+  Self-harm always shows the helpline and is held.
+- If the API errors or takes longer than 8 seconds, the post is handled by the word checks alone
+  (fails open) and the error is logged.
+- The verdict, categories and reason are shown to moderators in the queue.
+
+## 7. Moderator alert emails
+
+When a post is held, or hidden by reports, an email goes to `MODERATOR_ALERT_EMAILS`
+(comma-separated) or, if that's unset, every ADMIN/MODERATOR account. It contains only
+the number of items waiting and a link to the queue — no post text. At most one alert
+per 30 minutes and 10 per day, so a spam wave can't use up the Resend quota needed for
+sign-in codes. Uses the same Resend settings as sign-in codes.
+
+## Trust levels and study stats
+
+| Level | Requirements | Effect |
+| --- | --- | --- |
+| New member | — | AI "unsure" posts are held; reports don't count towards auto-hiding |
+| Member | 3+ days old, 2+ published posts, no removals in 30 days | AI "unsure" posts publish; reports count |
+| Trusted member | 30+ days, 15+ published, 10+ helpful received, no removals in 90 days | As Member, plus a profile badge |
+
+Thresholds live in `src/lib/journal/trust.ts` (and are shown on the guidelines page
+automatically). Streaks and hours are calculated from published posts
+(`src/lib/journal/streaks.ts`, weeks are Monday–Sunday IST); tests: `npm run test:stats`.
+
 ## What is enforced, and where
 
 | Rule | Where it's enforced |
@@ -95,8 +133,9 @@ post is wrongly blocked or wrongly allowed.
 ## Known limitations (be aware)
 
 - **Word lists can't understand context.** They catch the obvious and disguised cases;
-  subtle harassment, sarcasm or off-topic posts rely on reports and moderators. An AI
-  classifier is a natural Phase 2 addition (it has a small per-post cost).
+  subtle harassment, sarcasm or off-topic posts rely on the AI review (if enabled),
+  reports and moderators. The AI can also be wrong; it only ever holds posts, never deletes them.
+- **Study hours are self-reported** and aren't verified.
 - **Hinglish coverage is a starting list.** Add words to `wordlists.ts` as you see them.
 - **IP-based limits** use the platform's forwarding headers (set by Vercel). On another
   host, make sure `x-forwarded-for` can't be spoofed by clients.
