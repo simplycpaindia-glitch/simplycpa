@@ -38,6 +38,13 @@ export async function sendEmail(input: { to: string; subject: string; text: stri
   });
   if (!res.ok) {
     console.error("Resend send failed", res.status, await res.text().catch(() => ""));
+    if (res.status === 429) {
+      // Rate limit or the plan's daily quota (Resend's free plan: 100 emails/day, reset at 00:00 UTC).
+      return {
+        ok: false as const,
+        error: "Email sign-in is very busy right now. Please use “Continue with Google”, or try again in a few hours (the daily limit resets at 5:30 am IST).",
+      };
+    }
     return { ok: false as const, error: "We couldn't send the email. Please try again shortly." };
   }
   return { ok: true as const, dev: false };

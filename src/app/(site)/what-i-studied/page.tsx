@@ -7,6 +7,7 @@ import { Composer } from "@/components/journal/Composer";
 import { PostCard } from "@/components/journal/PostCard";
 import { cn } from "@/lib/utils";
 import { getCommunityUser } from "@/lib/journal/profile";
+import { getSignInMethods } from "@/lib/sign-in-methods";
 import { getFeed, parseTag, postsLeftFor } from "@/lib/journal/queries";
 import { JOURNAL_TAGS, POST_MAX_CHARS, POSTS_PER_24H, REPORTS_TO_HIDE, TAG_LABEL } from "@/lib/journal/constants";
 
@@ -27,6 +28,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
   const tag = parseTag(params.tag);
   const cursor = typeof params.cursor === "string" ? params.cursor : null;
 
+  const methods = getSignInMethods();
   const session = await auth();
   const viewer = session?.user ? await getCommunityUser(session.user.id) : null;
   const [{ posts, nextCursor }, postsLeft] = await Promise.all([
@@ -61,7 +63,8 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
               <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-5">
                 <p className="font-medium text-ink-950">Share your week with other CPA candidates</p>
                 <p className="mt-1 text-sm text-ink-400">
-                  Reading is open to everyone. To post, sign in with Google or a one-time email code — no password needed.
+                  Reading is open to everyone. To post, sign in or create a free account
+                  {methods.google || methods.emailCode ? " — no password needed" : ""}.
                 </p>
                 <Button href="/login?callbackUrl=/what-i-studied" size="sm" className="mt-4">
                   Sign in to post

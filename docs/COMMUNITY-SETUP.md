@@ -29,7 +29,9 @@ Deploy the code only after this succeeds — the new pages query the new tables.
 4. Copy the client ID and secret into Vercel environment variables:
    `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`.
 
-The "Continue with Google" button only appears when both are set.
+The "Continue with Google" button only appears when both are set. Likewise, the email-code
+form only appears in production once Resend is configured, so the site can be deployed
+before any of these keys exist (it falls back to password login).
 
 Google-verified addresses are linked to an existing account with the same email (for
 example, someone who first signed in with an email code). That is safe because Google
@@ -37,12 +39,20 @@ only issues verified addresses.
 
 ## 3. Email sign-in codes (Resend — free tier)
 
-1. Create an account at resend.com and **add your domain** (`simplycpa.in`). Add the DNS
-   records Resend shows (SPF/DKIM) at your DNS provider and wait for verification.
+1. Create an account at resend.com and **add the domain** `mail.simplycpa.in` (a subdomain
+   keeps sign-in email reputation separate). Add the DNS records Resend shows (MX, SPF and
+   DKIM) at Hostinger, which hosts the domain's DNS, and wait for verification.
 2. Create an API key with "Sending access".
 3. Vercel environment variables:
    - `RESEND_API_KEY` = the key
-   - `EMAIL_FROM` = `SimplyCPA <signin@simplycpa.in>`
+   - `EMAIL_FROM` = `SimplyCPA <signin@mail.simplycpa.in>`
+
+Resend's free plan allows 100 emails a day and 3,000 a month (the daily count resets at
+00:00 UTC = 5:30 am IST). Each code is one email. If the quota is hit, the sign-in form
+tells people to use Google instead. Upgrade to Pro ($20/month) if that happens regularly.
+
+Step-by-step instructions with exact values are in `docs/SATURDAY-CHECKLIST.md`, and
+`npm run check:community` verifies the configuration once keys are in `.env`.
 
 Without these, codes are printed to the server log in development, and in production the
 form says email sign-in is unavailable (it never pretends an email was sent).

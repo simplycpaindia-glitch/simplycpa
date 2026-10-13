@@ -13,10 +13,12 @@ import { requestEmailCode, signInWithGoogle, verifyEmailCode } from "@/lib/actio
 export function SignInOptions({
   callbackUrl,
   googleEnabled,
+  emailEnabled,
   turnstileSiteKey,
 }: {
   callbackUrl?: string;
   googleEnabled: boolean;
+  emailEnabled: boolean;
   turnstileSiteKey?: string;
 }) {
   const [step, setStep] = useState<"email" | "code">("email");
@@ -53,6 +55,15 @@ export function SignInOptions({
     });
   }
 
+  if (!googleEnabled && !emailEnabled) {
+    return (
+      <p className="rounded-lg bg-paper-100 px-4 py-3 text-sm text-ink-800">
+        Passwordless sign-in (Google and email codes) is being set up and will be available shortly. For now, please
+        log in with a password below.
+      </p>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-5">
       {googleEnabled && (
@@ -66,15 +77,17 @@ export function SignInOptions({
               Continue with Google
             </button>
           </form>
-          <div className="flex items-center gap-3 text-xs text-ink-400">
-            <span className="h-px flex-1 bg-ink-950/10" />
-            or get a code by email
-            <span className="h-px flex-1 bg-ink-950/10" />
-          </div>
+          {emailEnabled && (
+            <div className="flex items-center gap-3 text-xs text-ink-400">
+              <span className="h-px flex-1 bg-ink-950/10" />
+              or get a code by email
+              <span className="h-px flex-1 bg-ink-950/10" />
+            </div>
+          )}
         </>
       )}
 
-      {step === "email" ? (
+      {!emailEnabled ? null : step === "email" ? (
         <form
           onSubmit={(e) => {
             e.preventDefault();
