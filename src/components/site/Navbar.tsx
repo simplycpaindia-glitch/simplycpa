@@ -53,6 +53,7 @@ export async function Navbar() {
             <DropdownLink href="/roadmap" label="Roadmap" />
             <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
             <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
+            <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
             <DropdownLink href="/sources" label="Official Sources" />
             <DropdownLink href="/faq" label="FAQs" />
             <DropdownLink href="/blog" label="Blog" />

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/quick-sheets" },
   title: "CPA Quick Sheets",
   description: "Short, high-yield revision sheets for every CPA topic, organized by subject.",
 };
@@ -22,7 +23,7 @@ export default async function QuickSheetsIndexPage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Quick Sheets"
             title="CPA Quick Sheets"
             description="Short, high-yield revision sheets — key rules, formulas, and traps — organized by subject."

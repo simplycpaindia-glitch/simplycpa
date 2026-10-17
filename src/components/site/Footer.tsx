@@ -33,6 +33,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "FAQs", href: "/faq" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Fee Estimator", href: "/fees" },
+      { label: "Free CPA Resources", href: "/free-cpa-resources" },
       { label: "Official Sources", href: "/sources" },
     ],
   },

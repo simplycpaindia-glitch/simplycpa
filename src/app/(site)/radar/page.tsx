@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/radar" },
   title: "CPA Radar",
   description: "Blueprint changes, policy updates, and deadlines relevant to CPA candidates — each with a last-verified date.",
 };
@@ -14,7 +15,7 @@ export default async function RadarPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading
+      <SectionHeading as="h1"
         eyebrow="CPA Radar"
         title="What changed recently"
         description="Blueprint refreshes, policy changes, and deadlines that affect CPA candidates. Every item carries a last-verified date because CPA Exam information changes."

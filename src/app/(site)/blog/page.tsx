@@ -21,7 +21,7 @@ export default async function BlogIndexPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading eyebrow="Knowledge Centre" title="Blog" description="Strategy, career guidance, and what's actually changing in the CPA world — written for Indian candidates." />
+      <SectionHeading as="h1" eyebrow="Knowledge Centre" title="Blog" description="Strategy, career guidance, and what's actually changing in the CPA world — written for Indian candidates." />
       <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <Link key={post.id} href={`/blog/${post.slug}`}>

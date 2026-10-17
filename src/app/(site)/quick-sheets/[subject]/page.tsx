@@ -16,6 +16,7 @@ export async function generateMetadata({
   return {
     title: `${subject.shortName} Quick Sheets`,
     description: `Short, high-yield revision sheets for every ${subject.shortName} topic.`,
+    alternates: { canonical: `/quick-sheets/${subject.slug}` },
   };
 }
 
@@ -45,7 +46,7 @@ export default async function SubjectQuickSheetsPage({
             <span>/</span>
             <span>{subject.shortName}</span>
           </div>
-          <SectionHeading eyebrow="Quick Sheets" title={`${subject.shortName} Quick Sheets`} />
+          <SectionHeading as="h1" eyebrow="Quick Sheets" title={`${subject.shortName} Quick Sheets`} />
         </Container>
       </div>
       <Container className="py-14 max-w-2xl">

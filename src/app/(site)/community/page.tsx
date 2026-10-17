@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/community" },
   title: "Community",
   description: "Recent student discussions across every CPA topic.",
 };
@@ -23,7 +24,7 @@ export default async function CommunityPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading
+      <SectionHeading as="h1"
         eyebrow="Community"
         title="Recent discussions"
         description="Every topic page has its own discussion — questions, tips, and doubts from other candidates. Here's what's been asked recently."

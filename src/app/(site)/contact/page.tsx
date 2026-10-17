@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "How to reach SimplyCPA with corrections, questions or feedback about the free US CPA study library.",
+  alternates: { canonical: "/contact" },
+};
 
 export default function ContactPage() {
   return (

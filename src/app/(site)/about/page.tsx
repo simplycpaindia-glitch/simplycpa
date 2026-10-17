@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 
-export const metadata: Metadata = { title: "About" };
+export const metadata: Metadata = {
+  title: "About",
+  description: "Why SimplyCPA exists: a free US CPA study library organised around the questions Indian candidates actually have, written against AICPA and NASBA sources.",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   return (

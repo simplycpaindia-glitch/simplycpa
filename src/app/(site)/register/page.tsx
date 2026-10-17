@@ -5,7 +5,11 @@ import { RegisterForm } from "@/components/auth/RegisterForm";
 import { SignInOptions } from "@/components/auth/SignInOptions";
 import { getSignInMethods } from "@/lib/sign-in-methods";
 
-export const metadata: Metadata = { title: "Create your free account" };
+export const metadata: Metadata = {
+  title: "Create your free account",
+  description: "Create a free SimplyCPA account to track your CPA study progress, save topics and join the study wall.",
+  alternates: { canonical: "/register" },
+};
 
 export default function RegisterPage() {
   const methods = getSignInMethods();

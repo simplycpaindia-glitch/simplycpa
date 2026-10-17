@@ -29,7 +29,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "SimplyCPA",
+    locale: "en_IN",
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

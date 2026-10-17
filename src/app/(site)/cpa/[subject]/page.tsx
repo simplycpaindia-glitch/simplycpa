@@ -31,6 +31,7 @@ export async function generateMetadata({
   return {
     title: `${subject.shortName} — ${subject.name}`,
     description: subject.description,
+    alternates: { canonical: `/cpa/${subject.slug}` },
   };
 }
 

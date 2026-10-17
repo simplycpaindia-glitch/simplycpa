@@ -2,7 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { pingIndexNow } from "@/lib/indexnow";
 import { requireStaff, requireAdmin } from "@/lib/dal";
 import { sanitizeContentHtml } from "@/lib/sanitize";
 
@@ -164,6 +166,7 @@ export async function saveStudyMaterial(topicId: string, path: string, formData:
   });
   revalidatePath(path);
   revalidatePath("/admin/topics");
+  if (formData.get("status") === "PUBLISHED" && path.startsWith("/cpa/")) after(() => pingIndexNow([path]));
 }
 
 export async function saveRevisionNote(topicId: string, path: string, formData: FormData) {
@@ -178,6 +181,7 @@ export async function saveRevisionNote(topicId: string, path: string, formData: 
   });
   revalidatePath(path);
   revalidatePath("/admin/topics");
+  if (formData.get("status") === "PUBLISHED" && path.startsWith("/cpa/")) after(() => pingIndexNow([path]));
 }
 
 // ── Blog ────────────────────────────────────────────────────────────────
@@ -205,7 +209,8 @@ export async function updateBlogPost(id: string, formData: FormData) {
   const user = await requireStaff();
   const status = formData.get("status") as
     | "DRAFT" | "AI_DRAFT" | "UNDER_REVIEW" | "APPROVED" | "PUBLISHED" | "NEEDS_UPDATE" | "ARCHIVED";
-  await prisma.blogPost.update({
+  const existing = await prisma.blogPost.findUnique({ where: { id }, select: { publishedAt: true } });
+  const post = await prisma.blogPost.update({
     where: { id },
     data: {
       title: String(formData.get("title")),
@@ -213,12 +218,16 @@ export async function updateBlogPost(id: string, formData: FormData) {
       content: sanitizeContentHtml(String(formData.get("content") ?? "")),
       category: String(formData.get("category") ?? "CPA Basics"),
       status,
-      publishedAt: status === "PUBLISHED" ? new Date() : null,
+      // Keep the original publish date when editing a live post; edits show via updatedAt.
+      publishedAt: status === "PUBLISHED" ? (existing?.publishedAt ?? new Date()) : null,
     },
+    select: { slug: true },
   });
   await logAudit(user.id, "update", "BlogPost", id);
   revalidatePath("/admin/blog");
   revalidatePath("/blog");
+  revalidatePath(`/blog/${post.slug}`);
+  if (status === "PUBLISHED") after(() => pingIndexNow([`/blog/${post.slug}`, "/blog"]));
 }
 
 // ── FAQ ─────────────────────────────────────────────────────────────────

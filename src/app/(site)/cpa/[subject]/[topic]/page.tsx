@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { SITE_URL } from "@/lib/site";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
@@ -49,6 +51,9 @@ export async function generateMetadata({
   return {
     title: `${data.topic.title} · ${data.subject.shortName}`,
     description: data.topic.shortDescription,
+    alternates: { canonical: `/cpa/${data.subject.slug}/${data.topic.slug}` },
+    // Placeholder pages stay out of search results until their content exists.
+    robots: data.topic.isComingSoon ? { index: false, follow: true } : undefined,
   };
 }
 
@@ -182,20 +187,20 @@ export default async function TopicPage({
     },
   ].filter(Boolean) as { id: string; label: string; content: React.ReactNode }[];
 
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "CPA", item: `${base}/cpa` },
-      { "@type": "ListItem", position: 2, name: subject.shortName, item: `${base}/cpa/${subject.slug}` },
-      { "@type": "ListItem", position: 3, name: topic.title, item: `${base}${path}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "CPA", item: `${SITE_URL}/cpa` },
+      { "@type": "ListItem", position: 3, name: subject.shortName, item: `${SITE_URL}/cpa/${subject.slug}` },
+      { "@type": "ListItem", position: 4, name: topic.title, item: `${SITE_URL}${path}` },
     ],
   };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
       <div className="border-b border-ink-950/10 bg-paper-100 py-8">
         <Container>
           <div className="flex flex-wrap items-center gap-2 text-xs text-ink-400 mb-4">

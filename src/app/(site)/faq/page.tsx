@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { FaqBrowser } from "@/components/faq/FaqBrowser";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQs",
   description: "Answers on CPA eligibility, fees, exam structure, and the process for Indian candidates.",
 };
@@ -26,8 +28,8 @@ export default async function FaqPage() {
 
   return (
     <Container className="py-16">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <SectionHeading
+      <JsonLd data={jsonLd} />
+      <SectionHeading as="h1"
         eyebrow="Resources"
         title="Frequently asked questions"
         description="Search or filter by category. If your question about eligibility, fees, or licensing isn't answered here, it's likely because the answer depends on your specific state board — check the Official Sources page."

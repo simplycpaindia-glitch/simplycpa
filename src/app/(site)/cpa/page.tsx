@@ -4,6 +4,7 @@ import { CoreDisciplineExplainer } from "@/components/home/CoreDisciplineExplain
 import { SubjectGrid } from "@/components/home/SubjectGrid";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/cpa" },
   title: "CPA Exam Sections",
   description:
     "FAR, AUD, REG, and the BAR/ISC/TCP Discipline choice — explore every US CPA Exam section.",
@@ -14,7 +15,7 @@ export default function CpaIndexPage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="CPA Exam"
             title="Every section, in one place"
             description="Three Core sections everyone takes, and one Discipline you choose. Pick a subject below to start studying."

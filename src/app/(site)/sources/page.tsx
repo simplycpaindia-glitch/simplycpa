@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/sources" },
   title: "Official Sources",
   description: "Primary AICPA, NASBA, and state board sources referenced across SimplyCPA.",
 };
@@ -21,11 +23,18 @@ export default async function SourcesPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading
+      <SectionHeading as="h1"
         eyebrow="Resources"
         title="Official sources"
         description="We link directly to AICPA, NASBA, and other official material rather than reproducing it. Every study material and MCQ item on this site can be traced back to a source like these."
       />
+      <p className="mt-4 max-w-3xl text-sm text-ink-800">
+        Looking for free study material? See our guide to{" "}
+        <Link href="/free-cpa-resources" className="font-medium underline">
+          free CPA resources
+        </Link>{" "}
+        — Blueprints, sample tests and the free standards, mapped to each section.
+      </p>
       <div className="mt-10 flex flex-col divide-y divide-ink-950/10 max-w-3xl">
         {sources.map((s) => (
           <div key={s.id} className="py-4">

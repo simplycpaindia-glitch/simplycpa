@@ -5,7 +5,11 @@ import { Container, SectionHeading } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SearchBox } from "@/components/site/SearchBox";
 
-export const metadata: Metadata = { title: "Search" };
+export const metadata: Metadata = {
+  title: "Search",
+  // Search result pages are for visitors, not search engines.
+  robots: { index: false, follow: true },
+};
 
 export default async function SearchPage({
   searchParams,
@@ -55,7 +59,7 @@ export default async function SearchPage({
 
   return (
     <Container className="py-14 max-w-2xl">
-      <SectionHeading eyebrow="Search" title="Search SimplyCPA" />
+      <SectionHeading as="h1" eyebrow="Search" title="Search SimplyCPA" />
       <div className="mt-6">
         <SearchBox />
       </div>

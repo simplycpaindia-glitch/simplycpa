@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
@@ -7,8 +8,7 @@ import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { RichContent } from "@/components/content/RichContent";
 import { formatDate } from "@/lib/utils";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { SITE_URL } from "@/lib/site";
 
 async function getPost(slug: string) {
   return prisma.blogPost.findUnique({
@@ -113,7 +113,7 @@ export default async function BlogPostPage({
 
   return (
     <Container className="max-w-3xl py-16">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
       <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs text-ink-400">
         <Link href="/blog" className="hover:text-ink-950">Blog</Link>
         <span>/</span>

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 
-export const metadata: Metadata = { title: "Disclaimer" };
+export const metadata: Metadata = {
+  title: "Disclaimer",
+  description: "SimplyCPA is an independent study resource, not affiliated with the AICPA, NASBA or any state board. Always confirm rules with official sources.",
+  alternates: { canonical: "/disclaimer" },
+};
 
 export default function DisclaimerPage() {
   return (

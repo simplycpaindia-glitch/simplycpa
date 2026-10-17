@@ -4,7 +4,7 @@ import { requireUser } from "@/lib/dal";
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 
-export const metadata: Metadata = { title: "Saved for Later" };
+export const metadata: Metadata = { title: "Saved for Later", robots: { index: false } };
 
 export default async function BookmarksPage() {
   const user = await requireUser();
@@ -24,7 +24,7 @@ export default async function BookmarksPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading eyebrow="Dashboard" title="Saved for later" />
+      <SectionHeading as="h1" eyebrow="Dashboard" title="Saved for later" />
       <div className="mt-8 flex flex-col divide-y divide-ink-950/10 max-w-2xl">
         {bookmarks.map((b) => {
           const topic = b.targetType === "TOPIC" ? topicById.get(b.targetId) : null;

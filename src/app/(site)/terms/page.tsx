@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 
-export const metadata: Metadata = { title: "Terms of Use" };
+export const metadata: Metadata = {
+  title: "Terms of Use",
+  description: "The terms for using SimplyCPA, a free US CPA study library and community.",
+  alternates: { canonical: "/terms" },
+};
 
 export default function TermsPage() {
   return (

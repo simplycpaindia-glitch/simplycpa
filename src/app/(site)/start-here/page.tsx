@@ -3,6 +3,7 @@ import { Container, SectionHeading } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/start-here" },
   title: "Start Here",
   description: "New to the US CPA? Seven steps from zero to your first day of studying.",
 };
@@ -48,7 +49,7 @@ export default function StartHerePage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="New to the US CPA?"
             title="Start Here"
             description="Seven steps from never having looked into it, to your first day of studying."

@@ -7,7 +7,7 @@ import { Card, ProgressBar } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
-export const metadata: Metadata = { title: "Your Dashboard" };
+export const metadata: Metadata = { title: "Your Dashboard", robots: { index: false } };
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -60,7 +60,7 @@ export default async function DashboardPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading eyebrow="Your CPA Journey" title={`Welcome back, ${user.name?.split(" ")[0] ?? "there"}`} />
+      <SectionHeading as="h1" eyebrow="Your CPA Journey" title={`Welcome back, ${user.name?.split(" ")[0] ?? "there"}`} />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {subjectStats.map(({ subject, pct }) => (

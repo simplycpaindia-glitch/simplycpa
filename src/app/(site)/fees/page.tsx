@@ -6,6 +6,7 @@ import { FeeEstimator, type EstimatorFees } from "@/components/fees/FeeEstimator
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/fees" },
   title: "CPA Exam Fee Estimator",
   description:
     "Estimate the total cost of the US CPA Exam for Indian candidates — application, exam, international administration, and evaluation fees, each with its source and last-verified date.",
@@ -51,7 +52,7 @@ export default async function FeesPage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Fee Estimator"
             title="What will the CPA Exam cost you?"
             description="A rough, sourced estimate for candidates testing in India. Every figure below carries its source and the date we last checked it, because these fees change and differ by state."

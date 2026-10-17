@@ -6,7 +6,11 @@ import { SignInOptions } from "@/components/auth/SignInOptions";
 import { getSignInMethods } from "@/lib/sign-in-methods";
 import { safeCallbackPath } from "@/lib/journal/security";
 
-export const metadata: Metadata = { title: "Log in" };
+export const metadata: Metadata = {
+  title: "Log in",
+  description: "Sign in to SimplyCPA to save progress, bookmark topics and post on the study wall.",
+  alternates: { canonical: "/login" },
+};
 
 export default async function LoginPage({
   searchParams,

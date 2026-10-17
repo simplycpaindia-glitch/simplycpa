@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/what-i-studied/u/
     title: `@${normaliseUsername(decodeURIComponent(username))} — What I Studied This Week`,
     // Member pages are not indexed: members' study logs shouldn't surface in search by name.
     robots: { index: false, follow: true },
+    alternates: { canonical: `/what-i-studied/u/${normaliseUsername(decodeURIComponent(username))}` },
   };
 }
 

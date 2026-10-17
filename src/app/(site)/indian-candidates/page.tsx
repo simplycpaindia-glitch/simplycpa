@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/indian-candidates" },
   title: "CPA for Indian Students",
   description:
     "Eligibility, state selection, credential evaluation, cost, and career paths — the US CPA process explained for Indian CA students, commerce graduates, and working professionals.",
@@ -49,7 +50,7 @@ export default function IndianCandidatesPage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="CPA for Indian Students"
             title="The process, explained without the sales pitch"
             description="Eligibility, state selection, credential evaluation, cost, and what comes after — the parts that are usually scattered across ten different forums."

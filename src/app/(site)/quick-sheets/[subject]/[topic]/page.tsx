@@ -29,6 +29,7 @@ export async function generateMetadata({
   return {
     title: `${data.topic.title} — Quick Sheet`,
     description: `5-minute revision sheet for ${data.topic.title} (${data.subject.shortName}): key rules, formulas, and common traps.`,
+    alternates: { canonical: `/quick-sheets/${data.subject.slug}/${data.topic.slug}` },
   };
 }
 

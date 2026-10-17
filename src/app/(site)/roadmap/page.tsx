@@ -3,6 +3,7 @@ import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/roadmap" },
   title: "How to Become a CPA",
   description: "The step-by-step roadmap from eligibility to CPA licensure for Indian candidates.",
 };
@@ -55,7 +56,7 @@ export default function RoadmapPage() {
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
-          <SectionHeading
+          <SectionHeading as="h1"
             eyebrow="Roadmap"
             title="How to become a CPA"
             description="Passing the CPA Exam and holding a CPA license are two different milestones. Here's the full path, in order."

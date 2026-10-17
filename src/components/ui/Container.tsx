@@ -22,12 +22,15 @@ export function SectionHeading({
   description,
   align = "left",
   className,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   align?: "left" | "center";
   className?: string;
+  /** Use "h1" when this is the page's main title (each page needs exactly one h1). */
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={cn(align === "center" && "text-center", className)}>
@@ -36,9 +39,9 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2 className="font-display text-3xl sm:text-4xl font-medium text-ink-950 text-balance">
+      <Heading className="font-display text-3xl sm:text-4xl font-medium text-ink-950 text-balance">
         {title}
-      </h2>
+      </Heading>
       {description && (
         <p className="mt-3 text-ink-400 max-w-2xl text-balance leading-relaxed">
           {description}

@@ -1,10 +1,16 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { SITE_URL as base } from "@/lib/site";
 
+// Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
+export const revalidate = 3600;
+
+/**
+ * lastModified is only set where we know when the content really changed. Stamping every
+ * page with "now" on each crawl teaches search engines to ignore the field entirely.
+ */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
-  const [subjects, topics, posts, quickSheetTopics] = await Promise.all([
+  const [subjects, topics, posts, quickSheetTopics, latest] = await Promise.all([
     prisma.subject.findMany({ select: { slug: true, lastUpdated: true } }),
     prisma.topic.findMany({
       where: { isComingSoon: false },
@@ -18,34 +24,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { revisionNote: { isNot: null } },
       select: { slug: true, updatedAt: true, subject: { select: { slug: true } } },
     }),
+    Promise.all([
+      prisma.topic.aggregate({ where: { isComingSoon: false }, _max: { updatedAt: true } }),
+      prisma.blogPost.aggregate({ where: { status: "PUBLISHED" }, _max: { updatedAt: true } }),
+      prisma.fAQ.aggregate({ where: { status: "PUBLISHED" }, _max: { updatedAt: true } }),
+      prisma.update.aggregate({ _max: { lastVerified: true } }),
+      prisma.source.aggregate({ _max: { dateChecked: true } }),
+      prisma.journalPost.aggregate({ where: { status: "PUBLISHED" }, _max: { createdAt: true } }),
+    ]),
   ]);
+  const [topicMax, blogMax, faqMax, radarMax, sourceMax, wallMax] = latest;
+  const quickSheetMax = quickSheetTopics.reduce<Date | undefined>((m, t) => (!m || t.updatedAt > m ? t.updatedAt : m), undefined);
 
-  const staticRoutes = [
-    "",
-    "/cpa",
+  const dated: Record<string, Date | null | undefined> = {
+    "": topicMax._max.updatedAt,
+    "/cpa": topicMax._max.updatedAt,
+    "/quick-sheets": quickSheetMax,
+    "/blog": blogMax._max.updatedAt,
+    "/faq": faqMax._max.updatedAt,
+    "/radar": radarMax._max.lastVerified,
+    "/sources": sourceMax._max.dateChecked,
+    "/what-i-studied": wallMax._max.createdAt,
+  };
+  const undated = [
+    "/free-cpa-resources",
     "/start-here",
-    "/quick-sheets",
-    "/faq",
-    "/blog",
     "/roadmap",
     "/fees",
     "/indian-candidates",
-    "/radar",
-    "/sources",
     "/community",
-    "/what-i-studied",
     "/community-guidelines",
     "/about",
+    "/contact",
     "/privacy",
     "/terms",
     "/disclaimer",
-    "/contact",
-  ].map((path) => ({ url: `${base}${path}`, lastModified: new Date() }));
+  ];
 
-  const quickSheetRoutes = quickSheetTopics.map((t) => ({
-    url: `${base}/quick-sheets/${t.subject.slug}/${t.slug}`,
-    lastModified: t.updatedAt,
-  }));
+  const staticRoutes: MetadataRoute.Sitemap = [
+    ...Object.entries(dated).map(([path, d]) => ({ url: `${base}${path}`, ...(d && { lastModified: d }) })),
+    ...undated.map((path) => ({ url: `${base}${path}` })),
+  ];
 
   const subjectRoutes = subjects.map((s) => ({
     url: `${base}/cpa/${s.slug}`,
@@ -57,10 +76,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: t.updatedAt,
   }));
 
+  const quickSheetSubjects = [...new Set(quickSheetTopics.map((t) => t.subject.slug))].map((slug) => ({
+    url: `${base}/quick-sheets/${slug}`,
+  }));
+
+  const quickSheetRoutes = quickSheetTopics.map((t) => ({
+    url: `${base}/quick-sheets/${t.subject.slug}/${t.slug}`,
+    lastModified: t.updatedAt,
+  }));
+
   const blogRoutes = posts.map((p) => ({
     url: `${base}/blog/${p.slug}`,
     lastModified: p.updatedAt,
   }));
 
-  return [...staticRoutes, ...subjectRoutes, ...topicRoutes, ...quickSheetRoutes, ...blogRoutes];
+  return [...staticRoutes, ...subjectRoutes, ...topicRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
 }
