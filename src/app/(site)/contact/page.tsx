@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,7 +15,7 @@ export default function ContactPage() {
       <p>
         Found an error in the study material, spotted an outdated fee, or have feedback on a
         topic? Reach out at{" "}
-        <a href="mailto:hello@simplycpa.example">hello@simplycpa.example</a> — corrections to
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> — corrections to
         exam-accuracy issues are prioritized.
       </p>
     </Container>

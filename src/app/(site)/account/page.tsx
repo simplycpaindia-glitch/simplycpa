@@ -72,7 +72,7 @@ export default async function AccountPage() {
 
       <section className="mt-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5">
         <h2 className="font-semibold text-ink-950">Recent sign-ins</h2>
-        <p className="mt-1 text-xs text-ink-400">If you don&apos;t recognise one, sign out and contact us.</p>
+        <p className="mt-1 text-xs text-ink-400">If you don&apos;t recognise one, sign out and <Link href="/contact" className="underline">contact us</Link>.</p>
         {signIns.length === 0 ? (
           <p className="mt-3 text-sm text-ink-400">No sign-ins recorded yet.</p>
         ) : (

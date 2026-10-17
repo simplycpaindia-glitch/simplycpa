@@ -2,6 +2,8 @@
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 export const SITE_NAME = "SimplyCPA";
 export const SITE_TAGLINE = "The Free US CPA Study Library";
+/** Public contact address (shown on /contact and in structured data). */
+export const CONTACT_EMAIL = "simplycpa.india@gmail.com";
 
 /** Brand colours (mirrors globals.css) for places CSS variables can't reach, like generated images. */
 export const BRAND = {

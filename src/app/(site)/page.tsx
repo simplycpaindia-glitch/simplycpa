@@ -11,7 +11,7 @@ import { OfficialSourcesStrip } from "@/components/home/OfficialSourcesStrip";
 import { FaqPreview } from "@/components/home/FaqPreview";
 import { BlogPreview } from "@/components/home/BlogPreview";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -26,6 +26,7 @@ const siteJsonLd = [
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}/icon`,
+    email: CONTACT_EMAIL,
     description:
       "A free US CPA study library: study material, revision notes and practice questions for every exam section, written against official AICPA and NASBA sources.",
   },
