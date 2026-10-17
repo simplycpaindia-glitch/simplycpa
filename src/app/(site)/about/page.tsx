@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
@@ -27,6 +28,10 @@ export default function AboutPage() {
         published guidance wherever possible; anything that can change over time (fees,
         eligibility, deadlines) is tracked with a source and a last-verified date rather than
         stated as a fixed fact.
+      </p>
+      <p>
+        Read our <Link href="/editorial-standards">editorial standards</Link> for how content is written, sourced and
+        corrected.
       </p>
     </Container>
   );

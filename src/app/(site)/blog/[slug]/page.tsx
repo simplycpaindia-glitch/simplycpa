@@ -9,11 +9,11 @@ import { Badge } from "@/components/ui/Badge";
 import { RichContent } from "@/components/content/RichContent";
 import { formatDate } from "@/lib/utils";
 import { SITE_URL } from "@/lib/site";
+import { AboutSimplyCPA, Byline } from "@/components/content/AboutSimplyCPA";
 
 async function getPost(slug: string) {
   return prisma.blogPost.findUnique({
     where: { slug },
-    include: { author: { select: { name: true } } },
   });
 }
 
@@ -95,10 +95,9 @@ export default async function BlogPostPage({
       datePublished: post.publishedAt?.toISOString(),
       dateModified: post.updatedAt.toISOString(),
       ...(post.coverImageUrl && { image: post.coverImageUrl }),
-      author: post.author?.name
-        ? { "@type": "Person", name: post.author.name }
-        : { "@type": "Organization", name: "SimplyCPA", url: SITE_URL },
-      publisher: { "@type": "Organization", name: "SimplyCPA", url: SITE_URL },
+      // Articles are credited to SimplyCPA as an organisation (see /editorial-standards).
+      author: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SimplyCPA", url: SITE_URL },
+      publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SimplyCPA", url: SITE_URL },
     },
     {
       "@context": "https://schema.org",
@@ -121,14 +120,16 @@ export default async function BlogPostPage({
       </nav>
       <Badge tone="gold">{post.category}</Badge>
       <h1 className="mt-3 font-display text-4xl font-medium text-balance">{post.title}</h1>
-      <p className="mt-3 text-sm text-ink-400">
-        {post.author?.name ?? "SimplyCPA"}
-        {post.publishedAt && ` · ${formatDate(post.publishedAt)}`}
-        {wasUpdated && ` · Updated ${formatDate(post.updatedAt)}`}
-      </p>
+      <div className="mt-3">
+        <Byline
+          published={post.publishedAt ? formatDate(post.publishedAt) : undefined}
+          updated={wasUpdated ? formatDate(post.updatedAt) : undefined}
+        />
+      </div>
       <div className="mt-8">
         <RichContent html={post.content} />
       </div>
+      <AboutSimplyCPA />
 
       {related.length > 0 && (
         <section className="mt-16 border-t border-ink-950/10 pt-10">

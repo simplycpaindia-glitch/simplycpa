@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/site";
+import { AboutSimplyCPA, Byline } from "@/components/content/AboutSimplyCPA";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
@@ -14,7 +15,7 @@ import { RichContent } from "@/components/content/RichContent";
 import { MarkCompleteButton } from "@/components/practice/MarkCompleteButton";
 import { McqPractice } from "@/components/practice/McqPractice";
 import { Comments } from "@/components/discussion/Comments";
-import { formatMinutes } from "@/lib/utils";
+import { formatDate, formatMinutes } from "@/lib/utils";
 
 async function getTopic(subjectSlug: string, topicSlug: string) {
   const subject = await prisma.subject.findUnique({ where: { slug: subjectSlug } });
@@ -187,16 +188,35 @@ export default async function TopicPage({
     },
   ].filter(Boolean) as { id: string; label: string; content: React.ReactNode }[];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "CPA", item: `${SITE_URL}/cpa` },
-      { "@type": "ListItem", position: 3, name: subject.shortName, item: `${SITE_URL}/cpa/${subject.slug}` },
-      { "@type": "ListItem", position: 4, name: topic.title, item: `${SITE_URL}${path}` },
-    ],
-  };
+  // Content is credited to SimplyCPA as an organisation (see /editorial-standards).
+  const updated = topic.studyMaterial?.updatedAt ?? topic.updatedAt;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      name: topic.title,
+      description: topic.shortDescription,
+      url: `${SITE_URL}${path}`,
+      learningResourceType: "Study notes",
+      educationalLevel: "Professional",
+      about: `US CPA Exam — ${subject.shortName} (${subject.name})`,
+      inLanguage: "en",
+      dateModified: updated.toISOString(),
+      author: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SimplyCPA", url: SITE_URL },
+      publisher: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "SimplyCPA", url: SITE_URL },
+      isAccessibleForFree: true,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "CPA", item: `${SITE_URL}/cpa` },
+        { "@type": "ListItem", position: 3, name: subject.shortName, item: `${SITE_URL}/cpa/${subject.slug}` },
+        { "@type": "ListItem", position: 4, name: topic.title, item: `${SITE_URL}${path}` },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -212,6 +232,9 @@ export default async function TopicPage({
           </div>
           <h1 className="font-display text-3xl sm:text-4xl font-medium text-balance">{topic.title}</h1>
           <p className="mt-2 max-w-2xl text-ink-400">{topic.shortDescription}</p>
+          <div className="mt-2">
+            <Byline updated={formatDate(updated)} />
+          </div>
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <DifficultyBadge difficulty={topic.difficulty} />
             {topic.estimatedMinutes && (
@@ -226,6 +249,7 @@ export default async function TopicPage({
 
       <Container className="py-10">
         <Tabs tabs={tabs} />
+        <AboutSimplyCPA />
 
         {(prevTopic || nextTopic) && (
           <nav

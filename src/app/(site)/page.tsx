@@ -27,6 +27,7 @@ const siteJsonLd = [
     url: SITE_URL,
     logo: `${SITE_URL}/icon`,
     email: CONTACT_EMAIL,
+    publishingPrinciples: `${SITE_URL}/editorial-standards`,
     description:
       "A free US CPA study library: study material, revision notes and practice questions for every exam section, written against official AICPA and NASBA sources.",
   },
