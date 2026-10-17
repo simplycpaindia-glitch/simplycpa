@@ -1,6 +1,10 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL as base } from "@/lib/site";
+import { RESOURCES_CHECKED } from "@/lib/free-resources";
+import { PASS_RATES_CHECKED } from "@/lib/trackers/pass-rates";
+import { SCORE_RELEASE_CHECKED } from "@/lib/trackers/score-release";
+import { PATHWAYS_CHECKED } from "@/lib/trackers/pathways";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
 export const revalidate = 3600;
@@ -45,9 +49,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/radar": radarMax._max.lastVerified,
     "/sources": sourceMax._max.dateChecked,
     "/what-i-studied": wallMax._max.createdAt,
+    // Trackers change when we re-check their official data.
+    "/free-cpa-resources": new Date(RESOURCES_CHECKED),
+    "/cpa-exam-pass-rates": new Date(PASS_RATES_CHECKED),
+    "/cpa-score-release-dates": new Date(SCORE_RELEASE_CHECKED),
+    "/cpa-licensure-pathways": new Date(PATHWAYS_CHECKED),
   };
   const undated = [
-    "/free-cpa-resources",
     "/start-here",
     "/roadmap",
     "/fees",
