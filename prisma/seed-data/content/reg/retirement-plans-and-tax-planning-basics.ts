@@ -129,5 +129,13 @@ export const retirementPlans: TopicContent = {
 
 <h3>Rollovers</h3>
 <p>60 days; one IRA-to-IRA indirect rollover per 12 months; 20% withholding on plan payouts to the employee.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Roth IRA contributions phase out at higher incomes; Roth 401(k) contributions have no income limit.</li>
+<li>Excess IRA contributions cost a 6% excise tax every year until corrected.</li>
+<li>The 10% early withdrawal penalty is on top of regular income tax, not instead of it.</li>
+<li>Indirect rollover from a plan: 20% is withheld, so the taxpayer must make it up from other funds to roll over (and avoid tax on) the full amount.</li>
+</ul>
 `,
 };

@@ -117,5 +117,13 @@ export const debtorCreditorBankruptcy: TopicContent = {
 <li>Order: secured → domestic support → administrative → wages → taxes → general unsecured.</li>
 <li>Not discharged: recent taxes, support, student loans, fraud, fines.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A filed financing statement lapses after 5 years unless a continuation statement is filed within the 6 months before lapse.</li>
+<li>A consumer who buys consumer goods from another consumer (a garage sale) takes free of an automatically perfected PMSI, unless a financing statement was filed.</li>
+<li>Secured creditors are paid from their collateral first; any shortfall becomes a general unsecured claim.</li>
+<li>The automatic stay doesn't stop criminal proceedings or the collection of domestic support.</li>
+</ul>
 `,
 };

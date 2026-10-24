@@ -119,5 +119,13 @@ export const partnerships: TopicContent = {
 
 <h3>Sale of interest</h3>
 <p>Capital gain, except Section 751 hot assets (receivables, inventory, recapture) → ordinary.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Partners are taxed on their share of income whether or not it is distributed.</li>
+<li>Guaranteed payments are ordinary income to the partner even if the partnership has a loss.</li>
+<li>A partnership's tax year generally follows the majority-interest partners' year.</li>
+<li>Contributed property with a built-in loss: only the contributing partner can use that loss; for other partners its basis is fair value.</li>
+</ul>
 `,
 };

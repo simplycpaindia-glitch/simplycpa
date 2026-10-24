@@ -123,5 +123,13 @@ export const agencyBusinessStructures: TopicContent = {
 <li>Limited liability company (LLC) and corporation: limited liability; veil can be pierced.</li>
 <li>Directors: business judgment rule. Promoters: liable until novation.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>An agent who acts beyond their authority is personally liable to the third party for breach of the implied warranty of authority.</li>
+<li>Apparent authority can't arise for an undisclosed principal — the third party didn't know a principal existed.</li>
+<li>A principal generally isn't criminally liable for an agent's crimes unless it authorized or took part in them.</li>
+<li>Shareholders vote on fundamental changes (mergers, selling substantially all assets, amending the articles), not on day-to-day management.</li>
+</ul>
 `,
 };

@@ -120,5 +120,13 @@ export const trustsEstatesGift: TopicContent = {
 <li>Distributable net income (DNI): caps distribution deduction and beneficiary income; preserves character.</li>
 <li>Form 1041 due April 15; compressed brackets; 65-day rule.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The exclusion is unified: taxable lifetime gifts use up the amount available at death.</li>
+<li>Life insurance owned by the decedent is in the gross estate, even though the proceeds are free of income tax.</li>
+<li>Gifts made within 3 years of death generally aren't added back — except transfers of life insurance and gift tax paid.</li>
+<li>Income in respect of a decedent (such as unpaid salary or traditional individual retirement account (IRA) balances) gets no stepped-up basis.</li>
+</ul>
 `,
 };

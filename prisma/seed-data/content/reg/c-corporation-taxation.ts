@@ -113,5 +113,13 @@ export const cCorporations: TopicContent = {
 
 <h3>Other taxes</h3>
 <p>Accumulated earnings tax 20% · personal holding company tax 20% · 15% minimum tax for $1 billion+ corporations.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Section 351: a shareholder who gets stock for services has ordinary income, and that stock doesn't count toward the 80% control test unless they also contribute property.</li>
+<li>Organizational costs: up to $5,000 deducted (phase-out over $50,000), the rest over 180 months. Stock issuance costs are never deductible.</li>
+<li>Earnings and profits isn't taxable income: tax-exempt interest increases it and federal income tax reduces it.</li>
+<li>Fines and penalties are never deductible, and entertainment is 0% deductible (business meals 50%).</li>
+</ul>
 `,
 };

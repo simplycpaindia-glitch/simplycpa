@@ -122,5 +122,13 @@ export const adjustmentsDeductions: TopicContent = {
 
 <h3>Qualified business income (QBI) deduction</h3>
 <p>20%, permanent; wage and property limits and specified service business exclusion above the threshold (phase-in $75,000 / $150,000); $400 minimum from 2026.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Only unreimbursed medical expenses count — insurance reimbursements reduce them.</li>
+<li>Appreciated long-term capital gain property given to a public charity: deduct fair market value, limited to 30% of AGI.</li>
+<li>Home equity interest is deductible only if the loan was used to buy, build or substantially improve the home.</li>
+<li>The OBBBA deductions for tips, overtime and seniors don't reduce AGI, but can be claimed alongside the standard deduction.</li>
+</ul>
 `,
 };

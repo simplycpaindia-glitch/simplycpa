@@ -115,5 +115,12 @@ export const irsProcedures: TopicContent = {
 
 <h3>Rulings</h3>
 <p>Private letter ruling: binds only that taxpayer.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Signing Form 872 extends the period for assessment.</li>
+<li>The 90-day deadline to petition the Tax Court can't be extended (150 days if the notice is addressed outside the US).</li>
+<li>Revenue rulings apply to all taxpayers; a private letter ruling protects only the taxpayer who requested it.</li>
+</ul>
 `,
 };

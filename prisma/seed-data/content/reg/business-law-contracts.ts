@@ -136,5 +136,13 @@ export const contracts: TopicContent = {
 
 <h3>Risk of loss</h3>
 <p>Free on board (FOB) shipping point → buyer at carrier. FOB destination → buyer at tender. Breaching party bears risk.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Past consideration is not consideration — a promise to pay for something already done is unenforceable.</li>
+<li>Silence is not acceptance, unless prior dealings or the parties' agreement make it so.</li>
+<li>The parol evidence rule bars earlier or simultaneous terms that contradict a final written contract — not later modifications, or evidence of fraud.</li>
+<li>Acceptance of an option is effective on <strong>receipt</strong>, not dispatch.</li>
+</ul>
 `,
 };

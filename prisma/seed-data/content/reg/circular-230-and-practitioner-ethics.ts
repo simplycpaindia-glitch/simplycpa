@@ -103,5 +103,12 @@ export const circular230: TopicContent = {
 
 <h3>Preparer basics</h3>
 <p>Preparer Tax Identification Number (PTIN) · sign · give copy · keep records 3 years.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A practitioner must promptly provide records the IRS properly requests, unless privileged, and must not unreasonably delay any IRS matter.</li>
+<li>If a client won't correct an error on a prior return, Circular 230 doesn't require withdrawal — but under the SSTS the CPA should consider whether to keep the client.</li>
+<li>In a fee dispute the practitioner must return the client's own records, but may keep their own unpaid work product.</li>
+</ul>
 `,
 };

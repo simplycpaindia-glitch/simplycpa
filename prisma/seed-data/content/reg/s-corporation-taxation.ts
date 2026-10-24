@@ -113,5 +113,13 @@ export const sCorporations: TopicContent = {
 
 <h3>Entity taxes</h3>
 <p>Built-in gains: 21% within 5 years of conversion. Excess passive income tax. Last-in, first-out (LIFO) recapture.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Distributions above basis are capital gain; losses above basis are suspended and carried forward, not lost.</li>
+<li>Later income restores reduced <strong>loan</strong> basis before stock basis.</li>
+<li>Health insurance for a more-than-2% shareholder-employee is wages on the W-2, but the shareholder deducts it as self-employed health insurance.</li>
+<li>Termination mid-year creates two short tax years: one as an S corporation, one as a C corporation.</li>
+</ul>
 `,
 };

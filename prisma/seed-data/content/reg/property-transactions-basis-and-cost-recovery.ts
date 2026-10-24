@@ -127,5 +127,13 @@ export const basisCostRecovery: TopicContent = {
 
 <h3>Amortization</h3>
 <p>Section 197 intangibles: 15 years. Start-up costs: $5,000 immediate (phase-out over $50,000), rest over 180 months.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Land is never depreciated; land improvements are (15-year property).</li>
+<li>Listed property such as cars used 50% or less for business: no Section 179 or bonus — straight-line under the alternative system.</li>
+<li>The mid-quarter 40% test ignores residential and nonresidential real property and amounts expensed under Section 179.</li>
+<li>A gift on which gift tax was paid: add the tax attributable to the appreciation to the donee's basis.</li>
+</ul>
 `,
 };

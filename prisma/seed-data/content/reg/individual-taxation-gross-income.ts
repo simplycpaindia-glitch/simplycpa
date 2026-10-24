@@ -115,5 +115,13 @@ export const grossIncome: TopicContent = {
 <li>Active rental: up to $25,000; phase-out 50% over $100,000–$150,000 modified AGI.</li>
 <li>Suspended passive losses released on full disposal.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Life insurance paid in installments: the interest element of each payment is taxable.</li>
+<li>Disability benefits are taxable if the employer paid the premiums, and excluded if the employee paid them with after-tax money.</li>
+<li>Damages for emotional distress are taxable unless they flow from a physical injury.</li>
+<li>Constructive receipt: a check received on December 31 is income that year, even if deposited in January.</li>
+</ul>
 `,
 };

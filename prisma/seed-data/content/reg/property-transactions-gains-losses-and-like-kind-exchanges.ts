@@ -123,5 +123,13 @@ export const gainsLossesLikeKind: TopicContent = {
 
 <h3>Loss limits</h3>
 <p>Wash sale: ±30 days, loss added to new basis. Related party: disallowed; buyer offsets later gain only.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Section 1031 is mandatory when its conditions are met — a taxpayer can't choose to recognize a loss instead.</li>
+<li>Wash sale rules disallow losses only; gains on the same trades are taxed normally.</li>
+<li>The Section 121 exclusion can be used only once every 2 years.</li>
+<li>Long-term means held <strong>more than</strong> one year — exactly one year is short-term.</li>
+</ul>
 `,
 };

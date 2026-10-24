@@ -127,5 +127,13 @@ export const taxProceduresPenalties: TopicContent = {
 <li>Willful or reckless: greater of $5,000 or 75%.</li>
 <li>Standards: undisclosed → substantial authority; disclosed → reasonable basis; tax shelter → more likely than not.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Failure to file (5% a month) is ten times failure to pay (0.5%) — file on time even if you can't pay.</li>
+<li>Penalties are computed on the net tax due, after withholding and estimated payments.</li>
+<li>Reasonable cause can waive filing and payment penalties, and first-time abatement is available with a clean record.</li>
+<li>A return more than 60 days late faces a minimum failure-to-file penalty, even when little tax is due.</li>
+</ul>
 `,
 };

@@ -115,5 +115,12 @@ export const exemptOrganizations: TopicContent = {
 
 <h3>Returns</h3>
 <p>Receipts ≤ $50,000 → 990-N · &lt; $200,000 receipts and &lt; $500,000 assets → 990-EZ · larger → 990. Due May 15 (calendar). 3 years unfiled → exemption revoked.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Any sale between a private foundation and a disqualified person is self-dealing — even at fair value, and even if it benefits the foundation.</li>
+<li>Gifts to foreign charities are generally not deductible for individuals.</li>
+<li>Donations to 501(c)(4) social welfare organizations are generally not deductible as charitable contributions.</li>
+</ul>
 `,
 };

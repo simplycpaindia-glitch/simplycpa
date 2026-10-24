@@ -112,5 +112,13 @@ export const payrollBenefits: TopicContent = {
 
 <h3>Forms</h3>
 <p>W-2 by January 31 · 941 quarterly · 940 annual · 1099-NEC threshold $2,000 from 2026.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The employer's half of payroll taxes is deductible by the employer; the employee's half is not deductible by the employee.</li>
+<li>Group-term life cover above $50,000: the cost of the excess cover is taxable wages.</li>
+<li>Selling incentive option shares before the holding periods are met (a disqualifying disposition) makes the bargain element ordinary income in the year of sale.</li>
+<li>The self-employed health insurance deduction isn't available for months when the taxpayer could join an employer-subsidized plan.</li>
+</ul>
 `,
 };

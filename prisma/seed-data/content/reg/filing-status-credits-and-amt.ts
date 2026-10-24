@@ -113,5 +113,13 @@ export const filingStatusCreditsAmt: TopicContent = {
 <li>Add back: state and local taxes, standard deduction, incentive stock option bargain element, depreciation differences, private activity bond interest.</li>
 <li>Timing items → minimum tax credit.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Marital status is tested on the last day of the year; if a spouse died during the year, the survivor can still file jointly.</li>
+<li>Someone who is a dependent can't claim dependents of their own.</li>
+<li>The Lifetime Learning credit is per <strong>return</strong>; the American Opportunity credit is per <strong>student</strong>.</li>
+<li>Filing jointly makes both spouses jointly and severally liable for the tax (innocent spouse relief may apply).</li>
+</ul>
 `,
 };
