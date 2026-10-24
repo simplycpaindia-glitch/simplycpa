@@ -13,7 +13,7 @@ const steps = [
   {
     icon: Zap,
     title: "Revise",
-    body: "A separate 5-minute quick sheet per topic — the key rules, formulas and memory aids, not a second copy of the full material.",
+    body: "A separate 5-minute quick sheet per topic — the key rules, formulas and exam traps, not a second copy of the full material.",
     href: "/quick-sheets",
     cta: "Open quick sheets",
   },
