@@ -140,5 +140,12 @@ export const financialStatementAnalysis: TopicContent = {
 
 <h3>Economics</h3>
 <p>Leading indicators move first; gross domestic product (GDP) = consumption + investment + government + net exports; elastic demand (&gt; 1): price up → revenue down.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The quick ratio leaves out inventory and prepaid expenses.</li>
+<li>A favorable price variance alongside an unfavorable quantity variance may mean cheaper, lower-quality materials.</li>
+<li>Rising ROE can come from more leverage rather than better operations — break it down with DuPont.</li>
+</ul>
 `,
 };

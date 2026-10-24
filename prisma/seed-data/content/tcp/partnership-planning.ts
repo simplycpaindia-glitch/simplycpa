@@ -90,5 +90,12 @@ export const partnershipPlanning: TopicContent = {
 
 <h3>Compensation</h3>
 <p>General partners: self-employment tax on share. Guaranteed payments: deductible, ordinary, self-employment tax, not qualified business income. Hot assets on sale → ordinary (Section 751).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A Section 754 election applies to all later transfers and distributions, and can be revoked only with Internal Revenue Service (IRS) consent.</li>
+<li>Nonrecourse debt adds to basis, but counts as at-risk only if it is qualified nonrecourse real estate financing.</li>
+<li>A partner can't be an employee of the partnership — no W-2 wages for partners.</li>
+</ul>
 `,
 };

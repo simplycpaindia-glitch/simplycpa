@@ -107,5 +107,12 @@ export const personalFinancialPlanning: TopicContent = {
 
 <h3>Social Security</h3>
 <p>Full retirement age 67; delay to 70 → about +8% per year; up to 85% taxable.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>HSA contributions require a high-deductible health plan; after 65, non-medical withdrawals are taxed but not penalized.</li>
+<li>Tax-equivalent yield uses the <strong>marginal</strong> tax rate, not the average rate.</li>
+<li>Diversification reduces company-specific risk but can't remove market (systematic) risk.</li>
+</ul>
 `,
 };

@@ -84,5 +84,12 @@ export const entityChoice: TopicContent = {
 
 <h3>Exit</h3>
 <p>Pass-through asset sale → buyer step-up, one tax. C corporation → sell stock to avoid double tax.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The Section 1202 exclusion applies only to C corporation stock acquired at original issue — not S corporation stock or shares bought from another shareholder.</li>
+<li>A single-member LLC is ignored for income tax but treated as a separate entity for its employees' payroll taxes.</li>
+<li>An LLC can elect S corporation treatment — but must then meet every S rule, including one class of stock.</li>
+</ul>
 `,
 };

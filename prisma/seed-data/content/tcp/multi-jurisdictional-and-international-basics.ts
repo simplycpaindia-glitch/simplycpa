@@ -85,5 +85,13 @@ export const multiJurisdictional: TopicContent = {
 
 <h3>International — corporations</h3>
 <p>100% deduction for foreign dividends from 10%-owned corporations · Subpart F · net controlled foreign corporation (CFC) tested income (formerly global intangible low-taxed income) · transfer pricing at arm's length.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Physical presence still creates nexus — Wayfair added economic nexus; it didn't replace physical presence.</li>
+<li>The FBAR is filed with the Financial Crimes Enforcement Network (FinCEN), separately from the income tax return.</li>
+<li>The foreign earned income exclusion and the foreign tax credit can't both be used on the same income.</li>
+<li>Green card holders are US residents taxed on worldwide income, even while living abroad.</li>
+</ul>
 `,
 };

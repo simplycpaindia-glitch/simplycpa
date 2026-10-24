@@ -104,5 +104,12 @@ export const derivativesHedging: TopicContent = {
 
 <h3>Other</h3>
 <p>Normal purchases and sales exception. Embedded derivatives: bifurcate if not clearly and closely related.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Hedge accounting is optional and needs documentation at inception — it can't be applied retroactively.</li>
+<li>The notional amount isn't recorded; only the derivative's fair value is on the balance sheet.</li>
+<li>Cash flow hedge gains and losses leave OCI when the hedged item affects earnings — for example, when the hedged inventory purchase is sold.</li>
+</ul>
 `,
 };

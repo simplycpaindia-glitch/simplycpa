@@ -98,5 +98,12 @@ export const individualTaxPlanning: TopicContent = {
 
 <h3>Education</h3>
 <p>Section 529: K–12 tuition up to $20,000 from 2026; 5-year gift election; Roth rollover up to $35,000.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Buying the same security in an IRA within 30 days triggers the wash sale rule — and that loss is lost permanently.</li>
+<li>A qualified charitable distribution counts toward required distributions but isn't deductible — it's simply left out of income.</li>
+<li>Stock held one year or less given to charity: the deduction is limited to basis, not fair market value.</li>
+</ul>
 `,
 };

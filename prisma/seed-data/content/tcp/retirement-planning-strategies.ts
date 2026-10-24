@@ -93,5 +93,13 @@ export const retirementPlanningStrategies: TopicContent = {
 <li>Net unrealized appreciation: in-kind employer stock → ordinary tax on basis only, gain later at capital rates.</li>
 <li>Inherited: spouse can treat as own; others 10 years.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The backdoor Roth pro rata rule counts all traditional, SEP and SIMPLE IRA balances at year end — not just the account converted.</li>
+<li>Roth conversions can't be undone (recharacterized) since 2018.</li>
+<li>SIMPLE IRA withdrawals within the first 2 years of participation carry a 25% penalty, not 10%.</li>
+<li>SEP contributions must be made for all eligible employees at the same percentage of pay as the owner.</li>
+</ul>
 `,
 };

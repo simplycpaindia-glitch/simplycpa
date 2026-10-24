@@ -99,5 +99,12 @@ export const systemsDevelopmentChange: TopicContent = {
 <li>Separate environments; configuration baselines; patch management.</li>
 <li>Compensating control: review production change logs against approved tickets.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Testing in production with live data is a control failure — use separate environments with masked data.</li>
+<li>User acceptance testing is done by users, not by the developers.</li>
+<li>The post-implementation review comes after go-live and asks whether the system met its objectives — it isn't part of testing.</li>
+</ul>
 `,
 };

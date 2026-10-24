@@ -106,5 +106,12 @@ export const thirdPartyRisk: TopicContent = {
 
 <h3>Which report</h3>
 <p>SOC 1 → financial reporting. SOC 2 → security and other trust criteria. SOC 3 → screening only.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Outsourcing a process doesn't outsource the risk — the user entity remains responsible.</li>
+<li>A bridge letter covers the gap after the SOC report period, but it is management's statement and isn't audited.</li>
+<li>Put the right to audit in the contract before signing — it's hard to add later.</li>
+</ul>
 `,
 };

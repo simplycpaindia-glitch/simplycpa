@@ -124,5 +124,12 @@ export const employeeBenefitPlans: TopicContent = {
 
 <h3>Other postretirement benefits</h3>
 <p>Same model; accumulated postretirement benefit obligation (APBO); usually unfunded.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Prior service cost from a plan amendment goes to OCI and is amortized — it isn't expensed immediately.</li>
+<li>Employer contributions don't change pension cost directly; they increase plan assets.</li>
+<li>Benefits paid reduce both the PBO and plan assets, so they don't change the funded status.</li>
+</ul>
 `,
 };

@@ -106,5 +106,12 @@ export const dataManagementGovernance: TopicContent = {
 
 <h3>Controls</h3>
 <p>Extract, transform, and load (ETL) reconciliations · master data change approval · restricted database access · data lineage.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>WHERE filters rows before grouping; HAVING filters groups after aggregation.</li>
+<li>Normalization reduces redundancy but can slow reporting queries, which is why data warehouses are often denormalized.</li>
+<li>Data under a legal hold must not be destroyed, even when the retention period has passed.</li>
+</ul>
 `,
 };

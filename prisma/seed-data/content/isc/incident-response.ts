@@ -103,5 +103,12 @@ export const incidentResponse: TopicContent = {
 <li>Health Insurance Portability and Accountability Act (HIPAA): within 60 days.</li>
 <li>States: varies (often 30–60 days).</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Contain before you eradicate — cut off the attacker's access first, then remove the cause.</li>
+<li>Preserve evidence before wiping systems; reimaging first destroys forensic evidence.</li>
+<li>Restore only from backups known to be clean — ransomware may have been dormant in recent backups.</li>
+</ul>
 `,
 };

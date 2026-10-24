@@ -118,5 +118,12 @@ export const taxResearch: TopicContent = {
 
 <h3>Process</h3>
 <p>Facts → issues → locate → evaluate (current law) → conclude → memo and client letter.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Temporary regulations issued after 1988 expire after 3 years.</li>
+<li>Committee reports are legislative history — persuasive, but not binding authority.</li>
+<li>Revenue rulings carry less weight than regulations in court.</li>
+</ul>
 `,
 };

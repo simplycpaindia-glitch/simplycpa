@@ -99,5 +99,12 @@ export const socEngagements: TopicContent = {
 
 <h3>Opinions</h3>
 <p>Material description or control failure → qualified; pervasive → adverse; scope limitation or no assertion → qualified, disclaimer, or withdraw.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A SOC 3 report has no tests and results, so a user auditor can't rely on it to assess control risk.</li>
+<li>Exceptions in a Type 2 report don't automatically mean a qualified opinion — users still need to judge their effect.</li>
+<li>If user entities don't perform the complementary user entity controls, the service organization's controls may not meet their objectives.</li>
+</ul>
 `,
 };

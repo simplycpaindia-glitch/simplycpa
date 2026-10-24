@@ -117,5 +117,12 @@ export const governmentalFunds: TopicContent = {
 
 <h3>Proprietary cash flows</h3>
 <p>Direct method; four categories.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Property taxes collected in advance for next year's levy are a deferred inflow, not revenue.</li>
+<li>Interest on long-term debt is recognized when due, so it usually isn't accrued at year end in the debt service fund.</li>
+<li>Long-term liabilities such as compensated absences are reported in governmental funds only when they have matured (are due and payable).</li>
+</ul>
 `,
 };

@@ -99,5 +99,12 @@ export const stockCompensation: TopicContent = {
 <li>Employee stock purchase plan (ESPP): noncompensatory if broad, discount ≤ 5%, no look-back.</li>
 <li>Excess tax benefits and deficiencies → income tax expense.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Grant date is when both parties understand the key terms and any required approval is obtained — not just the board meeting date.</li>
+<li>Awards fully vested at grant are expensed immediately.</li>
+<li>Since Accounting Standards Update (ASU) 2018-07, awards to nonemployees follow largely the same model as employee awards.</li>
+</ul>
 `,
 };

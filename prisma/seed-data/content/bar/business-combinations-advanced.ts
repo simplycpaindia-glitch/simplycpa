@@ -102,5 +102,13 @@ export const businessCombinationsAdvanced: TopicContent = {
 <li>Common control: carrying amounts, no goodwill.</li>
 <li>Reverse acquisition: legal acquirer = accounting acquiree.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A VIE's primary beneficiary may own little or no voting equity — consolidation follows power and economics, not ownership percentage.</li>
+<li>Push-down accounting is the <strong>acquiree's</strong> election, in its own separate statements.</li>
+<li>Measurement-period adjustments are recorded in the period they're determined — prior periods aren't restated.</li>
+<li>Consolidated net income includes the NCI's share; net income attributable to NCI is shown separately on the face of the income statement.</li>
+</ul>
 `,
 };

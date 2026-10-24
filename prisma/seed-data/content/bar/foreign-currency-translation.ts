@@ -108,5 +108,12 @@ export const foreignCurrency: TopicContent = {
 <li>Highly inflationary: &gt; ≈ 100% cumulative over 3 years → remeasure.</li>
 <li>Sale of foreign entity → recycle CTA to income.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Books kept in a currency that isn't the functional currency: first remeasure into the functional currency, then translate into the reporting currency.</li>
+<li>Equity accounts are translated at historical rates; retained earnings is carried forward, not retranslated.</li>
+<li>A payable in a foreign currency gives a gain when that currency weakens — fewer dollars are needed to settle it.</li>
+</ul>
 `,
 };

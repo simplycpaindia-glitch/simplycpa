@@ -108,5 +108,12 @@ export const cCorporationCompliance: TopicContent = {
 
 <h3>Other</h3>
 <p>Research credit (payroll offset for small businesses) · foreign tax credit · 15% minimum tax for $1 billion+ · accrual method unless small business.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Accrued bonuses to employees are deductible for an accrual-basis corporation only if paid within 2½ months after year end.</li>
+<li>Accrued pay to a cash-basis shareholder who owns more than 50% is deductible only when actually paid.</li>
+<li>Federal income tax expense is added back in the book-to-tax reconciliation — it's never deductible.</li>
+</ul>
 `,
 };

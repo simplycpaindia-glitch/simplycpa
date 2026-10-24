@@ -90,5 +90,12 @@ export const businessProcessAutomation: TopicContent = {
 
 <h3>Risk</h3>
 <p>Automation repeats errors at scale — bad logic or bad data affects every transaction.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The three-way match compares the purchase order, the receiving report and the vendor invoice — not the payment.</li>
+<li>Gaps in the invoice sequence suggest unbilled shipments (a completeness problem); duplicate numbers suggest occurrence problems.</li>
+<li>Data flow diagrams show how data moves, not documents or controls — use a flowchart to see controls.</li>
+</ul>
 `,
 };

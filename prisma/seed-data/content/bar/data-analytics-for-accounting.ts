@@ -111,5 +111,13 @@ export const dataAnalytics: TopicContent = {
 
 <h3>Charts</h3>
 <p>Trend → line · categories → bar · relationship → scatter · distribution → histogram · parts → stacked bar or pie.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>For skewed data such as salaries, the median describes the typical value better than the mean.</li>
+<li>Benford's law suits naturally occurring amounts spanning several orders of magnitude — not assigned numbers such as invoice numbers or prices set at $9.99.</li>
+<li>A primary key must be unique and never empty; a foreign key can repeat.</li>
+<li>A high R² shows fit, not that x causes y or that the model is right.</li>
+</ul>
 `,
 };

@@ -108,5 +108,12 @@ export const informationSystemsFundamentals: TopicContent = {
 
 <h3>Networks</h3>
 <p>Local area network (LAN) · wide area network (WAN) · virtual private network (VPN, encrypted remote access) · application programming interfaces (APIs) need authentication.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>RTO is about time to restore; RPO is about how much data you can afford to lose, which drives how often you back up.</li>
+<li>Incremental backups are quickest to run but slowest to restore (the full backup plus every incremental); a differential restore needs only the full backup plus the latest differential.</li>
+<li>A VPN encrypts data in transit; it doesn't protect data stored on the device.</li>
+</ul>
 `,
 };

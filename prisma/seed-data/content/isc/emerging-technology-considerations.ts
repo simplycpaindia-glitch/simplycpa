@@ -108,5 +108,12 @@ export const emergingTechnology: TopicContent = {
 
 <h3>Evaluate any new technology</h3>
 <p>Governance → risk assessment → controls → third parties → monitoring → audit impact.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Each block contains the hash of the previous one, so changing a block breaks every later link — that's what makes tampering detectable.</li>
+<li>On a proof-of-work chain, someone controlling most of the computing power (a "51% attack") can rewrite recent blocks.</li>
+<li>Validating an AI model isn't a one-off: drift means performance must be monitored as the data changes.</li>
+</ul>
 `,
 };

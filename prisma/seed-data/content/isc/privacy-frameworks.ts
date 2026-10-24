@@ -94,5 +94,12 @@ export const privacyFrameworks: TopicContent = {
 
 <h3>Techniques</h3>
 <p>Minimization · anonymization (irreversible, not personal data) · pseudonymization (reversible, still personal) · tokenization · masking · encryption.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>GDPR also applies to organizations outside the European Union that offer goods or services to, or monitor, people in it.</li>
+<li>Consent is only one lawful basis under GDPR; others include contract, legal obligation and legitimate interests.</li>
+<li>Tax preparers are financial institutions under GLBA, so the Safeguards Rule requires a written information security program.</li>
+</ul>
 `,
 };

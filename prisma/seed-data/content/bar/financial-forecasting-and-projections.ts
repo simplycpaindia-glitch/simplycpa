@@ -113,5 +113,12 @@ export const forecastingValuation: TopicContent = {
 
 <h3>Valuation</h3>
 <p>Income (discounted cash flow, terminal value = cash flow × (1 + g) ÷ (WACC − g)) · market (multiples) · cost (replacement).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Working capital invested at the start is usually recovered at the end — include both cash flows.</li>
+<li>Opportunity costs are relevant to a decision; sunk costs never are.</li>
+<li>Flexible budget variances compare actual results with the budget flexed to <strong>actual</strong> volume, not the original static budget.</li>
+</ul>
 `,
 };

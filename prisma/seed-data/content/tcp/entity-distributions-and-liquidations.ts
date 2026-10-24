@@ -101,5 +101,13 @@ export const distributionsLiquidations: TopicContent = {
 
 <h3>Pass-throughs</h3>
 <p>S corporations and partnerships: generally tax-free to basis; one level of tax.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A stock dividend that shareholders could have taken in cash instead is taxable.</li>
+<li>The family attribution waiver fails if the shareholder keeps any interest — including as an officer, director or employee.</li>
+<li>In a liquidation of an 80%-owned subsidiary the parent recognizes no gain, but minority shareholders are taxed.</li>
+<li>Distributions can't make accumulated E&amp;P negative — only operating losses can.</li>
+</ul>
 `,
 };

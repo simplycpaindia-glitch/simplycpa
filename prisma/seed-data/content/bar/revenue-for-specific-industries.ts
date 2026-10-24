@@ -98,5 +98,13 @@ export const revenueSpecificArrangements: TopicContent = {
 
 <h3>Modifications</h3>
 <p>Distinct at standalone price → separate contract · distinct otherwise → prospective · not distinct → catch-up.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A franchisor's initial fee for access to its brand is recognized over the franchise term, unless it relates to distinct goods or services.</li>
+<li>Breakage on gift cards: recognize it in proportion to redemptions if expected; otherwise only when redemption becomes remote.</li>
+<li>An option to buy more goods at their standalone selling price isn't a material right.</li>
+<li>Cost-to-cost progress excludes wasted costs and uninstalled materials that don't reflect performance.</li>
+</ul>
 `,
 };

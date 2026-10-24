@@ -102,5 +102,12 @@ export const itAuditAdvisory: TopicContent = {
 
 <h3>Frameworks</h3>
 <p>Control Objectives for Information and Related Technologies (COBIT) 2019 · National Institute of Standards and Technology (NIST) · consulting standards.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Auditing "around the computer" ignores processing — acceptable only for simple systems with a clear audit trail.</li>
+<li>When running test data through the client's program, confirm it's the version actually used in production.</li>
+<li>Benchmarking an automated control relies on change management having been effective all year.</li>
+</ul>
 `,
 };

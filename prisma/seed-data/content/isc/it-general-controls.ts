@@ -83,5 +83,12 @@ export const itGeneralControls: TopicContent = {
 
 <h3>Frameworks</h3>
 <p>Control Objectives for Information and Related Technologies (COBIT) 2019 · Committee of Sponsoring Organizations of the Treadway Commission (COSO) principle 11 · National Institute of Standards and Technology (NIST) 800-53.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Test removal of leavers against human resources termination dates, not the date access removal was requested.</li>
+<li>An access review only works if the user list is complete and reviewers judge whether access is appropriate — not just sign off.</li>
+<li>Shared or generic accounts defeat accountability: actions can't be traced to a person.</li>
+</ul>
 `,
 };

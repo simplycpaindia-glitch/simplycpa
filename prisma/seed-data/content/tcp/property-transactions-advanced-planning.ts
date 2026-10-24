@@ -101,5 +101,12 @@ export const propertyPlanning: TopicContent = {
 <li>Alternatives: hold until death, donate, charitable remainder trust, contribute to an entity, borrow.</li>
 <li>Full disposition releases suspended passive losses.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The installment method can't be used for losses — a loss is recognized in the year of sale.</li>
+<li>For an opportunity zone deferral, only the capital gain needs to be reinvested within 180 days, not the full sale proceeds.</li>
+<li>A like-kind exchange between related parties is taxed after all if either party disposes of the property within 2 years.</li>
+</ul>
 `,
 };

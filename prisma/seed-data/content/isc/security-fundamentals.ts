@@ -124,5 +124,12 @@ export const securityFundamentals: TopicContent = {
 
 <h3>Frameworks</h3>
 <p>National Institute of Standards and Technology (NIST) Cybersecurity Framework 2.0: Govern, Identify, Protect, Detect, Respond, Recover · International Organization for Standardization (ISO) 27001 · Center for Internet Security (CIS) Controls.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A password plus a personal identification number (PIN) isn't MFA — both are "something you know".</li>
+<li>To keep a message confidential, encrypt with the <strong>recipient's</strong> public key; to sign it, use the <strong>sender's</strong> private key.</li>
+<li>Hashing isn't encryption — it can't be reversed to recover the original data.</li>
+</ul>
 `,
 };

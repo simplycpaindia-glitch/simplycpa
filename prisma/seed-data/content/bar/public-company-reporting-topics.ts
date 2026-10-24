@@ -112,5 +112,12 @@ export const publicCompanyReporting: TopicContent = {
 
 <h3>Recent standards</h3>
 <p>Segment expenses (2023-07) · income tax disclosures (2023-09) · expense disaggregation (2024-03, from 2027) · crypto at fair value (2023-08).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Auditor attestation under SOX 404(b) doesn't apply to non-accelerated filers.</li>
+<li>The four-business-day clock for disclosing a cyber incident starts when it's judged material, not when it's discovered.</li>
+<li>Two-class method: allocate undistributed earnings as if all earnings had been distributed.</li>
+</ul>
 `,
 };

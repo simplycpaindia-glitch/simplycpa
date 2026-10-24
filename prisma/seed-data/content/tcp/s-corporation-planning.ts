@@ -99,5 +99,12 @@ export const sCorporationPlanning: TopicContent = {
 <li>Pass-through entity tax avoids the state and local tax cap.</li>
 <li>Section 338(h)(10) / 336(e): stock sale taxed as asset sale → buyer basis step-up.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The built-in gains tax applies only to gain built in at conversion — later appreciation isn't subject to it.</li>
+<li>Shareholders are taxed on their share of income even if the company keeps the cash — there's no deferral as with a C corporation.</li>
+<li>A limited liability company (LLC) taxed as an S corporation must keep distributions proportionate; operating-agreement allocations can create a second class of stock.</li>
+</ul>
 `,
 };

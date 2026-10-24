@@ -96,5 +96,12 @@ export const estateGiftPlanning: TopicContent = {
 <li>Marital deduction; qualified terminable interest property (QTIP) trusts; non-citizen spouse → qualified domestic trust.</li>
 <li>Buy-sell agreements for succession.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Portability doesn't apply to the generation-skipping transfer exemption.</li>
+<li>Gifts to a trust qualify for the annual exclusion only if beneficiaries get withdrawal rights ("Crummey" powers) that make them present interests.</li>
+<li>If the donor dies during the 5-year Section 529 election period, the amounts allocated to later years return to the estate.</li>
+</ul>
 `,
 };

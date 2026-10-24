@@ -122,5 +122,13 @@ export const governmentWideAcfr: TopicContent = {
 
 <h3>Other</h3>
 <p>Infrastructure modified approach; net pension liability; tax abatement disclosures.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Fiduciary funds are left out of the government-wide statements.</li>
+<li>Internal service funds are usually reported with governmental activities.</li>
+<li>Taxes are always general revenues — even a tax earmarked for one program.</li>
+<li>MD&amp;A and the budgetary comparison are RSI, not part of the basic financial statements.</li>
+</ul>
 `,
 };

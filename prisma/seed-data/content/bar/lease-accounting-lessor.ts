@@ -91,5 +91,12 @@ export const lessorAccounting: TopicContent = {
 <li>Variable payments (not index-based) excluded; would-be day-one loss → operating lease.</li>
 <li>Net investment subject to current expected credit loss (CECL) model.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Operating lease: the lessor recognizes income straight-line even when payments escalate, and records no lease receivable.</li>
+<li>Sales-type lease where collection isn't probable: keep the asset on the books and record payments as a deposit liability until the criteria are met.</li>
+<li>Incentives paid by the lessor reduce the lease payments, and so the lease income.</li>
+</ul>
 `,
 };
