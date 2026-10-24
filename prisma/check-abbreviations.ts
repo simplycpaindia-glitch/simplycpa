@@ -12,6 +12,8 @@ import { reg } from "./seed-data/reg";
 import { bar } from "./seed-data/bar";
 import { isc } from "./seed-data/isc";
 import { tcp } from "./seed-data/tcp";
+import { farSimulations } from "../src/lib/tbs/data/far";
+import { audSimulations } from "../src/lib/tbs/data/aud";
 
 // Tokens that look like abbreviations but aren't, or that need no expansion.
 const IGNORE = new Set([
@@ -87,6 +89,23 @@ for (const subject of [far, aud, reg, bar, isc, tcp]) {
     problems.forEach((p) => console.log(p));
     total += problems.length;
   }
+}
+// Each task-based simulation is its own page: text is checked in the order a reader meets it.
+for (const sim of [...farSimulations, ...audSimulations]) {
+  if (only && sim.subject !== only) continue;
+  const text = [
+    sim.title,
+    ...sim.scenario,
+    ...(sim.exhibits ?? []).flatMap((e) => [e.title, ...(e.text ?? []), ...(e.table ? [e.table.head.join(" | "), ...e.table.rows.map((r) => r.join(" | "))] : [])]),
+    sim.instructions,
+    sim.columns.join(" | "),
+    ...sim.rows.flatMap((r) => [r.label, ...r.cells.flatMap((c) => (c.kind === "select" ? [...c.options] : []))]),
+    ...sim.rows.map((r) => r.explanation),
+    sim.takeaway,
+  ].join("\n");
+  const problems = check(`${sim.subject}/simulations/${sim.slug}`, text);
+  problems.forEach((p) => console.log(p));
+  total += problems.length;
 }
 console.log(total === 0 ? "All abbreviations are introduced correctly." : `\n${total} problem(s).`);
 process.exitCode = total === 0 ? 0 : 1;

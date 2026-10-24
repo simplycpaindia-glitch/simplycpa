@@ -11,6 +11,7 @@ import { getTopicProgress } from "@/lib/progress-data";
 import { MASTERY_THRESHOLD, STATE_LABEL } from "@/lib/mastery";
 import { groupByArea } from "@/lib/blueprint";
 import { countProgress, ProgressSegments } from "@/components/progress/ProgressSegments";
+import { getSimulations } from "@/lib/tbs";
 
 async function getSubject(slug: string) {
   return prisma.subject.findUnique({
@@ -65,6 +66,7 @@ export default async function SubjectPage({
   let n = 0;
 
   const totalMcqs = subject.topics.reduce((sum, t) => sum + t.mcqs.length, 0);
+  const simulationCount = getSimulations(subject.slug).length;
 
   return (
     <>
@@ -88,6 +90,11 @@ export default async function SubjectPage({
           <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-400">
             <span>{subject.topics.length} topics</span>
             <span>{totalMcqs} MCQs</span>
+            {simulationCount > 0 && (
+              <Link href={`/cpa/${subject.slug}/simulations`} className="underline underline-offset-2 hover:text-ink-950">
+                {simulationCount} simulations
+              </Link>
+            )}
             <DifficultyBadge difficulty={subject.difficulty} />
             {subject.estimatedHours && <span>~{subject.estimatedHours} hrs total study time</span>}
             {subject.blueprintUrl && (
