@@ -22,6 +22,12 @@ export const STUDY_HOURS_MAX = 100;
 /** Bump when the community guidelines change materially; users re-accept. */
 export const GUIDELINES_VERSION = "2026-10-13";
 
+/**
+ * SimplyCPA's own account(s). Posts from these show an "Official" badge. The names are
+ * already reserved for members by checkUsername (anything containing "simplycpa").
+ */
+export const OFFICIAL_USERNAMES: readonly string[] = ["simplycpa"];
+
 export const USERNAME_MIN = 3;
 export const USERNAME_MAX = 20;
 

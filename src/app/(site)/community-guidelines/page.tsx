@@ -122,6 +122,10 @@ export default function CommunityGuidelinesPage() {
         <li>Your username is public; your email address is never shown to other members.</li>
         <li>You can delete any of your posts at any time, and delete your whole account from <Link href="/account">your account page</Link>.</li>
         <li>Posts are your own views, not verified advice. Always check rules and figures against official sources.</li>
+        <li>
+          Posts marked <strong>Official</strong> come from SimplyCPA&apos;s own account (@simplycpa): short explainers of key
+          CPA concepts, not a candidate&apos;s study log. They go through the same checks and posting limit as everyone else.
+        </li>
       </ul>
       <p>See our <Link href="/privacy">privacy policy</Link> for what we store and why.</p>
     </Container>

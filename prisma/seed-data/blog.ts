@@ -12,6 +12,7 @@ import { indiaPosts2 } from "./blog-india-2";
 import { examPosts } from "./blog-exam";
 import { studyPosts } from "./blog-study";
 import { studyPosts2 } from "./blog-study-2";
+import { conceptPosts } from "./blog-concepts";
 
 export type BlogSeed = {
   slug: string;
@@ -124,6 +125,7 @@ const allPosts: BlogSeed[] = [
   ...examPosts,
   ...studyPosts,
   ...studyPosts2,
+  ...conceptPosts,
 ];
 
 const duplicate = allPosts.find((post, i) => allPosts.findIndex((p) => p.slug === post.slug) !== i);

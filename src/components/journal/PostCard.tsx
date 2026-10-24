@@ -3,12 +3,12 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Clock, Flag, Heart, Trash2 } from "lucide-react";
+import { BadgeCheck, Clock, Flag, Heart, Trash2 } from "lucide-react";
 import { Avatar } from "@/components/journal/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { deleteOwnJournalPost, reportJournalPost, toggleHelpful } from "@/lib/actions/journal";
-import { REPORT_REASONS, REPORT_REASON_LABEL, TAG_LABEL, type ReportReasonValue } from "@/lib/journal/constants";
+import { OFFICIAL_USERNAMES, REPORT_REASONS, REPORT_REASON_LABEL, TAG_LABEL, type ReportReasonValue } from "@/lib/journal/constants";
 import type { FeedPost } from "@/lib/journal/queries";
 
 const COLLAPSE_CHARS = 600;
@@ -82,6 +82,12 @@ export function PostCard({ post, viewer }: { post: FeedPost; viewer: { signedIn:
             <Link href={`/what-i-studied/u/${post.username}`} className="font-semibold text-ink-950 hover:underline">
               @{post.username}
             </Link>
+            {OFFICIAL_USERNAMES.includes(post.username) && (
+              <Badge tone="dark" className="gap-1">
+                <BadgeCheck className="h-3 w-3" aria-hidden />
+                Official
+              </Badge>
+            )}
             <span className="text-ink-400">·</span>
             <time dateTime={post.createdAtIso} title={new Date(post.createdAtIso).toLocaleString("en-IN")} className="text-ink-400">
               {post.createdAgo}

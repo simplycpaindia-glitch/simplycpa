@@ -11,6 +11,7 @@ import { getFeed, getMemberProfile } from "@/lib/journal/queries";
 import { normaliseUsername } from "@/lib/journal/moderation";
 import { getStudyStats } from "@/lib/journal/stats";
 import { getTrustLevel, TRUST_LABEL } from "@/lib/journal/trust";
+import { OFFICIAL_USERNAMES } from "@/lib/journal/constants";
 import { Badge } from "@/components/ui/Badge";
 
 function Stat({ label, value }: { label: string; value: string }) {
@@ -58,8 +59,17 @@ export default async function MemberPage({ params, searchParams }: PageProps<"/w
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h1 className="font-display text-2xl font-medium text-ink-950">@{profile.username}</h1>
-              {trust === "TRUSTED" && <Badge tone="green">{TRUST_LABEL.TRUSTED}</Badge>}
+              {OFFICIAL_USERNAMES.includes(profile.username) ? (
+                <Badge tone="dark">Official</Badge>
+              ) : (
+                trust === "TRUSTED" && <Badge tone="green">{TRUST_LABEL.TRUSTED}</Badge>
+              )}
             </div>
+            {OFFICIAL_USERNAMES.includes(profile.username) && (
+              <p className="mt-1 text-sm text-ink-800">
+                SimplyCPA&apos;s own account — short explainers of key CPA concepts. Not a candidate&apos;s study log.
+              </p>
+            )}
             <p className="mt-1 text-sm text-ink-400">
               Joined {formatDate(profile.joined)} · {profile.postCount} post{profile.postCount === 1 ? "" : "s"} ·{" "}
               {profile.helpfulReceived} found helpful
