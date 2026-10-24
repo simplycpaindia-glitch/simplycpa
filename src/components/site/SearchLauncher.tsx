@@ -58,7 +58,7 @@ export function SearchLauncher({
         aria-label="Search topics, MCQs and FAQs"
         className={cn(
           "flex items-center gap-2 rounded-md border border-ink-950/15 bg-paper-50 text-sm text-ink-400 hover:border-ink-950/30 hover:text-ink-950",
-          compact ? "size-10 justify-center" : "h-9 px-3",
+          compact ? "size-10 justify-center" : "h-9 whitespace-nowrap px-3",
           className,
         )}
       >
@@ -66,7 +66,7 @@ export function SearchLauncher({
         {!compact && (
           <>
             <span>Search</span>
-            <kbd className="ml-2 rounded border border-ink-950/15 px-1.5 font-sans text-[11px] text-ink-400">
+            <kbd className="ml-2 whitespace-nowrap rounded border border-ink-950/15 px-1.5 font-sans text-xs text-ink-400">
               Ctrl K
             </kbd>
           </>

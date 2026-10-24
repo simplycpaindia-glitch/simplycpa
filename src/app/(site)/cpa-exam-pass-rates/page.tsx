@@ -76,7 +76,7 @@ export default function PassRatesPage() {
           <div aria-hidden className="pointer-events-none absolute inset-y-0 left-24 right-14 sm:left-28">
             {[0, 25, 50, 75, 100].map((g) => (
               <span key={g} className="absolute inset-y-0 border-l border-ink-950/[0.07]" style={{ left: `${g}%` }}>
-                <span className="absolute -bottom-5 -translate-x-1/2 text-[11px] text-ink-400">{g}%</span>
+                <span className="absolute -bottom-5 -translate-x-1/2 text-xs text-ink-400">{g}%</span>
               </span>
             ))}
           </div>

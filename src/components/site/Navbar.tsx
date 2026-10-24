@@ -4,6 +4,7 @@ import { auth, signOut } from "@/lib/auth";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/site/MobileNav";
 import { SearchLauncher } from "@/components/site/SearchLauncher";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 
 export async function Navbar() {
   const [subjects, session] = await Promise.all([
@@ -76,6 +77,7 @@ export async function Navbar() {
 
         <div className="hidden lg:flex flex-1 items-center justify-end gap-3">
           <SearchLauncher shortcut />
+          <ThemeToggle />
           {session?.user ? (
             <>
               <Button href="/dashboard" size="sm" variant="outline" className="whitespace-nowrap">

@@ -10,6 +10,9 @@ import { RichContent } from "@/components/content/RichContent";
 import { formatDate } from "@/lib/utils";
 import { SITE_URL } from "@/lib/site";
 import { AboutSimplyCPA, Byline } from "@/components/content/AboutSimplyCPA";
+import { OnThisPage } from "@/components/content/OnThisPage";
+import { ReadingControls } from "@/components/content/ReadingControls";
+import { withHeadingIds } from "@/lib/content/headings";
 
 async function getPost(slug: string) {
   return prisma.blogPost.findUnique({
@@ -79,6 +82,7 @@ export default async function BlogPostPage({
   if (!post || post.status !== "PUBLISHED") notFound();
 
   const related = await getRelatedPosts(post);
+  const body = withHeadingIds(post.content);
   const url = `${SITE_URL}/blog/${post.slug}`;
   const wasUpdated =
     post.publishedAt && post.updatedAt.getTime() - post.publishedAt.getTime() > 24 * 60 * 60 * 1000;
@@ -126,8 +130,12 @@ export default async function BlogPostPage({
           updated={wasUpdated ? formatDate(post.updatedAt) : undefined}
         />
       </div>
-      <div className="mt-8">
-        <RichContent html={post.content} />
+      <div className="mt-6 flex justify-end">
+        <ReadingControls />
+      </div>
+      <div className="mt-4">
+        <OnThisPage headings={body.headings} variant="inline" alwaysInline />
+        <RichContent html={body.html} />
       </div>
       <AboutSimplyCPA />
 

@@ -161,7 +161,7 @@ export function PostCard({ post, viewer }: { post: FeedPost; viewer: { signedIn:
             maxLength={500}
             rows={2}
             placeholder="Anything else a moderator should know? (optional, only staff see this)"
-            className="mt-2 w-full rounded-md border border-ink-950/15 bg-white px-2.5 py-1.5 text-sm outline-none focus:border-ink-950/40"
+            className="mt-2 w-full rounded-md border border-ink-950/15 bg-paper-50 px-2.5 py-1.5 text-sm outline-none focus:border-ink-950/40"
           />
           <div className="mt-2 flex justify-end gap-2">
             <button type="button" onClick={() => setReporting(false)} className="px-3 py-1.5 text-sm text-ink-400 hover:text-ink-950">

@@ -16,7 +16,7 @@ export function PostModerationButtons({ postId, authorId, status, hasReports }: 
   return (
     <div className="flex flex-wrap gap-2">
       {status !== "PUBLISHED" && (
-        <button type="button" disabled={pending} onClick={() => start(() => approveJournalPost(postId))} className={`${btn} bg-signal-green text-white`}>
+        <button type="button" disabled={pending} onClick={() => start(() => approveJournalPost(postId))} className={`${btn} bg-signal-green text-paper-50`}>
           Approve &amp; publish
         </button>
       )}
@@ -33,7 +33,7 @@ export function PostModerationButtons({ postId, authorId, status, hasReports }: 
             const note = window.prompt("Reason for removal (optional, kept in the audit log):") ?? undefined;
             start(() => removeJournalPost(postId, note));
           }}
-          className={`${btn} bg-signal-red text-white`}
+          className={`${btn} bg-signal-red text-paper-50`}
         >
           Remove
         </button>

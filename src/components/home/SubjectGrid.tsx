@@ -4,6 +4,10 @@ import { Container, SectionHeading } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { prisma } from "@/lib/prisma";
 
+const DIFFICULTY = { EASY: "Easy", MEDIUM: "Medium", HARD: "Hard" } as const;
+/** Banks smaller than this are labelled as still growing. */
+const GROWING_BELOW = 150;
+
 export async function SubjectGrid() {
   const subjects = await prisma.subject.findMany({
     orderBy: { order: "asc" },
@@ -59,6 +63,8 @@ function SubjectCard({
     shortName: string;
     name: string;
     type: string;
+    estimatedHours: number | null;
+    difficulty: "EASY" | "MEDIUM" | "HARD";
     _count: { topics: number };
     topics: { mcqs: { id: string }[] }[];
   };
@@ -78,9 +84,13 @@ function SubjectCard({
           {subject.type === "DISCIPLINE" && <Badge tone="neutral">Discipline</Badge>}
         </div>
         <p className="mt-1 text-sm text-ink-400">{subject.name}</p>
-        <p className="mt-3 text-sm text-ink-800">{subject._count.topics} Topics</p>
+        <p className="mt-3 text-sm text-ink-800">
+          {subject._count.topics} topics
+          {subject.estimatedHours ? ` · ~${subject.estimatedHours} hrs` : ""} · {DIFFICULTY[subject.difficulty]}
+        </p>
         <p className="mt-1 text-xs text-ink-400">
-          Study Material · Revision · {mcqCount > 0 ? `${mcqCount} MCQs` : "MCQs"}
+          Study material · Revision · {mcqCount > 0 ? `${mcqCount} MCQs` : "MCQs"}
+          {mcqCount > 0 && mcqCount < GROWING_BELOW && " (bank still growing)"}
         </p>
       </div>
       <span className="mt-5 flex items-center gap-1 text-sm font-medium text-ink-950">

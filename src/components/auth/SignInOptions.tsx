@@ -71,7 +71,7 @@ export function SignInOptions({
           <form action={signInWithGoogle.bind(null, callbackUrl)}>
             <button
               type="submit"
-              className="flex w-full items-center justify-center gap-3 rounded-lg border border-ink-950/15 bg-white px-4 py-2.5 text-sm font-medium text-ink-950 hover:bg-ink-950/[0.03]"
+              className="flex w-full items-center justify-center gap-3 rounded-lg border border-ink-950/15 bg-paper-50 px-4 py-2.5 text-sm font-medium text-ink-950 hover:bg-ink-950/[0.03]"
             >
               <GoogleMark />
               Continue with Google

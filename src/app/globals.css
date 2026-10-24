@@ -32,6 +32,32 @@
   --foreground: var(--color-ink-950);
 }
 
+/* Dark mode for night study. Same names, dark values: paper becomes the dark surface and
+   ink the light text, so every component follows without per-component dark styles.
+   Contrast (on #11151f): text 14.4:1, muted 7.1:1, gold 9.1:1, green 8.9:1, red 7.6:1.
+   data-theme is set before first paint by the script in app/layout.tsx: the reader's
+   choice if they made one, otherwise the device setting. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ink-950: #e8e4da;
+  --color-ink-900: #dcd8cd;
+  --color-ink-800: #cfcabe;
+  --color-ink-700: #bab5aa;
+  --color-ink-600: #a6a196;
+  --color-ink-400: #9aa1b8;
+  --color-ink-200: #3a4152;
+  --color-paper-50: #11151f;
+  --color-paper-100: #171c28;
+  --color-paper-200: #1e2432;
+  --color-paper-300: #2c3344;
+  --color-gold-400: #b8954a;
+  --color-gold-500: #c9a457;
+  --color-gold-600: #c19a44;
+  --color-gold-700: #d8b262;
+  --color-signal-green: #7cc49e;
+  --color-signal-red: #e8908a;
+  --color-signal-amber: #d8b262;
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -57,6 +83,10 @@
   --color-signal-green: var(--color-signal-green);
   --color-signal-red: var(--color-signal-red);
   --color-signal-amber: var(--color-signal-amber);
+
+  /* Smallest text anywhere is 13px (Tailwind's default text-xs is 12px). */
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.15rem;
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-fraunces);
@@ -86,26 +116,37 @@ body {
   }
 }
 
-/* Tiptap-rendered study material / revision content */
+/* Tiptap-rendered study material / revision content.
+   Reading research (Rello et al. 2016; Dyson & Haselgrove 2001) favours ~18px text and
+   45–75 characters per line. The line cap uses em, not ch: a "ch" is the width of the
+   digit 0, which in Inter is wider than an average letter, so 68ch gave ~85–90 characters.
+   --reading-scale is set by the A−/A+ control (ReadingControls). */
 .prose-cpa {
-  max-width: 68ch;
-  line-height: 1.7;
+  font-size: calc(1.125rem * var(--reading-scale, 1));
+  line-height: 1.65;
+  max-width: 33em; /* ≈ 65–70 characters of Inter at any text size (measured) */
 }
 .prose-cpa h2 {
   font-family: var(--font-display), serif;
-  font-size: 1.5rem;
+  font-size: 1.6em;
   font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  line-height: 1.25;
+  margin-top: 2.75em;
+  margin-bottom: 0.6em;
   color: var(--color-ink-950);
+  scroll-margin-top: 6rem;
+}
+.prose-cpa h2:first-child {
+  margin-top: 0;
 }
 .prose-cpa h3 {
-  font-size: 1.15rem;
+  font-size: 1.15em; /* ≈ 20px at the default size, clearly above body text */
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-}
-.prose-cpa p {
+  line-height: 1.35;
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+  scroll-margin-top: 6rem;
+}.prose-cpa p {
   margin-bottom: 1rem;
 }
 .prose-cpa ul,
@@ -123,7 +164,8 @@ body {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  font-size: 0.85em; /* ≈ 15px */
+  font-variant-numeric: tabular-nums; /* figures line up in columns */
 }
 .prose-cpa th,
 .prose-cpa td {
@@ -144,31 +186,35 @@ body {
   text-underline-offset: 2px;
 }
 
-/* Callout boxes authored via the Tiptap callout node */
+/* Callout boxes authored via the Tiptap callout node. Brand colours only, and each
+   colour has one meaning: gold = example, red = exam trap, green = rule or tip. */
 .callout {
   border-radius: 0.5rem;
   padding: 1rem 1.25rem;
   margin: 1.25rem 0;
   border: 1px solid;
-  font-size: 0.95rem;
-}
-.callout-tip {
-  background: #f3f8f5;
-  border-color: #c9dfd2;
-}
-.callout-warning {
-  background: #fbf3ec;
-  border-color: #e8cba9;
+  border-left-width: 4px;
+  font-size: 0.95em;
+  font-variant-numeric: tabular-nums;
 }
 .callout-example {
-  background: #f3f4fb;
-  border-color: #ccd0ee;
-}
-.callout-important {
-  background: #fbf6e3;
+  background: var(--color-paper-100);
   border-color: var(--color-gold-400);
 }
-/* "The Crux": the numbered summary box at the top of each blog post */
+.callout-warning,
+.callout-trap {
+  background: color-mix(in srgb, var(--color-signal-red) 6%, var(--color-paper-50));
+  border-color: color-mix(in srgb, var(--color-signal-red) 45%, var(--color-paper-50));
+}
+.callout-tip,
+.callout-rule {
+  background: color-mix(in srgb, var(--color-signal-green) 6%, var(--color-paper-50));
+  border-color: color-mix(in srgb, var(--color-signal-green) 40%, var(--color-paper-50));
+}
+.callout-important {
+  background: color-mix(in srgb, var(--color-gold-400) 14%, var(--color-paper-50));
+  border-color: var(--color-gold-500);
+}/* "The Crux": the numbered summary box at the top of each blog post */
 .callout-crux {
   background: var(--color-paper-100);
   border-color: var(--color-gold-400);
@@ -210,5 +256,54 @@ body {
   .prose-cpa th,
   .prose-cpa td {
     min-width: 7rem;
+  }
+}
+
+/* Print (quick sheets, study pages, articles): content only, black on white. */
+.print-only {
+  display: none;
+}
+@media print {
+  @page {
+    margin: 14mm 14mm 16mm;
+  }
+  :root {
+    --reading-scale: 0.85;
+  }
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  body > header,
+  body header.sticky,
+  body > footer,
+  footer,
+  nav,
+  [role="tablist"],
+  .no-print,
+  a[href="#main-content"] {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .prose-cpa {
+    max-width: none;
+  }
+  .prose-cpa a {
+    color: #000;
+  }
+  .callout,
+  .prose-cpa table,
+  .prose-cpa li {
+    break-inside: avoid;
+  }
+  .prose-cpa h2,
+  .prose-cpa h3 {
+    break-after: avoid;
+  }
+  * {
+    box-shadow: none !important;
   }
 }

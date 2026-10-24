@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { themeInitScript } from "@/lib/theme";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,7 +41,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
+      // data-theme is set by the script below before React hydrates.
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col bg-paper-50 text-ink-950">
         {children}
         <Analytics />

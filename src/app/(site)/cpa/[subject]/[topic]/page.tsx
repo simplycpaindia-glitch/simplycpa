@@ -13,6 +13,9 @@ import { Badge, DifficultyBadge } from "@/components/ui/Badge";
 import { Tabs } from "@/components/ui/Tabs";
 import { RichContent } from "@/components/content/RichContent";
 import { MarkCompleteButton } from "@/components/practice/MarkCompleteButton";
+import { OnThisPage } from "@/components/content/OnThisPage";
+import { ReadingControls } from "@/components/content/ReadingControls";
+import { withHeadingIds } from "@/lib/content/headings";
 import { McqPractice } from "@/components/practice/McqPractice";
 import { Comments } from "@/components/discussion/Comments";
 import { formatDate, formatMinutes } from "@/lib/utils";
@@ -118,21 +121,43 @@ export default async function TopicPage({
       : false,
   }));
 
+  // Section headings get ids so the "On this page" list can link to them.
+  const study = topic.studyMaterial ? withHeadingIds(topic.studyMaterial.content) : null;
+  const isLoggedIn = !!session?.user;
+
   const tabs = [
-    topic.studyMaterial && {
+    study && {
       id: "study",
       label: "Study",
       content: (
-        <div>
-          <RichContent html={topic.studyMaterial.content} />
-          <div className="mt-8">
-            <MarkCompleteButton
-              isComplete={!!progress?.studyCompletedAt}
-              topicId={topic.id}
-              path={path}
-              kind="study"
-            />
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12">
+          <div className="min-w-0">
+            <div className="mb-6 flex justify-end">
+              <ReadingControls />
+            </div>
+            <OnThisPage headings={study.headings} variant="inline" />
+            <RichContent html={study.html} />
+            <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-ink-950/10 pt-6">
+              <MarkCompleteButton
+                isComplete={!!progress?.studyCompletedAt}
+                isLoggedIn={isLoggedIn}
+                topicId={topic.id}
+                path={path}
+                kind="study"
+              />
+              {topic.mcqs.length > 0 && (
+                <a
+                  href="#mcqs"
+                  className="inline-flex h-9 items-center rounded-md border border-ink-950/20 px-4 text-sm font-medium text-ink-950 hover:border-ink-950/50"
+                >
+                  Practise {topic.mcqs.length} MCQs
+                </a>
+              )}
+            </div>
           </div>
+          <aside>
+            <OnThisPage headings={study.headings} variant="sidebar" />
+          </aside>
         </div>
       ),
     },
@@ -148,6 +173,7 @@ export default async function TopicPage({
           <div className="mt-8 flex flex-wrap gap-2">
             <MarkCompleteButton
               isComplete={!!progress?.revisionCompletedAt}
+              isLoggedIn={isLoggedIn}
               topicId={topic.id}
               path={path}
               kind="revision"

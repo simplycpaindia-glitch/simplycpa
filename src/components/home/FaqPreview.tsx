@@ -8,7 +8,7 @@ export async function FaqPreview() {
   const faqs = await prisma.fAQ.findMany({
     where: { status: "PUBLISHED" },
     orderBy: { order: "asc" },
-    take: 6,
+    take: 3,
   });
   if (faqs.length === 0) return null;
 

@@ -18,11 +18,14 @@ export function Tabs({
   // default tab matches the client's first paint and only switches once hydrated,
   // avoiding a hydration mismatch.
   useEffect(() => {
-    const hash = window.location.hash.replace("#", "");
-    if (hash && tabs.some((t) => t.id === hash)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setActive(hash);
-    }
+    const fromHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && tabs.some((t) => t.id === hash)) setActive(hash);
+    };
+    fromHash();
+    // Also follow in-page links such as "Practise 10 MCQs" (href="#mcqs").
+    window.addEventListener("hashchange", fromHash);
+    return () => window.removeEventListener("hashchange", fromHash);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

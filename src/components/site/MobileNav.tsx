@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SearchBox } from "@/components/site/SearchBox";
 import { SearchLauncher } from "@/components/site/SearchLauncher";
+import { ThemeToggle } from "@/components/site/ThemeToggle";
 import { signOutAction } from "@/lib/actions/auth";
 
 type SubjectLink = { slug: string; shortName: string; name: string };
@@ -35,7 +36,10 @@ export function MobileNav({
 
       {open && (
         <div className="fixed inset-x-0 top-16 bottom-0 z-30 overflow-y-auto bg-paper-50 px-4 py-6">
-          <SearchBox className="mb-6" />
+          <div className="mb-6 flex items-center gap-2">
+            <SearchBox className="flex-1" />
+          </div>
+          <ThemeToggle withLabel className="-ml-3 mb-4" />
           <MobileSection title="Core sections">
             {core.map((s) => (
               <MobileLink key={s.slug} href={`/cpa/${s.slug}`} onClick={() => setOpen(false)}>

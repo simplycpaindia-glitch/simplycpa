@@ -56,7 +56,7 @@ export function DeleteAccountForm() {
       <button
         type="submit"
         disabled={pending}
-        className="self-start rounded-md bg-signal-red px-4 py-2 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50"
+        className="self-start rounded-md bg-signal-red px-4 py-2 text-sm font-medium text-paper-50 hover:opacity-90 disabled:opacity-50"
       >
         {pending ? "Deleting…" : "Delete my account"}
       </button>

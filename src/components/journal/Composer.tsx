@@ -80,7 +80,7 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
             rows={4}
             maxLength={POST_MAX_CHARS + 500}
             placeholder={`What did you study this week, @${username}? Wins, struggles, what finally clicked…`}
-            className="w-full resize-y rounded-lg border border-transparent bg-paper-100/60 px-3 py-2.5 text-[15px] leading-relaxed outline-none placeholder:text-ink-400 focus:border-ink-950/20 focus:bg-white"
+            className="w-full resize-y rounded-lg border border-transparent bg-paper-100/60 px-3 py-2.5 text-[15px] leading-relaxed outline-none placeholder:text-ink-400 focus:border-ink-950/20 focus:bg-paper-50"
             disabled={left === 0}
           />
 
@@ -113,7 +113,7 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
               value={hours}
               onChange={(e) => setHours(e.target.value)}
               placeholder="e.g. 6"
-              className="w-20 rounded-md border border-ink-950/15 bg-white px-2 py-1 text-sm text-ink-950 outline-none focus:border-ink-950/40"
+              className="w-20 rounded-md border border-ink-950/15 bg-paper-50 px-2 py-1 text-sm text-ink-950 outline-none focus:border-ink-950/40"
               disabled={left === 0}
             />
             <span>(optional — added to your study hours and weekly streak)</span>
@@ -139,7 +139,7 @@ export function Composer({ username, postsLeft }: { username: string; postsLeft:
               {message.text}
             </p>
           )}
-          {helpline && <p className="mt-3 rounded-lg bg-[#dde0f0] px-3 py-2 text-sm text-ink-800">{helpline}</p>}
+          {helpline && <p className="mt-3 rounded-lg border border-ink-950/10 bg-paper-200 px-3 py-2 text-sm text-ink-800">{helpline}</p>}
 
           <div className="mt-3 flex flex-wrap items-center justify-between gap-3 border-t border-ink-950/5 pt-3">
             <p className="text-xs text-ink-400">
