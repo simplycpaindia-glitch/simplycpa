@@ -38,7 +38,7 @@ export default async function SourcesPage() {
       <div className="mt-10 flex flex-col divide-y divide-ink-950/10 max-w-3xl">
         {sources.map((s) => (
           <div key={s.id} className="py-4">
-            <p className="text-xs font-medium uppercase tracking-wide text-gold-600">
+            <p className="text-xs font-medium uppercase tracking-wide text-gold-700">
               {TYPE_LABEL[s.sourceType]}
             </p>
             <a href={s.url} target="_blank" rel="noopener noreferrer" className="font-medium text-ink-950 underline">

@@ -25,10 +25,10 @@ export function AboutSimplyCPA() {
         official sources — AICPA, NASBA, FASB, the IRS — wherever we can.
       </p>
       <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-        <Link href="/editorial-standards" className="font-medium text-gold-600 hover:underline">
+        <Link href="/editorial-standards" className="font-medium text-gold-700 hover:underline">
           How we write and check content →
         </Link>
-        <Link href="/contact" className="font-medium text-gold-600 hover:underline">
+        <Link href="/contact" className="font-medium text-gold-700 hover:underline">
           Spotted an error? Tell us →
         </Link>
       </p>

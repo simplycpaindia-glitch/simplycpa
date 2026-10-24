@@ -33,7 +33,7 @@ export function SourceNote({ sources, checked, children }: { sources: { label: s
 export function RelatedTrackers({ current }: { current: (typeof TRACKERS)[number]["href"] }) {
   return (
     <nav aria-label="Other CPA trackers" className="mt-14 max-w-3xl">
-      <p className="text-xs font-semibold uppercase tracking-widest text-gold-600">More CPA trackers</p>
+      <p className="text-xs font-semibold uppercase tracking-widest text-gold-700">More CPA trackers</p>
       <ul className="mt-3 grid gap-3 sm:grid-cols-2">
         {TRACKERS.filter((t) => t.href !== current).map((t) => (
           <li key={t.href}>

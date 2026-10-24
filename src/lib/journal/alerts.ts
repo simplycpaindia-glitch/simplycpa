@@ -54,7 +54,7 @@ export async function notifyModeratorsOfQueue(trigger: "held" | "reported") {
 <p>${why}</p>
 <p><strong>${waiting}</strong> item(s) are waiting in the moderation queue.</p>
 <p><a href="${link}" style="display:inline-block;background:#05070d;color:#fbfaf7;padding:10px 16px;border-radius:6px;text-decoration:none">Open the queue</a></p>
-<p style="color:#6b7494;font-size:13px">You get at most one of these emails every 30 minutes.</p>
+<p style="color:#545c7c;font-size:13px">You get at most one of these emails every 30 minutes.</p>
 </div>`,
       });
     }

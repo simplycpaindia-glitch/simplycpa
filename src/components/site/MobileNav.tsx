@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SearchBox } from "@/components/site/SearchBox";
+import { SearchLauncher } from "@/components/site/SearchLauncher";
 import { signOutAction } from "@/lib/actions/auth";
 
 type SubjectLink = { slug: string; shortName: string; name: string };
@@ -21,11 +22,13 @@ export function MobileNav({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="lg:hidden">
+    <div className="flex items-center gap-1 lg:hidden">
+      <SearchLauncher compact />
       <button
         aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="rounded-md p-2 text-ink-950 hover:bg-ink-950/5"
+        className="flex size-10 items-center justify-center rounded-md text-ink-950 hover:bg-ink-950/5"
       >
         {open ? <X className="size-5" /> : <Menu className="size-5" />}
       </button>

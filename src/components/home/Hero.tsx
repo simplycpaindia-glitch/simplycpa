@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section className="border-b border-ink-950/10 bg-paper-50">
       <div className="mx-auto max-w-4xl px-4 pt-16 pb-14 text-center sm:px-6 sm:pt-24 sm:pb-20 lg:px-8">
-        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold-600">
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">
           SimplyCPA
         </p>
         <h1 className="font-display text-4xl font-medium leading-[1.15] text-ink-950 text-balance sm:text-5xl">

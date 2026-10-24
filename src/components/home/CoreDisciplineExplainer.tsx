@@ -13,7 +13,7 @@ export function CoreDisciplineExplainer() {
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <Card className="p-6">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-600">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-700">
               Core — everyone takes all three
             </p>
             <ul className="space-y-3">
@@ -24,7 +24,7 @@ export function CoreDisciplineExplainer() {
           </Card>
 
           <Card className="p-6 border-gold-500/40">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-600">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-700">
               Discipline — choose exactly one
             </p>
             <ul className="space-y-3">

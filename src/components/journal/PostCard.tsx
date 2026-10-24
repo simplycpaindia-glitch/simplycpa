@@ -105,7 +105,7 @@ export function PostCard({ post, viewer }: { post: FeedPost; viewer: { signedIn:
           </div>
           <p className="mt-2 whitespace-pre-wrap break-words text-[15px] leading-relaxed text-ink-950">{shown}</p>
           {long && (
-            <button type="button" onClick={() => setExpanded((v) => !v)} className="mt-1 text-sm font-medium text-gold-600 hover:underline">
+            <button type="button" onClick={() => setExpanded((v) => !v)} className="mt-1 text-sm font-medium text-gold-700 hover:underline">
               {expanded ? "Show less" : "Show more"}
             </button>
           )}

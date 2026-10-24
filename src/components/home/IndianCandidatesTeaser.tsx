@@ -1,12 +1,13 @@
 import { MapPin, IndianRupee, FileCheck, Clock } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { INDIA_TEST_CITIES, indiaTestCitiesText } from "@/lib/india";
 
 const points = [
-  { icon: MapPin, label: "8 Indian testing cities", body: "Ahmedabad, Bengaluru, Kolkata, Chennai, Hyderabad, Mumbai, New Delhi, Trivandrum." },
-  { icon: FileCheck, label: "Credential evaluation first", body: "Your degree needs evaluation by a NACES-member agency before a state board will make you eligible." },
+  { icon: MapPin, label: `${INDIA_TEST_CITIES.length} Indian testing cities`, body: `${indiaTestCitiesText()}.` },
+  { icon: FileCheck, label: "Credential evaluation first", body: "Your degrees need evaluating by an agency your state board accepts before it will make you eligible." },
   { icon: IndianRupee, label: "Real, changing costs", body: "Application, exam, and international administration fees vary by state and change — always verify with NASBA." },
-  { icon: Clock, label: "6–18 months, typically", body: "Most working Indian candidates finish all four sections in 12–18 months of consistent study." },
+  { icon: Clock, label: "12–18 months, typically", body: "Most working Indian candidates finish all four sections in 12–18 months of consistent study." },
 ];
 
 export function IndianCandidatesTeaser() {
@@ -30,7 +31,7 @@ export function IndianCandidatesTeaser() {
           <div className="grid gap-4 sm:grid-cols-2">
             {points.map((p) => (
               <div key={p.label} className="rounded-lg border border-ink-950/10 p-5">
-                <p.icon className="size-5 text-gold-600 mb-3" />
+                <p.icon className="size-5 text-gold-700 mb-3" />
                 <p className="font-medium text-ink-950">{p.label}</p>
                 <p className="mt-1 text-sm text-ink-400 leading-relaxed">{p.body}</p>
               </div>

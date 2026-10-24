@@ -160,7 +160,7 @@ export function McqPractice({
           }
           className={cn(
             "flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium",
-            marked.has(current.id) ? "bg-gold-500/15 text-gold-600" : "text-ink-400 hover:bg-ink-950/5"
+            marked.has(current.id) ? "bg-gold-500/15 text-gold-700" : "text-ink-400 hover:bg-ink-950/5"
           )}
         >
           <Flag className="size-3.5" /> {marked.has(current.id) ? "Marked" : "Mark for review"}
@@ -176,7 +176,7 @@ export function McqPractice({
               "flex size-8 items-center justify-center rounded-md text-xs font-medium border",
               i === index && "border-ink-950 text-ink-950",
               i !== index && answers[q.id] && "border-signal-green/40 bg-signal-green/10 text-signal-green",
-              i !== index && !answers[q.id] && marked.has(q.id) && "border-gold-500/40 bg-gold-500/10 text-gold-600",
+              i !== index && !answers[q.id] && marked.has(q.id) && "border-gold-500/40 bg-gold-500/10 text-gold-700",
               i !== index && !answers[q.id] && !marked.has(q.id) && "border-ink-950/10 text-ink-400"
             )}
           >
@@ -186,7 +186,7 @@ export function McqPractice({
       </div>
 
       <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-6">
-        <p className="mb-5 text-base font-medium text-ink-950 leading-relaxed select-none">
+        <p className="mb-5 text-base font-medium text-ink-950 leading-relaxed">
           {current.question}
         </p>
         <div className="flex flex-col gap-2">

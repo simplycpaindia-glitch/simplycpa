@@ -52,7 +52,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
     <div className="bg-paper-100/50">
       <Container className="py-10 sm:py-14">
         <header className="max-w-2xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold-600">Study wall</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold-700">Study wall</p>
           <h1 className="mt-2 font-display text-3xl font-medium text-ink-950 sm:text-4xl">What I Studied This Week</h1>
           <p className="mt-3 leading-relaxed text-ink-400">
             Share what you covered, what finally clicked, what tripped you up — and, after your exam, what you&apos;d tell
@@ -61,7 +61,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
         </header>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
-          <main className="flex min-w-0 flex-col gap-4">
+          <div className="flex min-w-0 flex-col gap-4">
             {/* Composer, or what the viewer needs to do before posting */}
             {!viewer ? (
               <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-5">
@@ -133,7 +133,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
                 </Link>
               )}
             </div>
-          </main>
+          </div>
 
           <aside className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
             {myStats && viewer?.username && (
@@ -147,7 +147,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
                   {myStats.totalHours} h in total
                 </p>
                 <p className="mt-2 text-xs text-ink-400">Post at least once each week (Monday–Sunday, India time) to keep your streak going.</p>
-                <Link href={`/what-i-studied/u/${viewer.username}`} className="mt-3 inline-block text-sm font-medium text-gold-600 hover:underline">
+                <Link href={`/what-i-studied/u/${viewer.username}`} className="mt-3 inline-block text-sm font-medium text-gold-700 hover:underline">
                   Your profile →
                 </Link>
               </div>
@@ -162,7 +162,7 @@ export default async function WhatIStudiedPage({ searchParams }: PageProps<"/wha
                 <li>Every post is <strong>checked automatically</strong>{aiEnabled ? " (including an AI review)" : ""} for explicit, abusive and spam content. A few are held for a quick human review.</li>
                 <li>Posts reported by {REPORTS_TO_HIDE} established members are hidden until a moderator reviews them.</li>
               </ul>
-              <Link href="/community-guidelines" className="mt-4 inline-block font-medium text-gold-600 hover:underline">
+              <Link href="/community-guidelines" className="mt-4 inline-block font-medium text-gold-700 hover:underline">
                 Read the full guidelines →
               </Link>
             </div>

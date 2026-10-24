@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
+import { radarAnchor } from "@/lib/radar";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/radar" },
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function RadarPage() {
-  const updates = await prisma.update.findMany({ orderBy: { publishedAt: "desc" } });
+  const updates = await prisma.update.findMany({ orderBy: [{ publishedAt: "desc" }, { lastVerified: "desc" }] });
 
   return (
     <Container className="py-16">
@@ -22,19 +23,21 @@ export default async function RadarPage() {
       />
       <div className="mt-10 flex flex-col divide-y divide-ink-950/10 max-w-3xl">
         {updates.map((u) => (
-          <div key={u.id} className="py-6">
+          <article key={u.id} id={radarAnchor(u.id)} className="scroll-mt-24 py-6 target:bg-gold-500/10">
             <div className="flex flex-wrap items-center gap-2 text-xs text-ink-400">
               <Badge tone="neutral">{u.category}</Badge>
+              <span>Published {formatDate(u.publishedAt)}</span>
+              <span aria-hidden>·</span>
               <span>Last verified {formatDate(u.lastVerified)}</span>
             </div>
             <h2 className="mt-2 font-semibold text-ink-950">{u.title}</h2>
             <p className="mt-1 text-sm text-ink-400 leading-relaxed">{u.body}</p>
             {u.sourceUrl && (
-              <a href={u.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs underline text-gold-600">
+              <a href={u.sourceUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs underline text-gold-700">
                 Source
               </a>
             )}
-          </div>
+          </article>
         ))}
         {updates.length === 0 && <p className="py-6 text-ink-400">No updates published yet.</p>}
       </div>

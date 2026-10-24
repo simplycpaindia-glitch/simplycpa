@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { auth, signOut } from "@/lib/auth";
 import { Button } from "@/components/ui/Button";
 import { MobileNav } from "@/components/site/MobileNav";
-import { SearchBox } from "@/components/site/SearchBox";
+import { SearchLauncher } from "@/components/site/SearchLauncher";
 
 export async function Navbar() {
   const [subjects, session] = await Promise.all([
@@ -18,7 +18,7 @@ export async function Navbar() {
     <header className="sticky top-0 z-40 border-b border-ink-950/10 bg-paper-50/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="font-display text-xl font-semibold tracking-tight shrink-0">
-          Simply<span className="text-gold-600">CPA</span>
+          Simply<span className="text-gold-700">CPA</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -48,30 +48,34 @@ export async function Navbar() {
             CPA for Indians
           </Link>
 
-          <NavGroup label="Resources" wide={false}>
-            <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
-            <DropdownLink href="/roadmap" label="Roadmap" />
-            <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
-            <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
-            <DropdownLink href="/cpa-exam-pass-rates" label="Pass Rates" sub="Every section, every quarter" />
-            <DropdownLink href="/cpa-score-release-dates" label="Score Release Dates" sub="When you'll get your score" />
-            <DropdownLink href="/cpa-licensure-pathways" label="120 vs 150 by State" sub="New licensure pathways" />
-            <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
-            <DropdownLink href="/sources" label="Official Sources" />
-            <DropdownLink href="/faq" label="FAQs" />
-            <DropdownLink href="/blog" label="Blog" />
+          <NavGroup label="Resources">
+            <NavSection title="Exam facts">
+              <DropdownLink href="/cpa-exam-pass-rates" label="Pass Rates" sub="Every section, every quarter" />
+              <DropdownLink href="/cpa-score-release-dates" label="Score Release Dates" sub="When you'll get your score" />
+              <DropdownLink href="/cpa-licensure-pathways" label="120 vs 150 by State" sub="New licensure pathways" />
+              <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
+              <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
+            </NavSection>
+            <NavSection title="Guides">
+              <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
+              <DropdownLink href="/roadmap" label="Roadmap" />
+              <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
+              <DropdownLink href="/faq" label="FAQs" />
+              <DropdownLink href="/blog" label="Blog" />
+              <DropdownLink href="/sources" label="Official Sources" />
+            </NavSection>
           </NavGroup>
 
           <Link
             href="/what-i-studied"
             className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3"
           >
-            What I Studied
+            Study Wall
           </Link>
         </nav>
 
         <div className="hidden lg:flex flex-1 items-center justify-end gap-3">
-          <SearchBox className="w-32 xl:w-48" />
+          <SearchLauncher shortcut />
           {session?.user ? (
             <>
               <Button href="/dashboard" size="sm" variant="outline" className="whitespace-nowrap">

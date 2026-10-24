@@ -10,6 +10,6 @@ export const BRAND = {
   ink: "#05070d",
   paper: "#fbfaf7",
   gold: "#c19a44",
-  goldDark: "#a17f35",
-  muted: "#6b7494",
+  goldDark: "#7f6223",
+  muted: "#545c7c",
 } as const;

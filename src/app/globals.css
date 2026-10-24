@@ -9,7 +9,8 @@
   --color-ink-800: #131a2b;
   --color-ink-700: #1c2540;
   --color-ink-600: #2a3358;
-  --color-ink-400: #6b7494;
+  /* Muted text. #545c7c passes WCAG AA on every paper tone (6.29:1 on paper-50, 5.28:1 on paper-200). */
+  --color-ink-400: #545c7c;
   --color-ink-200: #c7cbdb;
 
   --color-paper-50: #fbfaf7;
@@ -19,11 +20,13 @@
 
   --color-gold-400: #d8b262;
   --color-gold-500: #c19a44;
-  --color-gold-600: #a17f35;
+  --color-gold-600: #a17f35; /* decorative: borders, rules, icons, chart bars — not for text */
+  /* Gold TEXT (eyebrow labels, links, accents). 5.48:1 on paper-50; #a17f35 was 3.59:1. */
+  --color-gold-700: #7f6223;
 
   --color-signal-green: #2f6d4f;
   --color-signal-red: #a33f3f;
-  --color-signal-amber: #a17f35;
+  --color-signal-amber: #7f6223;
 
   --background: var(--color-paper-50);
   --foreground: var(--color-ink-950);
@@ -49,6 +52,7 @@
   --color-gold-400: var(--color-gold-400);
   --color-gold-500: var(--color-gold-500);
   --color-gold-600: var(--color-gold-600);
+  --color-gold-700: var(--color-gold-700);
 
   --color-signal-green: var(--color-signal-green);
   --color-signal-red: var(--color-signal-red);
@@ -62,6 +66,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Visible keyboard focus everywhere (mouse clicks don't show it). */
+:focus-visible {
+  outline: 2px solid var(--color-ink-950);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -128,7 +139,7 @@ body {
   font-weight: 600;
 }
 .prose-cpa a {
-  color: var(--color-gold-600);
+  color: var(--color-gold-700);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -172,7 +183,7 @@ body {
   font-family: var(--font-display), serif;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-gold-600);
+  color: var(--color-gold-700);
 }
 .callout-crux ol {
   margin-bottom: 0;

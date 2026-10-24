@@ -12,7 +12,7 @@ export function Badge({
 }) {
   const tones: Record<string, string> = {
     neutral: "bg-paper-200 text-ink-800",
-    gold: "bg-gold-500/15 text-gold-600",
+    gold: "bg-gold-500/15 text-gold-700",
     green: "bg-signal-green/10 text-signal-green",
     red: "bg-signal-red/10 text-signal-red",
     amber: "bg-signal-amber/10 text-signal-amber",

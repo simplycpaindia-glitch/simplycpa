@@ -21,7 +21,7 @@ export default async function AdminLayout({ children }: LayoutProps<"/admin">) {
     <div className="flex min-h-screen bg-paper-100">
       <aside className="w-56 shrink-0 border-r border-ink-950/10 bg-paper-50 p-5">
         <Link href="/admin" className="font-display text-lg font-semibold">
-          Simply<span className="text-gold-600">CPA</span> <span className="text-xs text-ink-400 font-sans">Admin</span>
+          Simply<span className="text-gold-700">CPA</span> <span className="text-xs text-ink-400 font-sans">Admin</span>
         </Link>
         <nav className="mt-8 flex flex-col gap-1">
           {navItems.map((item) => (

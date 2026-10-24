@@ -67,7 +67,7 @@ export default function RoadmapPage() {
         <div className="flex flex-col gap-4 max-w-2xl">
           {steps.map((s) => (
             <Card key={s.n} className="p-6 flex gap-5">
-              <span className="font-display text-2xl text-gold-500 shrink-0">
+              <span className="font-display text-2xl text-gold-700 shrink-0">
                 {String(s.n).padStart(2, "0")}
               </span>
               <div>

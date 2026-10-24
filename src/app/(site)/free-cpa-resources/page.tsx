@@ -104,7 +104,7 @@ export default function FreeCpaResourcesPage() {
                       href={r.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 font-semibold text-ink-950 underline decoration-gold-400 underline-offset-2 hover:decoration-ink-950"
+                      className="inline-flex items-center gap-1 font-semibold text-ink-950 underline decoration-gold-500 underline-offset-2 hover:decoration-ink-950"
                     >
                       {r.name}
                       <ExternalLink className="size-3.5 shrink-0" aria-hidden />

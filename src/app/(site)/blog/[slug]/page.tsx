@@ -138,7 +138,7 @@ export default async function BlogPostPage({
             {related.map((p) => (
               <Link key={p.id} href={`/blog/${p.slug}`}>
                 <Card className="h-full p-5 hover:shadow-md transition-shadow">
-                  <p className="text-xs text-gold-600">{p.category}</p>
+                  <p className="text-xs text-gold-700">{p.category}</p>
                   <h3 className="mt-2 font-display text-base font-semibold leading-snug text-ink-950">{p.title}</h3>
                 </Card>
               </Link>

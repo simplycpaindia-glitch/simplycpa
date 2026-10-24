@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Accordion } from "@/components/ui/Accordion";
+import { LinkedText } from "@/components/content/LinkedText";
 import { Button } from "@/components/ui/Button";
 
 export async function FaqPreview() {
@@ -21,7 +22,7 @@ export async function FaqPreview() {
           </Button>
         </div>
         <div className="mt-8 max-w-3xl">
-          <Accordion items={faqs.map((f) => ({ id: f.id, question: f.question, answer: f.answer }))} />
+          <Accordion items={faqs.map((f) => ({ id: f.id, question: f.question, answer: <LinkedText text={f.answer} /> }))} />
         </div>
       </Container>
     </section>

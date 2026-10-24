@@ -133,7 +133,7 @@ function CommentRow({ comment, path }: { comment: CommentData; path: string }) {
             onClick={() => startTransition(() => { void toggleUpvote(comment.id, path); })}
             className={cn(
               "flex items-center gap-1 text-xs",
-              comment.hasUpvoted ? "text-gold-600" : "text-ink-400 hover:text-ink-800"
+              comment.hasUpvoted ? "text-gold-700" : "text-ink-400 hover:text-ink-800"
             )}
           >
             <ThumbsUp className="size-3.5" /> {comment.upvoteCount}

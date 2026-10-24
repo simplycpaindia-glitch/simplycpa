@@ -83,7 +83,7 @@ export async function requestEmailCode(input: { email: string; turnstileToken?: 
 <p>Your SimplyCPA sign-in code is:</p>
 <p style="font-size:32px;font-weight:700;letter-spacing:6px;margin:16px 0">${code}</p>
 <p>It expires in ${CODE_TTL_MINUTES} minutes and can only be used once.</p>
-<p style="color:#6b7494;font-size:13px">If you didn't request it, you can ignore this email — nobody can sign in without the code. SimplyCPA never asks for this code by phone, WhatsApp or email.</p>
+<p style="color:#545c7c;font-size:13px">If you didn't request it, you can ignore this email — nobody can sign in without the code. SimplyCPA never asks for this code by phone, WhatsApp or email.</p>
 </div>`,
   });
   if (!sent.ok) return { ok: false, error: sent.error };

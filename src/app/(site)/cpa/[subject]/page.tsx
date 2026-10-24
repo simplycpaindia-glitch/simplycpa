@@ -14,7 +14,7 @@ async function getSubject(slug: string) {
     include: {
       topics: {
         orderBy: { order: "asc" },
-        include: { mcqs: { where: { status: "PUBLISHED" }, select: { id: true } } },
+        include: { mcqs: { where: { status: "PUBLISHED" }, select: { id: true } }, revisionNote: { select: { id: true } } },
       },
     },
   });
@@ -142,16 +142,23 @@ export default async function SubjectPage({
                       <p className="mt-0.5 text-xs text-ink-400 line-clamp-1">{topic.shortDescription}</p>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <Link href={base} className="text-ink-800 hover:underline">→</Link>
+                      <Link href={base} className="inline-block py-1 font-medium text-ink-800 underline-offset-2 hover:underline">
+                        Study<span className="sr-only"> {topic.title}</span>
+                      </Link>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <Link href={`/quick-sheets/${subject.slug}/${topic.slug}`} className="text-ink-800 hover:underline">→</Link>
+                      {topic.revisionNote ? (
+                        <Link href={`/quick-sheets/${subject.slug}/${topic.slug}`} className="inline-block py-1 font-medium text-ink-800 underline-offset-2 hover:underline">
+                          Revise<span className="sr-only"> {topic.title}</span>
+                        </Link>
+                      ) : (
+                        <span className="text-ink-400">—</span>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <Link href={`${base}#mcqs`} className="text-ink-800 hover:underline">
-                        {topic.mcqs.length > 0
-                          ? `${topic.mcqs.length} MCQ${topic.mcqs.length === 1 ? "" : "s"}`
-                          : "→"}
+                      <Link href={`${base}#mcqs`} className="inline-block py-1 font-medium text-ink-800 underline-offset-2 hover:underline">
+                        {topic.mcqs.length > 0 ? `${topic.mcqs.length} MCQ${topic.mcqs.length === 1 ? "" : "s"}` : "Practise"}
+                        <span className="sr-only"> on {topic.title}</span>
                       </Link>
                     </td>
                   </tr>

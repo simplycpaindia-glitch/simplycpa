@@ -91,7 +91,7 @@ export default async function FeesPage() {
                       href={f.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1 inline-block text-xs text-gold-600 underline"
+                      className="mt-1 inline-block text-xs text-gold-700 underline"
                     >
                       Source
                     </a>

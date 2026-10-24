@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from "react";
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { Check, Loader2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { submitMcqAnswer } from "@/lib/actions/mcq";
@@ -40,7 +40,7 @@ export function QuestionOfTheDayCard({
   }
 
   return (
-    <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-6 shadow-sm select-none">
+    <div className="rounded-xl border border-ink-950/10 bg-paper-50 p-6 shadow-sm" aria-busy={isPending}>
       <div className="mb-4 flex items-center gap-2 text-xs font-medium text-ink-400">
         <span className="rounded-full bg-ink-950 px-2.5 py-0.5 text-paper-50">{subjectShortName}</span>
         <span>{topicTitle}</span>
@@ -62,7 +62,8 @@ export function QuestionOfTheDayCard({
               onClick={() => handleSelect(opt.id)}
               className={cn(
                 "flex items-start gap-3 rounded-lg border px-4 py-3 text-left text-sm transition-colors",
-                !result && "hover:border-ink-950/30 hover:bg-ink-950/[0.03]",
+                !result && !isPending && "hover:border-ink-950/30 hover:bg-ink-950/[0.03]",
+                isPending && !isSelected && "opacity-60",
                 isSelected && !result && "border-ink-950/40 bg-ink-950/[0.03]",
                 isCorrectOption && "border-signal-green/50 bg-signal-green/5",
                 isWrongSelection && "border-signal-red/50 bg-signal-red/5",
@@ -71,6 +72,7 @@ export function QuestionOfTheDayCard({
             >
               <span className="mt-0.5 font-semibold text-ink-400">{opt.label}.</span>
               <span className="flex-1 text-ink-800">{opt.text}</span>
+              {isPending && isSelected && <Loader2 className="size-4 shrink-0 animate-spin text-ink-400" aria-hidden />}
               {isCorrectOption && <Check className="size-4 shrink-0 text-signal-green" />}
               {isWrongSelection && <X className="size-4 shrink-0 text-signal-red" />}
             </button>
@@ -78,9 +80,16 @@ export function QuestionOfTheDayCard({
         })}
       </div>
 
+      {/* Announces "Checking…" and then the result to screen readers. */}
+      <div aria-live="polite" className="sr-only">
+        {isPending ? "Checking your answer…" : result ? (result.isCorrect ? "Correct." : "Not quite.") : ""}
+      </div>
+      {isPending && <p className="mt-3 text-xs text-ink-400">Checking your answer…</p>}
+
       {result && (
         <div className="mt-5 rounded-lg bg-paper-100 p-4">
-          <p className={cn("mb-1 text-sm font-semibold", result.isCorrect ? "text-signal-green" : "text-signal-red")}>
+          <p className={cn("mb-1 flex items-center gap-1.5 text-sm font-semibold", result.isCorrect ? "text-signal-green" : "text-signal-red")}>
+            {result.isCorrect ? <Check className="size-4" aria-hidden /> : <X className="size-4" aria-hidden />}
             {result.isCorrect ? "Correct" : "Not quite"}
           </p>
           <p className="text-sm text-ink-400 leading-relaxed">{explanation}</p>
@@ -92,7 +101,7 @@ export function QuestionOfTheDayCard({
         </div>
       )}
 
-      {!result && (
+      {!result && !isPending && (
         <p className="mt-3 text-xs text-ink-400">
           Or <Link href={topicHref} className="underline">jump straight to {topicTitle}</Link>.
         </p>

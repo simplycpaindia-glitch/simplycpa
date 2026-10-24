@@ -14,7 +14,7 @@ export default async function AdminSourcesPage() {
       <div className="flex flex-col divide-y divide-ink-950/10 mb-10">
         {sources.map((s) => (
           <div key={s.id} className="py-3">
-            <p className="text-xs uppercase text-gold-600 font-medium">{s.sourceType}</p>
+            <p className="text-xs uppercase text-gold-700 font-medium">{s.sourceType}</p>
             <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-ink-950 underline">{s.name}</a>
             <p className="text-xs text-ink-400">Checked {formatDate(s.dateChecked)}</p>
           </div>

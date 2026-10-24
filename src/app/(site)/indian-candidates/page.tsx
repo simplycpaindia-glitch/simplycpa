@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { INDIA_TEST_CITIES, indiaTestCitiesText } from "@/lib/india";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indian-candidates" },
@@ -25,7 +26,7 @@ const sections = [
   },
   {
     title: "Can I take the CPA Exam in India?",
-    body: "Yes — NASBA administers the exam internationally, with Prometric test centers in several Indian cities. You still need to first establish eligibility through a participating US state board, receive your Notice to Schedule (NTS), and pay an additional international administration fee for each section taken outside the US.",
+    body: `Yes — NASBA administers the exam internationally, with Prometric test centres in ${INDIA_TEST_CITIES.length} Indian cities: ${indiaTestCitiesText()}. Check Prometric's locator for current seats. You still need to first establish eligibility through a participating US state board, receive your Notice to Schedule (NTS), and pay an additional international administration fee for each section taken outside the US.`,
   },
   {
     title: "How does state selection work?",

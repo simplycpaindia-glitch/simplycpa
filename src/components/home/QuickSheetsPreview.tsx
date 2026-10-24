@@ -28,7 +28,7 @@ export async function QuickSheetsPreview() {
               href={`/quick-sheets/${t.subject.slug}/${t.slug}`}
               className="rounded-lg border border-ink-950/10 bg-paper-50 p-4 hover:border-ink-950/25 transition-colors"
             >
-              <span className="text-xs font-semibold uppercase tracking-wider text-gold-600">
+              <span className="text-xs font-semibold uppercase tracking-wider text-gold-700">
                 {t.subject.shortName}
               </span>
               <p className="mt-1 text-sm font-medium text-ink-950">{t.title}</p>

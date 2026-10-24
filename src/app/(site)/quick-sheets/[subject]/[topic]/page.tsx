@@ -53,7 +53,7 @@ export default async function QuickSheetPage({
         <span>{topic.title}</span>
       </div>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-gold-600">
+      <p className="text-xs font-semibold uppercase tracking-wider text-gold-700">
         {subject.shortName} — Quick Sheet
       </p>
       <h1 className="mt-1 font-display text-3xl font-medium text-balance">{topic.title}</h1>

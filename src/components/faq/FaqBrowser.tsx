@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Accordion } from "@/components/ui/Accordion";
+import { LinkedText } from "@/components/content/LinkedText";
 
 type Faq = { id: string; category: string; question: string; answer: string };
 
@@ -58,7 +59,7 @@ export function FaqBrowser({ faqs }: { faqs: Faq[] }) {
         <p className="py-8 text-sm text-ink-400">No FAQs match your search.</p>
       ) : (
         <Accordion
-          items={filtered.map((f) => ({ id: f.id, question: f.question, answer: f.answer }))}
+          items={filtered.map((f) => ({ id: f.id, question: f.question, answer: <LinkedText text={f.answer} /> }))}
         />
       )}
     </div>

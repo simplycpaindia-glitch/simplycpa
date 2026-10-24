@@ -36,7 +36,7 @@ export function StudySystem() {
               <span className="absolute top-6 right-6 font-display text-2xl text-ink-950/10">
                 {i + 1}
               </span>
-              <s.icon className="size-5 text-gold-600 mb-3" />
+              <s.icon className="size-5 text-gold-700 mb-3" />
               <h3 className="font-semibold text-ink-950">{s.title}</h3>
               <p className="mt-1.5 text-sm text-ink-400 leading-relaxed">{s.body}</p>
             </div>
