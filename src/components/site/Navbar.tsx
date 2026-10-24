@@ -37,7 +37,7 @@ export async function Navbar() {
           </NavGroup>
 
           <NavGroup label="Practice" wide={false}>
-            <DropdownLink href="/#question-of-the-day" label="Question of the Day" sub="One question, every day" />
+            <DropdownLink href="/question-of-the-day" label="Question of the Day" sub="One question, every day" />
             <DropdownLink href="/cpa" label="MCQs" sub="Practice by subject and topic" />
             <DropdownLink href="/quick-sheets" label="Quick Sheets" sub="5-minute revision sheets" />
           </NavGroup>

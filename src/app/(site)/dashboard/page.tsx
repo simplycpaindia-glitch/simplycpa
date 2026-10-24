@@ -3,7 +3,9 @@ import Link from "next/link";
 import { requireUser } from "@/lib/dal";
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
-import { Card, ProgressBar } from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
+import { getTopicProgress } from "@/lib/progress-data";
+import { countProgress, ProgressSegments } from "@/components/progress/ProgressSegments";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
@@ -15,7 +17,7 @@ export default async function DashboardPage() {
   const [subjects, attempts, recentSessions, bookmarks] = await Promise.all([
     prisma.subject.findMany({
       orderBy: { order: "asc" },
-      include: { topics: { include: { progress: { where: { userId: user.id } } } } },
+      include: { topics: { where: { isComingSoon: false }, select: { id: true, _count: { select: { mcqs: { where: { status: "PUBLISHED" } } } } } } },
     }),
     prisma.mCQAttempt.findMany({
       where: { userId: user.id },
@@ -32,11 +34,17 @@ export default async function DashboardPage() {
     prisma.bookmark.count({ where: { userId: user.id } }),
   ]);
 
-  const subjectStats = subjects.map((s) => {
-    const total = s.topics.length;
-    const completed = s.topics.filter((t) => t.progress[0]?.status === "COMPLETED").length;
-    return { subject: s, pct: total ? Math.round((completed / total) * 100) : 0 };
-  });
+  const progress = await getTopicProgress(
+    user.id,
+    subjects.flatMap((s) => s.topics.map((t) => ({ id: t.id, mcqCount: t._count.mcqs }))),
+  );
+  const subjectStats = subjects.map((s) => ({
+    subject: s,
+    counts: countProgress(
+      s.topics.map((t) => progress.get(t.id)!).filter(Boolean),
+      s.topics.length,
+    ),
+  }));
 
   const topicAccuracy = new Map<string, { title: string; subjectSlug: string; topicSlug: string; correct: number; total: number }>();
   for (const a of attempts) {
@@ -63,13 +71,18 @@ export default async function DashboardPage() {
       <SectionHeading as="h1" eyebrow="Your CPA Journey" title={`Welcome back, ${user.name?.split(" ")[0] ?? "there"}`} />
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {subjectStats.map(({ subject, pct }) => (
+        {subjectStats.map(({ subject, counts }) => (
           <Card key={subject.id} className="p-5">
             <div className="flex items-center justify-between">
               <span className="font-semibold text-ink-950">{subject.shortName}</span>
-              <span className="text-xs text-ink-400">{pct}%</span>
+              <span className="text-xs text-ink-400">
+                {counts.mastered}/{counts.total} mastered
+              </span>
             </div>
-            <ProgressBar value={pct} className="mt-3" />
+            <ProgressSegments counts={counts} className="mt-3 h-2" />
+            <p className="mt-2 text-xs text-ink-400">
+              {counts.revised} revised · {counts.studied} studied
+            </p>
             <Link href={`/cpa/${subject.slug}`} className="mt-3 inline-block text-xs underline text-ink-400">
               Continue studying
             </Link>

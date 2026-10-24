@@ -55,7 +55,7 @@ export function MobileNav({
             ))}
           </MobileSection>
           <MobileSection title="Practice">
-            <MobileLink href="/#question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
+            <MobileLink href="/question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
             <MobileLink href="/cpa" onClick={() => setOpen(false)}>MCQs</MobileLink>
             <MobileLink href="/quick-sheets" onClick={() => setOpen(false)}>Quick Sheets</MobileLink>
           </MobileSection>

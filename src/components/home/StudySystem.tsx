@@ -21,7 +21,7 @@ const steps = [
     icon: PenSquare,
     title: "Practise",
     body: "Topic-specific MCQs with full explanations, graded on the server so answers are never exposed early.",
-    href: "/#question-of-the-day",
+    href: "/question-of-the-day",
     cta: "Try today's question",
   },
 ];

@@ -14,17 +14,21 @@ export async function submitMcqAnswer(input: {
   sessionId?: string;
   timeSpentSeconds?: number;
 }) {
-  const options = await prisma.mCQOption.findMany({
-    where: { mcqId: input.mcqId },
-    select: { id: true, label: true, isCorrect: true, rationale: true },
-  });
+  const [options, mcq] = await Promise.all([
+    prisma.mCQOption.findMany({
+      where: { mcqId: input.mcqId },
+      select: { id: true, label: true, isCorrect: true, rationale: true },
+    }),
+    prisma.mCQ.findUnique({ where: { id: input.mcqId }, select: { explanation: true } }),
+  ]);
 
   const selected = options.find((o) => o.id === input.selectedOptionId);
   const correctOption = options.find((o) => o.isCorrect);
   const isCorrect = !!selected?.isCorrect;
 
   const session = await auth();
-  if (session?.user) {
+  // Only record a real choice for this question (a tampered option id would skew progress).
+  if (session?.user && selected) {
     await prisma.mCQAttempt.create({
       data: {
         userId: session.user.id,
@@ -40,6 +44,8 @@ export async function submitMcqAnswer(input: {
   return {
     isCorrect,
     correctOptionId: correctOption?.id ?? null,
+    // Sent only after grading, like the correct answer.
+    explanation: mcq?.explanation ?? "",
     options: options.map((o) => ({
       id: o.id,
       isCorrect: o.isCorrect,

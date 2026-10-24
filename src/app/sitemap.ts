@@ -56,6 +56,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/cpa-licensure-pathways": new Date(PATHWAYS_CHECKED),
   };
   const undated = [
+    "/question-of-the-day",
+    "/question-of-the-day/archive",
     "/start-here",
     "/roadmap",
     "/fees",

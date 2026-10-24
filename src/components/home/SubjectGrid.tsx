@@ -3,19 +3,36 @@ import { ArrowRight } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import { getTopicProgress } from "@/lib/progress-data";
+import { countProgress, ProgressSegments, type ProgressCounts } from "@/components/progress/ProgressSegments";
 
 const DIFFICULTY = { EASY: "Easy", MEDIUM: "Medium", HARD: "Hard" } as const;
 /** Banks smaller than this are labelled as still growing. */
 const GROWING_BELOW = 150;
 
 export async function SubjectGrid() {
+  const session = await auth();
   const subjects = await prisma.subject.findMany({
     orderBy: { order: "asc" },
     include: {
       _count: { select: { topics: true } },
-      topics: { select: { mcqs: { where: { status: "PUBLISHED" }, select: { id: true } } } },
+      topics: { select: { id: true, isComingSoon: true, mcqs: { where: { status: "PUBLISHED" }, select: { id: true } } } },
     },
   });
+
+  // Signed-in readers see their progress on each card (same model as the section pages).
+  const progress = session?.user
+    ? await getTopicProgress(
+        session.user.id,
+        subjects.flatMap((s) => s.topics.filter((t) => !t.isComingSoon).map((t) => ({ id: t.id, mcqCount: t.mcqs.length }))),
+      )
+    : null;
+  const countsFor = (s: (typeof subjects)[number]) => {
+    if (!progress) return null;
+    const live = s.topics.filter((t) => !t.isComingSoon);
+    return countProgress(live.map((t) => progress.get(t.id)!).filter(Boolean), live.length);
+  };
 
   const core = subjects.filter((s) => s.type === "CORE");
   const discipline = subjects.filter((s) => s.type === "DISCIPLINE");
@@ -34,7 +51,7 @@ export async function SubjectGrid() {
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {core.map((s) => (
-              <SubjectCard key={s.id} subject={s} />
+              <SubjectCard key={s.id} subject={s} counts={countsFor(s)} />
             ))}
           </div>
         </div>
@@ -45,7 +62,7 @@ export async function SubjectGrid() {
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             {discipline.map((s) => (
-              <SubjectCard key={s.id} subject={s} />
+              <SubjectCard key={s.id} subject={s} counts={countsFor(s)} />
             ))}
           </div>
         </div>
@@ -56,7 +73,9 @@ export async function SubjectGrid() {
 
 function SubjectCard({
   subject,
+  counts,
 }: {
+  counts: ProgressCounts | null;
   subject: {
     id: string;
     slug: string;
@@ -66,7 +85,7 @@ function SubjectCard({
     estimatedHours: number | null;
     difficulty: "EASY" | "MEDIUM" | "HARD";
     _count: { topics: number };
-    topics: { mcqs: { id: string }[] }[];
+    topics: { id: string; isComingSoon: boolean; mcqs: { id: string }[] }[];
   };
 }) {
   const mcqCount = subject.topics.reduce((sum, t) => sum + t.mcqs.length, 0);
@@ -93,8 +112,16 @@ function SubjectCard({
           {mcqCount > 0 && mcqCount < GROWING_BELOW && " (bank still growing)"}
         </p>
       </div>
+      {counts && (
+        <div className="mt-4">
+          <ProgressSegments counts={counts} />
+          <p className="mt-1.5 text-xs text-ink-400">
+            {counts.mastered} of {counts.total} mastered
+          </p>
+        </div>
+      )}
       <span className="mt-5 flex items-center gap-1 text-sm font-medium text-ink-950">
-        Start Studying
+        {counts && counts.mastered + counts.revised + counts.studied > 0 ? "Continue" : "Start Studying"}
         <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
       </span>
     </Link>
