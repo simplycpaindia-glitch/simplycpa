@@ -15,6 +15,7 @@
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
     "mcq:validate": "tsx prisma/validate-mcq-bank.ts",
+    "mcq:sync": "tsx prisma/sync-mcqs.ts",
     "content:check": "tsx prisma/check-abbreviations.ts",
     "content:sync-revision": "tsx prisma/sync-revision-notes.ts",
     "test:moderation": "tsx prisma/test-journal-moderation.ts",

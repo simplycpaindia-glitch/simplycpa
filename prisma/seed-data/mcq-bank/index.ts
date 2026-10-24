@@ -9,6 +9,7 @@ import { regBankA } from "./reg-a";
 import { regBankB } from "./reg-b";
 import { regBankC } from "./reg-c";
 import { barBank } from "./bar";
+import { barBankB } from "./bar-b";
 import { iscBank } from "./isc";
 import { tcpBank } from "./tcp";
 
@@ -31,6 +32,7 @@ const banks: McqBank[] = [
   regBankB,
   regBankC,
   barBank,
+  barBankB,
   iscBank,
   tcpBank,
 ];

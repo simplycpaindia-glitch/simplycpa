@@ -45,6 +45,13 @@ for (const [slug, questions] of Object.entries(mcqBank)) {
       errors.push(`${where}: has ${correct.length} correct options, expected exactly 1.`);
     }
 
+    // Rationales open with "Correct" on the right answer, so a wrong option that
+    // says "Correct" means the answer key points at the wrong option.
+    const mislabeled = q.options.filter((o) => !o.isCorrect && /^Correct\b/.test(o.rationale ?? ""));
+    if (mislabeled.length) {
+      errors.push(`${where}: option ${mislabeled.map((o) => o.label).join(", ")} is marked wrong but its rationale says "Correct".`);
+    }
+
     const labels = q.options.map((o) => o.label);
     if (new Set(labels).size !== labels.length) {
       errors.push(`${where}: duplicate option labels (${labels.join(", ")}).`);
