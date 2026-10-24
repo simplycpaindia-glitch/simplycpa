@@ -104,5 +104,12 @@ export const groupAuditsOthersWork: TopicContent = {
 
 <h3>Service organizations</h3>
 <p>System and Organization Controls (SOC) 1 Type 2 to reduce control risk; no reference in report.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Component materiality must be lower than group materiality, and can differ from component to component.</li>
+<li>Direct assistance from internal auditors requires written agreement from management that they will follow the external auditor's instructions.</li>
+<li>If a specialist is mentioned to explain a modified opinion, the report states that this doesn't reduce the auditor's responsibility.</li>
+</ul>
 `,
 };

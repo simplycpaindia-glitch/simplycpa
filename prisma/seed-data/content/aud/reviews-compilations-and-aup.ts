@@ -102,5 +102,12 @@ export const reviewsCompilationsAup: TopicContent = {
 
 <h3>Interim reviews</h3>
 <p>Nonissuer: generally accepted auditing standards (GAAS), limited assurance. Issuer: quarterly review required before Form 10-Q.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Review with an uncorrected material departure: disclose it in the review report (or withdraw) — there's no "qualified opinion" in a review.</li>
+<li>Changing from an audit to a review: the review report mustn't mention the original engagement or procedures performed.</li>
+<li>Statements on Standards for Accounting and Review Services (SSARS) cover nonissuers; an issuer's quarterly reviews follow Public Company Accounting Oversight Board (PCAOB) standards.</li>
+</ul>
 `,
 };

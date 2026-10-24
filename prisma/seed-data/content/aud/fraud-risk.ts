@@ -126,5 +126,12 @@ export const fraudRisk: TopicContent = {
 
 <h3>Laws and regulations</h3>
 <p>Direct-effect laws → obtain evidence of compliance. Other laws → inquiry and inspection of regulator correspondence.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The auditor doesn't decide whether fraud legally occurred — that's for the courts.</li>
+<li>The team discussion is required even when the team believes management is honest.</li>
+<li>Journal entry testing focuses on entries made at year end or after closing, by unusual users, or to unusual accounts.</li>
+</ul>
 `,
 };

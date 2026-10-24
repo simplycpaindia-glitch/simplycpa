@@ -126,5 +126,12 @@ export const auditSampling: TopicContent = {
 
 <h3>Classical variables</h3>
 <p>Mean-per-unit · ratio (proportional errors) · difference (constant errors).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Attribute sampling counts <strong>deviations</strong>, not dollars: the size of the transaction doesn't matter, only whether the control failed.</li>
+<li>Haphazard selection is non-statistical — it isn't random selection and can't be used for statistical sampling.</li>
+<li>If a selected item can't be tested (for example, a missing document), treat it as a deviation or misstatement — don't just pick another item.</li>
+</ul>
 `,
 };

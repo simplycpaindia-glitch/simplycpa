@@ -114,5 +114,12 @@ export const auditingEstimates: TopicContent = {
 
 <h3>Other</h3>
 <p>Level 3 fair values = highest uncertainty. Evaluate specialists and pricing services. Written representations on assumptions.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Management's estimate inside the auditor's range isn't a misstatement — but a pattern of estimates always at the favorable end suggests bias.</li>
+<li>Management using a specialist doesn't remove the auditor's duty to evaluate the specialist's assumptions and data.</li>
+<li>A difference in judgment about an estimate is still a misstatement — accumulate it with factual and projected misstatements.</li>
+</ul>
 `,
 };

@@ -138,5 +138,13 @@ export const evidenceProcedures: TopicContent = {
 
 <h3>Documentation</h3>
 <p>Experienced auditor standard; assemble within 60 days; keep 5 years (issuers: 45 days, 7 years).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Receivable confirmations test <strong>existence</strong>, not valuation — a customer can confirm a balance it will never pay.</li>
+<li>Payable confirmations target completeness: confirm with major vendors, including those with small or zero balances.</li>
+<li>Electronic confirmations are acceptable if the auditor addresses the risk of interception or alteration.</li>
+<li>Observing the count tests existence, not ownership — goods held on consignment may be on the floor.</li>
+</ul>
 `,
 };

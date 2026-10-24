@@ -112,5 +112,12 @@ export const itControlsInAudit: TopicContent = {
 
 <h3>Service organizations</h3>
 <p>System and Organization Controls (SOC) 1 Type 2 to rely on controls; test complementary user entity controls.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Test data shows how the program worked when tested — not that the same program ran all year. That depends on change controls.</li>
+<li>A check digit catches transcription errors in a number; it doesn't prove the account is valid or authorized.</li>
+<li>Benchmarking automated controls still needs evidence each year that the program hasn't changed.</li>
+</ul>
 `,
 };

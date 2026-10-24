@@ -110,5 +110,12 @@ export const auditReports: TopicContent = {
 
 <h3>Other</h3>
 <p>Other information: separate section; opinion unaffected. Management scope limitation → qualify, disclaim, or withdraw.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>An <strong>unjustified</strong> change in accounting principle is a departure from the framework → qualified or adverse, not just an emphasis-of-matter paragraph.</li>
+<li>If management imposes a scope limitation at the outset that would lead to a disclaimer, the auditor should decline the engagement (unless required by law to accept).</li>
+<li>The report can't be dated before sufficient evidence is obtained — including management taking responsibility for the final statements.</li>
+</ul>
 `,
 };

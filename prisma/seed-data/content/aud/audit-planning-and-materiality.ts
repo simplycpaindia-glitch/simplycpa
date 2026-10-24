@@ -112,5 +112,12 @@ export const planningMateriality: TopicContent = {
 <li>Iterative; revise materiality when results differ.</li>
 <li>Qualitative factors: covenants, loss-to-profit swings, fraud, compensation.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Lower materiality means <strong>more</strong> audit work — materiality and the amount of evidence move in opposite directions.</li>
+<li>Inherent and control risk are assessed; only detection risk is set by the auditor — and it can be lowered, never to zero.</li>
+<li>"Clearly trivial" is not the same as immaterial: misstatements above the clearly trivial threshold are accumulated even if below performance materiality.</li>
+</ul>
 `,
 };

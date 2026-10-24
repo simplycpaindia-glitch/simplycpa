@@ -125,5 +125,12 @@ export const understandingInternalControl: TopicContent = {
 <li>Both → <strong>in writing</strong> to management and those charged with governance, within 60 days of report release.</li>
 <li>Never state "no significant deficiencies were identified".</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A walkthrough gives evidence about design and implementation — not operating effectiveness.</li>
+<li>The auditor isn't required to search for control deficiencies, only to communicate the significant ones identified.</li>
+<li>Weaknesses in the control environment are pervasive — they undermine the whole audit, even if individual controls look fine.</li>
+</ul>
 `,
 };

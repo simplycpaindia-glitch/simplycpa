@@ -114,5 +114,13 @@ export const attestationSoc: TopicContent = {
 <li>Forecast: general use. Projection: restricted.</li>
 <li>Compliance: examination or agreed-upon procedures — no review.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A Type 1 report gives no evidence of operating effectiveness, so a user auditor can't use it to assess control risk below maximum.</li>
+<li>No review is allowed on prospective financial information either — examination or agreed-upon procedures only.</li>
+<li>Carve-out method: the user auditor must get evidence about the subservice organization's controls some other way.</li>
+<li>A bridge letter from the service organization's management covers the gap between the report period end and the user's year end.</li>
+</ul>
 `,
 };

@@ -119,5 +119,13 @@ export const acceptanceQualityManagement: TopicContent = {
 
 <h3>Change to review</h3>
 <p>OK for changed circumstances or misunderstanding; not OK to avoid a scope limitation or bad report.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>The successor may review the predecessor's working papers with permission, but can't refer to the predecessor's work as the basis for its own opinion on opening balances.</li>
+<li>An audit needs a written engagement letter (or other written agreement) — an oral understanding isn't enough.</li>
+<li>Recurring audits don't need a new letter every year unless circumstances change, but the auditor considers whether to remind management of the terms.</li>
+<li>Firms had to have their SQMS No. 1 systems designed and implemented by December 15, 2025.</li>
+</ul>
 `,
 };

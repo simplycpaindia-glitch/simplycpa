@@ -108,5 +108,13 @@ export const relatedPartiesGoingConcern: TopicContent = {
 </tbody>
 </table>
 <p>No conditional language ("if it continues…").</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Issuers (Public Company Accounting Oversight Board (PCAOB) audits): the going concern period is a reasonable period not exceeding one year beyond the balance sheet date — not one year after issuance.</li>
+<li>The going concern section must use the words "substantial doubt" and "going concern".</li>
+<li>No going concern section is not a guarantee that the entity will continue.</li>
+<li>Related party transactions don't have to be at arm's length — the requirement is adequate disclosure.</li>
+</ul>
 `,
 };

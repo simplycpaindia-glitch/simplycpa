@@ -121,5 +121,12 @@ export const respondingToRisks: TopicContent = {
 
 <h3>Dual-purpose test</h3>
 <p>One procedure, two objectives (control + misstatement).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Relying on prior-year control tests is allowed only for unchanged controls that don't address a significant risk — and the auditor must confirm this year that they haven't changed.</li>
+<li>A deviation in a control test can't be dismissed as a one-off without understanding its cause.</li>
+<li>Observation only shows how a control operated at the moment observed, not at other times.</li>
+</ul>
 `,
 };

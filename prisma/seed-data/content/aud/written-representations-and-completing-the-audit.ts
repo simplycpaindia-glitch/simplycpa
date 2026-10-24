@@ -112,5 +112,12 @@ export const completingAudit: TopicContent = {
 
 <h3>Governance communications</h3>
 <p>Scope and timing · significant findings · disagreements · difficulties · uncorrected misstatements.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Written representations complement other evidence; they never replace it.</li>
+<li>The representation letter covers all periods in the report, even if current management wasn't in place for all of them.</li>
+<li>The lawyer's letter should be dated close to the report date, so it covers events up to then.</li>
+</ul>
 `,
 };

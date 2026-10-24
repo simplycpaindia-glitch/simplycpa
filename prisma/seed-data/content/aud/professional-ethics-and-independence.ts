@@ -129,5 +129,13 @@ export const ethicsIndependence: TopicContent = {
 <li>Client-provided records: return even if unpaid.</li>
 <li>Issuer partner rotation: 5 years on / 5 years off. Cooling-off: 1 year.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>An immediate family member's direct financial interest in a client is treated as the covered member's own.</li>
+<li>Fees for professional services more than one year past due when the current report is issued impair independence.</li>
+<li>Gifts must be clearly insignificant; entertainment must be reasonable in the circumstances.</li>
+<li>Issuer clients follow stricter Securities and Exchange Commission (SEC) rules — bookkeeping for an issuer audit client is prohibited outright.</li>
+</ul>
 `,
 };

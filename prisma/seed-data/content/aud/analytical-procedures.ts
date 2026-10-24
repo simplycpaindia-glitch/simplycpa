@@ -111,5 +111,12 @@ export const analyticalProcedures: TopicContent = {
 
 <h3>Types</h3>
 <p>Trend · ratio · reasonableness (nonfinancial drivers) · regression.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>"No unexpected difference" proves little if the expectation was built from the same data being tested — use independent, reliable data.</li>
+<li>An expected change that <strong>didn't</strong> happen (gross margin flat after a price cut) is as much a red flag as an unexpected one.</li>
+<li>Final-review analytics check overall consistency with the auditor's understanding; they aren't designed to find specific misstatements. New risks found here → more procedures.</li>
+</ul>
 `,
 };

@@ -116,5 +116,12 @@ export const assessingRisk: TopicContent = {
 
 <h3>Highly automated, no paper trail</h3>
 <p>Must test controls — substantive alone insufficient.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A significant risk is identified from <strong>inherent</strong> risk alone — before considering controls.</li>
+<li>Risk assessment procedures alone never provide enough evidence for the opinion.</li>
+<li>Presentation and disclosure is an assertion too: a misstatement in the notes can be material on its own.</li>
+</ul>
 `,
 };
