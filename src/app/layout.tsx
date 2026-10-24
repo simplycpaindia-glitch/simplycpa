@@ -46,6 +46,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Not in metadata.alternates: each page's own alternates (canonical) would replace it. */}
+        <link rel="alternate" type="application/rss+xml" title="SimplyCPA — articles and CPA Radar" href="/feed.xml" />
       </head>
       <body className="min-h-full flex flex-col bg-paper-50 text-ink-950">
         {children}

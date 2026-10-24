@@ -5,11 +5,22 @@ import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { getTopicProgress } from "@/lib/progress-data";
+import { getMistakeBook } from "@/lib/mistakes-data";
+import { getQotdStreak } from "@/lib/qotd-data";
 import { countProgress, ProgressSegments } from "@/components/progress/ProgressSegments";
 import { Badge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Your Dashboard", robots: { index: false } };
+
+const MODE_LABEL: Record<string, string> = {
+  SUBJECT: "Section practice",
+  CUSTOM: "Custom set",
+  MOCK: "Mock exam",
+  INCORRECT_REVIEW: "Mistake book review",
+  BOOKMARKED: "Saved questions",
+  TIMED: "Timed set",
+};
 
 export default async function DashboardPage() {
   const user = await requireUser();
@@ -33,6 +44,7 @@ export default async function DashboardPage() {
     }),
     prisma.bookmark.count({ where: { userId: user.id } }),
   ]);
+  const [book, streak] = await Promise.all([getMistakeBook(user.id), getQotdStreak(user.id)]);
 
   const progress = await getTopicProgress(
     user.id,
@@ -68,9 +80,32 @@ export default async function DashboardPage() {
 
   return (
     <Container className="py-16">
-      <SectionHeading as="h1" eyebrow="Your CPA Journey" title={`Welcome back, ${user.name?.split(" ")[0] ?? "there"}`} />
+      <SectionHeading as="h1" eyebrow="Your CPA Journey" title={user.name?.trim() ? `Welcome back, ${user.name.trim().split(" ")[0]}` : "Welcome back"} />
 
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+        <Link href="/dashboard/mistakes" className="rounded-xl border border-ink-950/10 bg-paper-50 p-5 hover:border-gold-400">
+          <p className="font-semibold text-ink-950">Mistake book</p>
+          <p className="mt-1 text-sm text-ink-400">
+            {book.dueTotal > 0
+              ? `${book.dueTotal} question${book.dueTotal === 1 ? "" : "s"} due for review today`
+              : book.upcoming.length > 0
+                ? `Up to date — ${book.upcoming.length} coming up`
+                : "Questions you get wrong come back for spaced review"}
+          </p>
+        </Link>
+        <Link href="/question-of-the-day" className="rounded-xl border border-ink-950/10 bg-paper-50 p-5 hover:border-gold-400">
+          <p className="font-semibold text-ink-950">Question of the Day</p>
+          <p className="mt-1 text-sm text-ink-400">
+            {streak.answeredToday
+              ? `Done for today · ${streak.current}-day streak`
+              : streak.current > 0
+                ? `Answer today's to keep your ${streak.current}-day streak`
+                : "Answer today's question to start a streak"}
+          </p>
+        </Link>
+      </div>
+
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {subjectStats.map(({ subject, counts }) => (
           <Card key={subject.id} className="p-5">
             <div className="flex items-center justify-between">
@@ -122,7 +157,7 @@ export default async function DashboardPage() {
               {recentSessions.map((s) => (
                 <div key={s.id} className="py-3">
                   <p className="text-sm text-ink-950">
-                    {s.topic ? s.topic.title : s.mode} — {s.score ?? 0}/{s.totalQuestions}
+                    {s.topic ? s.topic.title : (MODE_LABEL[s.mode] ?? "Practice set")} — {s.score ?? 0}/{s.totalQuestions}
                   </p>
                   <p className="text-xs text-ink-400">{formatDate(s.startedAt)}</p>
                 </div>

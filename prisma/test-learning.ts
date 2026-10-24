@@ -6,6 +6,7 @@
 import { latestByTopic, topicProgress } from "../src/lib/mastery";
 import { areaNumber, groupByArea } from "../src/lib/blueprint";
 import { addDays, istDate, isValidDate, qotdIdFor, streakFrom } from "../src/lib/qotd";
+import { mistakeStatus } from "../src/lib/mistakes";
 
 let failed = 0;
 function eq(name: string, actual: unknown, expected: unknown) {
@@ -68,5 +69,18 @@ eq("streak alive until today ends", streakFrom(S("2026-10-22", "2026-10-23"), "2
 eq("a missed day breaks it", streakFrom(S("2026-10-21", "2026-10-22"), "2026-10-24").current, 0);
 eq("longest run remembered", streakFrom(S("2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-24"), "2026-10-24"), { current: 1, longest: 4, answeredToday: true });
 
+// ── Mistake book (1-3-7 days, India time) ──
+const ist = (d: string, h = 10) => new Date(`${d}T${String(h).padStart(2, "0")}:00:00+05:30`);
+const W = (d: string) => ({ isCorrect: false, attemptedAt: ist(d) });
+const R = (d: string) => ({ isCorrect: true, attemptedAt: ist(d) });
+eq("never wrong → not in the book", mistakeStatus([R("2026-10-01")]), { inBook: false });
+eq("wrong → due next day", mistakeStatus([W("2026-10-01")]), { inBook: true, cleared: false, stage: 0, dueDate: "2026-10-02" });
+eq("right on the due day → next due 3 days later", mistakeStatus([W("2026-10-01"), R("2026-10-02")]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-05" });
+eq("right too early doesn't count", mistakeStatus([W("2026-10-01"), R("2026-10-01")]), { inBook: true, cleared: false, stage: 0, dueDate: "2026-10-02" });
+eq("1, 3, 7 days → cleared", mistakeStatus([W("2026-10-01"), R("2026-10-02"), R("2026-10-05"), R("2026-10-12")]), { inBook: true, cleared: true, stage: 3 });
+eq("late review still counts", mistakeStatus([W("2026-10-01"), R("2026-10-09")]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-12" });
+eq("wrong again starts over", mistakeStatus([W("2026-10-01"), R("2026-10-02"), W("2026-10-05")]), { inBook: true, cleared: false, stage: 0, dueDate: "2026-10-06" });
+eq("order of input doesn't matter", mistakeStatus([R("2026-10-02"), W("2026-10-01")]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-05" });
+eq("11:30 pm and 12:30 am IST are different days", mistakeStatus([{ isCorrect: false, attemptedAt: ist("2026-10-01", 23) }, { isCorrect: true, attemptedAt: new Date("2026-10-01T19:00:00Z") }]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-05" });
 console.log(failed ? `\n${failed} failed` : "\nAll passed");
 process.exit(failed ? 1 : 0);
