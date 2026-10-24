@@ -66,7 +66,8 @@ export function SearchLauncher({
         {!compact && (
           <>
             <span>Search</span>
-            <kbd className="ml-2 whitespace-nowrap rounded border border-ink-950/15 px-1.5 font-sans text-xs text-ink-400">
+            {/* The hint is dropped below xl so the signed-out header fits at 1024px. */}
+            <kbd className="ml-2 hidden whitespace-nowrap rounded xl:inline border border-ink-950/15 px-1.5 font-sans text-xs text-ink-400">
               Ctrl K
             </kbd>
           </>

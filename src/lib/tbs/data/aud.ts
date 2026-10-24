@@ -1,4 +1,4 @@
-import type { Simulation } from "../types";
+import { audArea12 } from "./aud-1";
+import { audArea34 } from "./aud-2";
 
-// AUD simulations are written after FAR is reviewed.
-export const audSimulations: Simulation[] = [];
+export const audSimulations = [...audArea12, ...audArea34];
