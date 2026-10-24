@@ -13,6 +13,7 @@ import { barBankB } from "./bar-b";
 import { iscBank } from "./isc";
 import { iscBankB } from "./isc-b";
 import { tcpBank } from "./tcp";
+import { tcpBankB } from "./tcp-b";
 
 /**
  * Every question bank, merged into one lookup keyed by topic slug.
@@ -37,6 +38,7 @@ const banks: McqBank[] = [
   iscBank,
   iscBankB,
   tcpBank,
+  tcpBankB,
 ];
 
 export const mcqBank: McqBank = banks.reduce<McqBank>((merged, bank) => {
