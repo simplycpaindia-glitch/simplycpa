@@ -127,5 +127,13 @@ export const investments: TopicContent = {
 
 <h3>Transfers</h3>
 <p>Into trading → gain or loss to net income now. AFS → HTM → keep in OCI and amortize.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Significant influence is about facts, not just the 20% line: board seats can give influence below 20%, and a holding above 20% may lack it.</li>
+<li>Trading securities: because fair value changes are already in income, the gain on sale is only the change since the last remeasurement.</li>
+<li>Held-to-maturity bonds bought at a premium: premium amortization <strong>reduces</strong> interest income.</li>
+<li>Equity method: unrealized profit on sales with the investee is eliminated to the extent of the investor's ownership share.</li>
+</ul>
 `,
 };

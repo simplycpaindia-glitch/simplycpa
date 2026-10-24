@@ -134,5 +134,13 @@ export const propertyPlantEquipment: TopicContent = {
 <li>Loss = carrying amount − <strong>fair value</strong>.</li>
 </ol>
 <p>No reversals under US Generally Accepted Accounting Principles (GAAP). Held for sale: lower of carrying amount or fair value less costs to sell, no depreciation, recoveries allowed up to prior losses.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Interest capitalization stops when the asset is ready for its intended use, and doesn't apply to inventory produced routinely.</li>
+<li>Assets donated to a business are recorded at fair value, with the credit to revenue or gain.</li>
+<li>Ordinary repairs are expensed; only additions, improvements and replacements that extend life or capacity are capitalized.</li>
+<li>After an impairment, the written-down amount is the new cost basis — depreciate it over the remaining life.</li>
+</ul>
 `,
 };

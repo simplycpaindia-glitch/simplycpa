@@ -118,5 +118,12 @@ export const incomeTaxes: TopicContent = {
 
 <h3>Check</h3>
 <p>Total expense = (pretax income ± permanent differences) × rate.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Use the rate enacted for the year the difference reverses — ignore proposed rates until they are enacted.</li>
+<li>Undistributed earnings of an equity-method investee generally create a <strong>temporary</strong> difference, even though dividends received are partly deductible.</li>
+<li>The effect of a rate change on existing deferred taxes goes to continuing operations in the enactment period — even if the original item was recorded in other comprehensive income.</li>
+</ul>
 `,
 };

@@ -100,5 +100,12 @@ export const accountingChanges: TopicContent = {
 
 <h3>Doubt?</h3>
 <p>If unsure whether principle or estimate → treat as <strong>estimate</strong>.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A change in estimate is never restated, however large — only <strong>errors</strong> produce a prior period adjustment.</li>
+<li>An inventory error found during year 2, before the books close, still needs a prior period adjustment; once both years are closed it has counterbalanced and needs no entry.</li>
+<li>Indirect effects of a change in principle (such as a profit-based bonus) are recognized in the period of the change, not applied retrospectively.</li>
+</ul>
 `,
 };

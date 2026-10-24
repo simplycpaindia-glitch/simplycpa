@@ -118,5 +118,13 @@ export const businessCombinations: TopicContent = {
 <li>NCI: in equity, separate from parent. Ownership changes without loss of control → equity transactions.</li>
 <li>Include 100% of the subsidiary's assets and liabilities.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Under US rules, NCI is measured at <strong>fair value</strong> at acquisition, so goodwill includes the NCI's share. Measuring NCI at its share of net assets is not allowed.</li>
+<li>Eliminate the <strong>full</strong> intercompany sale, even if some goods are still held; only the unrealized profit depends on how much remains.</li>
+<li>Upstream unrealized profit (subsidiary sells to parent) is shared with NCI; downstream profit (parent sells to subsidiary) is charged entirely to the parent.</li>
+<li>Step acquisition: a previously held interest is remeasured to fair value at the acquisition date, with the gain or loss in net income.</li>
+</ul>
 `,
 };

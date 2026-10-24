@@ -116,5 +116,12 @@ export const secSegmentsInterim: TopicContent = {
 <li>Temporary inventory declines and temporary last-in, first-out (LIFO) liquidations: not recognized.</li>
 <li>Unusual items and discontinued operations: in the quarter they occur.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Interim periods: costs that benefit the whole year (such as annual advertising or property taxes) may be allocated across quarters, but a gain or loss is recognized in the quarter it happens.</li>
+<li>A permanent inventory decline is recognized in the interim period; a recovery later in the same year is a gain, up to the earlier loss.</li>
+<li>A component can be an operating segment even if it sells only to other segments.</li>
+</ul>
 `,
 };

@@ -127,5 +127,12 @@ export const governmentalAccounting: TopicContent = {
 
 <h3>Net position</h3>
 <p>Net investment in capital assets · Restricted · Unrestricted.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Governmental fund statements don't report capital assets or long-term debt — those appear only in the government-wide statements.</li>
+<li>Interfund transfers are other financing sources and uses; interfund services provided and used (such as charges from an internal service fund) are revenues and expenditures.</li>
+<li>Encumbrances are neither expenditures nor liabilities. Amounts outstanding at year end sit within restricted, committed or assigned fund balance — there's no separate "reserved" line.</li>
+</ul>
 `,
 };

@@ -127,5 +127,13 @@ export const cashReceivables: TopicContent = {
 
 <h3>Notes receivable</h3>
 <p>Long-term at present value; impute interest if none or unreasonable.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Legally restricted compensating balances are shown separately from unrestricted cash.</li>
+<li>Bank overdrafts are liabilities, not negative cash (unless offset against other accounts at the same bank).</li>
+<li>A recovery of a written-off account first reinstates the receivable and the allowance, then records the cash — no effect on expense.</li>
+<li>CECL covers trade receivables and held-to-maturity debt securities, but <strong>not</strong> available-for-sale debt securities, which use their own allowance capped at the fair value shortfall.</li>
+</ul>
 `,
 };

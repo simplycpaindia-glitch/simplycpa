@@ -123,5 +123,13 @@ export const statementOfCashFlows: TopicContent = {
 <li>Restricted cash is included in the totals.</li>
 <li>Disclose interest paid and income taxes paid.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Equipment bought with seller financing: the financed part isn't an investing outflow (disclose it as noncash); later principal payments are financing.</li>
+<li>Gain on selling equipment: subtract it in operating activities and show the <strong>full</strong> proceeds in investing.</li>
+<li>Income taxes paid are operating, even when the tax relates to an investing gain.</li>
+<li>Only operating current assets and liabilities adjust net income — not dividends payable or short-term borrowings.</li>
+</ul>
 `,
 };

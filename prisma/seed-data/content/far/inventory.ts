@@ -133,5 +133,13 @@ export const inventory: TopicContent = {
 
 <h3>Errors</h3>
 <p>Ending inventory overstated → this year's income up, next year's down; retained earnings correct after 2 years.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Net method: purchase discounts not taken are a finance expense, not part of inventory cost.</li>
+<li>Average-cost retail method: markdowns <strong>are</strong> included in the cost-to-retail ratio; only the conventional (LCM) method leaves them out.</li>
+<li>A loss on a non-cancelable purchase commitment is recognized when the market price falls below the contract price.</li>
+<li>Goods out on consignment stay in the consignor's inventory, and freight to the consignee is added to their cost.</li>
+</ul>
 `,
 };

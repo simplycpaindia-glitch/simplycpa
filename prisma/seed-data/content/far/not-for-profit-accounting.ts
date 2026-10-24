@@ -107,5 +107,12 @@ export const notForProfit: TopicContent = {
 <li>Investments at fair value; gains in the statement of activities.</li>
 <li>Agency transfer without variance power → liability.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A restriction met in the same period the gift is received may be reported as without donor restrictions, if that policy is applied consistently.</li>
+<li>Investment return is reported net of external and direct internal investment expenses.</li>
+<li>Fundraising costs are expenses — they aren't deducted from contribution revenue.</li>
+</ul>
 `,
 };

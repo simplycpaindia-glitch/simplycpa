@@ -122,5 +122,12 @@ export const currentLiabilitiesContingencies: TopicContent = {
 
 <h3>Formulas</h3>
 <p>Ending warranty liability = beginning + expense − claims paid.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A loss whose cause arose <strong>after</strong> the balance sheet date is disclosed, not accrued — even if it is probable and estimable before the statements are issued.</li>
+<li>Sick pay that accumulates but doesn't vest may be accrued, but accrual is not required.</li>
+<li>Warranty expense (accrual method) belongs in the year of the sale, not the year claims are paid.</li>
+</ul>
 `,
 };

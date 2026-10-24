@@ -114,5 +114,13 @@ export const leases: TopicContent = {
 <li>Failed sale-leaseback → keep asset, record financial liability.</li>
 <li>Lessor: sales-type (profit at commencement), direct financing (profit deferred), operating (keep asset).</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Operating leases still put an ROU asset and a lease liability on the balance sheet — only the income statement pattern differs.</li>
+<li>Discount rate: the rate implicit in the lease if readily determinable, otherwise the incremental borrowing rate; private companies may elect a risk-free rate.</li>
+<li>Residual value guarantees: the lessee includes only the amount <strong>probable</strong> of being owed; the lessor includes the full guarantee.</li>
+<li>Non-lease components (such as maintenance) are separated unless the entity elects to combine them.</li>
+</ul>
 `,
 };

@@ -101,5 +101,12 @@ export const notesSubsequentEventsGoingConcern: TopicContent = {
 
 <h3>Concentrations</h3>
 <p>Disclose when a severe near-term impact is at least reasonably possible.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>A stock split or stock dividend after year end but before issuance: restate earnings per share (EPS) retroactively.</li>
+<li>Reissued statements don't pick up new recognized subsequent events unless required by accounting standards or regulators.</li>
+<li>Related party disclosures exclude compensation arrangements and expense allowances in the ordinary course of business.</li>
+</ul>
 `,
 };

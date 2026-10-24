@@ -109,7 +109,7 @@ export const revenueRecognition: TopicContent = {
 <li>Sales commissions: capitalize (expense if ≤ 1 year).</li>
 </ul>
 
-<h3>Traps</h3>
+<h3>Exam traps</h3>
 <ul>
 <li>Assurance warranty = cost accrual; service warranty = separate obligation.</li>
 <li>Principal = gross; agent = net.</li>

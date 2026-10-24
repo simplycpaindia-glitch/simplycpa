@@ -117,5 +117,13 @@ export const longTermDebt: TopicContent = {
 <li>Detachable warrants → allocate by relative fair values; warrants to additional paid-in capital (APIC).</li>
 <li>Convertible bonds: whole instrument is debt; conversion at book value, <strong>no gain or loss</strong>.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Bonds sold between interest dates: the buyer also pays accrued interest, which is returned at the next interest date — it isn't part of the issue price.</li>
+<li>Gains and losses on early extinguishment sit in continuing operations; they are no longer extraordinary items.</li>
+<li>Zero-coupon bonds are issued at a deep discount; all of their interest expense comes from discount amortization.</li>
+<li>Accounting Standards Update (ASU) 2022-02 removed the creditor's troubled debt restructuring rules; the debtor rules above still apply.</li>
+</ul>
 `,
 };

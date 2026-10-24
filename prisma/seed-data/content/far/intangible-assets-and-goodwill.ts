@@ -111,5 +111,13 @@ export const intangibleAssetsGoodwill: TopicContent = {
 
 <h3>Crypto assets</h3>
 <p>Fair value through net income (Accounting Standards Update (ASU) 2023-08).</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Goodwill is tested at the <strong>reporting unit</strong> level, not asset by asset.</li>
+<li>Indefinite-lived intangibles other than goodwill use a one-step test: impaired if carrying amount exceeds fair value. There's no undiscounted cash flow step.</li>
+<li>Legal fees for an <strong>unsuccessful</strong> patent defense are expensed, and the patent is probably impaired.</li>
+<li>Research equipment with alternative future uses is capitalized and depreciated (the depreciation is R&amp;D expense); equipment for a single project is expensed immediately.</li>
+</ul>
 `,
 };

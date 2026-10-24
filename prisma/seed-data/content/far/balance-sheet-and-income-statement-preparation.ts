@@ -129,5 +129,12 @@ export const balanceSheetIncomeStatement: TopicContent = {
 
 <h3>Formula</h3>
 <p>Working capital = current assets − current liabilities · Current ratio = current assets ÷ current liabilities.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Cash restricted for repaying long-term debt is <strong>noncurrent</strong>, even though it is cash.</li>
+<li>Dividends declared in cash are a current liability; a stock dividend distributable is <strong>equity</strong>, not a liability.</li>
+<li>Treasury stock is a deduction from equity, never an asset.</li>
+</ul>
 `,
 };

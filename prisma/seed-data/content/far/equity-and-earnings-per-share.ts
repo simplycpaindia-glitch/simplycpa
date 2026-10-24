@@ -130,5 +130,13 @@ export const equityEps: TopicContent = {
 <li>Convertible preferred: + preferred dividends; + shares.</li>
 <li>Exclude antidilutive items; loss from continuing operations → diluted = basic.</li>
 </ul>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Stock splits and stock dividends are retroactive in EPS, but treasury stock purchases and new issues are weighted from their actual dates.</li>
+<li>Shares issued in a business combination count only from the acquisition date.</li>
+<li>Contingently issuable shares enter basic EPS only once all conditions are met.</li>
+<li>Appropriations of retained earnings don't change total equity.</li>
+</ul>
 `,
 };

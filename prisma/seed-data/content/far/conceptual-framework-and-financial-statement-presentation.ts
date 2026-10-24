@@ -146,5 +146,12 @@ export const conceptualFramework: TopicContent = {
 
 <h3>Full set of statements</h3>
 <p>Balance sheet · Income statement · Comprehensive income (one or two statements) · Cash flows · Changes in equity · Notes.</p>
+
+<h3>Exam traps</h3>
+<ul>
+<li>Materiality is an entity-specific aspect of <strong>relevance</strong> — not a separate constraint. The only constraint is cost.</li>
+<li>Transactions with owners (issuing shares, paying dividends) never appear in comprehensive income.</li>
+<li>Fair value is not reduced for transaction costs (such as broker fees); transport costs to the market <strong>are</strong> deducted.</li>
+</ul>
 `,
 };
