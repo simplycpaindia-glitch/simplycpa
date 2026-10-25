@@ -19,7 +19,7 @@ export const regBankB: McqBank = {
     {
       question: "Unreimbursed medical expenses are deductible as an itemized deduction only to the extent they exceed what percentage of adjusted gross income?",
       options: [
-        { label: "A", text: "2%", isCorrect: false, rationale: "The 2% floor applied to miscellaneous itemized deductions, which are currently suspended." },
+        { label: "A", text: "2%", isCorrect: false, rationale: "The 2% floor applied to miscellaneous itemized deductions, which were suspended for 2018–2025 and then eliminated permanently by the One Big Beautiful Bill Act." },
         { label: "B", text: "7.5%", isCorrect: true, rationale: "Correct — medical expenses are deductible only above a 7.5% of AGI floor." },
         { label: "C", text: "10%", isCorrect: false, rationale: "The floor was 10% for some earlier years but is currently 7.5%." },
         { label: "D", text: "There is no floor", isCorrect: false, rationale: "A floor applies, which is why most taxpayers deduct nothing for medical costs." },
@@ -176,7 +176,7 @@ export const regBankB: McqBank = {
         { label: "C", text: "50%", isCorrect: false, rationale: "Percentage limits at that level apply to individuals, not corporations." },
         { label: "D", text: "There is no limit for corporations", isCorrect: false, rationale: "A limit applies, with a five-year carryforward for the excess." },
       ],
-      explanation: "A corporation may deduct charitable contributions up to 10% of taxable income computed without regard to the charitable deduction itself, the dividends received deduction, any capital loss carryback, and certain other items. Contributions exceeding the limit carry forward five years.",
+      explanation: "A corporation may deduct charitable contributions up to 10% of taxable income computed without regard to the charitable deduction itself, the dividends received deduction, any capital loss carryback, and certain other items. Contributions exceeding the limit carry forward five years. For tax years beginning after 2025, the One Big Beautiful Bill Act adds a floor: only contributions above 1% of that taxable income are deductible, still capped at 10%.",
       difficulty: "MEDIUM",
       questionType: "CONCEPTUAL",
       tags: ["C corporation", "charitable contributions"],

@@ -324,7 +324,7 @@ export const reg: SubjectSeed = {
           options: [
             { label: "A", text: "Interest earned on a municipal bond", isCorrect: false, rationale: "Municipal bond interest is specifically excluded from federal gross income." },
             { label: "B", text: "A $10,000 gift received from a parent", isCorrect: false, rationale: "Gifts received are excluded from the recipient's gross income." },
-            { label: "C", text: "Gambling winnings from a casino", isCorrect: true, rationale: "Correct — gambling winnings are fully includible in gross income; losses are deductible only as an itemized deduction and only up to winnings." },
+            { label: "C", text: "Gambling winnings from a casino", isCorrect: true, rationale: "Correct — gambling winnings are fully includible in gross income; losses are deductible only as an itemized deduction and only up to winnings (from 2026, only 90% of losses count, under the One Big Beautiful Bill Act)." },
             { label: "D", text: "Life insurance proceeds received upon the death of a spouse", isCorrect: false, rationale: "Life insurance death benefits are generally excluded from the beneficiary's gross income." },
           ],
           explanation: "Gambling winnings are taxable in full and included in gross income. Municipal bond interest, gifts received, and life insurance death benefits are all specifically excluded under the Internal Revenue Code.",
