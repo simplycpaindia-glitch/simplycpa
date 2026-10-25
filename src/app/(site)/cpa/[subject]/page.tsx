@@ -9,7 +9,7 @@ import { Badge, DifficultyBadge } from "@/components/ui/Badge";
 import { formatDate } from "@/lib/utils";
 import { getTopicProgress } from "@/lib/progress-data";
 import { MASTERY_THRESHOLD, STATE_LABEL } from "@/lib/mastery";
-import { groupByArea } from "@/lib/blueprint";
+import { areaWeight, BLUEPRINTS_EDITION, groupByArea } from "@/lib/blueprint";
 import { countProgress, ProgressSegments } from "@/components/progress/ProgressSegments";
 import { getSimulations } from "@/lib/tbs";
 
@@ -152,6 +152,11 @@ export default async function SubjectPage({
               <tr className="bg-paper-100/60">
                 <th colSpan={5} scope="colgroup" className="px-4 py-2 text-left text-xs font-semibold uppercase tracking-wider text-gold-700">
                   {group.area}
+                  {areaWeight(subject.slug, group.area) && (
+                    <span className="ml-2 font-medium normal-case tracking-normal text-ink-400">
+                      · {areaWeight(subject.slug, group.area)} of the exam
+                    </span>
+                  )}
                 </th>
               </tr>
               {group.topics.map((topic) => {
@@ -218,6 +223,18 @@ export default async function SubjectPage({
             ))}
           </table>
         </div>
+        <p className="mt-3 text-xs text-ink-400">
+          Area weights are the share of the {subject.shortName} exam from the AICPA&apos;s Uniform CPA Examination Blueprints,{" "}
+          {BLUEPRINTS_EDITION}.
+          {subject.blueprintUrl && (
+            <>
+              {" "}
+              <a href={subject.blueprintUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-ink-950">
+                Official Blueprint
+              </a>
+            </>
+          )}
+        </p>
       </Container>
     </>
   );

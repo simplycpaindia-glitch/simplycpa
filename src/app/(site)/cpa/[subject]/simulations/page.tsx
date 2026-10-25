@@ -5,7 +5,7 @@ import { Clock } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { groupByArea } from "@/lib/blueprint";
+import { areaWeight, groupByArea } from "@/lib/blueprint";
 import { getSimulations } from "@/lib/tbs";
 import { FORMAT_LABEL } from "@/lib/tbs/types";
 
@@ -64,7 +64,12 @@ export default async function SimulationsPage({ params }: PageProps<"/cpa/[subje
       <Container className="py-12">
         {groupByArea(subject.topics).map((group) => (
           <section key={group.area} className="mb-10">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-700">{group.area}</h2>
+            <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-gold-700">
+              {group.area}
+              {areaWeight(subject.slug, group.area) && (
+                <span className="ml-2 font-medium normal-case tracking-normal text-ink-400">· {areaWeight(subject.slug, group.area)} of the exam</span>
+              )}
+            </h2>
             <div className="flex flex-col gap-6">
               {group.topics.map((topic) => {
                 const list = sims.filter((s) => s.topic === topic.slug);

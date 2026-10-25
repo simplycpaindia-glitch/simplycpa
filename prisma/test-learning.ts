@@ -4,7 +4,7 @@
  *   npm run test:learning
  */
 import { latestByTopic, topicProgress } from "../src/lib/mastery";
-import { areaNumber, groupByArea } from "../src/lib/blueprint";
+import { areaNumber, areaWeight, groupByArea } from "../src/lib/blueprint";
 import { addDays, istDate, isValidDate, qotdIdFor, streakFrom } from "../src/lib/qotd";
 import { mistakeStatus } from "../src/lib/mistakes";
 
@@ -43,6 +43,8 @@ const grouped = groupByArea([
 ]);
 eq("areas in Blueprint order (IV after III, not alphabetical)", grouped.map((g) => g.area), ["Area I: A", "Area II: B", "Area III: C", "Area IV: D"]);
 eq("topics ordered within an area", grouped[1].topics.map((t) => t.order), [1, 2]);
+eq("area weights from the Blueprints", [areaWeight("far", "Area II: Select Balance Sheet Accounts"), areaWeight("reg", "Area V: Federal Taxation of Entities"), areaWeight("isc", "Area III: SOC Engagements")], ["30–40%", "23–33%", "15–25%"]);
+eq("unknown area has no weight", [areaWeight("far", "Area IV: Nothing"), areaWeight("far", null), areaWeight("xyz", "Area I: X")], [undefined, undefined, undefined]);
 
 // ── Dates (India time) ──
 eq("00:30 IST is still that day", istDate(at("2026-10-24T19:00:00Z")), "2026-10-25");
