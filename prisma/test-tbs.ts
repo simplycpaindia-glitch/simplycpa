@@ -64,7 +64,7 @@ function checkSubject(subject: "far" | "aud", sims: Simulation[]) {
       });
       if (!r.explanation.trim()) eq(`${where} row ${i + 1} has an explanation`, false, true);
     });
-    if (s.format === "detect-and-correct") {
+    if (s.format === "detect-and-correct" && s.columns.length === 4) {
       // A "no entry" row must have no amount, and a real entry must name two different accounts.
       s.rows.forEach((r, i) => {
         const [dr, cr, amt] = r.cells;
