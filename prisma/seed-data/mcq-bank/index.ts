@@ -5,6 +5,7 @@ import { farBankC } from "./far-c";
 import { audBankA } from "./aud-a";
 import { audBankB } from "./aud-b";
 import { audBankC } from "./aud-c";
+import { audBankD } from "./aud-d";
 import { regBankA } from "./reg-a";
 import { regBankB } from "./reg-b";
 import { regBankC } from "./reg-c";
@@ -30,6 +31,7 @@ const banks: McqBank[] = [
   audBankA,
   audBankB,
   audBankC,
+  audBankD,
   regBankA,
   regBankB,
   regBankC,

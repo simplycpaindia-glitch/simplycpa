@@ -18,6 +18,7 @@
     "mcq:sync": "tsx prisma/sync-mcqs.ts",
     "content:check": "tsx prisma/check-abbreviations.ts",
     "content:sync-revision": "tsx prisma/sync-revision-notes.ts",
+    "content:sync-topic": "tsx prisma/sync-topic-content.ts",
     "test:moderation": "tsx prisma/test-journal-moderation.ts",
     "test:stats": "tsx prisma/test-journal-stats.ts",
     "test:trackers": "tsx prisma/test-trackers.ts",

@@ -3,7 +3,7 @@ import type { TopicContent } from "../types";
 export const acceptanceQualityManagement: TopicContent = {
   study: `
 <h2>Why this topic matters</h2>
-<p>Before any audit begins, the firm must decide whether to accept the client, agree the terms of the engagement in writing, and operate within its system of quality management. Auditing and Attestation (AUD) Area I tests these steps, and the 2026 blueprint updated its references to the new quality management standards — the Statements on Quality Management Standards (SQMS) Nos. 1 and 2 and Statement on Auditing Standards (SAS) No. 146 — effective December 15, 2025.</p>
+<p>Before any audit begins, the firm must decide whether to accept the client, agree the terms of the engagement in writing, and operate within its system of quality management. Auditing and Attestation (AUD) Area I tests these steps, and the 2026 blueprint updated its references to the new quality management standards — the Statements on Quality Management Standards (SQMS) Nos. 1 and 2 and Statement on Auditing Standards (SAS) No. 146 — effective December 15, 2025. For public company audits, the Public Company Accounting Oversight Board (PCAOB) quality control (QC) standard QC 1000 follows on January 1, 2027 (see below).</p>
 
 <h2>Quality management at the firm level — SQMS No. 1</h2>
 <p>SQMS No. 1 replaced the old quality control standards with a <strong>risk-based</strong> approach: the firm sets quality objectives, identifies and assesses quality risks, and designs responses. It has eight components:</p>
@@ -31,6 +31,20 @@ export const acceptanceQualityManagement: TopicContent = {
 
 <h3>Quality management at the engagement level — SAS No. 146</h3>
 <p>The <strong>engagement partner</strong> takes overall responsibility for managing and achieving quality on the audit, including sufficient and appropriate involvement throughout, direction and supervision, and review of documentation — even when tasks are assigned to others.</p>
+
+<h2>Public company audits — PCAOB QC 1000</h2>
+<p>For audits of issuers (public companies) and broker-dealers registered with the Securities and Exchange Commission (SEC), the PCAOB adopted a new quality control standard, QC 1000, <em>A Firm's System of Quality Control</em>. It takes effect on <strong>December 15, 2026</strong>, and becomes eligible for testing on AUD from <strong>January 1, 2027</strong>.</p>
+<p>QC 1000 uses the same risk-based approach and the same <strong>eight components</strong> as SQMS No. 1: the firm sets quality objectives, identifies and assesses quality risks, and designs quality responses. The main differences are in how the system is overseen and reported:</p>
+<table>
+<thead><tr><th>Feature</th><th>SQMS No. 1 (American Institute of Certified Public Accountants (AICPA) — nonissuers)</th><th>QC 1000 (PCAOB — issuers and broker-dealers)</th></tr></thead>
+<tbody>
+<tr><td>Who is responsible</td><td>The firm's leadership has ultimate responsibility</td><td>The firm's <strong>principal executive officer</strong> has ultimate responsibility and accountability; named individuals hold operational responsibility for the system, for ethics and independence, and for monitoring and remediation</td></tr>
+<tr><td>Annual evaluation</td><td>At least annually, on a date the firm chooses</td><td>Evaluated as of <strong>September 30</strong> each year and reported to the PCAOB on <strong>Form QC</strong> by <strong>November 30</strong>, certified by the principal executive officer and the individual with operational responsibility for the system</td></tr>
+<tr><td>Possible conclusions</td><td>The system provides reasonable assurance, or it does not</td><td>Reasonable assurance; reasonable assurance except for unremediated deficiencies that are not major; or no reasonable assurance (when an unremediated <strong>major QC deficiency</strong> exists)</td></tr>
+<tr><td>Largest firms</td><td>No extra governance requirement</td><td>Firms that issued audit reports for <strong>more than 100 issuers</strong> in the prior year must have an <strong>external quality control function</strong> — at least one person independent of the firm, adding outside judgment to its oversight of quality</td></tr>
+</tbody>
+</table>
+<p>Like SQMS No. 1, QC 1000 requires monitoring at both the engagement and firm level, root cause analysis of deficiencies, and timely remediation. On September 9, 2026, the PCAOB adopted amendments to QC 1000 that still need SEC approval; under the AICPA's announcement, those amendments become testable in the first calendar quarter beginning six months after the SEC approves them.</p>
 
 <h2>Accepting and continuing clients</h2>
 <p>The firm considers:</p>
@@ -86,6 +100,7 @@ export const acceptanceQualityManagement: TopicContent = {
 <li>Identify the required contents of an engagement letter and the preconditions for an audit.</li>
 <li>Apply the successor–predecessor communication rules.</li>
 <li>Recognize SQMS No. 1 components and engagement quality review requirements.</li>
+<li>From January 1, 2027: distinguish QC 1000 (PCAOB, public company audits) from SQMS No. 1 — the annual evaluation reported on Form QC and the extra requirements for the largest firms.</li>
 <li>Decide whether a request to change the engagement is reasonable.</li>
 </ul>
 
@@ -99,6 +114,14 @@ export const acceptanceQualityManagement: TopicContent = {
 <ul>
 <li>Reviewer not on the team; former engagement partner: 2-year cooling-off.</li>
 <li>No report release until the review is complete.</li>
+</ul>
+
+<h3>Public Company Accounting Oversight Board (PCAOB) quality control (QC) standard QC 1000 — public company audits (testable from January 1, 2027)</h3>
+<ul>
+<li>Effective December 15, 2026; same eight components as SQMS No. 1.</li>
+<li>Principal executive officer has ultimate responsibility; named individuals for operations, independence, and monitoring.</li>
+<li>Evaluate as of September 30; report on Form QC by November 30.</li>
+<li>More than 100 issuer audit clients → external quality control function.</li>
 </ul>
 
 <h3>Acceptance</h3>
@@ -126,6 +149,7 @@ export const acceptanceQualityManagement: TopicContent = {
 <li>An audit needs a written engagement letter (or other written agreement) — an oral understanding isn't enough.</li>
 <li>Recurring audits don't need a new letter every year unless circumstances change, but the auditor considers whether to remind management of the terms.</li>
 <li>Firms had to have their SQMS No. 1 systems designed and implemented by December 15, 2025.</li>
+<li>Don't mix up the two quality standards: SQMS No. 1 (AICPA) covers audits of private companies; QC 1000 (PCAOB) covers public company audits and is the one with the September 30 evaluation and Form QC.</li>
 </ul>
 `,
 };
