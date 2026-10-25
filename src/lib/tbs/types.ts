@@ -4,10 +4,11 @@
  * PublicSimulation until the reader submits.
  */
 
-export type TbsFormat = "journal-entry" | "calculation" | "document-review" | "research" | "classification";
+export type TbsFormat = "journal-entry" | "detect-and-correct" | "calculation" | "document-review" | "research" | "classification";
 
 export const FORMAT_LABEL: Record<TbsFormat, string> = {
   "journal-entry": "Journal entry",
+  "detect-and-correct": "Detect and correct",
   calculation: "Calculation",
   "document-review": "Document review",
   research: "Research",

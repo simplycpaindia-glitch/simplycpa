@@ -56,7 +56,7 @@ export default async function SimulationsPage({ params }: PageProps<"/cpa/[subje
             what was right and why.
           </p>
           <p className="mt-3 text-sm text-ink-400">
-            {sims.length} simulations · 2 per topic · No sign-in needed
+            {sims.length} simulations · at least 2 per topic · No sign-in needed
           </p>
         </Container>
       </div>

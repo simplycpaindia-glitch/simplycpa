@@ -64,6 +64,15 @@ function checkSubject(subject: "far" | "aud", sims: Simulation[]) {
       });
       if (!r.explanation.trim()) eq(`${where} row ${i + 1} has an explanation`, false, true);
     });
+    if (s.format === "detect-and-correct") {
+      // A "no entry" row must have no amount, and a real entry must name two different accounts.
+      s.rows.forEach((r, i) => {
+        const [dr, cr, amt] = r.cells;
+        if (dr.kind !== "select" || cr.kind !== "select" || amt.kind !== "number") return eq(`${where} row ${i + 1} cells`, "select, select, number", r.cells.map((c) => c.kind));
+        const none = dr.answer === "No entry required";
+        if (none !== (cr.answer === "No entry required") || none !== (amt.answer === 0) || (!none && dr.answer === cr.answer)) eq(`${where} row ${i + 1} is a consistent entry`, false, true);
+      });
+    }
     if (s.format === "journal-entry") {
       const debits = s.rows.reduce((t, r) => t + (r.cells[0].kind === "number" ? r.cells[0].answer : 0), 0);
       const credits = s.rows.reduce((t, r) => t + (r.cells[1].kind === "number" ? r.cells[1].answer : 0), 0);
@@ -76,7 +85,7 @@ function checkSubject(subject: "far" | "aud", sims: Simulation[]) {
     const pub = JSON.stringify(toPublic(s));
     if (pub.includes(s.takeaway) || s.rows.some((r) => pub.includes(r.explanation))) eq(`${where} public data hides explanations`, false, true);
   }
-  for (const t of topicsBySubject[subject]) eq(`${subject}/${t} has 2 simulations`, perTopic.get(t) ?? 0, 2);
+  for (const t of topicsBySubject[subject]) if ((perTopic.get(t) ?? 0) < 2) eq(`${subject}/${t} has at least 2 simulations`, perTopic.get(t) ?? 0, 2);
   console.log(`${subject}: ${sims.length} simulations, ${sims.reduce((n, s) => n + s.rows.length, 0)} answer rows checked`);
 }
 
