@@ -61,6 +61,8 @@ export async function submitMcqAnswer(input: {
  */
 export async function submitMcqBatch(input: {
   topicId?: string;
+  /** Section of a mock or section-wide set, so history can be shown per section. */
+  subjectId?: string;
   mode: "TOPIC" | "SUBJECT" | "CUSTOM" | "MOCK" | "INCORRECT_REVIEW" | "BOOKMARKED" | "TIMED";
   answers: { mcqId: string; selectedOptionId: string | null; timeSpentSeconds?: number }[];
 }) {
@@ -103,6 +105,7 @@ export async function submitMcqBatch(input: {
       data: {
         userId: session.user.id,
         topicId: input.topicId,
+        subjectId: input.subjectId,
         mode: input.mode,
         totalQuestions: input.answers.length,
         score,

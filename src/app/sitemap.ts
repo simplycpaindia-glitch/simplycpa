@@ -59,6 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
   const undated = [
     "/question-of-the-day",
+    "/mini-mock",
     "/question-of-the-day/archive",
     "/start-here",
     "/roadmap",

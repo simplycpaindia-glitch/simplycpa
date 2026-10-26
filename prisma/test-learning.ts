@@ -7,6 +7,7 @@ import { latestByTopic, topicProgress } from "../src/lib/mastery";
 import { areaNumber, areaWeight, groupByArea } from "../src/lib/blueprint";
 import { addDays, istDate, isValidDate, qotdIdFor, streakFrom } from "../src/lib/qotd";
 import { mistakeStatus } from "../src/lib/mistakes";
+import { allocate, pickMock, scoreReport, weekStart, weightMidpoint } from "../src/lib/mini-mock";
 
 let failed = 0;
 function eq(name: string, actual: unknown, expected: unknown) {
@@ -84,5 +85,40 @@ eq("late review still counts", mistakeStatus([W("2026-10-01"), R("2026-10-09")])
 eq("wrong again starts over", mistakeStatus([W("2026-10-01"), R("2026-10-02"), W("2026-10-05")]), { inBook: true, cleared: false, stage: 0, dueDate: "2026-10-06" });
 eq("order of input doesn't matter", mistakeStatus([R("2026-10-02"), W("2026-10-01")]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-05" });
 eq("11:30 pm and 12:30 am IST are different days", mistakeStatus([{ isCorrect: false, attemptedAt: ist("2026-10-01", 23) }, { isCorrect: true, attemptedAt: new Date("2026-10-01T19:00:00Z") }]), { inBook: true, cleared: false, stage: 1, dueDate: "2026-10-05" });
+// ── Mini-mocks ──
+eq("Monday is its own week start", weekStart("2026-10-26"), "2026-10-26");
+eq("Sunday belongs to the week before", weekStart("2026-11-01"), "2026-10-26");
+eq("Wednesday", weekStart("2026-10-28"), "2026-10-26");
+eq("weight midpoint", [weightMidpoint("30–40%"), weightMidpoint("5–15%"), weightMidpoint(undefined)], [35, 10, 1]);
+const alloc = allocate([{ key: "I", weight: 35, available: 50 }, { key: "II", weight: 35, available: 50 }, { key: "III", weight: 30, available: 50 }], 30);
+eq("allocation follows weights and sums to 30", [alloc.get("I"), alloc.get("II"), alloc.get("III")], [11, 10, 9]);
+const short = allocate([{ key: "I", weight: 50, available: 3 }, { key: "II", weight: 50, available: 40 }], 30);
+eq("an area short of questions gives its share to others", [short.get("I"), short.get("II")], [3, 27]);
+const pool = Array.from({ length: 120 }, (_, i) => ({
+  id: `q${i}`,
+  topicId: `t${i % 12}`,
+  topicOrder: i % 12,
+  area: i % 12 < 4 ? "Area I: A" : i % 12 < 8 ? "Area II: B" : "Area III: C",
+  createdAt: at("2026-01-01T00:00:00Z"),
+}));
+const mockOpts = { subject: "far", week: "2026-10-26", weights: (a: string | null) => (a?.startsWith("Area III") ? 30 : 35) };
+const mock1 = pickMock(pool, mockOpts);
+eq("30 questions, no duplicates", [mock1.length, new Set(mock1).size], [30, 30]);
+eq("same week, same mock", pickMock(pool, mockOpts), mock1);
+eq("a different week gives a different mock", pickMock(pool, { ...mockOpts, week: "2026-11-02" }).join() !== mock1.join(), true);
+const topicOf = (id: string) => pool.find((p) => p.id === id)!.topicId;
+eq("every topic is covered", new Set(mock1.map(topicOf)).size, 12);
+const newer = [...pool, { id: "late", topicId: "t0", topicOrder: 0, area: "Area I: A", createdAt: at("2026-10-27T00:00:00Z") }];
+eq("questions added mid-week don't change the mock", pickMock(newer, mockOpts), mock1);
+const rep = scoreReport(
+  [
+    { id: "a", topic: { slug: "x", title: "X" }, area: "Area I: A" },
+    { id: "b", topic: { slug: "x", title: "X" }, area: "Area I: A" },
+    { id: "c", topic: { slug: "y", title: "Y" }, area: "Area II: B" },
+  ],
+  [{ mcqId: "a", isCorrect: true }, { mcqId: "b", isCorrect: false }, { mcqId: "c", isCorrect: false }],
+);
+eq("score report: totals, weakest topic first, areas in order", [rep.right, rep.total, rep.topics.map((t) => t.slug), rep.areas.map((a) => `${a.right}/${a.total}`)], [1, 3, ["y", "x"], ["1/2", "0/1"]]);
+
 console.log(failed ? `\n${failed} failed` : "\nAll passed");
 process.exit(failed ? 1 : 0);
