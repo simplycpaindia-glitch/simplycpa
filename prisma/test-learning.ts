@@ -8,6 +8,7 @@ import { areaNumber, areaWeight, groupByArea } from "../src/lib/blueprint";
 import { addDays, istDate, isValidDate, qotdIdFor, streakFrom } from "../src/lib/qotd";
 import { mistakeStatus } from "../src/lib/mistakes";
 import { allocate, pickMock, scoreReport, weekStart, weightMidpoint } from "../src/lib/mini-mock";
+import { buildPlan, planToIcs, topicHours } from "../src/lib/study-planner";
 
 let failed = 0;
 function eq(name: string, actual: unknown, expected: unknown) {
@@ -119,6 +120,29 @@ const rep = scoreReport(
   [{ mcqId: "a", isCorrect: true }, { mcqId: "b", isCorrect: false }, { mcqId: "c", isCorrect: false }],
 );
 eq("score report: totals, weakest topic first, areas in order", [rep.right, rep.total, rep.topics.map((t) => t.slug), rep.areas.map((a) => `${a.right}/${a.total}`)], [1, 3, ["y", "x"], ["1/2", "0/1"]]);
+
+// ── Study planner ──
+const ptopics = [
+  { slug: "a", title: "A", area: "Area II: B", order: 1, minutes: 60, difficulty: "MEDIUM" as const },
+  { slug: "b", title: "B", area: "Area I: A", order: 2, minutes: 60, difficulty: "HARD" as const },
+  { slug: "c", title: "C", area: "Area I: A", order: 1, minutes: 30, difficulty: "EASY" as const },
+];
+const th = topicHours(ptopics, 100);
+eq("topic hours follow reading time × difficulty and sum to the budget", [Math.round([...th.values()].reduce((s, n) => s + n, 0)), th.get("b")! > th.get("a")!, th.get("a")! > th.get("c")!], [100, true, true]);
+const roomy = buildPlan({ topics: ptopics, sectionHours: 100, start: "2026-11-02", exam: "2027-01-11", hoursPerWeek: 10 });
+eq("10 weeks: 8 to learn, 2 to review", [roomy.weeks.length, roomy.weeks.filter((w) => w.phase === "review").length], [10, 2]);
+eq("topics in blueprint order (Area I first)", roomy.weeks.flatMap((w) => w.items).filter((x) => x.kind === "study").map((x) => (x as { slug: string }).slug).filter((s, i, arr) => arr.indexOf(s) === i), ["c", "b", "a"]);
+eq("no week holds more than the weekly hours", roomy.weeks.every((w) => w.items.reduce((s, x) => s + (x.kind === "study" ? x.hours : 0), 0) <= 10.01), true);
+eq("all 80 learning hours placed when there's room", roomy.weeks.flatMap((w) => w.items).reduce((s, x) => s + (x.kind === "study" ? x.hours : 0), 0), 80);
+eq("enough time means full coverage", [roomy.coverage, roomy.availableHours, roomy.neededHours], [1, 100, 100]);
+eq("mini-mocks every 3 learning weeks and in review weeks", roomy.weeks.map((w) => (w.items.some((x) => x.kind === "mock") ? 1 : 0)).join(""), "0010010011");
+const tight = buildPlan({ topics: ptopics, sectionHours: 100, start: "2026-11-02", exam: "2026-11-30", hoursPerWeek: 10 });
+eq("4 weeks at 10 hours: plan is scaled down and says when it would fit", [tight.weeks.length, tight.coverage < 1, tight.earliestComfortableExam], [4, true, "2027-01-11"]);
+const skipping = buildPlan({ topics: ptopics, sectionHours: 100, start: "2026-11-02", exam: "2027-01-11", hoursPerWeek: 10, skip: new Set(["b"]) });
+eq("skipping a mastered topic leaves it out and lowers the hours needed", [skipping.weeks.flatMap((w) => w.items).some((x) => x.kind === "study" && x.slug === "b"), skipping.neededHours < 100], [false, true]);
+eq("exam date before the start gives an empty plan", buildPlan({ topics: ptopics, sectionHours: 100, start: "2026-11-02", exam: "2026-10-01", hoursPerWeek: 10 }).weeks.length, 0);
+const ics = planToIcs(roomy, "FAR");
+eq("calendar file: one event per week, all-day dates", [(ics.match(/BEGIN:VEVENT/g) ?? []).length, ics.includes("DTSTART;VALUE=DATE:20261102"), ics.includes("DTEND;VALUE=DATE:20261109")], [10, true, true]);
 
 console.log(failed ? `\n${failed} failed` : "\nAll passed");
 process.exit(failed ? 1 : 0);

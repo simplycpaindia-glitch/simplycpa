@@ -39,6 +39,7 @@ export async function Navbar() {
           <NavGroup label="Practice" wide={false}>
             <DropdownLink href="/question-of-the-day" label="Question of the Day" sub="One question, every day" />
             <DropdownLink href="/mini-mock" label="Weekly Mini-Mocks" sub="30 questions, 45 minutes" />
+            <DropdownLink href="/study-planner" label="Study Planner" sub="A week-by-week plan to your exam" />
             <DropdownLink href="/cpa" label="MCQs" sub="Practice by subject and topic" />
             <DropdownLink href="/quick-sheets" label="Quick Sheets" sub="5-minute revision sheets" />
           </NavGroup>

@@ -15,6 +15,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Question of the Day", href: "/question-of-the-day" },
       { label: "Weekly Mini-Mocks", href: "/mini-mock" },
+      { label: "Study Planner", href: "/study-planner" },
       { label: "Quick Sheets", href: "/quick-sheets" },
       { label: "Community", href: "/community" },
     ],
