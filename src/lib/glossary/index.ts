@@ -2,8 +2,11 @@ import type { GlossaryTerm } from "./types";
 import { farTerms } from "./data/far";
 import { audTerms } from "./data/aud";
 import { disciplineTerms, regTerms } from "./data/tax-and-disciplines";
+import { farTermsB } from "./data/far-b";
+import { audTermsB } from "./data/aud-b";
+import { disciplineTermsB, regTermsB } from "./data/tax-and-disciplines-b";
 
-export const glossary: GlossaryTerm[] = [...farTerms, ...audTerms, ...regTerms, ...disciplineTerms].sort((a, b) =>
+export const glossary: GlossaryTerm[] = [...farTerms, ...farTermsB, ...audTerms, ...audTermsB, ...regTerms, ...regTermsB, ...disciplineTerms, ...disciplineTermsB].sort((a, b) =>
   a.term.localeCompare(b.term, "en", { sensitivity: "base" }),
 );
 

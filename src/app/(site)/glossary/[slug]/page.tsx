@@ -38,8 +38,10 @@ export async function generateMetadata({ params }: PageProps<"/glossary/[slug]">
   const term = getTerm(slug);
   if (!term) return {};
   const description = term.definition.length > 155 ? `${term.definition.slice(0, 152).replace(/\s+\S*$/, "")}…` : term.definition;
+  // Keep titles near 60 characters: drop the suffix for long terms.
+  const full = `What Is ${term.term}? CPA Exam Definition`;
   return {
-    title: `What Is ${term.term}? CPA Exam Definition`,
+    title: full.length <= 60 ? full : `What Is ${term.term}?`,
     description,
     alternates: { canonical: `/glossary/${term.slug}` },
   };
