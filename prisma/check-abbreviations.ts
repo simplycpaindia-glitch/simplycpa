@@ -14,6 +14,7 @@ import { isc } from "./seed-data/isc";
 import { tcp } from "./seed-data/tcp";
 import { farSimulations } from "../src/lib/tbs/data/far";
 import { audSimulations } from "../src/lib/tbs/data/aud";
+import { glossary } from "../src/lib/glossary";
 
 // Tokens that look like abbreviations but aren't, or that need no expansion.
 const IGNORE = new Set([
@@ -104,6 +105,14 @@ for (const sim of [...farSimulations, ...audSimulations]) {
     sim.takeaway,
   ].join("\n");
   const problems = check(`${sim.subject}/simulations/${sim.slug}`, text);
+  problems.forEach((p) => console.log(p));
+  total += problems.length;
+}
+// Each glossary term is its own page too: heading, definition, takeaways, example.
+for (const term of glossary) {
+  if (only && term.section !== only) continue;
+  const text = [`What is ${term.term}?`, term.definition, ...term.takeaways, term.example ?? ""].join("\n");
+  const problems = check(`glossary/${term.slug}`, text);
   problems.forEach((p) => console.log(p));
   total += problems.length;
 }

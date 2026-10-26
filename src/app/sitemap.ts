@@ -6,6 +6,7 @@ import { PASS_RATES_CHECKED } from "@/lib/trackers/pass-rates";
 import { SCORE_RELEASE_CHECKED } from "@/lib/trackers/score-release";
 import { PATHWAYS_CHECKED } from "@/lib/trackers/pathways";
 import { allSimulations } from "@/lib/tbs";
+import { glossary } from "@/lib/glossary";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
 export const revalidate = 3600;
@@ -108,5 +109,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...sims.map((s) => ({ url: `${base}/cpa/${s.subject}/simulations/${s.slug}` })),
   ];
 
-  return [...staticRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
+  const glossaryRoutes = [{ url: `${base}/glossary` }, ...glossary.map((t) => ({ url: `${base}/glossary/${t.slug}` }))];
+
+  return [...staticRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
 }

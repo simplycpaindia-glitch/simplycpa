@@ -61,6 +61,7 @@ export async function Navbar() {
               <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
               <DropdownLink href="/roadmap" label="Roadmap" />
               <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
+              <DropdownLink href="/glossary" label="CPA Glossary" sub="Key terms in plain English" />
               <DropdownLink href="/faq" label="FAQs" />
               <DropdownLink href="/blog" label="Blog" />
               <DropdownLink href="/sources" label="Official Sources" />

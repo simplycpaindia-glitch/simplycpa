@@ -21,6 +21,7 @@ import { Comments } from "@/components/discussion/Comments";
 import { formatDate, formatMinutes } from "@/lib/utils";
 import { getSimulations } from "@/lib/tbs";
 import { FORMAT_LABEL } from "@/lib/tbs/types";
+import { termsForTopic } from "@/lib/glossary";
 
 async function getTopic(subjectSlug: string, topicSlug: string) {
   const subject = await prisma.subject.findUnique({ where: { slug: subjectSlug } });
@@ -127,6 +128,7 @@ export default async function TopicPage({
   const study = topic.studyMaterial ? withHeadingIds(topic.studyMaterial.content) : null;
   const isLoggedIn = !!session?.user;
   const simulations = getSimulations(subject.slug).filter((s) => s.topic === topic.slug);
+  const keyTerms = termsForTopic(subject.slug, topic.slug);
 
   const tabs = [
     study && {
@@ -140,6 +142,18 @@ export default async function TopicPage({
             </div>
             <OnThisPage headings={study.headings} variant="inline" />
             <RichContent html={study.html} />
+            {keyTerms.length > 0 && (
+              <aside aria-labelledby="key-terms" className="mt-10 rounded-lg border border-ink-950/10 bg-paper-100/60 p-5">
+                <h2 id="key-terms" className="text-sm font-semibold uppercase tracking-wide text-ink-400">Key terms</h2>
+                <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
+                  {keyTerms.map((t) => (
+                    <li key={t.slug}>
+                      <Link href={`/glossary/${t.slug}`} className="font-medium text-ink-800 underline underline-offset-2 hover:text-ink-950">{t.term}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </aside>
+            )}
             <div className="mt-10 flex flex-wrap items-center gap-3 border-t border-ink-950/10 pt-6">
               <MarkCompleteButton
                 isComplete={!!progress?.studyCompletedAt}

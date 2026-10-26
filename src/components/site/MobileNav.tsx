@@ -72,6 +72,7 @@ export function MobileNav({
             <MobileLink href="/cpa-licensure-pathways" onClick={() => setOpen(false)}>120 vs 150 by State</MobileLink>
             <MobileLink href="/free-cpa-resources" onClick={() => setOpen(false)}>Free CPA Resources</MobileLink>
             <MobileLink href="/sources" onClick={() => setOpen(false)}>Official Sources</MobileLink>
+            <MobileLink href="/glossary" onClick={() => setOpen(false)}>CPA Glossary</MobileLink>
             <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>
             <MobileLink href="/blog" onClick={() => setOpen(false)}>Blog</MobileLink>
           </MobileSection>

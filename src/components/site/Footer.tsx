@@ -30,6 +30,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Resources",
     links: [
+      { label: "CPA Glossary", href: "/glossary" },
       { label: "FAQs", href: "/faq" },
       { label: "Roadmap", href: "/roadmap" },
       { label: "Fee Estimator", href: "/fees" },

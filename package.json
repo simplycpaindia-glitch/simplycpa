@@ -24,6 +24,7 @@
     "test:trackers": "tsx prisma/test-trackers.ts",
     "test:learning": "tsx prisma/test-learning.ts",
     "test:tbs": "tsx prisma/test-tbs.ts",
+    "test:glossary": "tsx prisma/test-glossary.ts",
     "wall:official": "tsx prisma/post-official-wall.ts",
     "check:community": "tsx prisma/check-community-config.ts"
   },
