@@ -23,7 +23,7 @@ const IGNORE = new Set([
   "AND", "OR", "NOT", "THE", "IF", "THEN", "ELSE", "NO", "YES", "ALL", "ANY", "EXCEPT", "ONLY",
   "COMING", "CHANGE", "NEW", "UPDATE", "REMEMBER", "WATCH", "OUT",
   "EE", // Series EE savings bonds — a product name, not an abbreviation
-  "NEC", "MISC", "EZ", "PF", // parts of form names (Form 1099-NEC, 990-EZ, 990-PF)
+  "NEC", "MISC", "EZ", "PF", "AP", // parts of form names (Form 1099-NEC, 990-EZ, 990-PF, PCAOB Form AP)
   "MITRE", "ATT&CK", // proper names (the MITRE ATT&CK knowledge base)
   // Structured query language keywords shown in examples
   "SELECT", "FROM", "WHERE", "JOIN", "ON", "GROUP", "BY", "HAVING", "ORDER", "SUM", "COUNT", "AVG", "DESC", "ASC",
