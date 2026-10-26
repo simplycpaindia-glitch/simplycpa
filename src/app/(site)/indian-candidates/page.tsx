@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import { INDIA_TEST_CITIES, indiaTestCitiesText } from "@/lib/india";
+import Link from "next/link";
+import { prisma } from "@/lib/prisma";
+import { formatIsoDate } from "@/lib/utils";
+import { INDIA_TEST_CITIES, USD_INR, formatInr, formatUsd, indiaTestCitiesText, toInr } from "@/lib/india";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indian-candidates" },
@@ -46,7 +49,25 @@ const sections = [
   },
 ];
 
-export default function IndianCandidatesPage() {
+const TIMELINE = [
+  { title: "Choose a state board", body: "Pick one whose education and experience rules you can meet. Residency isn't required." },
+  { title: "Get your credentials evaluated", body: "An approved agency converts your Indian degrees into US semester hours." },
+  { title: "Apply and get your Notice to Schedule", body: "Apply to the board (through NASBA for most), pay for a section and receive your Notice to Schedule." },
+  { title: "Book a centre in India", body: "Register for international testing, pay the India fee and book a Prometric seat." },
+  { title: "Pass all four sections", body: "Generally within 30 months of passing the first one: three Core sections and one Discipline." },
+  { title: "Ethics exam, if your state requires it", body: "Many boards require an ethics exam before licensing." },
+  { title: "Get the required experience", body: "Usually one year (150-hour route) or two years (120-hour route), generally verified by a licensed CPA." },
+  { title: "Apply for the licence", body: "The board issues the licence once education, exam and experience are complete." },
+];
+
+export const revalidate = 3600;
+
+export default async function IndianCandidatesPage() {
+  const fees = await prisma.fee.findMany({ select: { feeType: true, label: true, amount: true } });
+  const amount = (type: string) => Number(fees.find((f) => f.feeType === type && !/discipline/i.test(f.label))?.amount ?? 0);
+  const perAttemptUsd = amount("REGISTRATION") + amount("EXAM_SECTION") + amount("INTERNATIONAL_ADMIN");
+  const firstTimeUsd = amount("EVALUATION") + amount("APPLICATION") + perAttemptUsd * 4;
+
   return (
     <>
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
@@ -68,6 +89,37 @@ export default function IndianCandidatesPage() {
             </Card>
           ))}
         </div>
+
+        <section aria-labelledby="cost-inr" className="mt-12 rounded-lg border border-ink-950/10 bg-paper-100/60 p-6">
+          <h2 id="cost-inr" className="font-display text-2xl font-medium text-ink-950">What it costs in rupees</h2>
+          <p className="mt-2 leading-relaxed text-ink-800">
+            Passing all four sections first time while testing in India costs about{" "}
+            <strong>{formatInr(toInr(firstTimeUsd))}</strong> ({formatUsd(firstTimeUsd)}) in exam and evaluation fees, and each retake adds
+            about <strong>{formatInr(toInr(perAttemptUsd))}</strong>.
+          </p>
+          <p className="mt-2 text-xs text-ink-400">
+            At ₹{USD_INR.rate} per US dollar ({USD_INR.source}, {formatIsoDate(USD_INR.asOf)}). Review courses, bank charges, the ethics exam and
+            licence fees are extra.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm">
+            <Link href="/us-cpa-fees-in-inr" className="font-medium underline underline-offset-2">Every fee in INR</Link>
+            <Link href="/cpa-exam-centres-india" className="font-medium underline underline-offset-2">Exam centres in India</Link>
+            <Link href="/fees" className="font-medium underline underline-offset-2">Fee estimator</Link>
+          </div>
+        </section>
+
+        <section aria-labelledby="timeline" className="mt-12">
+          <h2 id="timeline" className="font-display text-2xl font-medium text-ink-950">The path, step by step</h2>
+          <ol className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {TIMELINE.map((step, i) => (
+              <li key={step.title} className="relative rounded-lg border border-ink-950/10 p-4">
+                <span className="text-xs font-semibold uppercase tracking-wide text-gold-700">Step {i + 1}</span>
+                <p className="mt-1 font-medium text-ink-950">{step.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-ink-400">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         <div className="mt-12 flex flex-wrap gap-3">
           <Button href="/roadmap" variant="primary">View the full Roadmap</Button>

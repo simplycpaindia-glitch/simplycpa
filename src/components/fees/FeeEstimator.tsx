@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Card } from "@/components/ui/Card";
-import { cn } from "@/lib/utils";
+import { cn, formatIsoDate } from "@/lib/utils";
+import { USD_INR } from "@/lib/india";
 
 export type EstimatorFees = {
   application: number;
@@ -22,7 +23,7 @@ export function FeeEstimator({ fees }: { fees: EstimatorFees }) {
   const [coreAttempts, setCoreAttempts] = useState(3);
   const [disciplineAttempts, setDisciplineAttempts] = useState(1);
   const [inIndia, setInIndia] = useState(true);
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState(String(USD_INR.rate));
 
   const attempts = coreAttempts + disciplineAttempts;
   const lines = [
@@ -89,8 +90,10 @@ export function FeeEstimator({ fees }: { fees: EstimatorFees }) {
         </fieldset>
 
         <label className="mt-6 block">
-          <span className="text-sm font-medium text-ink-950">USD → INR rate (optional)</span>
-          <span className="block text-xs text-ink-400">Enter today&apos;s rate to see a rupee figure.</span>
+          <span className="text-sm font-medium text-ink-950">USD → INR rate</span>
+          <span className="block text-xs text-ink-400">
+            Prefilled with the {USD_INR.source}, {formatIsoDate(USD_INR.asOf)}. Change it to your bank&apos;s rate.
+          </span>
           <input
             type="number"
             inputMode="decimal"

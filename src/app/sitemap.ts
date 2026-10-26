@@ -64,6 +64,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/roadmap",
     "/fees",
     "/indian-candidates",
+    "/us-cpa-fees-in-inr",
+    "/cpa-exam-centres-india",
     "/community",
     "/community-guidelines",
     "/about",
