@@ -6,6 +6,8 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { formatIsoDate } from "@/lib/utils";
 import { INDIA_TEST_CITIES, USD_INR, formatInr, formatUsd, indiaTestCitiesText, toInr } from "@/lib/india";
+import { BOARDS_SOURCE, INDIA_BOARDS, PATHWAYS_SOURCE, PROFILES } from "@/lib/india-boards";
+import { istDate } from "@/lib/qotd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indian-candidates" },
@@ -62,11 +64,18 @@ const TIMELINE = [
 
 export const revalidate = 3600;
 
+function pathwayText(effective: string | "listed" | null, today: string) {
+  if (effective === null) return "Not on NASBA's list";
+  if (effective === "listed") return "Law passed; date not published";
+  return effective <= today ? `In effect since ${formatIsoDate(effective)}` : `From ${formatIsoDate(effective)}`;
+}
+
 export default async function IndianCandidatesPage() {
   const fees = await prisma.fee.findMany({ select: { feeType: true, label: true, amount: true } });
   const amount = (type: string) => Number(fees.find((f) => f.feeType === type && !/discipline/i.test(f.label))?.amount ?? 0);
   const perAttemptUsd = amount("REGISTRATION") + amount("EXAM_SECTION") + amount("INTERNATIONAL_ADMIN");
   const firstTimeUsd = amount("EVALUATION") + amount("APPLICATION") + perAttemptUsd * 4;
+  const today = istDate(new Date());
 
   return (
     <>
@@ -119,6 +128,111 @@ export default async function IndianCandidatesPage() {
               </li>
             ))}
           </ol>
+        </section>
+
+        <section aria-labelledby="boards" className="mt-12">
+          <h2 id="boards" className="font-display text-2xl font-medium text-ink-950">Which board fits your profile</h2>
+          <p className="mt-2 max-w-3xl leading-relaxed text-ink-800">
+            Start with the boards whose education rules your evaluated degree meets; everything else is a tie-breaker. These are the
+            boards Indian candidates most often consider.
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-lg border border-ink-950/10">
+            <table className="w-full min-w-[36rem] text-sm">
+              <thead className="bg-paper-100 text-left text-xs uppercase tracking-wide text-ink-400">
+                <tr>
+                  <th scope="col" className="px-4 py-3">Your profile</th>
+                  <th scope="col" className="px-4 py-3">Boards to look at first</th>
+                  <th scope="col" className="px-4 py-3">Why</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-ink-950/10">
+                {PROFILES.map((p) => (
+                  <tr key={p.profile} className="align-top">
+                    <th scope="row" className="px-4 py-3 text-left font-medium text-ink-950">{p.profile}</th>
+                    <td className="px-4 py-3 text-ink-800">{p.boards}</td>
+                    <td className="px-4 py-3 text-ink-400">{p.why}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3 className="mt-8 font-semibold text-ink-950">The boards side by side</h3>
+          <div className="mt-3 overflow-x-auto rounded-lg border border-ink-950/10">
+            <table className="w-full min-w-[60rem] text-sm">
+              <thead className="bg-paper-100 text-left text-xs uppercase tracking-wide text-ink-400">
+                <tr>
+                  <th scope="col" className="px-3 py-3">Board</th>
+                  <th scope="col" className="px-3 py-3">Education to sit (summary)</th>
+                  <th scope="col" className="px-3 py-3">Sit before finishing?</th>
+                  <th scope="col" className="px-3 py-3">Evaluator</th>
+                  <th scope="col" className="px-3 py-3">CA coursework</th>
+                  <th scope="col" className="px-3 py-3">Credit window</th>
+                  <th scope="col" className="px-3 py-3">120 hours + 2 years route</th>
+                  <th scope="col" className="px-3 py-3">Test in India</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-ink-950/10">
+                {INDIA_BOARDS.map((b) => (
+                  <tr key={b.name} className="align-top">
+                    <th scope="row" className="px-3 py-3 text-left font-medium text-ink-950">{b.name}</th>
+                    <td className="px-3 py-3 text-ink-800">{b.educationToSit}</td>
+                    <td className="px-3 py-3 text-ink-800">{b.sitEarly}</td>
+                    <td className="px-3 py-3 text-ink-800">{b.evaluator}</td>
+                    <td className="px-3 py-3 text-ink-800">{b.caCoursework}</td>
+                    <td className="px-3 py-3 text-ink-800">{b.creditWindow}</td>
+                    <td className="px-3 py-3 text-ink-800">{pathwayText(b.pathwayEffective, today)}</td>
+                    <td className="px-3 py-3 text-ink-800">{b.testsInIndia ? "Yes" : "No"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-2 text-xs text-ink-400">
+            Summarised from each board&apos;s page on{" "}
+            <a href={BOARDS_SOURCE} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">nasba.org</a>{" "}
+            (October 2026); pathway dates from{" "}
+            <a href={PATHWAYS_SOURCE} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">NASBA&apos;s pathways list</a>.
+            &quot;—&quot; means the board&apos;s page doesn&apos;t say. Rules change: confirm with the board before you apply. All states:{" "}
+            <Link href="/cpa-licensure-pathways" className="underline underline-offset-2">120 vs 150 hours by state</Link>.
+          </p>
+        </section>
+
+        <section aria-labelledby="worked-example" className="mt-12">
+          <h2 id="worked-example" className="font-display text-2xl font-medium text-ink-950">Worked example: checking an evaluation against board rules</h2>
+          <p className="mt-2 max-w-3xl leading-relaxed text-ink-800">
+            The figures below are <strong>made up for illustration</strong>. Real results depend on your university, your papers and the
+            evaluator. The point is the method: total hours, then the accounting and business mix, then any specific course a board wants.
+          </p>
+          <div className="mt-4 overflow-x-auto rounded-lg border border-ink-950/10">
+            <table className="w-full min-w-[32rem] text-sm">
+              <thead className="bg-paper-100 text-left text-xs uppercase tracking-wide text-ink-400">
+                <tr>
+                  <th scope="col" className="px-4 py-3">Evaluated (illustrative)</th>
+                  <th scope="col" className="px-4 py-3 text-right">Total hours</th>
+                  <th scope="col" className="px-4 py-3 text-right">Accounting</th>
+                  <th scope="col" className="px-4 py-3 text-right">Business</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-ink-950/10 tabular-nums">
+                <tr><th scope="row" className="px-4 py-3 text-left font-medium text-ink-950">Three-year B.Com</th><td className="px-4 py-3 text-right">90</td><td className="px-4 py-3 text-right">30 (24 above introductory)</td><td className="px-4 py-3 text-right">33</td></tr>
+                <tr><th scope="row" className="px-4 py-3 text-left font-medium text-ink-950">M.Com</th><td className="px-4 py-3 text-right">40</td><td className="px-4 py-3 text-right">12</td><td className="px-4 py-3 text-right">28</td></tr>
+                <tr className="font-medium"><th scope="row" className="px-4 py-3 text-left text-ink-950">Together</th><td className="px-4 py-3 text-right">130</td><td className="px-4 py-3 text-right">42</td><td className="px-4 py-3 text-right">61</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-2 text-xs text-ink-400">None of the auditing papers covered US auditing standards.</p>
+          <ul className="mt-4 flex list-disc flex-col gap-2 pl-5 leading-relaxed text-ink-800">
+            <li><strong>B.Com alone (90 hours):</strong> short of the 120 hours that Colorado, New Hampshire and New York ask for. Montana&apos;s rule is stated as 24 accounting hours above introductory level and 24 business hours, which this profile meets.</li>
+            <li><strong>B.Com + M.Com (130 hours):</strong> meets the hour and credit-mix rules of New Hampshire (30 accounting, 24 business), Washington (24 + 24) and Montana, provided the evaluator treats the degrees as equivalent to a US bachelor&apos;s where the board requires one.</li>
+            <li><strong>Colorado:</strong> the hours are enough (27 accounting, 21 above introductory), but it also wants a US auditing standards course, so this candidate would need to add one.</li>
+            <li><strong>The licence:</strong> 130 hours is short of 150, so this candidate would either add 20 more hours or use a board with the 120 hours + two years of experience route, such as Washington, where it is already in effect.</li>
+          </ul>
+          <p className="mt-3 text-sm text-ink-400">
+            For your own degrees, an NIES evaluation (or its undecided evaluation, which suggests up to three boards you qualify for) is the
+            only reliable answer. Read more: <Link href="/blog/can-indian-bcom-degree-meet-us-cpa-requirements" className="underline underline-offset-2">can a B.Com meet the requirements?</Link>{" "}
+            and <Link href="/blog/how-indian-ca-qualifications-are-evaluated-for-cpa" className="underline underline-offset-2">how CA qualifications are evaluated</Link>.
+          </p>
         </section>
 
         <div className="mt-12 flex flex-wrap gap-3">
