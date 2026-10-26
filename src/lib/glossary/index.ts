@@ -14,8 +14,11 @@ import { disciplineTermsD } from "./data/disciplines-d";
 import { audTermsE, farTermsE } from "./data/far-aud-e";
 import { regTermsE } from "./data/reg-e";
 import { disciplineTermsE } from "./data/disciplines-e";
+import { audTermsF, farTermsF } from "./data/far-aud-f";
+import { regTermsF } from "./data/reg-f";
+import { disciplineTermsF } from "./data/disciplines-f";
 
-export const glossary: GlossaryTerm[] = [...farTerms, ...farTermsB, ...farTermsC, ...farTermsD, ...farTermsE, ...audTerms, ...audTermsB, ...audTermsC, ...audTermsD, ...audTermsE, ...regTerms, ...regTermsB, ...regTermsC, ...regTermsD, ...regTermsE, ...disciplineTerms, ...disciplineTermsB, ...disciplineTermsC, ...disciplineTermsD, ...disciplineTermsE].sort((a, b) =>
+export const glossary: GlossaryTerm[] = [...farTerms, ...farTermsB, ...farTermsC, ...farTermsD, ...farTermsE, ...farTermsF, ...audTerms, ...audTermsB, ...audTermsC, ...audTermsD, ...audTermsE, ...audTermsF, ...regTerms, ...regTermsB, ...regTermsC, ...regTermsD, ...regTermsE, ...regTermsF, ...disciplineTerms, ...disciplineTermsB, ...disciplineTermsC, ...disciplineTermsD, ...disciplineTermsE, ...disciplineTermsF].sort((a, b) =>
   a.term.localeCompare(b.term, "en", { sensitivity: "base" }),
 );
 
