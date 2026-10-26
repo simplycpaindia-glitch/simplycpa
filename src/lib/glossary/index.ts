@@ -5,8 +5,11 @@ import { disciplineTerms, regTerms } from "./data/tax-and-disciplines";
 import { farTermsB } from "./data/far-b";
 import { audTermsB } from "./data/aud-b";
 import { disciplineTermsB, regTermsB } from "./data/tax-and-disciplines-b";
+import { farTermsC } from "./data/far-c";
+import { audTermsC } from "./data/aud-c";
+import { disciplineTermsC, regTermsC } from "./data/tax-and-disciplines-c";
 
-export const glossary: GlossaryTerm[] = [...farTerms, ...farTermsB, ...audTerms, ...audTermsB, ...regTerms, ...regTermsB, ...disciplineTerms, ...disciplineTermsB].sort((a, b) =>
+export const glossary: GlossaryTerm[] = [...farTerms, ...farTermsB, ...farTermsC, ...audTerms, ...audTermsB, ...audTermsC, ...regTerms, ...regTermsB, ...regTermsC, ...disciplineTerms, ...disciplineTermsB, ...disciplineTermsC].sort((a, b) =>
   a.term.localeCompare(b.term, "en", { sensitivity: "base" }),
 );
 

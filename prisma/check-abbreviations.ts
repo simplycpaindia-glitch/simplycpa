@@ -108,10 +108,12 @@ for (const sim of [...farSimulations, ...audSimulations]) {
   problems.forEach((p) => console.log(p));
   total += problems.length;
 }
-// Each glossary term is its own page too: heading, definition, takeaways, example.
+// Each glossary term is its own page too. The heading uses the phrase people search for
+// ("Non-GAAP financial measure"), and the "In short" definition directly under it must
+// expand any short form, so the definition is checked first.
 for (const term of glossary) {
   if (only && term.section !== only) continue;
-  const text = [`What is ${term.term}?`, term.definition, ...term.takeaways, term.example ?? ""].join("\n");
+  const text = [term.definition, ...term.takeaways, term.example ?? "", `What is ${term.term}?`].join("\n");
   const problems = check(`glossary/${term.slug}`, text);
   problems.forEach((p) => console.log(p));
   total += problems.length;
