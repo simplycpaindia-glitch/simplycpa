@@ -89,7 +89,7 @@ export async function Navbar() {
 
           <Link
             href="/what-i-studied"
-            className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3"
+            className="hidden whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:block xl:px-3"
           >
             Study Wall
           </Link>
