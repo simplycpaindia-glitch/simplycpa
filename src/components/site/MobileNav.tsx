@@ -73,6 +73,7 @@ export function MobileNav({
           </MobileSection>
           <MobileSection title="CPA for Indians">
             <MobileLink href="/indian-candidates" onClick={() => setOpen(false)}>Eligibility, Cost & Process</MobileLink>
+            <MobileLink href="/state-boards" onClick={() => setOpen(false)}>State Boards Compared</MobileLink>
             <MobileLink href="/us-cpa-fees-in-inr" onClick={() => setOpen(false)}>CPA Fees in INR</MobileLink>
             <MobileLink href="/cpa-exam-centres-india" onClick={() => setOpen(false)}>Exam Centres in India</MobileLink>
           </MobileSection>

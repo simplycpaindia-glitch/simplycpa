@@ -55,6 +55,13 @@ export const TOOLS: Tool[] = [
     stage: "Track",
   },
   {
+    href: "/state-boards",
+    name: "State Boards Compared",
+    blurb: "Nine boards side by side: education to sit, evaluators, Social Security number rules, fees and credit window.",
+    stage: "Decide",
+    isNew: true,
+  },
+  {
     href: "/cpa-licensure-pathways",
     name: "120 vs 150 by State",
     blurb: "Which boards have the new 120-hour licensure pathway, and from when.",

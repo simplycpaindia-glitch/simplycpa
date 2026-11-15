@@ -195,7 +195,11 @@ export function EligibilityNavigator({ boardsChecked }: { boardsChecked: string 
                   <tbody className="divide-y divide-ink-950/10">
                     {boards.map((b) => (
                       <tr key={b.name} className="align-top">
-                        <th scope="row" className="py-3 pr-4 font-medium text-ink-950">{b.name}</th>
+                        <th scope="row" className="py-3 pr-4 font-medium text-ink-950">
+                          <Link href={`/state-boards/${b.name.toLowerCase().replace(/ /g, "-")}`} className="underline underline-offset-2">
+                            {b.name}
+                          </Link>
+                        </th>
                         <td className="py-3 pr-4 text-ink-800">{b.educationToSit}</td>
                         <td className="py-3 pr-4 text-ink-800">{b.evaluator}</td>
                         <td className="py-3 text-ink-800">{b.creditWindow}</td>
@@ -204,7 +208,7 @@ export function EligibilityNavigator({ boardsChecked }: { boardsChecked: string 
                   </tbody>
                 </table>
               </div>
-              <Links links={[["Compare all boards for Indian candidates", "/indian-candidates#boards"], ["120 vs 150 by state", "/cpa-licensure-pathways"]]} />
+              <Links links={[["Each board in detail", "/state-boards"], ["120 vs 150 by state", "/cpa-licensure-pathways"]]} />
             </Panel>
 
             <Panel title="Your next three steps">

@@ -47,6 +47,7 @@ export async function Navbar() {
             <NavSection title="Decide">
               <DropdownLink href="/tools/cpa-eligibility-navigator" label="Eligibility Navigator" sub="Where your education stands" />
               <DropdownLink href="/tools/cpa-discipline-selector" label="Discipline Selector" sub="BAR, ISC or TCP?" />
+              <DropdownLink href="/state-boards" label="State Boards Compared" sub="Nine boards, side by side" />
               <DropdownLink href="/cpa-licensure-pathways" label="120 vs 150 by State" sub="New licensure pathways" />
               <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
             </NavSection>

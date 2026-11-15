@@ -10,6 +10,8 @@ import { glossary } from "@/lib/glossary";
 import { pulseArticles, pulseLastChanged } from "@/lib/pulse";
 import { TOOLS } from "@/lib/tools";
 import { faqCategorySlug } from "@/lib/faq";
+import { blogCategorySlug } from "@/lib/blog";
+import { BOARDS, BOARDS_READ } from "@/lib/state-boards";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
 export const revalidate = 3600;
@@ -27,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }),
     prisma.blogPost.findMany({
       where: { status: "PUBLISHED" },
-      select: { slug: true, updatedAt: true },
+      select: { slug: true, updatedAt: true, category: true },
     }),
     prisma.topic.findMany({
       where: { revisionNote: { isNot: null } },
@@ -128,5 +130,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(c._max.updatedAt && { lastModified: c._max.updatedAt }),
   }));
 
-  return [...staticRoutes, ...pulseRoutes, ...faqRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
+  const boardRoutes = [{ url: `${base}/state-boards`, lastModified: new Date(BOARDS_READ) }, ...BOARDS.map((b) => ({ url: `${base}/state-boards/${b.slug}`, lastModified: new Date(BOARDS_READ) }))];
+  const blogCategoryRoutes = [...new Set(posts.map((p) => p.category))].map((c) => ({ url: `${base}/blog/category/${blogCategorySlug(c)}` }));
+
+  return [...staticRoutes, ...pulseRoutes, ...faqRoutes, ...boardRoutes, ...blogCategoryRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
 }

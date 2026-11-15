@@ -256,15 +256,17 @@ Recommended:
 - [x] Navigation, homepage and Knowledge Centre filter
 - [ ] Set `NEXT_PUBLIC_SITE_URL` to the www address in Vercel; deploy
 - [ ] Search Console: verify the www property, submit the sitemap
-- [ ] **Read the 2027 Summary of Changes; update topics, weights and the Blueprint label**
-- [ ] Read and write up the PCAOB and FASB items (opens the second Pulse desk)
+- [x] Read the 2027 Summary of Changes; update topics, quick sheets, questions and the Blueprint label
+- [x] PCAOB stories written (opens the Accounting & Regulation desk); FASB items still to read
 
 ### Days 15–45: content depth
 
-- [ ] FAQs: 44 → 120, split by category
-- [ ] Ten state board pages for Indian candidates
+- [x] FAQs: 43 → 203, with a hub and one page per category
+- [x] State board pages for international candidates (nine boards; Illinois's NASBA page lists no requirements)
+- [x] Knowledge Centre category pages, and tools, news, boards and glossary terms in site search
+- [x] "Use this next" links from every article to the relevant tools and FAQs
+- [x] Pass-rate tracker updated to Q3 2026
 - [ ] Article-by-article gap check, then two articles a week from the gap list (careers first)
-- [ ] Add "related tools" links from every eligibility, cost and Discipline article to the new tools
 - [ ] Readiness assessment (diagnostic) for FAR, then the other sections
 - [ ] Pulse: two to four stories a week, monthly re-verification
 
@@ -279,7 +281,6 @@ Recommended:
 ### Days 76–90: measure and plan
 
 - [ ] First Search Console review: queries, pages losing clicks, new opportunities
-- [ ] FAQs: 120 → 200
 - [ ] Monthly Pulse email digest
 - [ ] Admin screens for fees and Pulse, if a non-developer needs to publish
 - [ ] Competitor re-check and the next 90-day plan

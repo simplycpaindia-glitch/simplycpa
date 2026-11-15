@@ -95,6 +95,41 @@ These live in the `Fee`, `EligibilityRequirement`, and `TestingLocation` databas
 
 Building a proper admin screen for these is a reasonable next step once the fee/eligibility content grows.
 
+## Content that lives in code (ask a developer, or follow these files)
+
+Some pages are kept as structured files rather than database rows, so that every item
+carries its sources and dates. Each is deployed by pushing to `main`.
+
+| What | File | How to update |
+|---|---|---|
+| The CPA Pulse (news) | `src/lib/pulse/articles.ts` | Follow `docs/PULSE-WORKFLOW.md`. Add the story at the top; set `published`, `verified` and `sources`. |
+| State board pages | `src/lib/state-boards.ts` | Re-read each board's page on nasba.org, update the facts and set `BOARDS_READ` to the date you read them. |
+| Pass rates, score dates, licensure pathways | `src/lib/trackers/*.ts` | Copy the new figures from the official page and update the `..._CHECKED` date. Run `npm run test:trackers`. |
+| Student tools | `src/lib/tools.ts` | The list shown on `/tools`, the homepage and site search. |
+| FAQ and article category descriptions | `src/lib/faq.ts`, `src/lib/blog.ts` | A new category works without an entry; add one for a description and position. |
+
+### Adding many FAQs at once
+
+FAQs can be edited one by one in **Admin → FAQ**. To add a batch, a developer adds them to
+`prisma/seed-data/faqs-*.ts` and runs:
+
+```
+npm run faq:sync -- --dry-run    # shows what would be added
+npm run faq:sync                 # adds new questions; never edits existing ones
+npm run faq:sync -- --update     # also replaces answers that were corrected in the file
+```
+
+`--update` overwrites the stored answer for those questions, including any edit made in
+the admin screen, so run the dry run first and read the list.
+
+### Monthly re-check (about an hour)
+
+1. Fees: NASBA's international page and one state page. Update `prisma/seed-data/facts.ts` and any Pulse fee story.
+2. Trackers: pass rates (after each quarter), score release dates, licensure pathways.
+3. State boards: re-read the nine NASBA pages.
+4. Pulse: re-read the sources of stories from the last 90 days and reset `verified`.
+5. The exchange rate in `src/lib/india.ts`.
+
 ## Publishing checklist
 
 Before setting anything to `Published`:

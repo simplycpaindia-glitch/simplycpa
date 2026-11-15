@@ -13,6 +13,7 @@ import { AboutSimplyCPA, Byline } from "@/components/content/AboutSimplyCPA";
 import { OnThisPage } from "@/components/content/OnThisPage";
 import { ReadingControls } from "@/components/content/ReadingControls";
 import { withHeadingIds } from "@/lib/content/headings";
+import { blogCategorySlug, blogNextLinks } from "@/lib/blog";
 
 async function getPost(slug: string) {
   return prisma.blogPost.findUnique({
@@ -108,8 +109,9 @@ export default async function BlogPostPage({
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-        { "@type": "ListItem", position: 3, name: post.title, item: url },
+        { "@type": "ListItem", position: 2, name: "Articles", item: `${SITE_URL}/blog` },
+        { "@type": "ListItem", position: 3, name: post.category, item: `${SITE_URL}/blog/category/${blogCategorySlug(post.category)}` },
+        { "@type": "ListItem", position: 4, name: post.title, item: url },
       ],
     },
   ];
@@ -118,9 +120,9 @@ export default async function BlogPostPage({
     <Container className="max-w-3xl py-16">
       <JsonLd data={jsonLd} />
       <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-xs text-ink-400">
-        <Link href="/blog" className="hover:text-ink-950">Blog</Link>
+        <Link href="/blog" className="hover:text-ink-950">Articles</Link>
         <span>/</span>
-        <span>{post.category}</span>
+        <Link href={`/blog/category/${blogCategorySlug(post.category)}`} className="hover:text-ink-950">{post.category}</Link>
       </nav>
       <Badge tone="gold">{post.category}</Badge>
       <h1 className="mt-3 font-display text-4xl font-medium text-balance">{post.title}</h1>
@@ -137,6 +139,18 @@ export default async function BlogPostPage({
         <OnThisPage headings={body.headings} variant="inline" alwaysInline />
         <RichContent html={body.html} />
       </div>
+      <nav aria-label="Use this next" className="mt-12 rounded-xl border border-ink-950/10 p-5">
+        <p className="text-sm font-semibold text-ink-950">Use this next</p>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {blogNextLinks(post.category).map((l) => (
+            <li key={l.href}>
+              <Link href={l.href} className="inline-flex rounded-full border border-ink-950/15 px-3 py-1.5 text-sm font-medium text-ink-800 hover:border-ink-950/40 hover:text-ink-950">
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <AboutSimplyCPA />
 
       {related.length > 0 && (

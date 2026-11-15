@@ -24,6 +24,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Start Here", href: "/start-here" },
       { label: "CPA for Indians", href: "/indian-candidates" },
+      { label: "State Boards Compared", href: "/state-boards" },
       { label: "CPA Fees in INR", href: "/us-cpa-fees-in-inr" },
       { label: "Exam Centres in India", href: "/cpa-exam-centres-india" },
       { label: "Articles", href: "/blog" },

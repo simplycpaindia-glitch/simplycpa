@@ -138,6 +138,10 @@ export default async function IndianCandidatesPage() {
             <Link href="/tools/cpa-eligibility-navigator" className="text-gold-700 underline underline-offset-2">
               eligibility navigator
             </Link>
+            , and see each board in detail on the{" "}
+            <Link href="/state-boards" className="text-gold-700 underline underline-offset-2">
+              state boards pages
+            </Link>
             .
           </p>
           <div className="mt-4 overflow-x-auto rounded-lg border border-ink-950/10">

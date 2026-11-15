@@ -71,6 +71,124 @@ export const PULSE_ARTICLES: PulseArticle[] = [
     ],
   },
   {
+    slug: "pcaob-enforcement-specialised-units-november-2026",
+    title: "PCAOB sets up five specialised enforcement units, including one for AI in audits",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The US audit regulator has reorganised its enforcement division into five units covering fraud response, advanced AI, the largest firms, smaller firms and non-US firms.",
+    eventDate: "2026-11-10",
+    published: "2026-11-16",
+    verified: "2026-11-16",
+    body: [
+      {
+        type: "p",
+        text: "On 10 November 2026 the Public Company Accounting Oversight Board (PCAOB), which oversees audits of US public companies, announced five specialised units within its Division of Enforcement and Investigations. Each will be led by a unit chief and staffed by attorneys, accountants and other staff.",
+      },
+      { type: "h2", text: "The five units" },
+      {
+        type: "table",
+        head: ["Unit", "What it will focus on"],
+        rows: [
+          ["Strategic Risk", "How auditors identify, evaluate and respond to signs of fraud and other significant accounting issues."],
+          [
+            "Super Intelligence",
+            "Risks and possible misconduct linked to the use of what the PCAOB calls Super Intelligence in public company audits, without discouraging appropriate use. The unit will also build such tools for the division's own work.",
+          ],
+          ["Global Network Firm", "Investigations involving the largest registered accounting firms and the people associated with them."],
+          ["Non-Affiliate Firm", "Investigations involving firms with smaller public company and broker-dealer audit practices. The PCAOB says firm size will not shield misconduct."],
+          ["International", "Investigations involving non-US registered firms, using staff with language skills and cross-border experience, and working with foreign regulators."],
+        ],
+      },
+      {
+        type: "p",
+        text: "The PCAOB says its enforcement division will continue to coordinate with the Securities and Exchange Commission, including the SEC's Financial Reporting and Accounting Unit and its Office of the Chief Accountant.",
+      },
+      { type: "h2", text: "What this is, and is not" },
+      {
+        type: "list",
+        items: [
+          "It is a reorganisation of enforcement staff. It does not change any auditing standard.",
+          "It does not announce any investigation or penalty.",
+          "It signals where the regulator intends to look: fraud response, technology used in audits, and firms outside the US.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Firms in India that audit, or do audit work for, US-listed companies are registered with the PCAOB. A dedicated international unit means that work is squarely within its enforcement focus.",
+      "The fraud unit matches what AUD tests heavily: the auditor's responsibility to identify and respond to fraud risk.",
+      "The regulator now treats the use of AI in audits as an enforcement subject, in the same year the 2027 Blueprint adds AI-generated evidence to AUD.",
+      "For the exam, remember the split: the PCAOB sets standards for and inspects audits of issuers, while the AICPA sets standards for audits of private companies.",
+    ],
+    sources: [
+      {
+        label: "PCAOB: PCAOB Announces New Specialized Units in Enforcement Division (10 November 2026)",
+        url: "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-announces-new-specialized-units-in-enforcement-division",
+      },
+    ],
+    related: [
+      { label: "AUD: fraud risk", href: "/cpa/aud/fraud-risk" },
+      { label: "AUD: evidence types and procedures", href: "/cpa/aud/evidence-types-and-procedures" },
+      { label: "Key terms: PCAOB, GAAS and issuers", href: "/faq/key-terms" },
+    ],
+  },
+  {
+    slug: "pcaob-comfort-letter-proposal-as-6101",
+    title: "PCAOB proposes dropping the 135-day limit on comfort letters",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "A proposed amendment to AS 6101 would replace a fixed 135-day rule with a test based on the company's own reporting obligations. Comments are due by 4 January 2027.",
+    eventDate: "2026-11-03",
+    published: "2026-11-16",
+    verified: "2026-11-16",
+    body: [
+      {
+        type: "p",
+        text: "On 3 November 2026 the PCAOB issued for public comment targeted amendments to AS 6101, its standard on letters for underwriters and certain other requesting parties. These letters are known as comfort letters. Comments are due by 4 January 2027.",
+      },
+      { type: "h2", text: "What a comfort letter is" },
+      {
+        type: "p",
+        text: "When a public company raises capital, the underwriter, usually an investment bank, may ask the company's auditor for a letter about unaudited interim figures and other financial information in the offering document. In it the auditor can give negative assurance on changes in specified items since the latest financial statements: a statement that nothing came to the auditor's attention to suggest a problem.",
+      },
+      { type: "h2", text: "The rule being changed" },
+      {
+        type: "p",
+        text: "Under the current standard, an auditor may give that negative assurance only as of a date less than 135 days after the end of the most recent period that was audited or reviewed. The PCAOB says this assumes quarterly reporting, and that the standard has not been substantially amended since it was adopted as an interim standard in 2003.",
+      },
+      {
+        type: "p",
+        text: "The PCAOB's example is a calendar-year company. Once 135 days have passed after the third-quarter date of 30 September, the auditor cannot give negative assurance until the annual report is filed, even though the company is up to date with every filing requirement. Underwriters may be unwilling to proceed without it.",
+      },
+      { type: "h2", text: "The proposal" },
+      {
+        type: "list",
+        items: [
+          "Replace the 135-day convention with a test tied to the company's reporting obligations, whatever those obligations are in future.",
+          "Keep the decision to give negative assurance a matter of the auditor's professional judgment.",
+          "It is a proposal. Nothing changes until the PCAOB adopts a final amendment and the SEC approves it.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "This is not yet testable. The exam tests a new requirement only once it is effective and eligible under the AICPA's policy on new pronouncements. Learn the current 135-day rule if your material covers it.",
+      "It is a good worked example of negative assurance, a concept AUD tests in reviews and other limited-assurance work.",
+      "If you work on US capital markets engagements, this would change when comfort letters can be issued around year end.",
+    ],
+    sources: [
+      {
+        label: "PCAOB: PCAOB Seeks Stakeholder Feedback on Proposal to Update Rules Related to Auditor Comfort Letters (3 November 2026)",
+        url: "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-seeks-stakeholder-feedback-on-proposal-to-update-rules-related-to-auditor-comfort-letters",
+      },
+    ],
+    related: [
+      { label: "AUD: reviews, compilations and agreed-upon procedures", href: "/cpa/aud/reviews-compilations-and-aup" },
+      { label: "AUD: audit reports", href: "/cpa/aud/audit-reports" },
+      { label: "Key terms: PCAOB, GAAS and issuers", href: "/faq/key-terms" },
+    ],
+  },
+  {
     slug: "cpa-exam-scores-released-10-november-2026",
     title: "Core scores are out for 10 November. The next release is targeted for 24 November",
     category: "exam-policy",
