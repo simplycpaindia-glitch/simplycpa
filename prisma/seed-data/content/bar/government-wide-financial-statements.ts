@@ -123,6 +123,7 @@ export const governmentWideAcfr: TopicContent = {
 
 <h3>Other</h3>
 <p>Infrastructure modified approach; net pension liability; tax abatement disclosures.</p>
+<p>Other postemployment benefits (OPEB): plan in a trust → <strong>net</strong> OPEB liability (total − plan net position); no trust → <strong>total</strong> OPEB liability.</p>
 
 <h3>Exam traps</h3>
 <ul>

@@ -114,6 +114,7 @@ export const evidenceProcedures: TopicContent = {
 <li>Sufficient (quantity) + appropriate (relevant + reliable).</li>
 <li>External &gt; internal; auditor-obtained &gt; inquiry; documentary &gt; oral; originals &gt; copies.</li>
 <li>Information produced by the entity: test accuracy and completeness.</li>
+<li>Any source, including output from artificial intelligence tools: same reliability test (accuracy, completeness, authenticity, management bias).</li>
 </ul>
 
 <h3>Direction</h3>

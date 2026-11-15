@@ -1116,6 +1116,34 @@ export const barBankB: McqBank = {
 
   "government-wide-financial-statements": [
     mcq(
+      "A city provides retiree health care through a plan administered through a qualifying trust. The total other postemployment benefits (OPEB) liability is $12 million and the plan's fiduciary net position is $7 million. What does the city report in its government-wide statement of net position?",
+      [
+        ["A total OPEB liability of $12 million", "Plan assets held in a qualifying trust reduce the liability reported."],
+        ["No liability, because the plan is held in trust", "The unfunded portion is still the employer's liability."],
+        ["A net OPEB liability of $5 million", "Correct — total OPEB liability less the plan's fiduciary net position."],
+        ["An asset of $7 million", "The trust's assets are not reported as the employer's own asset."],
+      ],
+      2,
+      "When an OPEB plan is administered through a trust that meets the criteria in Governmental Accounting Standards Board Statement No. 75, the employer reports a net OPEB liability: the total OPEB liability less the plan's fiduciary net position, here $12 million − $7 million = $5 million.",
+      "MEDIUM",
+      "CALCULATION",
+      ["OPEB", "long-term liabilities"],
+    ),
+    mcq(
+      "A county pays retiree health care benefits as they come due and has not set up a trust for the plan. The total other postemployment benefits (OPEB) liability is $9 million. What does the county report in its government-wide statements?",
+      [
+        ["A total OPEB liability of $9 million", "Correct — with no trust there are no plan assets to offset the liability."],
+        ["A net OPEB liability of zero, because benefits are paid as they come due", "Paying current benefits does not remove the obligation for future benefits."],
+        ["Only a note disclosure, with no liability on the statement of net position", "The liability is recognized, not just disclosed."],
+        ["A $9 million liability in the general fund", "Governmental funds do not report long-term liabilities."],
+      ],
+      0,
+      "When OPEB is not administered through a qualifying trust, the employer reports the total OPEB liability in the government-wide (and proprietary fund) statements, because no plan net position exists to offset it. Governmental funds report an expenditure only for amounts due and payable from current resources.",
+      "MEDIUM",
+      "APPLICATION",
+      ["OPEB", "long-term liabilities"],
+    ),
+    mcq(
       "A government has capital assets, net of depreciation, of $10,000,000 and outstanding debt of $6,000,000 that was used entirely to acquire those assets. What is reported as net investment in capital assets?",
       [
         ["$10,000,000", "Related debt must be subtracted."],

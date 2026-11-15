@@ -1,4 +1,5 @@
 import type { McqBank } from "./types";
+import { mcq } from "./build";
 
 /**
  * REG question bank — third batch, bringing every REG topic to at least 10 questions.
@@ -487,6 +488,34 @@ export const regBankC: McqBank = {
   ],
 
   "individual-taxation-gross-income": [
+    mcq(
+      "On March 1, 2025, Priya bought a digital asset for $10,000. On February 10, 2026, she exchanged it for a different digital asset worth $14,000. What does Priya include in gross income for 2026?",
+      [
+        ["Nothing, because she received no cash", "An exchange of property is a taxable disposal even without cash."],
+        ["A $4,000 long-term capital gain", "She held the asset for less than one year."],
+        ["$14,000 of ordinary income", "Only the gain is included, and it is a capital gain for an investor."],
+        ["A $4,000 short-term capital gain", "Correct — amount realized $14,000 less basis $10,000, held one year or less."],
+      ],
+      3,
+      "Digital assets are treated as property for federal tax purposes. Exchanging one digital asset for another is a disposal: gain equals the fair market value received ($14,000) less the adjusted basis ($10,000), so $4,000. The asset was held for one year or less, so the gain is short-term.",
+      "MEDIUM",
+      "CALCULATION",
+      ["capital gains", "digital assets"],
+    ),
+    mcq(
+      "Arun inherited shares from his mother. Her basis was $20,000 and the shares were worth $50,000 on the date of her death. Arun sold them three months later for $52,000. What is his gain?",
+      [
+        ["A $32,000 long-term capital gain", "That uses the decedent's basis; inherited property takes fair market value at death."],
+        ["A $2,000 long-term capital gain", "Correct — basis is $50,000, and inherited property is always treated as long-term."],
+        ["A $2,000 short-term capital gain", "Property received from a decedent is long-term whatever the actual holding period."],
+        ["No gain, because inheritances are excluded from gross income", "Receiving the inheritance is excluded; a later sale at a gain is not."],
+      ],
+      1,
+      "Property received from a decedent generally takes a basis equal to its fair market value at the date of death ($50,000) and is treated as held long-term regardless of how long the heir actually held it. The gain is $52,000 − $50,000 = $2,000, long-term. Property received as a gift is different: it generally keeps the donor's basis and holding period.",
+      "MEDIUM",
+      "CALCULATION",
+      ["capital gains", "inherited property"],
+    ),
     {
       question: "Under a divorce agreement executed in 2021, one ex-spouse pays the other $2,000 per month in alimony. How is this treated for federal tax purposes?",
       options: [

@@ -99,6 +99,7 @@ export const emergingTechnology: TopicContent = {
 <li>Distributed, append-only, hash-linked blocks; consensus (proof of work or stake).</li>
 <li>Public vs permissioned; smart contracts execute automatically (bugs too).</li>
 <li>Crypto: control = <strong>private keys</strong>; fair value through net income; blockchain ≠ proof of validity.</li>
+<li>From 1 January 2027 the Blueprint lists blockchain only as a system that accounting systems interact with — know the concepts, not detailed control design.</li>
 </ul>
 
 <h3>Internet of Things (IoT)</h3>

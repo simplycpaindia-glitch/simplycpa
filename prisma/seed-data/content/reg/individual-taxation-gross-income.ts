@@ -107,6 +107,8 @@ export const grossIncome: TopicContent = {
 <li>Constructive receipt; assignment of income to the earner.</li>
 <li>State refund taxable only if deducted with benefit.</li>
 <li>Kiddie tax: child's unearned income at parents' rate.</li>
+<li>Capital gains: stocks, bonds and digital assets are property — a sale, exchange or use as payment is a gain or loss; long-term if held more than one year.</li>
+<li>Gift: donor's basis and holding period. Inherited: fair market value at death, always long-term.</li>
 </ul>
 
 <h3>Loss limits (in order)</h3>
