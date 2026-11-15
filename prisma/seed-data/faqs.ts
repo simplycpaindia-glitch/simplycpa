@@ -1,4 +1,5 @@
 import { faqsBatch2 } from "./faqs-2";
+import { faqsBatch3 } from "./faqs-3";
 
 export type FaqSeed = { category: string; question: string; answer: string; order: number };
 
@@ -69,4 +70,4 @@ const faqsBatch1: FaqSeed[] = [
   { category: "CA / Indian Students", order: 3, question: "Is CPA worth it for a working professional?", answer: "It depends on whether your career path benefits specifically from US GAAP/US tax expertise — for professionals in GCCs, Big 4 US-facing teams, or MNC finance functions, it often is; for purely domestic Indian practice, Indian CA remains the more directly relevant credential." },
 ];
 
-export const faqs: FaqSeed[] = [...faqsBatch1, ...faqsBatch2];
+export const faqs: FaqSeed[] = [...faqsBatch1, ...faqsBatch2, ...faqsBatch3];

@@ -3,7 +3,7 @@
  * Update when the AICPA publishes a new quarter (roughly 4–6 weeks after each quarter ends).
  */
 export const PASS_RATES_SOURCE = "https://www.aicpa-cima.com/resources/article/learn-more-about-cpa-exam-scoring-and-pass-rates";
-export const PASS_RATES_CHECKED = "2026-10-17";
+export const PASS_RATES_CHECKED = "2026-11-16";
 
 export const SECTIONS = ["AUD", "FAR", "REG", "BAR", "ISC", "TCP"] as const;
 export type ExamSection = (typeof SECTIONS)[number];
@@ -28,14 +28,14 @@ export type PassRateYear = {
 export const PASS_RATES: PassRateYear[] = [
   {
     year: 2026,
-    quarters: ["Q1", "Q2"],
+    quarters: ["Q1", "Q2", "Q3"],
     rates: {
-      AUD: { quarterly: [47.8, 49.38], cumulative: 48.65 },
-      FAR: { quarterly: [43.46, 42.47], cumulative: 42.95 },
-      REG: { quarterly: [66.65, 66.87], cumulative: 66.78 },
-      BAR: { quarterly: [41.3, 45.62], cumulative: 43.64 },
-      ISC: { quarterly: [66.79, 67.98], cumulative: 67.45 },
-      TCP: { quarterly: [79.28, 79.75], cumulative: 79.53 },
+      AUD: { quarterly: [47.8, 49.38, 52.23], cumulative: 50.03 },
+      FAR: { quarterly: [43.46, 42.47, 44.49], cumulative: 43.54 },
+      REG: { quarterly: [66.65, 66.87, 65.37], cumulative: 66.32 },
+      BAR: { quarterly: [41.3, 45.62, 44.35], cumulative: 43.88 },
+      ISC: { quarterly: [66.79, 67.98, 70.22], cumulative: 68.56 },
+      TCP: { quarterly: [79.28, 79.75, 80.08], cumulative: 79.75 },
     },
   },
   {

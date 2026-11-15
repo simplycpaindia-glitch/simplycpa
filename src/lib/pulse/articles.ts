@@ -13,6 +13,64 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "cpa-exam-pass-rates-q3-2026",
+    title: "Third-quarter 2026 pass rates: AUD passes 50% for the year, FAR stays the lowest Core section",
+    category: "exam-policy",
+    status: "confirmed",
+    summary:
+      "The AICPA's pass rates for July to September 2026 show AUD at 52.23% and ISC above 70%. FAR remains the lowest Core section at 44.49%, and TCP the highest of all at 80.08%.",
+    eventDate: "2026-10-22",
+    published: "2026-11-16",
+    verified: "2026-11-16",
+    body: [
+      {
+        type: "p",
+        text: "The AICPA's scoring and pass rates page, dated 22 October 2026 when we read it, now includes the third quarter of 2026. These are the figures as published.",
+      },
+      {
+        type: "table",
+        head: ["Section", "Q1 2026", "Q2 2026", "Q3 2026", "2026 so far", "2025 full year"],
+        rows: [
+          ["AUD", "47.80%", "49.38%", "52.23%", "50.03%", "48.21%"],
+          ["FAR", "43.46%", "42.47%", "44.49%", "43.54%", "42.12%"],
+          ["REG", "66.65%", "66.87%", "65.37%", "66.32%", "63.12%"],
+          ["BAR", "41.30%", "45.62%", "44.35%", "43.88%", "41.94%"],
+          ["ISC", "66.79%", "67.98%", "70.22%", "68.56%", "67.79%"],
+          ["TCP", "79.28%", "79.75%", "80.08%", "79.75%", "77.65%"],
+        ],
+      },
+      { type: "h2", text: "What stands out" },
+      {
+        type: "list",
+        items: [
+          "AUD's third quarter (52.23%) is its best of the year and lifts its 2026 figure just above half.",
+          "FAR is still the Core section fewest candidates pass. Fewer than 45 in 100 passed in every quarter this year.",
+          "REG dipped slightly in the third quarter but remains about three points above its 2025 full-year rate.",
+          "Every section's 2026 rate so far is higher than its 2025 full-year rate.",
+          "The gap between the Disciplines is wide: about 36 points between BAR and TCP.",
+        ],
+      },
+      { type: "h2", text: "How to read these numbers" },
+      {
+        type: "p",
+        text: "A pass rate describes the candidates who sat a section as much as the section itself. TCP is taken mostly by candidates who work in tax and have just passed REG. BAR draws candidates willing to take on the most calculation-heavy material. Neither figure tells you how you would do. The AICPA also states that scores are not curved, so there is no quota of passes per quarter.",
+      },
+    ],
+    whyItMatters: [
+      "Use pass rates to set expectations, not to choose a Discipline. Fit with your background matters more than a 30-point gap.",
+      "FAR and BAR have the lowest rates and the most material. Give them the most weeks in your plan.",
+      "A section where roughly half of candidates fail is one where a retake is normal. Budget time and fees for one.",
+    ],
+    sources: [
+      { label: "AICPA: Learn more about CPA Exam scoring and pass rates", url: "https://www.aicpa-cima.com/resources/article/learn-more-about-cpa-exam-scoring-and-pass-rates" },
+    ],
+    related: [
+      { label: "Pass rate tracker: every quarter", href: "/cpa-exam-pass-rates" },
+      { label: "Discipline selector", href: "/tools/cpa-discipline-selector" },
+      { label: "Study planner", href: "/study-planner" },
+    ],
+  },
+  {
     slug: "cpa-exam-scores-released-10-november-2026",
     title: "Core scores are out for 10 November. The next release is targeted for 24 November",
     category: "exam-policy",
