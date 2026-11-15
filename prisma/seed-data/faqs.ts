@@ -1,6 +1,8 @@
+import { faqsBatch2 } from "./faqs-2";
+
 export type FaqSeed = { category: string; question: string; answer: string; order: number };
 
-export const faqs: FaqSeed[] = [
+const faqsBatch1: FaqSeed[] = [
   // Basics
   { category: "Basics", order: 1, question: "What is the US CPA?", answer: "The Certified Public Accountant (CPA) is a license issued by individual US state boards of accountancy, held by accounting professionals who have passed the Uniform CPA Examination and met a state's education, examination, and experience requirements. It's the credential that authorizes someone to sign audit reports and practice public accounting in the US." },
   { category: "Basics", order: 2, question: "How many exam sections are there?", answer: "Four: three mandatory Core sections (FAR, AUD, REG) that every candidate takes, plus one Discipline section chosen from BAR, ISC, or TCP. All combinations lead to the same CPA license." },
@@ -66,3 +68,5 @@ export const faqs: FaqSeed[] = [
   { category: "CA / Indian Students", order: 2, question: "CPA vs ACCA: which is better?", answer: "Neither is universally 'better' — ACCA is UK/global-oriented and widely recognized across the Middle East and UK-linked markets; CPA is specifically US-oriented. The right choice depends on which markets and employers you're targeting." },
   { category: "CA / Indian Students", order: 3, question: "Is CPA worth it for a working professional?", answer: "It depends on whether your career path benefits specifically from US GAAP/US tax expertise — for professionals in GCCs, Big 4 US-facing teams, or MNC finance functions, it often is; for purely domestic Indian practice, Indian CA remains the more directly relevant credential." },
 ];
+
+export const faqs: FaqSeed[] = [...faqsBatch1, ...faqsBatch2];
