@@ -1,5 +1,12 @@
 /** Site identity shared by metadata, structured data and generated images. */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+/**
+ * The canonical origin. The live site is served at www.simplycpa.in and the bare domain
+ * redirects there, so a bare-domain setting is corrected here: otherwise every canonical
+ * tag, sitemap entry and structured-data URL would point at a redirect.
+ */
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000")
+  .replace(/\/$/, "")
+  .replace(/^https?:\/\/simplycpa\.in$/, "https://www.simplycpa.in");
 export const SITE_NAME = "SimplyCPA";
 export const SITE_TAGLINE = "The Free US CPA Study Library";
 /** Public contact address (shown on /contact and in structured data). */

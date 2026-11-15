@@ -1,8 +1,9 @@
 import { prisma } from "@/lib/prisma";
 import { SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 import { radarAnchor } from "@/lib/radar";
+import { pulseArticles, pulseCategory } from "@/lib/pulse";
 
-// RSS 2.0 feed of new articles and CPA Radar updates, refreshed at most hourly.
+// RSS 2.0 feed of new articles and CPA Pulse stories, refreshed at most hourly.
 export const revalidate = 3600;
 
 const esc = (s: string) =>
@@ -24,11 +25,19 @@ export async function GET() {
   const items: Item[] = [
     ...posts.map((p) => ({ title: p.title, link: `${SITE_URL}/blog/${p.slug}`, description: p.excerpt, date: p.publishedAt!, category: p.category })),
     ...updates.map((u) => ({
-      title: `CPA Radar: ${u.title}`,
-      link: `${SITE_URL}/radar#${radarAnchor(u.id)}`,
+      title: `CPA Pulse: ${u.title}`,
+      link: `${SITE_URL}/pulse#${radarAnchor(u.id)}`,
       description: u.body,
       date: u.publishedAt,
-      category: "CPA Radar",
+      category: "The CPA Pulse",
+    })),
+    ...pulseArticles.map((a) => ({
+      title: a.title,
+      link: `${SITE_URL}/pulse/${a.slug}`,
+      description: a.summary,
+      // Midday IST on the publication date.
+      date: new Date(`${a.published}T06:30:00Z`),
+      category: `The CPA Pulse: ${pulseCategory(a.category).name}`,
     })),
   ].sort((a, b) => b.date.getTime() - a.date.getTime());
 
@@ -37,7 +46,7 @@ export async function GET() {
 <channel>
 <title>${esc(`${SITE_NAME} — ${SITE_TAGLINE}`)}</title>
 <link>${SITE_URL}</link>
-<description>New US CPA study articles and dated, sourced CPA Exam updates from SimplyCPA.</description>
+<description>New US CPA study articles and dated, sourced CPA Exam news from SimplyCPA.</description>
 <language>en-in</language>
 <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
 ${items[0] ? `<lastBuildDate>${items[0].date.toUTCString()}</lastBuildDate>` : ""}

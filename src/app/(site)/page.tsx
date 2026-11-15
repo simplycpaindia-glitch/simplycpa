@@ -5,6 +5,7 @@ import { StartHereTeaser } from "@/components/home/StartHereTeaser";
 import { QuestionOfTheDay } from "@/components/home/QuestionOfTheDay";
 import { RadarPreview } from "@/components/home/RadarPreview";
 import { StudySystem } from "@/components/home/StudySystem";
+import { ToolsBand } from "@/components/home/ToolsBand";
 import { IndianCandidatesTeaser } from "@/components/home/IndianCandidatesTeaser";
 import { FaqPreview } from "@/components/home/FaqPreview";
 import { BlogPreview } from "@/components/home/BlogPreview";
@@ -45,15 +46,16 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={siteJsonLd} />
-      {/* Nine sections, most useful first. Quick sheets and official sources are reached
+      {/* Ten sections, most useful first. Quick sheets and official sources are reached
           from the study loop, the hero trust line and the menus rather than their own bands. */}
       <Hero />
       <SubjectGrid />
       <StudySystem />
+      <ToolsBand />
       <QuestionOfTheDay />
+      <RadarPreview />
       <StartHereTeaser />
       <IndianCandidatesTeaser />
-      <RadarPreview />
       <FaqPreview />
       <BlogPreview />
     </>

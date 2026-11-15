@@ -17,7 +17,7 @@ export async function BlogPreview() {
     <section className="py-16 sm:py-20">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHeading eyebrow="Knowledge Centre" title="From the blog" />
+          <SectionHeading eyebrow="Knowledge Centre" title="Recently published" />
           <Button href="/blog" variant="outline" size="sm">
             All articles
           </Button>

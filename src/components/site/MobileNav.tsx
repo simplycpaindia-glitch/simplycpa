@@ -57,20 +57,28 @@ export function MobileNav({
           <MobileSection title="Practice">
             <MobileLink href="/question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
             <MobileLink href="/mini-mock" onClick={() => setOpen(false)}>Weekly Mini-Mocks</MobileLink>
-            <MobileLink href="/study-planner" onClick={() => setOpen(false)}>Study Planner</MobileLink>
             <MobileLink href="/cpa" onClick={() => setOpen(false)}>MCQs</MobileLink>
             <MobileLink href="/quick-sheets" onClick={() => setOpen(false)}>Quick Sheets</MobileLink>
+          </MobileSection>
+          <MobileSection title="Tools">
+            <MobileLink href="/tools/cpa-eligibility-navigator" onClick={() => setOpen(false)}>Eligibility Navigator</MobileLink>
+            <MobileLink href="/tools/cpa-discipline-selector" onClick={() => setOpen(false)}>Discipline Selector</MobileLink>
+            <MobileLink href="/fees" onClick={() => setOpen(false)}>Fee Estimator</MobileLink>
+            <MobileLink href="/study-planner" onClick={() => setOpen(false)}>Study Planner</MobileLink>
+            <MobileLink href="/tools/cpa-exam-countdown" onClick={() => setOpen(false)}>Exam Countdown</MobileLink>
+            <MobileLink href="/tools" onClick={() => setOpen(false)}>All tools</MobileLink>
+          </MobileSection>
+          <MobileSection title="News">
+            <MobileLink href="/pulse" onClick={() => setOpen(false)}>The CPA Pulse</MobileLink>
           </MobileSection>
           <MobileSection title="CPA for Indians">
             <MobileLink href="/indian-candidates" onClick={() => setOpen(false)}>Eligibility, Cost & Process</MobileLink>
             <MobileLink href="/us-cpa-fees-in-inr" onClick={() => setOpen(false)}>CPA Fees in INR</MobileLink>
             <MobileLink href="/cpa-exam-centres-india" onClick={() => setOpen(false)}>Exam Centres in India</MobileLink>
           </MobileSection>
-          <MobileSection title="Resources">
+          <MobileSection title="Learn">
             <MobileLink href="/start-here" onClick={() => setOpen(false)}>Start Here</MobileLink>
             <MobileLink href="/roadmap" onClick={() => setOpen(false)}>Roadmap</MobileLink>
-            <MobileLink href="/fees" onClick={() => setOpen(false)}>Fee Estimator</MobileLink>
-            <MobileLink href="/radar" onClick={() => setOpen(false)}>CPA Radar</MobileLink>
             <MobileLink href="/cpa-exam-pass-rates" onClick={() => setOpen(false)}>Pass Rates</MobileLink>
             <MobileLink href="/cpa-score-release-dates" onClick={() => setOpen(false)}>Score Release Dates</MobileLink>
             <MobileLink href="/cpa-licensure-pathways" onClick={() => setOpen(false)}>120 vs 150 by State</MobileLink>
@@ -78,7 +86,7 @@ export function MobileNav({
             <MobileLink href="/sources" onClick={() => setOpen(false)}>Official Sources</MobileLink>
             <MobileLink href="/glossary" onClick={() => setOpen(false)}>CPA Glossary</MobileLink>
             <MobileLink href="/faq" onClick={() => setOpen(false)}>FAQs</MobileLink>
-            <MobileLink href="/blog" onClick={() => setOpen(false)}>Blog</MobileLink>
+            <MobileLink href="/blog" onClick={() => setOpen(false)}>Articles</MobileLink>
           </MobileSection>
           <MobileSection title="Community">
             <MobileLink href="/what-i-studied" onClick={() => setOpen(false)}>What I Studied This Week</MobileLink>

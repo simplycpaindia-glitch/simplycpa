@@ -37,11 +37,11 @@ export async function Hero() {
           Free · No sign-up needed to read
         </p>
         <h1 className="font-display text-4xl font-medium leading-[1.15] text-ink-950 text-balance sm:text-5xl">
-          The Free US CPA Study Library
+          Everything you need to prepare for the US CPA. Completely free.
         </h1>
-        <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-ink-400">
-          Free, exam-focused study material, revision notes, and practice questions for every
-          CPA section — organized topic by topic.
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-400">
+          Study material, revision sheets, practice questions and simulations for all six sections, plus the tools
+          and news to plan your way from eligibility to licence.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">

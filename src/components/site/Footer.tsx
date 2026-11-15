@@ -15,7 +15,6 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Question of the Day", href: "/question-of-the-day" },
       { label: "Weekly Mini-Mocks", href: "/mini-mock" },
-      { label: "Study Planner", href: "/study-planner" },
       { label: "Quick Sheets", href: "/quick-sheets" },
       { label: "Community", href: "/community" },
     ],
@@ -27,8 +26,19 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "CPA for Indians", href: "/indian-candidates" },
       { label: "CPA Fees in INR", href: "/us-cpa-fees-in-inr" },
       { label: "Exam Centres in India", href: "/cpa-exam-centres-india" },
-      { label: "Blog", href: "/blog" },
-      { label: "CPA Radar", href: "/radar" },
+      { label: "Articles", href: "/blog" },
+      { label: "The CPA Pulse", href: "/pulse" },
+    ],
+  },
+  {
+    title: "Tools",
+    links: [
+      { label: "All Tools", href: "/tools" },
+      { label: "Eligibility Navigator", href: "/tools/cpa-eligibility-navigator" },
+      { label: "Discipline Selector", href: "/tools/cpa-discipline-selector" },
+      { label: "Study Planner", href: "/study-planner" },
+      { label: "Exam Countdown", href: "/tools/cpa-exam-countdown" },
+      { label: "Fee Estimator", href: "/fees" },
     ],
   },
   {
@@ -37,7 +47,6 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "CPA Glossary", href: "/glossary" },
       { label: "FAQs", href: "/faq" },
       { label: "Roadmap", href: "/roadmap" },
-      { label: "Fee Estimator", href: "/fees" },
       { label: "Free CPA Resources", href: "/free-cpa-resources" },
       { label: "Pass Rates", href: "/cpa-exam-pass-rates" },
       { label: "Score Release Dates", href: "/cpa-score-release-dates" },
@@ -62,7 +71,7 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-paper-50/10 bg-ink-950 text-paper-50">
       <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           {columns.map((col) => (
             <div key={col.title}>
               <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-paper-50/50">

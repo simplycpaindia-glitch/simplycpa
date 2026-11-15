@@ -134,7 +134,11 @@ export default async function IndianCandidatesPage() {
           <h2 id="boards" className="font-display text-2xl font-medium text-ink-950">Which board fits your profile</h2>
           <p className="mt-2 max-w-3xl leading-relaxed text-ink-800">
             Start with the boards whose education rules your evaluated degree meets; everything else is a tie-breaker. These are the
-            boards Indian candidates most often consider.
+            boards Indian candidates most often consider. For a starting point based on your own degree, use the{" "}
+            <Link href="/tools/cpa-eligibility-navigator" className="text-gold-700 underline underline-offset-2">
+              eligibility navigator
+            </Link>
+            .
           </p>
           <div className="mt-4 overflow-x-auto rounded-lg border border-ink-950/10">
             <table className="w-full min-w-[36rem] text-sm">

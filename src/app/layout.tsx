@@ -3,6 +3,7 @@ import { Inter, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { themeInitScript } from "@/lib/theme";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,9 +19,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "SimplyCPA — The Free US CPA Study Library",
     template: "%s · SimplyCPA",
@@ -47,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         {/* Not in metadata.alternates: each page's own alternates (canonical) would replace it. */}
-        <link rel="alternate" type="application/rss+xml" title="SimplyCPA — articles and CPA Radar" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="SimplyCPA — articles and The CPA Pulse" href="/feed.xml" />
       </head>
       <body className="min-h-full flex flex-col bg-paper-50 text-ink-950">
         {children}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container, SectionHeading } from "@/components/ui/Container";
 import { Card } from "@/components/ui/Card";
 
@@ -37,6 +38,9 @@ export function CoreDisciplineExplainer() {
               you register for one you can&apos;t switch without forfeiting the attempt —
               choose deliberately.
             </p>
+            <Link href="/tools/cpa-discipline-selector" className="mt-3 inline-block text-sm font-medium text-gold-700 underline underline-offset-2">
+              Not sure? Try the Discipline selector
+            </Link>
           </Card>
         </div>
       </Container>

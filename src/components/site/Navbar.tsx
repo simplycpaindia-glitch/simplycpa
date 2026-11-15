@@ -39,9 +39,23 @@ export async function Navbar() {
           <NavGroup label="Practice" wide={false}>
             <DropdownLink href="/question-of-the-day" label="Question of the Day" sub="One question, every day" />
             <DropdownLink href="/mini-mock" label="Weekly Mini-Mocks" sub="30 questions, 45 minutes" />
-            <DropdownLink href="/study-planner" label="Study Planner" sub="A week-by-week plan to your exam" />
             <DropdownLink href="/cpa" label="MCQs" sub="Practice by subject and topic" />
             <DropdownLink href="/quick-sheets" label="Quick Sheets" sub="5-minute revision sheets" />
+          </NavGroup>
+
+          <NavGroup label="Tools">
+            <NavSection title="Decide">
+              <DropdownLink href="/tools/cpa-eligibility-navigator" label="Eligibility Navigator" sub="Where your education stands" />
+              <DropdownLink href="/tools/cpa-discipline-selector" label="Discipline Selector" sub="BAR, ISC or TCP?" />
+              <DropdownLink href="/cpa-licensure-pathways" label="120 vs 150 by State" sub="New licensure pathways" />
+              <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
+            </NavSection>
+            <NavSection title="Plan and track">
+              <DropdownLink href="/study-planner" label="Study Planner" sub="A week-by-week plan to your exam" />
+              <DropdownLink href="/tools/cpa-exam-countdown" label="Exam Countdown" sub="Days left and score dates" />
+              <DropdownLink href="/cpa-score-release-dates" label="Score Release Dates" sub="When you'll get your score" />
+              <DropdownLink href="/tools" label="All tools →" />
+            </NavSection>
           </NavGroup>
 
           <Link
@@ -51,21 +65,24 @@ export async function Navbar() {
             CPA for Indians
           </Link>
 
-          <NavGroup label="Resources">
-            <NavSection title="Exam facts">
-              <DropdownLink href="/cpa-exam-pass-rates" label="Pass Rates" sub="Every section, every quarter" />
-              <DropdownLink href="/cpa-score-release-dates" label="Score Release Dates" sub="When you'll get your score" />
-              <DropdownLink href="/cpa-licensure-pathways" label="120 vs 150 by State" sub="New licensure pathways" />
-              <DropdownLink href="/fees" label="Fee Estimator" sub="What the exam will cost" />
-              <DropdownLink href="/radar" label="CPA Radar" sub="What changed recently" />
-            </NavSection>
-            <NavSection title="Guides">
-              <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
-              <DropdownLink href="/roadmap" label="Roadmap" />
-              <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
+          <Link
+            href="/pulse"
+            className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3"
+          >
+            CPA Pulse
+          </Link>
+
+          <NavGroup label="Learn" align="right">
+            <NavSection title="Knowledge Centre">
+              <DropdownLink href="/blog" label="Articles" sub="Concepts, strategy and careers" />
+              <DropdownLink href="/faq" label="FAQs" sub="Short answers, searchable" />
               <DropdownLink href="/glossary" label="CPA Glossary" sub="Key terms in plain English" />
-              <DropdownLink href="/faq" label="FAQs" />
-              <DropdownLink href="/blog" label="Blog" />
+              <DropdownLink href="/cpa-exam-pass-rates" label="Pass Rates" sub="Every section, every quarter" />
+            </NavSection>
+            <NavSection title="Getting started">
+              <DropdownLink href="/start-here" label="Start Here" sub="New to the CPA?" />
+              <DropdownLink href="/roadmap" label="Roadmap" sub="From eligibility to licence" />
+              <DropdownLink href="/free-cpa-resources" label="Free CPA Resources" sub="Blueprints, sample tests, standards" />
               <DropdownLink href="/sources" label="Official Sources" />
             </NavSection>
           </NavGroup>
@@ -137,14 +154,14 @@ export async function Navbar() {
   );
 }
 
-function NavGroup({ label, children, wide = true }: { label: string; children: React.ReactNode; wide?: boolean }) {
+function NavGroup({ label, children, wide = true, align = "left" }: { label: string; children: React.ReactNode; wide?: boolean; align?: "left" | "right" }) {
   return (
     <div className="group relative">
       <button type="button" aria-haspopup="true" className="whitespace-nowrap px-2.5 py-2 text-sm font-medium text-ink-800 hover:text-ink-950 xl:px-3">
         {label}
       </button>
       <div
-        className={`invisible absolute left-0 top-full flex gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${wide ? "w-[560px]" : "w-64 flex-col"}`}
+        className={`invisible absolute ${align === "right" ? "right-0" : "left-0"} top-full flex gap-6 rounded-xl border border-ink-950/10 bg-paper-50 p-5 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${wide ? "w-[560px]" : "w-64 flex-col"}`}
       >
         {children}
       </div>

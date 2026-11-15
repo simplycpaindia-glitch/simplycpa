@@ -60,7 +60,7 @@ export default function EditorialStandardsPage() {
       <p>
         Fees, eligibility rules, score release dates, pass rates and state laws change. Where we state one of these, we
         show where it came from and the date we last checked it — for example on the{" "}
-        <Link href="/fees">fee estimator</Link>, <Link href="/radar">CPA Radar</Link> and our trackers for{" "}
+        <Link href="/fees">fee estimator</Link>, <Link href="/pulse">The CPA Pulse</Link> and our trackers for{" "}
         <Link href="/cpa-exam-pass-rates">pass rates</Link>, <Link href="/cpa-score-release-dates">score release dates</Link>{" "}
         and <Link href="/cpa-licensure-pathways">licensure pathways by state</Link>. Always confirm with the official
         source before you pay a fee or book an exam.

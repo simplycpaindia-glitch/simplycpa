@@ -7,6 +7,8 @@ import { SCORE_RELEASE_CHECKED } from "@/lib/trackers/score-release";
 import { PATHWAYS_CHECKED } from "@/lib/trackers/pathways";
 import { allSimulations } from "@/lib/tbs";
 import { glossary } from "@/lib/glossary";
+import { pulseArticles, pulseLastChanged } from "@/lib/pulse";
+import { TOOLS } from "@/lib/tools";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
 export const revalidate = 3600;
@@ -48,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/quick-sheets": quickSheetMax,
     "/blog": blogMax._max.updatedAt,
     "/faq": faqMax._max.updatedAt,
-    "/radar": radarMax._max.lastVerified,
+    "/pulse": new Date(Math.max(new Date(pulseLastChanged()).getTime(), radarMax._max.lastVerified?.getTime() ?? 0)),
     "/sources": sourceMax._max.dateChecked,
     "/what-i-studied": wallMax._max.createdAt,
     // Trackers change when we re-check their official data.
@@ -61,6 +63,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/question-of-the-day",
     "/mini-mock",
     "/study-planner",
+    "/tools",
+    ...TOOLS.map((t) => t.href).filter((h) => h.startsWith("/tools/")),
     "/question-of-the-day/archive",
     "/start-here",
     "/roadmap",
@@ -115,5 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const glossaryRoutes = [{ url: `${base}/glossary` }, ...glossary.map((t) => ({ url: `${base}/glossary/${t.slug}` }))];
 
-  return [...staticRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
+  const pulseRoutes = pulseArticles.map((a) => ({ url: `${base}/pulse/${a.slug}`, lastModified: new Date(a.updated ?? a.published) }));
+
+  return [...staticRoutes, ...pulseRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
 }

@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    // CPA Radar became The CPA Pulse. In-page anchors (#update-…) survive the redirect.
+    return [{ source: "/radar", destination: "/pulse", permanent: true }];
+  },
 };
 
 export default nextConfig;
