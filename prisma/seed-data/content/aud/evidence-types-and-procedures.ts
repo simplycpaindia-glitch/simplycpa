@@ -10,6 +10,7 @@ export const evidenceProcedures: TopicContent = {
 <li><strong>Sufficiency</strong> is the quantity of evidence, driven by the assessed risk and the quality of the evidence.</li>
 <li><strong>Appropriateness</strong> is the quality: <strong>relevance</strong> (relates to the assertion being tested) and <strong>reliability</strong> (accuracy, completeness, authenticity, and susceptibility to bias).</li>
 <li>More evidence cannot compensate for poor-quality evidence.</li>
+<li>The same test applies to every <strong>source of information</strong>: management's specialists, external sources, information the audit team develops itself, and information <strong>generated using technology, including artificial intelligence</strong>. The auditor validates its reliability, including its susceptibility to <strong>management bias</strong>, for example by agreeing it to original sources or checking the search or query criteria used to obtain the data.</li>
 <li>The auditor considers information that <strong>contradicts</strong> management's assertions as well as corroborating information, and applies professional skepticism throughout.</li>
 </ul>
 

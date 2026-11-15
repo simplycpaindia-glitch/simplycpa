@@ -32,6 +32,7 @@ export const emergingTechnology: TopicContent = {
 </ul>
 
 <h2>Blockchain and distributed ledger technology</h2>
+<div class="callout callout-important"><p><strong>IMPORTANT:</strong> For exams from 1 January 2027 the Blueprint narrows blockchain. It is now listed only as one of the systems that enterprise resource planning and accounting information systems interact with, and the task on using the Committee of Sponsoring Organizations internal control framework to evaluate blockchain risks has been removed. Know what a blockchain is, how it connects to accounting systems and what it does and does not prove; detailed control design for blockchain is no longer a listed task.</p></div>
 <ul>
 <li>A <strong>blockchain</strong> is a distributed, append-only ledger shared across a network. Transactions are grouped into blocks, each linked to the previous one by a <strong>cryptographic hash</strong>, making records tamper-evident.</li>
 <li><strong>Consensus mechanisms</strong> (proof of work, proof of stake) let participants agree on the valid ledger without a central authority.</li>

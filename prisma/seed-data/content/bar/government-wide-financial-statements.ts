@@ -81,6 +81,7 @@ export const governmentWideAcfr: TopicContent = {
 <h2>Pensions, postemployment benefits, and other disclosures</h2>
 <ul>
 <li>GASB Statement No. 68 (pensions) and No. 75 (other postemployment benefits): the <strong>net pension liability</strong> (total pension liability − fiduciary net position) appears in the government-wide and proprietary statements; ten-year schedules are RSI.</li>
+<li>Other postemployment benefits (OPEB, mainly retiree health care) follow the same model, with one split to know. If the plan is administered through a <strong>trust</strong> that meets the standard's criteria, the employer reports a <strong>net OPEB liability</strong> (total OPEB liability − the plan's fiduciary net position). If it is <strong>not administered through a trust</strong>, there are no plan assets to offset, so the employer reports the <strong>total OPEB liability</strong>.</li>
 <li>GASB Statement No. 77 requires disclosure of <strong>tax abatement</strong> agreements that reduce tax revenues.</li>
 <li>GASB Statement No. 103 (for fiscal years beginning after June 15, 2025) refines MD&amp;A, requires separate presentation of unusual or infrequent items, and makes budgetary comparisons RSI.</li>
 </ul>

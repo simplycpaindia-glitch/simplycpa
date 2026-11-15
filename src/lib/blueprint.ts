@@ -10,10 +10,11 @@ export function areaNumber(area: string | null | undefined): number {
 
 /**
  * Share of each section's exam by blueprint area, from the AICPA's Uniform CPA
- * Examination Blueprints effective January 1, 2026 (unchanged in the 2027 edition).
+ * Examination Blueprints effective January 1, 2026. The AICPA's summary of revisions
+ * effective January 1, 2027 changes representative tasks and references only, not weights.
  * Keyed by section slug, then area number.
  */
-export const BLUEPRINTS_EDITION = "2026 (unchanged for 2027)";
+export const BLUEPRINTS_EDITION = "2026 and 2027 editions (the weights are the same in both)";
 const AREA_WEIGHTS: Record<string, Record<number, string>> = {
   aud: { 1: "15–25%", 2: "25–35%", 3: "30–40%", 4: "10–20%" },
   far: { 1: "30–40%", 2: "30–40%", 3: "25–35%" },
