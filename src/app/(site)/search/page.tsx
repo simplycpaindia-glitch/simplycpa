@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { faqCategorySlug } from "@/lib/faq";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Container, SectionHeading } from "@/components/ui/Container";
@@ -108,7 +109,7 @@ export default async function SearchPage({
       {faqs.length > 0 && (
         <ResultSection title="FAQs">
           {faqs.map((f) => (
-            <ResultRow key={f.id} href="/faq" tag={f.category} title={f.question} body={f.answer} />
+            <ResultRow key={f.id} href={`/faq/${faqCategorySlug(f.category)}`} tag={f.category} title={f.question} body={f.answer} />
           ))}
         </ResultSection>
       )}

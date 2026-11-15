@@ -9,6 +9,7 @@ import { allSimulations } from "@/lib/tbs";
 import { glossary } from "@/lib/glossary";
 import { pulseArticles, pulseLastChanged } from "@/lib/pulse";
 import { TOOLS } from "@/lib/tools";
+import { faqCategorySlug } from "@/lib/faq";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
 export const revalidate = 3600;
@@ -18,7 +19,7 @@ export const revalidate = 3600;
  * page with "now" on each crawl teaches search engines to ignore the field entirely.
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [subjects, topics, posts, quickSheetTopics, latest] = await Promise.all([
+  const [subjects, topics, posts, quickSheetTopics, faqCategories, latest] = await Promise.all([
     prisma.subject.findMany({ select: { slug: true, lastUpdated: true } }),
     prisma.topic.findMany({
       where: { isComingSoon: false },
@@ -32,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       where: { revisionNote: { isNot: null } },
       select: { slug: true, updatedAt: true, subject: { select: { slug: true } } },
     }),
+    prisma.fAQ.groupBy({ by: ["category"], where: { status: "PUBLISHED" }, _max: { updatedAt: true } }),
     Promise.all([
       prisma.topic.aggregate({ where: { isComingSoon: false }, _max: { updatedAt: true } }),
       prisma.blogPost.aggregate({ where: { status: "PUBLISHED" }, _max: { updatedAt: true } }),
@@ -121,5 +123,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const pulseRoutes = pulseArticles.map((a) => ({ url: `${base}/pulse/${a.slug}`, lastModified: new Date(a.updated ?? a.published) }));
 
-  return [...staticRoutes, ...pulseRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
+  const faqRoutes = faqCategories.map((c) => ({
+    url: `${base}/faq/${faqCategorySlug(c.category)}`,
+    ...(c._max.updatedAt && { lastModified: c._max.updatedAt }),
+  }));
+
+  return [...staticRoutes, ...pulseRoutes, ...faqRoutes, ...subjectRoutes, ...topicRoutes, ...simulationRoutes, ...glossaryRoutes, ...quickSheetSubjects, ...quickSheetRoutes, ...blogRoutes];
 }
