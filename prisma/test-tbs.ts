@@ -102,10 +102,10 @@ function checkSubject(subject: Simulation["subject"], sims: Simulation[], minPer
 
 checkSubject("far", farSimulations);
 checkSubject("aud", audSimulations);
-checkSubject("reg", regSimulations, 1);
-checkSubject("bar", barSimulations, 1);
-checkSubject("isc", iscSimulations, 1);
-checkSubject("tcp", tcpSimulations, 1);
+checkSubject("reg", regSimulations);
+checkSubject("bar", barSimulations);
+checkSubject("isc", iscSimulations);
+checkSubject("tcp", tcpSimulations);
 
 console.log(failed ? `\n${failed} failed` : "\nAll passed");
 process.exit(failed ? 1 : 0);

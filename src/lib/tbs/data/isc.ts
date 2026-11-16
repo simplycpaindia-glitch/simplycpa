@@ -41,7 +41,9 @@ const SOC_TERMS = [
 const CAAT = ["Test data", "Parallel simulation", "Integrated test facility", "Generalized audit software", "Embedded audit module"] as const;
 const EMERGING = ["Model drift", "Hallucination", "Bias", "Data leakage", "Smart contract coding error", "51% attack"] as const;
 
-export const iscSimulations: Simulation[] = [
+import { iscSimulations2 } from "./isc-2";
+
+const iscSimulations1: Simulation[] = [
   {
     slug: "classify-it-general-controls",
     subject: "isc",
@@ -287,3 +289,5 @@ export const iscSimulations: Simulation[] = [
     takeaway: "Under the carve-out method the subservice organization's controls are outside the report, so users must look for assurance on them elsewhere. Complementary controls are what others must do for the service organization's controls to work.",
   },
 ];
+
+export const iscSimulations: Simulation[] = [...iscSimulations1, ...iscSimulations2];

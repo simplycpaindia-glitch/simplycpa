@@ -9,7 +9,9 @@ const YES_NO = ["Yes", "No"] as const;
 const ESTATE = ["Included in full", "Half included", "Not included"] as const;
 const ENTITY = ["C corporation", "S corporation", "Partnership (or LLC taxed as one)", "Sole proprietorship"] as const;
 
-export const tcpSimulations: Simulation[] = [
+import { tcpSimulations2 } from "./tcp-2";
+
+const tcpSimulations1: Simulation[] = [
   // ── Area I: Individual tax compliance and personal financial planning ──
   {
     slug: "capital-gain-and-loss-netting",
@@ -294,3 +296,5 @@ export const tcpSimulations: Simulation[] = [
     takeaway: "Learn the handful of Code sections that come up again and again: 61 gross income, 162 business expenses, 1014 and 1015 basis, 1031 exchanges, 1221 capital assets and 1245 recapture.",
   },
 ];
+
+export const tcpSimulations: Simulation[] = [...tcpSimulations1, ...tcpSimulations2];

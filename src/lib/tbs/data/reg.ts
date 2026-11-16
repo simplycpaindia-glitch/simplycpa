@@ -27,7 +27,9 @@ const DISTRIBUTION = ["Tax-free", "Fully taxable", "Taxable plus the 10% additio
 const FRINGE = ["Excluded from the employee's income", "Taxable to the employee"] as const;
 const UBI = ["Unrelated business income", "Not unrelated business income"] as const;
 
-export const regSimulations: Simulation[] = [
+import { regSimulations2 } from "./reg-2";
+
+const regSimulations1: Simulation[] = [
   // ── Area I: Ethics, professional responsibilities and federal tax procedures ──
   {
     slug: "circular-230-conduct",
@@ -527,3 +529,5 @@ export const regSimulations: Simulation[] = [
     takeaway: "Income is unrelated business income only when it comes from a trade or business, regularly carried on, that is not substantially related to the exempt purpose. Passive income, volunteer-run activities and donated goods are excluded.",
   },
 ];
+
+export const regSimulations: Simulation[] = [...regSimulations1, ...regSimulations2];

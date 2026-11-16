@@ -22,7 +22,9 @@ const GOV = [
   "Not in the governmental funds: government-wide statements only",
 ] as const;
 
-export const barSimulations: Simulation[] = [
+import { barSimulations2 } from "./bar-2";
+
+const barSimulations1: Simulation[] = [
   // ── Area I: Business analysis ──
   {
     slug: "liquidity-and-activity-ratios",
@@ -361,3 +363,5 @@ export const barSimulations: Simulation[] = [
     takeaway: "To get from fund balance to net position, add capital assets, deduct long-term liabilities, reverse deferrals that exist only because of availability, and add internal service funds that serve governmental activities.",
   },
 ];
+
+export const barSimulations: Simulation[] = [...barSimulations1, ...barSimulations2];
