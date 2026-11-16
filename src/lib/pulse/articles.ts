@@ -13,6 +13,456 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "irs-2027-inflation-adjustments",
+    title: "IRS sets 2027 tax figures: $33,200 joint standard deduction, $20,000 gift exclusion",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Revenue Procedure 2026-35 adjusts almost 70 provisions for tax year 2027, for returns filed in 2028. The standard deduction, brackets, gift and estate exclusions and the child tax credit all rise.",
+    eventDate: "2026-11-05",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 5 November 2026 the IRS published its annual inflation adjustments for tax year 2027 (news release IR-2026-133, Revenue Procedure 2026-35). They cover almost 70 provisions and generally apply to returns filed in 2028. The figures below are as the IRS published them.",
+      },
+      { type: "h2", text: "Standard deduction" },
+      {
+        type: "table",
+        head: ["Filing status", "2027"],
+        rows: [
+          ["Married filing jointly", "$33,200 (up $1,000 from 2026)"],
+          ["Single and married filing separately", "$16,600"],
+          ["Head of household", "$24,925"],
+        ],
+      },
+      { type: "h2", text: "Where each rate starts" },
+      {
+        type: "table",
+        head: ["Rate", "Single: income over", "Married filing jointly: income over"],
+        rows: [
+          ["10%", "$0", "$0"],
+          ["12%", "$12,800", "$25,600"],
+          ["22%", "$52,025", "$104,050"],
+          ["24%", "$109,125", "$218,250"],
+          ["32%", "$208,325", "$416,650"],
+          ["35%", "$264,550", "$529,100"],
+          ["37%", "$661,375", "$793,650"],
+        ],
+      },
+      { type: "h2", text: "Other figures candidates meet in REG and TCP" },
+      {
+        type: "table",
+        head: ["Item", "2027", "2026"],
+        rows: [
+          ["Annual gift tax exclusion", "$20,000", "$19,000"],
+          ["Estate basic exclusion amount", "$15,480,000", "$15,000,000"],
+          ["Annual exclusion for gifts to a non-citizen spouse", "$201,000", "$194,000"],
+          ["Child tax credit (maximum / refundable portion)", "$2,300 / $1,800", "$2,200 / $1,700"],
+          ["Maximum earned income credit, three or more children", "$8,496", "$8,231"],
+          ["AMT exemption, unmarried individuals", "$93,000 (phase-out from $515,950)", "—"],
+          ["Foreign earned income exclusion", "$137,300", "$132,900"],
+          ["Section 179 expensing limit", "$2,640,000", "$2,560,000"],
+          ["Health FSA salary reduction limit", "$3,500", "$3,400"],
+          ["Qualified transportation and parking, per month", "$350", "$340"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Personal exemptions remain at zero. The Lifetime Learning Credit phase-out range is not indexed and stays at $80,000 to $90,000 ($160,000 to $180,000 for joint returns).",
+      },
+    ],
+    whyItMatters: [
+      "The CPA Exam tests tax law in effect six months before the testing window, so these 2027 figures belong to exams from mid-2027 onward. Check your review course's tax-year cut-off before memorising any number.",
+      "Indian candidates who work on US expatriate returns will use the $137,300 foreign earned income exclusion for 2027 years.",
+      "The $20,000 annual gift exclusion and $15.48 million estate exclusion are classic REG and TCP calculation inputs.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-133, tax inflation adjustments for tax year 2027 (5 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2027-taxpayers-continue-to-benefit-from-the-working-families-tax-cuts",
+      },
+    ],
+    related: [
+      { label: "REG: adjustments and deductions", href: "/cpa/reg/individual-taxation-adjustments-and-deductions" },
+      { label: "REG: trusts, estates and gift tax", href: "/cpa/reg/trusts-estates-and-gift-tax-basics" },
+      { label: "TCP: estate and gift tax planning", href: "/cpa/tcp/estate-and-gift-tax-planning" },
+    ],
+  },
+  {
+    slug: "irs-2027-retirement-plan-limits",
+    title: "2027 retirement limits: 401(k) deferrals rise to $25,500, IRA limit stays at $7,500",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "IRS Notice 2026-66 raises the 401(k), 403(b), 457 and TSP deferral limit by $1,000 and the age-50 catch-up to $8,500. IRA contributions stay at $7,500, but the income phase-out ranges move up.",
+    eventDate: "2026-11-12",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 12 November 2026 the IRS announced the 2027 cost-of-living adjustments for retirement plans (news release IR-2026-136, Notice 2026-66).",
+      },
+      {
+        type: "table",
+        head: ["Limit", "2027", "2026"],
+        rows: [
+          ["401(k), 403(b), governmental 457 and TSP elective deferrals", "$25,500", "$24,500"],
+          ["Catch-up, age 50 and over (those plans)", "$8,500", "$8,000"],
+          ["Higher catch-up at ages 60 to 63 (SECURE 2.0)", "$11,750", "—"],
+          ["IRA contribution limit", "$7,500", "$7,500"],
+          ["IRA catch-up, age 50 and over", "$1,100", "$1,100"],
+          ["SIMPLE plan contribution limit", "$17,500", "$17,000"],
+        ],
+      },
+      { type: "h2", text: "Income phase-out ranges" },
+      {
+        type: "table",
+        head: ["Situation", "2027", "2026"],
+        rows: [
+          ["Traditional IRA deduction: single, covered by a workplace plan", "$83,000 to $93,000", "$81,000 to $91,000"],
+          ["Traditional IRA deduction: joint, contributing spouse covered", "$133,000 to $153,000", "$129,000 to $149,000"],
+          ["Traditional IRA deduction: not covered, spouse covered", "$250,000 to $260,000", "$242,000 to $252,000"],
+          ["Roth IRA contributions: single and head of household", "$158,000 to $173,000", "$153,000 to $168,000"],
+          ["Roth IRA contributions: married filing jointly", "$250,000 to $260,000", "$242,000 to $252,000"],
+          ["Married filing separately (both IRA types)", "$0 to $10,000", "$0 to $10,000 (not indexed)"],
+        ],
+      },
+      {
+        type: "p",
+        text: "With the age-50 catch-up, a participant aged 50 or over can defer up to $34,000 in 2027.",
+      },
+    ],
+    whyItMatters: [
+      "REG and TCP test the structure more than the numbers: deduction phase-outs apply only when the taxpayer or spouse is covered by a workplace plan, and Roth contributions phase out by income for everyone.",
+      "The ages 60 to 63 catch-up is a SECURE 2.0 rule that question writers like because it breaks the simple 'age 50' pattern.",
+      "If you are planning a move to the US for work, these are the limits your first US payroll will use.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-136, 401(k) limit increases to $25,500 for 2027, IRA limit remains $7,500 (12 November 2026)",
+        url: "https://www.irs.gov/newsroom/401k-limit-increases-to-25500-for-2027-ira-limit-remains-7500",
+      },
+    ],
+    related: [
+      { label: "REG: retirement plans", href: "/cpa/reg/retirement-plans-and-tax-planning-basics" },
+      { label: "TCP: retirement planning strategies", href: "/cpa/tcp/retirement-planning-strategies" },
+    ],
+  },
+  {
+    slug: "non-itemizer-charitable-deduction-2026",
+    title: "From 2026 returns, non-itemizers can deduct up to $1,000 of cash gifts to charity",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "A permanent deduction for taxpayers who take the standard deduction starts with tax year 2026: up to $1,000, or $2,000 on a joint return, for cash gifts to qualifying charities. Donor-advised funds do not count.",
+    eventDate: "2026-11-10",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 10 November 2026 the IRS reminded taxpayers (news release IR-2026-135) that a permanent charitable deduction for people who do not itemize begins with tax year 2026, so it first appears on returns filed in 2027. The IRS credits the Working Families Tax Cuts legislation.",
+      },
+      { type: "h2", text: "The rules as the IRS states them" },
+      {
+        type: "list",
+        items: [
+          "Up to $1,000 of qualifying cash contributions, or $2,000 for married couples filing jointly.",
+          "Available only to taxpayers who do not itemize deductions.",
+          "Only cash contributions to qualified charitable organizations count. Noncash gifts, such as clothing or shares, do not.",
+          "Cash given to supporting organizations, or to set up or maintain a donor-advised fund, does not qualify.",
+          "Keep a receipt, canceled check, bank record or written statement from the charity showing its name, the date and the amount.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The IRS points readers to Publication 6196, Charitable Contribution Deduction Tips for Non-Itemizers, and to its Tax Exempt Organization Search tool to check that a charity qualifies.",
+      },
+    ],
+    whyItMatters: [
+      "A classic REG trap was that charitable gifts help only itemizers. From 2026 that is no longer true for cash gifts within these limits, so check which tax year your review materials cover.",
+      "The exclusions are testable details: cash only, and not to donor-advised funds or supporting organizations.",
+      "Expect this in TCP planning questions about bunching deductions, where the choice between itemizing and the standard deduction now has an extra variable.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-135, permanent charitable contribution deduction for taxpayers who do not itemize (10 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-reminder-permanent-charitable-contribution-deduction-begins-for-returns-filed-next-year-for-taxpayers-who-do-not-itemize",
+      },
+    ],
+    related: [
+      { label: "REG: adjustments and deductions", href: "/cpa/reg/individual-taxation-adjustments-and-deductions" },
+      { label: "TCP: individual tax planning", href: "/cpa/tcp/individual-tax-planning-strategies" },
+    ],
+  },
+  {
+    slug: "irs-tax-pro-account-business-payments",
+    title: "Tax professionals can now pay business clients' IRS balances through Tax Pro Account",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The IRS has extended Tax Pro Account so authorised practitioners can make payments for business clients, including federal tax deposits and extension payments. Before, they could only view business balances.",
+    eventDate: "2026-11-06",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 6 November 2026 the IRS announced (news release IR-2026-134) that authorised tax professionals can now make certain payments on behalf of business clients through Tax Pro Account, its online portal for practitioners. Until now they could see business clients' balances and payment activity but could not pay.",
+      },
+      { type: "h2", text: "Payments now available for business clients" },
+      {
+        type: "list",
+        items: ["A full or partial balance due", "An amended return", "An extension", "A proposed tax assessment", "A federal tax deposit"],
+      },
+      {
+        type: "p",
+        text: "The IRS says practitioners must hold the appropriate authorisation for the client and the tax matters involved. Tax Pro Account, launched in July 2021, already let practitioners manage authorisations, link Centralized Authorization File (CAF) numbers, view client balances, pay for individual clients and set up payment plans for individuals.",
+      },
+    ],
+    whyItMatters: [
+      "Many Indian accounting firms prepare US business returns remotely. Paying deposits and balances directly, under a proper authorisation, removes a step that used to need the client.",
+      "REG tests who may represent a taxpayer and under what authorisation. The practical version is Form 2848 (power of attorney) versus Form 8821 (information only); check which one a task needs before relying on the portal.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-134, IRS expands Tax Pro Account for business client payments (6 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-expands-tax-pro-account-for-business-client-payments",
+      },
+    ],
+    related: [
+      { label: "REG: Circular 230 and practitioner ethics", href: "/cpa/reg/circular-230-and-practitioner-ethics" },
+      { label: "REG: IRS procedures", href: "/cpa/reg/irs-procedures-and-appeals" },
+    ],
+  },
+  {
+    slug: "sec-executive-compensation-disclosure-proposal-2026",
+    title: "SEC proposes rewriting executive pay disclosure: two named officers and three new tables",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The SEC's proposal would cut the named executive officers to the CEO and CFO in most cases, replace the four main pay tables with three, and raise the perquisite reporting threshold from $10,000 to $150,000.",
+    eventDate: "2026-11-13",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 13 November 2026 the Securities and Exchange Commission proposed amendments to Item 402 of Regulation S-K, the rule that governs how public companies disclose executive and director pay (press release 2026-114). Chairman Paul Atkins said the amendments \"reflect a comprehensive reform of Item 402\".",
+      },
+      { type: "h2", text: "Main proposed changes" },
+      {
+        type: "table",
+        head: ["Area", "Today", "Proposed"],
+        rows: [
+          ["Named executive officers", "Typically five or more people", "The principal executive officer and principal financial officer in most cases"],
+          ["Pay tables", "Four primary tables", "Three: Earned Compensation, Granted Compensation and Status of Equity Awards"],
+          ["Perquisites reporting threshold", "$10,000 in aggregate", "$150,000, with a de minimis tracking exclusion"],
+          ["Compensation discussion and analysis", "Fifteen example topics", "More principles-based, covering three topics"],
+          ["Pay versus performance", "'Compensation actually paid'", "Total compensation from the Earned Compensation Table, with fewer performance measures"],
+          ["Pay ratio", "Median of all employees", "Median of US full-time employees, determined every five years"],
+        ],
+      },
+      {
+        type: "p",
+        text: "The proposal would also remove the clawback check boxes from annual report cover pages and some clawback disclosures. Comments are open for 60 days after the proposal is published in the Federal Register.",
+      },
+      { type: "h2", text: "Where it stands" },
+      {
+        type: "p",
+        text: "This is a proposal, not a final rule. Nothing changes for current filings until the SEC adopts final amendments.",
+      },
+    ],
+    whyItMatters: [
+      "BAR tests public company reporting, including Regulation S-K and S-X. Exams test adopted rules, so learn today's requirements until a final rule is issued.",
+      "Proxy statements are among the first documents an auditor's client team reviews for related-party and compensation disclosures, so the change would reach audit work too.",
+    ],
+    sources: [
+      {
+        label: "SEC: Press release 2026-114, SEC Proposes Executive and Director Compensation Disclosure Reforms (13 November 2026)",
+        url: "https://www.sec.gov/newsroom/press-releases/2026-114-sec-proposes-executive-director-compensation-disclosure-reforms",
+      },
+      {
+        label: "SEC: Statement of Chairman Atkins on the proposal (13 November 2026)",
+        url: "https://www.sec.gov/newsroom/speeches-statements/atkins-statement-proposing-release-executive-compensation-disclosure-reform-111326",
+      },
+    ],
+    related: [
+      { label: "BAR: public company reporting", href: "/cpa/bar/public-company-reporting-topics" },
+      { label: "FAR: SEC reporting", href: "/cpa/far/sec-reporting-segments-and-interim-reporting" },
+    ],
+  },
+  {
+    slug: "fasb-indexation-proposal-815-40",
+    title: "FASB proposes replacing the 'fixed-for-fixed' test for warrants and other equity-linked contracts",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "A proposed update to Subtopic 815-40 would swap the fixed-for-fixed indexation assessment for an 'acceptable variables approach', so more contracts could qualify for equity classification. Comments are due 4 January 2027.",
+    eventDate: "2026-11-02",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "The Financial Accounting Standards Board has issued a proposed Accounting Standards Update, Derivatives and Hedging—Contracts in Entity's Own Equity (Subtopic 815-40): Targeted Improvements to Indexation, according to the Journal of Accountancy and Accounting Today. Accounting Today reported it on 2 November 2026. We could not open FASB's own news page, so this story is marked as reported.",
+      },
+      { type: "h2", text: "The problem" },
+      {
+        type: "p",
+        text: "To be classified in equity, a contract such as a warrant must be 'indexed to the entity's own stock'. Stakeholders told FASB the current guidance is complicated, costly to apply and a frequent cause of restatements, and that similar features are assessed differently in practice. When a contract fails the test it is a liability measured at fair value, and investors often strip those fair value changes out of their analysis.",
+      },
+      { type: "h2", text: "What the proposal would do" },
+      {
+        type: "list",
+        items: [
+          "Replace the current fixed-for-fixed assessment with an 'acceptable variables approach'.",
+          "FASB expects more contracts to be considered indexed to the entity's own stock as a result.",
+          "Add an annual disclosure of the variables that could cause, or did cause, the settlement amount of equity-classified contracts to vary significantly.",
+        ],
+      },
+      { type: "p", text: "Comments are due by 4 January 2027." },
+    ],
+    whyItMatters: [
+      "Warrant classification is a FAR equity topic and a BAR derivatives topic. Until a final standard is issued and effective, the exams test the current fixed-for-fixed rule.",
+      "Warrant restatements were common at US special purpose acquisition companies, many of which have support teams in India. Simpler rules would change that work.",
+    ],
+    sources: [
+      {
+        label: "Journal of Accountancy: FASB proposes simpler approach for equity-linked contracts (November 2026)",
+        url: "https://www.journalofaccountancy.com/news/2026/nov/fasb-proposes-simpler-approach-for-equity-linked-contracts/",
+      },
+      {
+        label: "Accounting Today: FASB proposes to improve indexation guidance (2 November 2026)",
+        url: "https://www.accountingtoday.com/news/fasb-proposes-to-improve-indexation-guidance",
+      },
+      {
+        label: "FASB: news release on the proposed indexation improvements",
+        url: "https://fasb.org/news-and-meetings/in-the-news/fasb-seeks-public-comment-on-proposed-targeted-improvements-to-indexation-guidance-425800",
+      },
+    ],
+    related: [
+      { label: "BAR: derivatives and hedge accounting", href: "/cpa/bar/derivatives-and-hedge-accounting" },
+      { label: "FAR: equity and earnings per share", href: "/cpa/far/equity-and-earnings-per-share" },
+    ],
+  },
+  {
+    slug: "fasb-consideration-payable-to-customer-proposal",
+    title: "FASB proposal: when payments to your customer's customers reduce your revenue",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "A proposed amendment to Topic 606 would treat payments made on a customer's behalf, or to a customer's customers, as consideration payable to a customer when the entity promised them explicitly or implicitly. Comments close 23 November 2026.",
+    eventDate: "2026-10-22",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 22 October 2026 FASB issued a proposed Accounting Standards Update, Revenue from Contracts with Customers (Topic 606): Consideration Payable to a Customer, according to the Journal of Accountancy and Accounting Today. Accounting Today says the proposal came from a recommendation of the Emerging Issues Task Force.",
+      },
+      { type: "h2", text: "The issue" },
+      {
+        type: "p",
+        text: "Under Topic 606, consideration payable to a customer reduces the transaction price, and therefore revenue, unless it pays for a distinct good or service from the customer. The guidance does not say clearly when payments to parties outside the distribution chain count, so similar payments are accounted for differently.",
+      },
+      { type: "h2", text: "What the proposal says" },
+      {
+        type: "p",
+        text: "Payments made on behalf of a customer, or to a customer of the entity's customer, would be consideration payable to a customer when made in connection with the entity satisfying its promise to the customer, if either:",
+      },
+      {
+        type: "list",
+        items: [
+          "the entity has explicitly promised to make the payment, or",
+          "the customer reasonably expects the payment, because the entity implicitly promised it or the payment is in substance a price concession.",
+        ],
+      },
+      { type: "p", text: "Comments are due by 23 November 2026." },
+    ],
+    whyItMatters: [
+      "Consideration payable to a customer is a FAR revenue topic: coupons, rebates and slotting fees reduce revenue rather than being expenses.",
+      "Platform businesses that pay incentives to end users, such as ride-hailing, food delivery and payment apps, are where this matters most.",
+      "It is still a proposal. Learn the current rule for the exam.",
+    ],
+    sources: [
+      {
+        label: "Journal of Accountancy: FASB seeks to reduce inconsistencies tied to customer-related payments (22 October 2026)",
+        url: "https://www.journalofaccountancy.com/news/2026/oct/fasb-seeks-to-reduce-inconsistencies-tied-to-customer-related-payments/",
+      },
+      {
+        label: "Accounting Today: FASB proposes to clarify guidance on consideration payable to customers (22 October 2026)",
+        url: "https://www.accountingtoday.com/news/fasb-proposes-to-clarity-guidance-on-consideration-payable-to-customers",
+      },
+      {
+        label: "FASB: news release on the proposal",
+        url: "https://www.fasb.org/news-and-meetings/in-the-news/fasb-seeks-public-comment-on-proposal-to-clarify-the-consideration-payable-to-a-customer-guidance-425699",
+      },
+    ],
+    related: [
+      { label: "FAR: revenue recognition", href: "/cpa/far/revenue-recognition" },
+      { label: "BAR: revenue for specific industries", href: "/cpa/bar/revenue-for-specific-industries" },
+    ],
+  },
+  {
+    slug: "oklahoma-cpa-pathways-effective-november-2026",
+    title: "Oklahoma's new CPA licensure pathways are now in effect",
+    category: "exam-policy",
+    status: "reported",
+    summary:
+      "From 1 November 2026, Oklahoma candidates can choose among three routes to a CPA licence, including a bachelor's degree plus two years' experience, and the state moves to individual-based mobility.",
+    eventDate: "2026-11-01",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "The Oklahoma Society of CPAs reports that a licensure modernisation bill signed on 6 May 2026 lets candidates choose any of three pathways to a CPA licence from 1 November 2026. The law aligns Oklahoma with the ninth edition of the Uniform Accountancy Act.",
+      },
+      { type: "h2", text: "What changes" },
+      {
+        type: "list",
+        items: [
+          "A new pathway: a bachelor's degree, two years' experience and passing the CPA Exam.",
+          "An individual-based mobility model for CPAs practising across state lines.",
+          "Safe harbour protections for CPAs licensed under the current requirements.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The society's article does not cover exam credit rules or foreign-educated candidates. Those details sit with the Oklahoma Accountancy Board, so check its rules before you apply.",
+      },
+      { type: "h2", text: "Other states on the same path" },
+      {
+        type: "p",
+        text: "Colorado's SB26-076, signed on 4 May 2026, adds new pathways from 1 January 2027, with its mobility changes taking effect when the state board adopts new rules, according to the Colorado Society of CPAs.",
+      },
+    ],
+    whyItMatters: [
+      "Indian candidates with a three-year BCom often struggle with the 150-hour rule. A bachelor's-plus-two-years pathway can make licensure possible without extra credits, if the board accepts your degree's evaluation.",
+      "Individual-based mobility matters if you plan to practise in more than one state after licensure.",
+      "Exam eligibility and licensure are separate. A new licensure pathway does not by itself change when you may sit for the exam.",
+    ],
+    sources: [
+      {
+        label: "Oklahoma Society of CPAs: CPA licensure modernisation bill signed into law (May 2026)",
+        url: "https://oscpa.com/news/11e8c2f1-6419-4177-a870-2e364d805174:cpa-licensure-modernization-bill-signed-into-law-addressing-accounting-workforce-challenges",
+      },
+      {
+        label: "Colorado Society of CPAs: CPA licensure modernisation signed into law (4 May 2026)",
+        url: "https://cocpa.org/news/14364392-cpa-licensure-modernization-signed-into-law-2026-05-04",
+      },
+    ],
+    related: [
+      { label: "CPA licensure pathways", href: "/cpa-licensure-pathways" },
+      { label: "State boards", href: "/state-boards" },
+      { label: "Eligibility navigator", href: "/tools/cpa-eligibility-navigator" },
+    ],
+  },
+  {
     slug: "cpa-exam-pass-rates-q3-2026",
     title: "Third-quarter 2026 pass rates: AUD passes 50% for the year, FAR stays the lowest Core section",
     category: "exam-policy",
