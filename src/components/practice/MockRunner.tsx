@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { submitMcqBatch } from "@/lib/actions/mcq";
 import { scoreReport } from "@/lib/mini-mock";
+import { READINESS_BAND_LABEL, readinessBand } from "@/lib/readiness";
 
 type Option = { id: string; label: string; text: string };
 type Question = { id: string; question: string; options: Option[]; topic: { slug: string; title: string }; area: string | null };
@@ -25,14 +26,21 @@ export function MockRunner({
   questions,
   minutes,
   isLoggedIn,
+  kind = "mock",
 }: {
   subject: { id: string; slug: string; shortName: string };
+  /** The period this set belongs to: a week for a mini-mock, a month for a readiness check. */
   week: string;
   questions: Question[];
   minutes: number;
   isLoggedIn: boolean;
+  /** "readiness" reuses the runner for the diagnostic: different wording, and a result by strength. */
+  kind?: "mock" | "readiness";
 }) {
-  const storageKey = `mini-mock:${subject.slug}:${week}`;
+  const readiness = kind === "readiness";
+  const noun = readiness ? "readiness check" : "mini-mock";
+  const path = readiness ? `/tools/cpa-readiness-check/${subject.slug}` : `/mini-mock/${subject.slug}`;
+  const storageKey = `${readiness ? "readiness" : "mini-mock"}:${subject.slug}:${week}`;
   const [phase, setPhase] = useState<"intro" | "running" | "done">("intro");
   const [endsAt, setEndsAt] = useState(0);
   const [now, setNow] = useState(0);
@@ -80,7 +88,8 @@ export function MockRunner({
       try {
         const res = await submitMcqBatch({
           subjectId: subject.id,
-          mode: "MOCK",
+          // A readiness check is saved as a timed set, so it stays out of the mini-mock history.
+          mode: readiness ? "TIMED" : "MOCK",
           answers: questions.map((q) => ({ mcqId: q.id, selectedOptionId: answers[q.id] ?? null })),
         });
         setResults(res.results);
@@ -92,7 +101,7 @@ export function MockRunner({
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps -- save only touches storage
-  }, [answers, endsAt, minutes, questions, subject.id]);
+  }, [answers, endsAt, minutes, questions, subject.id, readiness]);
 
   // Tick once a second while running; submit automatically when time is up.
   useEffect(() => {
@@ -129,17 +138,18 @@ export function MockRunner({
         <h2 className="font-display text-xl font-medium text-ink-950">Before you start</h2>
         <ul className="mt-3 flex list-disc flex-col gap-1.5 pl-5 text-sm leading-relaxed text-ink-800">
           <li>{questions.length} questions, {minutes} minutes: about {Math.round((minutes * 60) / questions.length)} seconds a question, close to real exam pacing.</li>
+          {readiness && <li>At least one question comes from every {subject.shortName} topic, so the result shows where you are weak, not what you would score.</li>}
           <li>The timer can&apos;t be paused. When it reaches zero, your answers are submitted automatically.</li>
           <li>You can move between questions and change answers until you submit. Unanswered questions count as wrong.</li>
           <li>You&apos;ll get a score report by area and topic, then every question with its explanation.</li>
         </ul>
         {!isLoggedIn && (
           <p className="mt-4 text-sm text-ink-400">
-            <Link href={`/login?callbackUrl=/mini-mock/${subject.slug}`} className="underline underline-offset-2">Sign in</Link> to save your score and
-            track it week by week. You can also take it without signing in.
+            <Link href={`/login?callbackUrl=${path}`} className="underline underline-offset-2">Sign in</Link> to save your score
+            {readiness ? " and add your mistakes to your mistake book" : " and track it week by week"}. You can also take it without signing in.
           </p>
         )}
-        <Button className="mt-5" onClick={start}>Start the {subject.shortName} mini-mock</Button>
+        <Button className="mt-5" onClick={start}>Start the {subject.shortName} {noun}</Button>
       </div>
     );
   }
@@ -159,6 +169,35 @@ export function MockRunner({
             This is a raw percentage, not the exam&apos;s scaled score, so it doesn&apos;t map directly to the 75 needed to pass.
           </p>
         </div>
+
+        {readiness && (
+          <section aria-labelledby="readiness" className="mt-8">
+            <h2 id="readiness" className="font-display text-xl font-medium text-ink-950">Where you stand</h2>
+            <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+              {report.areas.map((a) => {
+                const band = readinessBand(a.right, a.total);
+                return (
+                  <li key={a.area} className="rounded-lg border border-ink-950/10 p-4">
+                    <p className={cn("text-xs font-semibold uppercase tracking-wide", band === "strong" && "text-signal-green", band === "developing" && "text-gold-700", band === "priority" && "text-signal-red")}>
+                      {READINESS_BAND_LABEL[band]}
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-ink-950">{a.area}</p>
+                    <p className="mt-1 text-sm text-ink-400">
+                      {a.right} of {a.total} right.{" "}
+                      {band === "strong" && "Keep it warm with mixed practice."}
+                      {band === "developing" && "Redo the questions you missed, then the quick sheets."}
+                      {band === "priority" && "Study these topics again before more practice."}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-3 text-xs leading-relaxed text-ink-400">
+              Strong is 75% or more, developing is 50% to 74%, priority is below 50%. With only a few questions per area this is a
+              rough signal, not a prediction of your exam result. Use it to decide what to study next.
+            </p>
+          </section>
+        )}
 
         <section aria-labelledby="by-area" className="mt-8">
           <h2 id="by-area" className="font-display text-xl font-medium text-ink-950">By blueprint area</h2>
@@ -328,7 +367,7 @@ export function MockRunner({
       {confirmOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink-950/50 p-4" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
           <div className="w-full max-w-sm rounded-xl bg-paper-50 p-6">
-            <h3 id="confirm-title" className="font-semibold text-ink-950">Submit your mini-mock?</h3>
+            <h3 id="confirm-title" className="font-semibold text-ink-950">Submit your {noun}?</h3>
             <p className="mt-2 text-sm text-ink-400">
               You&apos;ve answered {answered} of {questions.length}. {answered < questions.length && "Unanswered questions count as wrong. "}You have {clock(left)} left.
             </p>

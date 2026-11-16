@@ -68,6 +68,13 @@ export const TOOLS: Tool[] = [
     stage: "Decide",
   },
   {
+    href: "/tools/cpa-readiness-check",
+    name: "Readiness Check",
+    blurb: "A short diagnostic with a question from every topic in a section. Shows your strong, developing and priority areas.",
+    stage: "Study",
+    isNew: true,
+  },
+  {
     href: "/question-of-the-day",
     name: "Question of the Day",
     blurb: "One exam-style question a day with a full explanation.",

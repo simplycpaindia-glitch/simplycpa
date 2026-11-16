@@ -257,7 +257,7 @@ Recommended:
 - [ ] Set `NEXT_PUBLIC_SITE_URL` to the www address in Vercel; deploy
 - [ ] Search Console: verify the www property, submit the sitemap
 - [x] Read the 2027 Summary of Changes; update topics, quick sheets, questions and the Blueprint label
-- [x] PCAOB stories written (opens the Accounting & Regulation desk); FASB items still to read
+- [x] PCAOB and FASB stories written from their own releases (opens the Accounting & Regulation desk)
 
 ### Days 15–45: content depth
 
@@ -267,7 +267,7 @@ Recommended:
 - [x] "Use this next" links from every article to the relevant tools and FAQs
 - [x] Pass-rate tracker updated to Q3 2026
 - [ ] Article-by-article gap check, then two articles a week from the gap list (careers first)
-- [ ] Readiness assessment (diagnostic) for FAR, then the other sections
+- [x] Readiness check (diagnostic) for all six sections, at /tools/cpa-readiness-check
 - [ ] Pulse: two to four stories a week, monthly re-verification
 
 ### Days 46–75: practice depth and speed

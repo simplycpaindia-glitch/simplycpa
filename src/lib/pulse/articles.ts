@@ -189,6 +189,76 @@ export const PULSE_ARTICLES: PulseArticle[] = [
     ],
   },
   {
+    slug: "fasb-equity-method-proposal-october-2026",
+    title: "FASB proposes one test for the equity method, whatever the investee's legal form",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "A proposed standard would apply a single threshold, significant influence, to all equity method investments and clarify earnings in complex allocation structures. Comments are due 11 January 2027.",
+    eventDate: "2026-10-28",
+    published: "2026-11-16",
+    verified: "2026-11-16",
+    body: [
+      {
+        type: "p",
+        text: "On 28 October 2026 the Financial Accounting Standards Board (FASB) issued a proposed Accounting Standards Update on equity method investments. Comments are due by 11 January 2027.",
+      },
+      { type: "h2", text: "What the FASB says is wrong today" },
+      {
+        type: "list",
+        items: [
+          "Different criteria for applying the equity method to investments in corporations and to investments in partnerships and similar entities.",
+          "No authoritative guidance on allocating earnings in complex allocation structures for investments outside real estate.",
+          "The cost and complexity of applying the method.",
+        ],
+      },
+      { type: "h2", text: "What the proposal would do" },
+      {
+        type: "list",
+        items: [
+          "Require a single threshold, significant influence, for applying the equity method, regardless of the legal form of the investee.",
+          "Change some of the indicators of significant influence in Subtopic 323-10.",
+          "Clarify how investors apply the method when the investee has a complex allocation structure.",
+        ],
+      },
+      { type: "h2", text: "Also open from the FASB" },
+      {
+        type: "p",
+        text: "The FASB's news page lists these other proposals and standards from recent months. We have read the titles and dates there, not each document.",
+      },
+      {
+        type: "table",
+        head: ["Date", "Item"],
+        rows: [
+          ["2 November 2026", "Proposal: targeted improvements to indexation guidance"],
+          ["22 October 2026", "Proposal: clarifying the guidance on consideration payable to a customer"],
+          ["23 September 2026", "Proposal: accounting for residential mortgage servicing rights"],
+          ["9 September 2026", "Final standard: investment company fair value reporting"],
+          ["2 September 2026", "Proposal: Codification improvements"],
+          ["18 August 2026", "Proposal: cash equivalents disclosures, and the cash equivalents evaluation for certain digital assets"],
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Nothing changes for the exam yet. A proposal is not testable; study the equity method as it stands, including the significant influence concept that this proposal keeps.",
+      "The direction is worth knowing: significant influence would become the one question to ask, which is how FAR already teaches the method for corporate investees.",
+      "If you work in US GAAP reporting, partnership and limited liability company investments are where practice would change most.",
+      "Several of these proposals touch topics FAR and BAR test: revenue, cash equivalents and digital assets. Watch for final standards, which become testable later under the AICPA's policy on new pronouncements.",
+    ],
+    sources: [
+      {
+        label: "FASB: FASB Seeks Public Comment on Proposed Targeted Improvements to the Accounting for Equity Method Investments (28 October 2026)",
+        url: "https://www.fasb.org/news-and-meetings/in-the-news/fasb-seeks-public-comment-on-proposed-targeted-improvements-to-the-accounting-for-equity-method-investments-425722",
+      },
+      { label: "FASB: In the News", url: "https://www.fasb.org/news-and-meetings/in-the-news" },
+    ],
+    related: [
+      { label: "FAR: investments in debt and equity securities", href: "/cpa/far/investments-debt-and-equity-securities" },
+      { label: "FAR: business combinations and consolidations", href: "/cpa/far/business-combinations-and-consolidations" },
+      { label: "Key terms: FASB, the Codification and US GAAP", href: "/faq/key-terms" },
+    ],
+  },
+  {
     slug: "cpa-exam-scores-released-10-november-2026",
     title: "Core scores are out for 10 November. The next release is targeted for 24 November",
     category: "exam-policy",
