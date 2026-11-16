@@ -2,19 +2,25 @@ import type { McqBank } from "./types";
 import { farBankA } from "./far-a";
 import { farBankB } from "./far-b";
 import { farBankC } from "./far-c";
+import { farBankD } from "./far-d";
 import { audBankA } from "./aud-a";
 import { audBankB } from "./aud-b";
 import { audBankC } from "./aud-c";
 import { audBankD } from "./aud-d";
+import { audBankE } from "./aud-e";
 import { regBankA } from "./reg-a";
 import { regBankB } from "./reg-b";
 import { regBankC } from "./reg-c";
+import { regBankD } from "./reg-d";
 import { barBank } from "./bar";
 import { barBankB } from "./bar-b";
+import { barBankC } from "./bar-c";
 import { iscBank } from "./isc";
 import { iscBankB } from "./isc-b";
+import { iscBankC } from "./isc-c";
 import { tcpBank } from "./tcp";
 import { tcpBankB } from "./tcp-b";
+import { tcpBankC } from "./tcp-c";
 
 /**
  * Every question bank, merged into one lookup keyed by topic slug.
@@ -28,19 +34,25 @@ const banks: McqBank[] = [
   farBankA,
   farBankB,
   farBankC,
+  farBankD,
   audBankA,
   audBankB,
   audBankC,
   audBankD,
+  audBankE,
   regBankA,
   regBankB,
   regBankC,
+  regBankD,
   barBank,
   barBankB,
+  barBankC,
   iscBank,
   iscBankB,
+  iscBankC,
   tcpBank,
   tcpBankB,
+  tcpBankC,
 ];
 
 export const mcqBank: McqBank = banks.reduce<McqBank>((merged, bank) => {
