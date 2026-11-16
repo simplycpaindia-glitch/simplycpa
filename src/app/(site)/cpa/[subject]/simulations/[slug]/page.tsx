@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { SimulationExhibits } from "@/components/practice/SimulationExhibits";
 import { SimulationPlayer } from "@/components/practice/SimulationPlayer";
-import { getSimulation, getSimulations } from "@/lib/tbs";
+import { allSimulations, getSimulation, getSimulations } from "@/lib/tbs";
 import { toPublic } from "@/lib/tbs/grade";
 import { FORMAT_LABEL } from "@/lib/tbs/types";
 
@@ -23,8 +23,11 @@ async function getData(subjectSlug: string, slug: string) {
   return { sim, subject, topic };
 }
 
-export function generateStaticParams({ params }: { params: { subject: string } }) {
-  return getSimulations(params.subject).map((s) => ({ slug: s.slug }));
+// Both segments are listed here: the parent /cpa/[subject] is a page, not a layout, so it
+// does not pass `subject` down. Without it nothing was prebuilt and every simulation page
+// failed at request time with DYNAMIC_SERVER_USAGE (the header reads the session cookie).
+export function generateStaticParams() {
+  return allSimulations().map((s) => ({ subject: s.subject, slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/cpa/[subject]/simulations/[slug]">): Promise<Metadata> {
