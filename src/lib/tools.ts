@@ -81,6 +81,13 @@ export const TOOLS: Tool[] = [
     stage: "Study",
   },
   {
+    href: "/mock-exam",
+    name: "Full Mock Exams",
+    blurb: "A four-hour exam in the real five-testlet structure for each section, with a weighted score and every explanation.",
+    stage: "Study",
+    isNew: true,
+  },
+  {
     href: "/mini-mock",
     name: "Weekly Mini-Mocks",
     blurb: "30 questions in 45 minutes, by section, to test yourself under time pressure.",

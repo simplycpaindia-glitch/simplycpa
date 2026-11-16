@@ -39,6 +39,13 @@ export default async function MiniMockHub() {
           <p className="mt-3 text-sm text-ink-400">
             This week&apos;s mocks: {formatIsoDate(week)} to {formatIsoDate(addDays(week, 6))}. New ones every Monday (India time).
           </p>
+          <p className="mt-2 text-sm text-ink-400">
+            Ready for the real length?{" "}
+            <Link href="/mock-exam" className="text-gold-700 underline underline-offset-2">
+              Take a full four-hour mock exam
+            </Link>
+            .
+          </p>
         </Container>
       </div>
 

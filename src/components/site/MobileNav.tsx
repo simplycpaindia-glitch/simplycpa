@@ -56,6 +56,7 @@ export function MobileNav({
           </MobileSection>
           <MobileSection title="Practice">
             <MobileLink href="/question-of-the-day" onClick={() => setOpen(false)}>Question of the Day</MobileLink>
+            <MobileLink href="/mock-exam" onClick={() => setOpen(false)}>Full Mock Exams</MobileLink>
             <MobileLink href="/mini-mock" onClick={() => setOpen(false)}>Weekly Mini-Mocks</MobileLink>
             <MobileLink href="/tools/cpa-readiness-check" onClick={() => setOpen(false)}>Readiness Check</MobileLink>
             <MobileLink href="/cpa" onClick={() => setOpen(false)}>MCQs</MobileLink>

@@ -14,6 +14,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Practice",
     links: [
       { label: "Question of the Day", href: "/question-of-the-day" },
+      { label: "Full Mock Exams", href: "/mock-exam" },
       { label: "Weekly Mini-Mocks", href: "/mini-mock" },
       { label: "Readiness Check", href: "/tools/cpa-readiness-check" },
       { label: "Quick Sheets", href: "/quick-sheets" },

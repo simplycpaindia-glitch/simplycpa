@@ -66,6 +66,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const undated = [
     "/question-of-the-day",
     "/mini-mock",
+    "/mock-exam",
     "/study-planner",
     "/tools",
     ...TOOLS.map((t) => t.href).filter((h) => h.startsWith("/tools/")),

@@ -38,6 +38,7 @@ export async function Navbar() {
 
           <NavGroup label="Practice" wide={false}>
             <DropdownLink href="/question-of-the-day" label="Question of the Day" sub="One question, every day" />
+            <DropdownLink href="/mock-exam" label="Full Mock Exams" sub="4 hours, real exam structure" />
             <DropdownLink href="/mini-mock" label="Weekly Mini-Mocks" sub="30 questions, 45 minutes" />
             <DropdownLink href="/tools/cpa-readiness-check" label="Readiness Check" sub="Find your weak areas" />
             <DropdownLink href="/cpa" label="MCQs" sub="Practice by subject and topic" />
