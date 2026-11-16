@@ -17,7 +17,9 @@ async function getData(slug: string) {
     include: { topics: { where: { isComingSoon: false }, orderBy: { order: "asc" }, select: { slug: true, title: true, blueprintArea: true, order: true } } },
   });
   if (!subject) return null;
-  return { subject, sims };
+  const counts = subject.topics.map((t) => sims.filter((s) => s.topic === t.slug).length);
+  const minPerTopic = counts.length ? Math.min(...counts) : 0;
+  return { subject, sims, minPerTopic };
 }
 
 export async function generateMetadata({ params }: PageProps<"/cpa/[subject]/simulations">): Promise<Metadata> {
@@ -36,7 +38,7 @@ export default async function SimulationsPage({ params }: PageProps<"/cpa/[subje
   const { subject: slug } = await params;
   const data = await getData(slug);
   if (!data) notFound();
-  const { subject, sims } = data;
+  const { subject, sims, minPerTopic } = data;
 
   return (
     <>
@@ -56,7 +58,7 @@ export default async function SimulationsPage({ params }: PageProps<"/cpa/[subje
             what was right and why.
           </p>
           <p className="mt-3 text-sm text-ink-400">
-            {sims.length} simulations · at least 2 per topic · No sign-in needed
+            {sims.length} simulations · {minPerTopic >= 2 ? "at least 2 per topic" : minPerTopic === 1 ? "at least 1 per topic" : "for most topics"} · No sign-in needed
           </p>
         </Container>
       </div>

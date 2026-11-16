@@ -5,8 +5,16 @@
  */
 import { far } from "./seed-data/far";
 import { aud } from "./seed-data/aud";
+import { reg } from "./seed-data/reg";
+import { bar } from "./seed-data/bar";
+import { isc } from "./seed-data/isc";
+import { tcp } from "./seed-data/tcp";
 import { farSimulations } from "../src/lib/tbs/data/far";
 import { audSimulations } from "../src/lib/tbs/data/aud";
+import { regSimulations } from "../src/lib/tbs/data/reg";
+import { barSimulations } from "../src/lib/tbs/data/bar";
+import { iscSimulations } from "../src/lib/tbs/data/isc";
+import { tcpSimulations } from "../src/lib/tbs/data/tcp";
 import { cellCorrect, grade, parseAmount, referenceMatches, toPublic } from "../src/lib/tbs/grade";
 import type { Cell, Simulation } from "../src/lib/tbs/types";
 
@@ -32,21 +40,24 @@ eq("AU-C section with paragraph", referenceMatches("AU-C 570.10", "AU-C 570"), t
 eq("AU-C without hyphen", referenceMatches("auc 570", "AU-C 570"), true);
 eq("AU-C wrong section", referenceMatches("AU-C 57", "AU-C 570"), false);
 eq("AU-C vs AR-C", referenceMatches("AR-C 570", "AU-C 570"), false);
+eq("IRC section with prefix", referenceMatches("IRC §1031", "1031"), true);
+eq("Section prefix", referenceMatches("Sec. 162", "162"), true);
+eq("bare section", referenceMatches("1245", "1245"), true);
+eq("wrong section", referenceMatches("1250", "1245"), false);
 eq("number within tolerance", cellCorrect({ kind: "number", answer: 3.73, tolerance: 0.01 }, "3.734"), true);
 eq("number outside tolerance", cellCorrect({ kind: "number", answer: 100 }, "101"), false);
 
 // ── Data ──
-const topicsBySubject: Record<string, Set<string>> = {
-  far: new Set(far.topics.map((t) => t.slug)),
-  aud: new Set(aud.topics.map((t) => t.slug)),
-};
+const topicsBySubject: Record<string, Set<string>> = Object.fromEntries(
+  [far, aud, reg, bar, isc, tcp].map((s) => [s.slug, new Set(s.topics.filter((t) => !t.isComingSoon).map((t) => t.slug))]),
+);
 
 function answerFor(cell: Cell): string {
   if (cell.kind === "number") return String(cell.answer);
   return cell.answer;
 }
 
-function checkSubject(subject: "far" | "aud", sims: Simulation[]) {
+function checkSubject(subject: Simulation["subject"], sims: Simulation[], minPerTopic = 2) {
   if (sims.length === 0) return;
   const slugs = new Set<string>();
   const perTopic = new Map<string, number>();
@@ -85,12 +96,16 @@ function checkSubject(subject: "far" | "aud", sims: Simulation[]) {
     const pub = JSON.stringify(toPublic(s));
     if (pub.includes(s.takeaway) || s.rows.some((r) => pub.includes(r.explanation))) eq(`${where} public data hides explanations`, false, true);
   }
-  for (const t of topicsBySubject[subject]) if ((perTopic.get(t) ?? 0) < 2) eq(`${subject}/${t} has at least 2 simulations`, perTopic.get(t) ?? 0, 2);
+  for (const t of topicsBySubject[subject]) if ((perTopic.get(t) ?? 0) < minPerTopic) eq(`${subject}/${t} has at least ${minPerTopic} simulation(s)`, perTopic.get(t) ?? 0, minPerTopic);
   console.log(`${subject}: ${sims.length} simulations, ${sims.reduce((n, s) => n + s.rows.length, 0)} answer rows checked`);
 }
 
 checkSubject("far", farSimulations);
 checkSubject("aud", audSimulations);
+checkSubject("reg", regSimulations, 1);
+checkSubject("bar", barSimulations, 1);
+checkSubject("isc", iscSimulations, 1);
+checkSubject("tcp", tcpSimulations, 1);
 
 console.log(failed ? `\n${failed} failed` : "\nAll passed");
 process.exit(failed ? 1 : 0);

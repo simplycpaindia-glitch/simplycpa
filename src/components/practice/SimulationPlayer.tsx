@@ -81,7 +81,7 @@ export function SimulationPlayer({ sim }: { sim: PublicSimulation }) {
         aria-label={aria}
         className={cn(common, cell.kind === "number" && "text-right tabular-nums")}
         inputMode={cell.kind === "number" ? "decimal" : "text"}
-        placeholder={cell.kind === "research" ? (sim.subject === "far" ? "e.g. 606-10-25-1" : "e.g. AU-C 500") : undefined}
+        placeholder={cell.kind === "research" ? (sim.subject === "far" ? "e.g. 606-10-25-1" : sim.subject === "aud" ? "e.g. AU-C 500" : "e.g. 1031") : undefined}
         value={value}
         disabled={!!result}
         onChange={(e) => set(r, c, e.target.value)}

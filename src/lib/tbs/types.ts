@@ -19,7 +19,7 @@ export type Cell =
   | { kind: "select"; options: readonly string[]; answer: string }
   /** Blank counts as 0, so journal-entry rows can leave the unused side empty. */
   | { kind: "number"; answer: number; tolerance?: number }
-  /** A reference to the standards, e.g. "606-10-25-1" (FASB Codification) or "AU-C 570". */
+  /** A reference to the standards, e.g. "606-10-25-1" (FASB Codification), "AU-C 570" or an Internal Revenue Code section such as "1031". */
   | { kind: "research"; answer: string };
 
 export type Row = { label: string; cells: Cell[]; explanation: string };
@@ -32,7 +32,7 @@ export type Exhibit = {
 
 export type Simulation = {
   slug: string;
-  subject: "far" | "aud";
+  subject: "far" | "aud" | "reg" | "bar" | "isc" | "tcp";
   /** Topic slug within the subject. */
   topic: string;
   title: string;

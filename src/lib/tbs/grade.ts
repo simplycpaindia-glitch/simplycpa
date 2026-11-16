@@ -13,6 +13,7 @@ export function parseAmount(input: string): number | null {
 /**
  * Standards references compare loosely: "ASC 606-10-25-01" matches "606-10-25-1",
  * and "AUC 570" or "AU-C 570.10" matches a section-level answer of "AU-C 570".
+ * Internal Revenue Code sections match with or without "IRC", "Section" or "§".
  */
 export function referenceMatches(input: string, answer: string): boolean {
   const norm = (s: string) =>
@@ -28,7 +29,7 @@ export function referenceMatches(input: string, answer: string): boolean {
   const parts = (s: string) =>
     s
       .toUpperCase()
-      .replace(/\b(FASB|ASC|SECTION|PARAGRAPH|PARA)\b\.?/g, "")
+      .replace(/\b(FASB|ASC|SECTION|PARAGRAPH|PARA|IRC|SEC)\b\.?/g, "")
       .split(/[^0-9A-Z]+/)
       .filter(Boolean)
       .map((p) => (/^\d+$/.test(p) ? String(Number(p)) : p));
