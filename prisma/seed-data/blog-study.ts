@@ -33,6 +33,8 @@ export const studyPosts: BlogSeed[] = [
       "What matters more than order: Start with the section where you have the most momentum, and keep moving — the 30-month credit window rewards steady progress.",
     ],
     content: `
+<p>Want a quick answer for your own situation? Our free <a href="/tools/cpa-section-order">section order planner</a> asks four questions and suggests an order, with reasons.</p>
+
 <h2>The three Core sections compared</h2>
 <table>
 <thead><tr><th></th><th>FAR</th><th>AUD</th><th>REG</th></tr></thead>

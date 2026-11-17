@@ -17,6 +17,13 @@ export const TOOLS: Tool[] = [
     isNew: true,
   },
   {
+    href: "/tools/cpa-section-order",
+    name: "Section Order Planner",
+    blurb: "Which section first? Four questions give you a suggested order for FAR, AUD, REG and your Discipline, with reasons.",
+    stage: "Plan",
+    isNew: true,
+  },
+  {
     href: "/tools/cpa-discipline-selector",
     name: "Discipline Selector",
     blurb: "BAR, ISC or TCP? Six questions about your background and plans, with the reasoning shown.",
