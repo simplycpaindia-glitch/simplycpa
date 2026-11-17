@@ -13,6 +13,276 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "sec-enforcement-results-fy2026",
+    title: "SEC enforcement in fiscal 2026: 348 actions, $1.095 billion ordered, auditors among those charged",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The SEC filed 348 enforcement actions in the year to 30 September 2026, returned about $731 million to harmed investors and charged at least one individual in two-thirds of standalone cases.",
+    eventDate: "2026-11-10",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 10 November 2026 the Securities and Exchange Commission published its enforcement results for fiscal year 2026, which ended on 30 September (press release 2026-113).",
+      },
+      {
+        type: "table",
+        head: ["Measure", "Fiscal 2026"],
+        rows: [
+          ["Enforcement actions filed", "348"],
+          ["Of which standalone actions", "235"],
+          ["Of which follow-on administrative proceedings", "113"],
+          ["Monetary relief ordered", "$1.095 billion"],
+          ["Disgorgement and prejudgment interest", "$752 million"],
+          ["Civil penalties", "$343 million"],
+          ["Returned to harmed investors", "About $731 million, to more than 250,000 investors"],
+          ["Whistleblower tips received", "About 26,000"],
+          ["Whistleblower awards", "More than $158 million to 65 individuals"],
+        ],
+      },
+      { type: "h2", text: "Accounting and audit cases in the release" },
+      {
+        type: "list",
+        items: [
+          "An audit engagement partner, in a settled action over negligent audits of FTX that resulted in a GAAP violation.",
+          "EisnerAmper LLP, for failing to audit a mutual fund's financial statements in line with PCAOB standards.",
+          "A New Jersey-based CPA, for failing to comply with auditor independence rules and several PCAOB standards.",
+          "Archer-Daniels-Midland and two former executives, settled charges of materially inflating a key segment's performance.",
+          "Two former executives who failed to disclose to the auditor at least $290,000 of personal or unauthorised expenses paid by the company.",
+          "A former CFO of The Bancorp who directed a 10-K filing knowing the auditors had not given final approval.",
+          "Key Tronic and two senior executives, for books-and-records and internal control violations involving false inventory entries.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The SEC lists accounting fraud and auditor misconduct among its priorities, handled by its Financial Reporting and Accounting Unit, and says it continued close coordination with the PCAOB. Enforcement Director David Woodcock said the focus is on \"rigorous investigations, pursuing consequential misconduct\".",
+      },
+    ],
+    whyItMatters: [
+      "Several of these cases are textbook AUD and BAR topics: independence, management misrepresentations to the auditor, inventory fraud and internal control failures.",
+      "Individuals were charged in two-thirds of standalone actions. CFOs and engagement partners carry personal risk, not just their firms.",
+      "Companies that remediated and cooperated sometimes avoided civil penalties, a pattern worth knowing for the ethics side of the exam.",
+    ],
+    sources: [
+      {
+        label: "SEC: Press release 2026-113, SEC Announces Enforcement Annual Results for Fiscal Year 2026 (10 November 2026)",
+        url: "https://www.sec.gov/newsroom/press-releases/2026-113-sec-announces-enforcement-annual-results-fiscal-year-2026",
+      },
+    ],
+    related: [
+      { label: "AUD: fraud risk", href: "/cpa/aud/fraud-risk" },
+      { label: "BAR: public company reporting", href: "/cpa/bar/public-company-reporting-topics" },
+      { label: "AUD: audit reports", href: "/cpa/aud/audit-reports" },
+    ],
+  },
+  {
+    slug: "aicpa-2026-trends-report",
+    title: "AICPA 2026 Trends: first-time CPA candidates at their highest since 2018",
+    category: "candidates",
+    status: "confirmed",
+    summary:
+      "The AICPA's annual report finds accounting bachelor's completions up 8.5% in 2024–25, enrolments growing for a third year, and first-time exam candidates, unique candidates and passers at multi-year highs.",
+    eventDate: "2026-11-04",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 4 November 2026 the AICPA published its 2026 Trends report on accounting education, the CPA Exam and public accounting firms' hiring of recent graduates. The headline findings on its summary page:",
+      },
+      {
+        type: "list",
+        items: [
+          "Accounting bachelor's degree completions rose 8.5% in 2024–25, the first increase in recent years.",
+          "Master's completions declined, though combined bachelor's and master's completions increased.",
+          "Accounting enrolments grew for a third consecutive year, with strong growth in four-year undergraduate programmes.",
+          "First-time CPA Exam candidates reached their highest level since 2018, excluding the temporary surge around the CPA Evolution transition.",
+          "Unique candidates and exam passers reached multi-year highs.",
+          "Accounting graduates remain the majority of new graduate hires reported by participating firms.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The detailed figures are in the full report, which the AICPA publishes as a downloadable presentation. We have reported only what the summary page states.",
+      },
+    ],
+    whyItMatters: [
+      "More candidates is good news for the profession, and it also means more competition for entry-level roles. A licence, not just passed sections, is what sets you apart.",
+      "The fall in master's completions fits the new licensure pathways that no longer require a fifth year of study, which also helps candidates with a three-year Indian degree.",
+      "Rising pass counts and steady pass rates show that more people are passing, not that the exam got easier.",
+    ],
+    sources: [
+      {
+        label: "AICPA: 2026 Trends, a report on accounting education, the CPA Exam and public accounting firms' hiring of recent graduates (4 November 2026)",
+        url: "https://www.aicpa-cima.com/resources/article/2026-trends-a-report-on-accounting-education-the-cpa-exam-and-public-accounting-firms-hiring-of-recent-graduates",
+      },
+    ],
+    related: [
+      { label: "Pass rate tracker", href: "/cpa-exam-pass-rates" },
+      { label: "CPA licensure pathways", href: "/cpa-licensure-pathways" },
+      { label: "Start here", href: "/start-here" },
+    ],
+  },
+  {
+    slug: "ifrs-new-leadership-sam-woods-steven-maijoor",
+    title: "New leadership at the IFRS Foundation: Sam Woods chairs the IASB, Steven Maijoor the Trustees from January",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The former head of the UK Prudential Regulation Authority became IASB Chair on 1 October 2026. The Trustees also plan smaller boards of 10 members from 2028 and an ISSB seat in Geneva.",
+    eventDate: "2026-11-09",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "Sam Woods became Chair of the International Accounting Standards Board on 1 October 2026, for a five-year term. He was previously Deputy Governor of the Bank of England and Chief Executive of the UK Prudential Regulation Authority. He succeeds Andreas Barckow, whose term ended in June 2026. The IFRS Foundation published an interview with him on 9 November.",
+      },
+      {
+        type: "p",
+        text: "Steven Maijoor, a former Chair of the European Securities and Markets Authority and a Trustee since 2023, becomes Chair of the IFRS Foundation Trustees on 1 January 2027. He succeeds Erkki Liikanen, Chair since 2018.",
+      },
+      { type: "h2", text: "Other changes under way" },
+      {
+        type: "list",
+        items: [
+          "The Trustees expect the IASB and the International Sustainability Standards Board (ISSB) to have 10 members each from 2028. A consultation on the constitution changes needed closed on 16 November 2026.",
+          "The ISSB will have its seat in Geneva, with the office expected to open in mid-2027.",
+          "The Foundation says more than 45 jurisdictions are using ISSB Standards.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "India's Ind AS are converged with IFRS, so IASB decisions eventually reach Indian financial statements.",
+      "FAR tests US GAAP, but IFRS differences still matter to candidates working for multinationals, and many Indian candidates already know IFRS from Ind AS.",
+      "Exam point: the IASB is overseen by the IFRS Foundation Trustees, much as FASB is overseen by the Financial Accounting Foundation.",
+    ],
+    sources: [
+      {
+        label: "IFRS Foundation: Steven Maijoor to chair the Trustees, Sam Woods to chair the IASB (11 August 2026)",
+        url: "https://www.ifrs.org/content/ifrs/home/news-and-events/news/2026/08/steven-maijoor-chair-trustees-sam-woods-chair-iasb.html",
+      },
+      {
+        label: "IFRS Foundation: Meet the new IASB Chair, Sam Woods (9 November 2026)",
+        url: "https://www.ifrs.org/news-and-events/news/2026/11/meet-new-iasb-chair-sam-woods.html",
+      },
+      {
+        label: "IFRS Foundation: Trustees announce five-year plan, including a new ISSB seat in Geneva (18 August 2026)",
+        url: "https://www.ifrs.org/news-and-events/news/2026/08/trustees-announce-five-year-plan/",
+      },
+    ],
+    related: [
+      { label: "FAR: conceptual framework", href: "/cpa/far/conceptual-framework-and-financial-statement-presentation" },
+      { label: "Guide for Indian candidates", href: "/indian-candidates" },
+    ],
+  },
+  {
+    slug: "gasb-digital-reporting-discussion-memorandum",
+    title: "GASB asks how government financial statements should be tagged for digital reporting; comments close 30 November",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "A GASB discussion memorandum seeks early views on organising a GASB-GAAP taxonomy for voluntary digital reporting by state and local governments. It does not propose new standards.",
+    eventDate: "2026-09-09",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "In September 2026 the Governmental Accounting Standards Board issued a discussion memorandum, Voluntary Digital Financial Reporting—Structural Design, according to CPA Practice Advisor and the Journal of Accountancy. It asks how the GASB-GAAP taxonomy should be organised so government financial statements can be digitised. We could not open GASB's own site, so this story is marked as reported.",
+      },
+      { type: "h2", text: "What GASB is asking about" },
+      {
+        type: "list",
+        items: [
+          "How GASB reporting requirements should be organised in the taxonomy.",
+          "How to handle choices that GASB standards already allow.",
+          "How to reflect presentation practices governments actually use.",
+          "How to include government-specific information.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The memorandum does not propose new accounting standards or reporting requirements. Comments are due by 30 November 2026.",
+      },
+      { type: "h2", text: "Also from GASB: subsidies guidance" },
+      {
+        type: "p",
+        text: "On 24 September 2026 GASB issued Implementation Guide 2026-1, Financial Reporting Model Improvements—Subsidies, with seven new questions and answers on applying Statement 103's subsidy requirements. Implementation guides are authoritative (category B) GAAP.",
+      },
+    ],
+    whyItMatters: [
+      "Governmental accounting is tested in FAR and BAR. Statement 103, the new reporting model, is the standard to know; this memorandum is background.",
+      "Remember the GAAP hierarchy for governments: GASB Statements are category A, implementation guides category B.",
+      "Digital, tagged financial statements are already required of SEC filers. Governments may follow on a voluntary basis.",
+    ],
+    sources: [
+      {
+        label: "CPA Practice Advisor: GASB mulls digitization of government financial statements (9 September 2026)",
+        url: "https://www.cpapracticeadvisor.com/2026/09/09/gasb-mulls-digitization-of-government-financial-statements/189942/",
+      },
+      {
+        label: "Journal of Accountancy: GASB issues guidance for its reporting model related to subsidies (25 September 2026)",
+        url: "https://www.journalofaccountancy.com/news/2026/sep/gasb-issues-guidance-for-its-reporting-model-related-to-subsidies/",
+      },
+    ],
+    related: [
+      { label: "FAR: governmental accounting", href: "/cpa/far/governmental-accounting" },
+      { label: "BAR: government-wide statements", href: "/cpa/bar/government-wide-financial-statements" },
+    ],
+  },
+  {
+    slug: "key-dates-late-november-december-2026",
+    title: "Dates to know: late November and December 2026",
+    category: "candidates",
+    status: "commentary",
+    summary:
+      "Core scores on 24 November, two standard-setter comment deadlines, PTIN expiry on 31 December and the new Opportunity Zones on 1 January. Every date comes from a story we have already sourced.",
+    eventDate: "2026-11-17",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "A short calendar pulling together dates from recent Pulse stories. Each links back to the official source in the original story.",
+      },
+      {
+        type: "table",
+        head: ["Date", "What happens", "Who it matters to"],
+        rows: [
+          ["23 November 2026", "Comments close on FASB's proposal on consideration payable to a customer", "Revenue specialists; FAR readers"],
+          ["24 November 2026", "Target date for the next Core score release (AUD, FAR, REG)", "Candidates who tested in early November"],
+          ["30 November 2026", "Comments close on GASB's digital reporting discussion memorandum", "Government auditors"],
+          ["31 December 2026", "2026 PTINs expire", "Anyone paid to prepare US returns"],
+          ["1 January 2027", "New Opportunity Zone designations take effect", "Tax advisers"],
+          ["4 January 2027", "Comments close on FASB's indexation proposal for equity-linked contracts", "Technical accountants"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Score release dates are AICPA targets and can move. Check the score release page for the latest.",
+      },
+    ],
+    whyItMatters: [
+      "If you are waiting on a Core score, plan your next section around 24 November rather than guessing.",
+      "If you prepare US returns for pay, renew your PTIN before January.",
+    ],
+    sources: [
+      { label: "AICPA: CPA Exam score release timeline", url: "https://www.aicpa-cima.com/resources/article/find-out-when-youll-get-your-cpa-exam-score" },
+      { label: "IRS: IR-2026-130, renew PTINs for 2027", url: "https://www.irs.gov/newsroom/irs-reminder-tax-professionals-should-renew-their-ptins-for-2027" },
+      {
+        label: "IRS: IR-2026-132, Opportunity Zones designations",
+        url: "https://www.irs.gov/newsroom/treasury-irs-announce-opportunity-zones-designations-for-over-6500-communities-across-america",
+      },
+    ],
+    related: [
+      { label: "Score release dates", href: "/cpa-score-release-dates" },
+      { label: "Exam countdown", href: "/tools/cpa-exam-countdown" },
+    ],
+  },
+  {
     slug: "pcaob-delinquency-notices-97-firms",
     title: "PCAOB moves to withdraw the registrations of 97 audit firms in its first use of a 2024 rule",
     category: "accounting-regulation",
