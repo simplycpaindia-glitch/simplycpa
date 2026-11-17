@@ -13,6 +13,368 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "pcaob-delinquency-notices-97-firms",
+    title: "PCAOB moves to withdraw the registrations of 97 audit firms in its first use of a 2024 rule",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The US audit regulator sent Notices of Delinquency and Impending Withdrawal to 97 registered firms under Rule 2107(h), a process meant to clear inactive firms from its public register.",
+    eventDate: "2026-11-06",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 6 November 2026 the Public Company Accounting Oversight Board announced that it had sent a Notice of Delinquency and Impending Withdrawal to 97 PCAOB-registered audit firms under Rule 2107(h), Constructive Withdrawal Requests.",
+      },
+      {
+        type: "p",
+        text: "The Board adopted the rule in November 2024 so that its public record lists only firms that are in operation and want to stay registered. This is the first time it has been used. Chairman Demetrios (Jim) Logothetis said the action gives investors \"a more accurate picture\" of the firms still active in public company auditing.",
+      },
+      { type: "h2", text: "What the release does not say" },
+      {
+        type: "p",
+        text: "The PCAOB's announcement does not name the firms or list the delinquencies involved. It directs firms with questions to its Registration staff.",
+      },
+    ],
+    whyItMatters: [
+      "Registration with the PCAOB is a precondition for auditing US public companies and SEC-registered broker-dealers, including for firms outside the US. Several Indian firms are registered.",
+      "For AUD, remember who does what: the PCAOB registers and inspects audit firms of issuers and sets their auditing standards, under SEC oversight.",
+      "Keeping a registration means keeping up with required PCAOB filings even in years with no issuer clients.",
+    ],
+    sources: [
+      {
+        label: "PCAOB: PCAOB Issues Notices of Delinquency and Impending Withdrawal to 97 Audit Firms (6 November 2026)",
+        url: "https://pcaobus.org/news-events/news-releases/news-release-detail/pcaob-issues-notices-of-delinquency-and-impending-withdrawal-to-97-audit-firms",
+      },
+    ],
+    related: [
+      { label: "Key terms: PCAOB, GAAS and issuers", href: "/faq/key-terms" },
+      { label: "AUD: audit reports", href: "/cpa/aud/audit-reports" },
+    ],
+  },
+  {
+    slug: "opportunity-zones-6576-tracts-2027",
+    title: "Treasury designates 6,576 new Opportunity Zones, effective 1 January 2027 for ten years",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Every eligible census tract nominated by the states, territories and District of Columbia has been designated, 2,594 of them rural. The designations run for ten years from 1 January 2027.",
+    eventDate: "2026-11-05",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 5 November 2026 Treasury and the IRS announced the new round of Qualified Opportunity Zone designations (news release IR-2026-132). All 6,576 eligible census tracts that were nominated have been designated, effective 1 January 2027, and they keep the designation for ten years.",
+      },
+      {
+        type: "table",
+        head: ["Figure", "As stated by the IRS"],
+        rows: [
+          ["Census tracts designated", "6,576"],
+          ["Of which in rural areas", "2,594"],
+          ["Tracts that were eligible for nomination", "25,332 (8,334 rural)"],
+          ["Effective date", "1 January 2027"],
+          ["Length of designation", "Ten years"],
+        ],
+      },
+      {
+        type: "p",
+        text: "The IRS says the Working Families Tax Cuts legislation permanently renewed the Opportunity Zone incentive, which began under the Tax Cuts and Jobs Act of 2017, added enhanced incentives for rural communities and set up a redesignation process every ten years. It reports more than $110 billion of private investment since the incentives began.",
+      },
+      {
+        type: "p",
+        text: "The full list and a map are published by the Treasury's CDFI Fund.",
+      },
+    ],
+    whyItMatters: [
+      "Opportunity Zone investing is a gain-deferral planning tool, which puts it in TCP's property transactions area. The exams test enacted law only after the usual lag, so check your review course before relying on the new rules.",
+      "US clients of Indian outsourcing firms in real estate and private equity will ask about the new zones in 2027.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-132, Treasury, IRS announce Opportunity Zones designations for over 6,500 communities (5 November 2026)",
+        url: "https://www.irs.gov/newsroom/treasury-irs-announce-opportunity-zones-designations-for-over-6500-communities-across-america",
+      },
+      { label: "CDFI Fund: Opportunity Zones list and map", url: "https://www.cdfifund.gov/opportunity-zones" },
+    ],
+    related: [
+      { label: "TCP: property transactions planning", href: "/cpa/tcp/property-transactions-advanced-planning" },
+      { label: "REG: gains, losses and like-kind exchanges", href: "/cpa/reg/property-transactions-gains-losses-and-like-kind-exchanges" },
+    ],
+  },
+  {
+    slug: "ptin-renewal-2027",
+    title: "Preparers: 2026 PTINs expire on 31 December. Renewal for 2027 costs $18.75",
+    category: "candidates",
+    status: "confirmed",
+    summary:
+      "Anyone paid to prepare US federal returns needs a valid preparer tax identification number for 2027. Online renewal takes about 15 minutes; a paper Form W-12 takes about six weeks.",
+    eventDate: "2026-11-04",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 4 November 2026 the IRS reminded tax professionals (news release IR-2026-130) that current preparer tax identification numbers (PTINs) expire on 31 December 2026 and must be renewed for 2027.",
+      },
+      { type: "h2", text: "The essentials" },
+      {
+        type: "list",
+        items: [
+          "Who needs one: anyone who prepares, or assists in preparing, federal tax returns or refund claims for compensation.",
+          "Fee: $18.75, nonrefundable and nontransferable.",
+          "Online: sign in to your PTIN account, choose 'Renew my PTIN', update your details and pay. The IRS says this takes about 15 minutes.",
+          "By post: Form W-12. Paper applications take about six weeks.",
+          "Enrolled agents should renew their PTINs too; their enrolment renewal cycle runs to 31 January 2027.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Many Indian professionals prepare US returns for US firms. If you are paid to prepare or help prepare them, the PTIN requirement applies to you, wherever you sit.",
+      "REG tests preparer rules: who is a preparer, signing requirements and preparer penalties. The PTIN is the identifier behind all of them.",
+      "Renew before the US filing season starts in January, when the system is busiest.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-130, Tax professionals should renew their PTINs for 2027 (4 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-reminder-tax-professionals-should-renew-their-ptins-for-2027",
+      },
+    ],
+    related: [
+      { label: "REG: tax procedures and penalties", href: "/cpa/reg/federal-tax-procedures-and-penalties" },
+      { label: "REG: Circular 230", href: "/cpa/reg/circular-230-and-practitioner-ethics" },
+    ],
+  },
+  {
+    slug: "aicpa-ai-practice-aid-auditors",
+    title: "AICPA issues a practice aid on AI: clients' use in financial reporting and firms' use in audits",
+    category: "industry",
+    status: "reported",
+    summary:
+      "The two-part aid covers how a client's use of AI affects the audit, including hallucinations and bias, and how audit firms should manage their own AI tools. More guidance is planned.",
+    eventDate: "2026-11-16",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "The AICPA has released a practice aid to help auditors deal with artificial intelligence, according to CPA Practice Advisor's November 2026 roundup of AICPA news. We could not find the AICPA's own announcement, so this story is marked as reported.",
+      },
+      {
+        type: "table",
+        head: ["Part", "What it covers"],
+        rows: [
+          [
+            "1. The client's use of AI in financial reporting",
+            "Effects on risk assessment, data quality and the audit team's capabilities, and new risks such as hallucinations and bias",
+          ],
+          [
+            "2. The audit firm's use of AI tools",
+            "Firm quality management policies, engagement team competence, planning and partner responsibilities",
+          ],
+        ],
+      },
+      {
+        type: "p",
+        text: "The roundup says more guidance is planned on risk assessment and audit evidence for the first part, and more questions and answers for the second.",
+      },
+    ],
+    whyItMatters: [
+      "The 2027 AUD Blueprint adds AI-generated evidence, and ISC already tests emerging technology risks. Expect questions on how AI changes evidence reliability.",
+      "Part two lines up with the quality management standards (SQMS 1): a firm's AI tools are resources the firm must govern.",
+      "Indian audit support teams are often first to use firm AI tools, so the competence and supervision points apply directly.",
+    ],
+    sources: [
+      {
+        label: "CPA Practice Advisor: AICPA News, November 2026 (16 November 2026)",
+        url: "https://www.cpapracticeadvisor.com/2026/11/16/aicpa-news-nov-2026-part-1/193970/",
+      },
+    ],
+    related: [
+      { label: "ISC: emerging technology", href: "/cpa/isc/emerging-technology-considerations" },
+      { label: "AUD: evidence types and procedures", href: "/cpa/aud/evidence-types-and-procedures" },
+    ],
+  },
+  {
+    slug: "senate-passes-taxpayer-assistance-and-service-act",
+    title: "Senate passes the Taxpayer Assistance and Service Act; the House is next",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "The bill, passed by unanimous consent, would expand electronic access to taxpayer information, digitise IRS correspondence and add preparer oversight measures. It still needs to pass the House.",
+    eventDate: "2026-11-16",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "The US Senate has passed the Taxpayer Assistance and Service (TAS) Act by unanimous consent, according to the AICPA as reported by CPA Practice Advisor. The AICPA welcomed the vote and credited Senate Finance Committee Chairman Crapo and Ranking Member Wyden.",
+      },
+      { type: "h2", text: "What the bill would do, as the AICPA describes it" },
+      {
+        type: "list",
+        items: [
+          "Expand electronic access to taxpayer information.",
+          "Digitise IRS correspondence and returns.",
+          "Improve online account functionality and expand callback technology.",
+          "Give more visibility into IRS processing backlogs.",
+          "Add measures on preparer oversight and support for taxpayers facing economic hardship.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The bill is not law. The AICPA says it will work with the House to advance it. We have not seen the bill number or text, so details may change.",
+      },
+    ],
+    whyItMatters: [
+      "If enacted, preparer oversight provisions would matter to anyone preparing US returns, including from India.",
+      "Exams test enacted law. Treat this as context until it passes both chambers and is signed.",
+    ],
+    sources: [
+      {
+        label: "CPA Practice Advisor: AICPA News, November 2026 (16 November 2026)",
+        url: "https://www.cpapracticeadvisor.com/2026/11/16/aicpa-news-nov-2026-part-1/193970/",
+      },
+    ],
+    related: [{ label: "REG: IRS procedures", href: "/cpa/reg/irs-procedures-and-appeals" }],
+  },
+  {
+    slug: "trump-accounts-employer-contributions-aicpa-comments",
+    title: "Employer contributions to Trump Accounts: AICPA asks for simpler rules and a deadline extension",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Proposed regulations let employers make tax-free contributions to employees' Trump Accounts of up to $2,500 per employee in 2026 and 2027. The AICPA calls the proposal administratively burdensome.",
+    eventDate: "2026-10-16",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 16 October 2026 the AICPA sent Treasury and the IRS comments on proposed regulations for employer contributions to Trump Accounts. The proposed rules cover employer programmes under Internal Revenue Code Section 128, with tax-free contributions subject to annual limits of $2,500 per employee in 2026 and 2027.",
+      },
+      { type: "h2", text: "What the AICPA recommends" },
+      {
+        type: "list",
+        items: [
+          "Simplified methods of compliance for employers.",
+          "A standard process for communicating with account trustees.",
+          "Extending the deadline for 2026 Trump Account contributions into 2027.",
+          "Transition relief.",
+          "More flexibility in the nondiscrimination rules.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The rules are still proposed, so details may change before they are final.",
+      },
+    ],
+    whyItMatters: [
+      "Excludable fringe benefits are a REG staple. Section 128 adds a new one, with a nondiscrimination test like other employer plans.",
+      "Payroll teams in India serving US employers will need to track these contributions once final rules are issued.",
+    ],
+    sources: [
+      {
+        label: "AICPA: Comment letter on proposed regulations for employer contributions to Trump Accounts (16 October 2026)",
+        url: "https://www.aicpa-cima.com/resources/download/aicpa-comment-letter-on-proposed-regulations-for-employer-contributions-to-trump-accounts",
+      },
+      {
+        label: "CPA Practice Advisor: AICPA News, November 2026",
+        url: "https://www.cpapracticeadvisor.com/2026/11/16/aicpa-news-nov-2026-part-1/193970/",
+      },
+    ],
+    related: [{ label: "REG: employee benefits and payroll tax", href: "/cpa/reg/employee-benefits-and-payroll-tax" }],
+  },
+  {
+    slug: "sec-cpas-accredited-investors-aicpa-support",
+    title: "SEC proposal could let CPAs qualify as accredited investors by credential; AICPA backs it",
+    category: "industry",
+    status: "reported",
+    summary:
+      "The SEC has proposed new routes for individuals to qualify as accredited investors, including holding a CPA licence. The AICPA supported the idea in an October comment letter.",
+    eventDate: "2026-10-27",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 30 September the SEC proposed new pathways for individual investors to qualify as accredited investors, including by being a CPA or holding certain other credentials, according to the Journal of Accountancy. The SEC is also considering an exam, developed by FINRA, as a route to qualify.",
+      },
+      {
+        type: "p",
+        text: "In a comment letter dated 27 October, signed by Sue Coffey, AICPA CEO–Public Accounting, the AICPA supported recognising CPAs by virtue of their credential. The letter says: \"CPAs satisfy that condition.\"",
+      },
+      { type: "h2", text: "Background" },
+      {
+        type: "p",
+        text: "Accredited investors may buy securities in private offerings that are not registered with the SEC. The SEC last added new categories to the definition in 2020.",
+      },
+    ],
+    whyItMatters: [
+      "If adopted, the CPA licence would carry a direct financial benefit in the US beyond professional practice.",
+      "BAR and REG touch on securities law exemptions. Private placements under Regulation D rely on accredited investor status.",
+      "It is a proposal. Nothing changes until the SEC adopts a final rule.",
+    ],
+    sources: [
+      {
+        label: "Journal of Accountancy: AICPA supports SEC plan to recognize CPAs as accredited investors (11 November 2026)",
+        url: "https://www.journalofaccountancy.com/news/2026/nov/aicpa-supports-sec-plan-to-recognize-cpas-as-accredited-investors/",
+      },
+    ],
+    related: [
+      { label: "BAR: public company reporting", href: "/cpa/bar/public-company-reporting-topics" },
+      { label: "Why a US CPA: guide for Indian candidates", href: "/indian-candidates" },
+    ],
+  },
+  {
+    slug: "wyden-letters-big-four-malta-tax-structures",
+    title: "Senator Wyden questions Big Four CEOs over Malta-based tax strategies",
+    category: "industry",
+    status: "reported",
+    summary:
+      "The top Democrat on the Senate Finance Committee sent seven questions to each firm about Malta subsidiary structures, marketing materials and fees, with answers due by 10 November 2026.",
+    eventDate: "2026-10-21",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "Senator Ron Wyden, ranking member of the Senate Finance Committee, has written to the CEOs of Deloitte, EY, KPMG and PwC about consulting on tax strategies that use Malta-based subsidiaries, Accounting Today reported on 21 October 2026. The letters follow a New York Times report in August on how such strategies were marketed to clients.",
+      },
+      { type: "h2", text: "What he asked" },
+      {
+        type: "list",
+        items: [
+          "Whether the firm worked on Malta subsidiary structures, or advised on using Maltese entities to reduce tax, including under the global minimum tax (Pillar Two).",
+          "Copies of any marketing materials on Malta strategies, with client identities redacted.",
+          "Any written estimates of US taxes avoided.",
+          "The number of clients and total fees earned.",
+          "Whether the firm worked with Maltese law firms or government officials.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Answers were requested by 10 November 2026. We have not seen any public response from the firms. A letter from a senator is an inquiry, not a finding of wrongdoing.",
+      },
+    ],
+    whyItMatters: [
+      "TCP's international topics and REG's preparer ethics meet here: aggressive positions carry penalty and reputational risk for the adviser as well as the client.",
+      "Indian tax teams in Big Four firms support international structuring work, so scrutiny of that work reaches them too.",
+    ],
+    sources: [
+      {
+        label: "Accounting Today: Big Four probed on offshore tax shelter consulting (21 October 2026)",
+        url: "https://www.accountingtoday.com/news/big-four-probed-on-offshore-tax-shelter-consulting",
+      },
+    ],
+    related: [
+      { label: "TCP: international basics", href: "/cpa/tcp/multi-jurisdictional-and-international-basics" },
+      { label: "REG: Circular 230", href: "/cpa/reg/circular-230-and-practitioner-ethics" },
+    ],
+  },
+  {
     slug: "irs-2027-inflation-adjustments",
     title: "IRS sets 2027 tax figures: $33,200 joint standard deduction, $20,000 gift exclusion",
     category: "accounting-regulation",
