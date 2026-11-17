@@ -8,10 +8,12 @@ import { formatIsoDate } from "@/lib/utils";
 import { INDIA_TEST_CITIES, USD_INR, formatInr, formatUsd, indiaTestCitiesText, toInr } from "@/lib/india";
 import { BOARDS_SOURCE, INDIA_BOARDS, PATHWAYS_SOURCE, PROFILES } from "@/lib/india-boards";
 import { istDate } from "@/lib/qotd";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { CITY_INFO, GUIDES } from "@/lib/guides/data";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indian-candidates" },
-  title: "CPA for Indian Students",
+  title: "US CPA for Indian Students (2026): Eligibility, Cost and Process",
   description:
     "Eligibility, state selection, credential evaluation, cost, and career paths — the US CPA process explained for Indian CA students, commerce graduates, and working professionals.",
 };
@@ -79,6 +81,13 @@ export default async function IndianCandidatesPage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: sections.map((s) => ({ "@type": "Question", name: s.title, acceptedAnswer: { "@type": "Answer", text: s.body } })),
+        }}
+      />
       <div className="border-b border-ink-950/10 bg-paper-100 py-14">
         <Container>
           <SectionHeading as="h1"
@@ -98,6 +107,30 @@ export default async function IndianCandidatesPage() {
             </Card>
           ))}
         </div>
+
+        <section aria-labelledby="guides" className="mt-12">
+          <h2 id="guides" className="font-display text-2xl font-medium text-ink-950">Guides for Indian candidates</h2>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {GUIDES.map((g) => (
+              <li key={g.slug}>
+                <Link href={`/${g.slug}`} className="text-gold-700 underline underline-offset-2">
+                  {g.h1}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-4 text-sm text-ink-800">
+            City guides:{" "}
+            {CITY_INFO.map((c, i) => (
+              <span key={c.slug}>
+                {i > 0 && " · "}
+                <Link href={`/us-cpa-in/${c.slug}`} className="text-gold-700 underline underline-offset-2">
+                  {c.name}
+                </Link>
+              </span>
+            ))}
+          </p>
+        </section>
 
         <section aria-labelledby="cost-inr" className="mt-12 rounded-lg border border-ink-950/10 bg-paper-100/60 p-6">
           <h2 id="cost-inr" className="font-display text-2xl font-medium text-ink-950">What it costs in rupees</h2>

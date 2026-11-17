@@ -11,6 +11,7 @@ import { pulseArticles, pulseLastChanged } from "@/lib/pulse";
 import { TOOLS } from "@/lib/tools";
 import { faqCategorySlug } from "@/lib/faq";
 import { blogCategorySlug } from "@/lib/blog";
+import { CITY_INFO, GUIDES } from "@/lib/guides/data";
 import { BOARDS, BOARDS_READ } from "@/lib/state-boards";
 
 // Rebuilt at most hourly, so new posts and topics appear without waiting for a deploy.
@@ -62,6 +63,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/cpa-exam-pass-rates": new Date(PASS_RATES_CHECKED),
     "/cpa-score-release-dates": new Date(SCORE_RELEASE_CHECKED),
     "/cpa-licensure-pathways": new Date(PATHWAYS_CHECKED),
+    ...Object.fromEntries(GUIDES.map((g) => [`/${g.slug}`, new Date(g.checked)])),
+    ...Object.fromEntries(CITY_INFO.map((c) => [`/us-cpa-in/${c.slug}`, undefined])),
   };
   const undated = [
     "/question-of-the-day",

@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/site";
 import { formatIsoDate } from "@/lib/utils";
+import { CITY_INFO } from "@/lib/guides/data";
 import { INDIA_TEST_CITIES, INDIA_TEST_CITIES_SOURCE, PROMETRIC_LOCATOR, USD_INR, formatInr, formatUsd, toInr } from "@/lib/india";
 
 const PATH = "/cpa-exam-centres-india";
@@ -67,11 +68,20 @@ export default async function ExamCentresIndiaPage() {
         <section aria-labelledby="cities" className="mt-10">
           <h2 id="cities" className="font-display text-2xl font-medium text-ink-950">The {INDIA_TEST_CITIES.length} cities</h2>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-            {INDIA_TEST_CITIES.map((city) => (
-              <li key={city} className="rounded-lg border border-ink-950/10 bg-paper-50 px-4 py-3 font-medium text-ink-950">
-                {city}
-              </li>
-            ))}
+            {INDIA_TEST_CITIES.map((city) => {
+              const guide = CITY_INFO.find((c) => city.startsWith(c.name));
+              return (
+                <li key={city} className="rounded-lg border border-ink-950/10 bg-paper-50 px-4 py-3 font-medium text-ink-950">
+                  {guide ? (
+                    <Link href={`/us-cpa-in/${guide.slug}`} className="underline underline-offset-2">
+                      {city}
+                    </Link>
+                  ) : (
+                    city
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <p className="mt-3 text-sm text-ink-400">
             As listed by{" "}

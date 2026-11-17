@@ -78,6 +78,8 @@ export function MobileNav({
             <MobileLink href="/state-boards" onClick={() => setOpen(false)}>State Boards Compared</MobileLink>
             <MobileLink href="/us-cpa-fees-in-inr" onClick={() => setOpen(false)}>CPA Fees in INR</MobileLink>
             <MobileLink href="/cpa-exam-centres-india" onClick={() => setOpen(false)}>Exam Centres in India</MobileLink>
+            <MobileLink href="/ca-vs-cpa" onClick={() => setOpen(false)}>CA vs CPA</MobileLink>
+            <MobileLink href="/us-cpa-jobs-in-usa-for-indians" onClick={() => setOpen(false)}>CPA Jobs in the USA</MobileLink>
           </MobileSection>
           <MobileSection title="Learn">
             <MobileLink href="/start-here" onClick={() => setOpen(false)}>Start Here</MobileLink>

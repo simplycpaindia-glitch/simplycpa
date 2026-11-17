@@ -34,7 +34,7 @@ export async function Hero() {
     <section className="border-b border-ink-950/10 bg-paper-50">
       <div className="mx-auto max-w-4xl px-4 pt-16 pb-14 text-center sm:px-6 sm:pt-24 sm:pb-20 lg:px-8">
         <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-gold-700">
-          Free · No sign-up needed to read
+          Free · No sign-up · No phone number · No sales calls
         </p>
         <h1 className="font-display text-4xl font-medium leading-[1.15] text-ink-950 text-balance sm:text-5xl">
           Everything you need to prepare for the US CPA. Completely free.
