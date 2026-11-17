@@ -13,6 +13,410 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "secure-2-auto-enrollment-final-rules",
+    title: "Final SECURE 2.0 rules: new 401(k) and 403(b) plans must enrol workers automatically from 2028",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Treasury and the IRS have issued final regulations on automatic enrollment. Covered plans must start employees at 3% or more and raise it each year to at least 10%, for plan years beginning after 2027.",
+    eventDate: "2026-11-17",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 17 November 2026 Treasury and the IRS issued final regulations implementing the SECURE 2.0 requirement for automatic enrollment in 401(k) and 403(b) plans (news release IR-2026-141).",
+      },
+      { type: "h2", text: "What the rules require" },
+      {
+        type: "list",
+        items: [
+          "Eligible employees are enrolled automatically at a default rate of at least 3% of pay.",
+          "The rate rises by at least one percentage point a year until it reaches at least 10%, with a maximum of 15%.",
+          "The rules generally apply to plan years beginning after 31 December 2027.",
+          "Exceptions are clarified for qualifying small and new businesses, governmental plans, church plans and SIMPLE 401(k) plans.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Treasury estimates the provision's effect at an average of $4.2 billion a year over 2023–2032. Employees can still opt out or choose a different rate.",
+      },
+    ],
+    whyItMatters: [
+      "Retirement plans are tested in REG and TCP. Automatic enrollment is a SECURE 2.0 rule worth knowing alongside catch-up contributions and RMD changes.",
+      "Payroll and benefits teams in India supporting US employers will need to set up the default and escalation rates for new plans.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-141, Treasury, IRS issue final rules to help hardworking Americans build a financially secure retirement (17 November 2026)",
+        url: "https://www.irs.gov/newsroom/treasury-irs-issue-final-rules-to-help-hardworking-americans-build-a-financially-secure-retirement",
+      },
+    ],
+    related: [
+      { label: "REG: retirement plans", href: "/cpa/reg/retirement-plans-and-tax-planning-basics" },
+      { label: "TCP: retirement planning", href: "/cpa/tcp/retirement-planning-strategies" },
+      { label: "2027 retirement limits", href: "/pulse/irs-2027-retirement-plan-limits" },
+    ],
+  },
+  {
+    slug: "aicpa-soc-2-description-criteria-exposure-draft-2027",
+    title: "AICPA proposes 2027 updates to SOC 2 description criteria, with new guidance on cloud and AI",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Exposure drafts on the SOC 2 description criteria and the trust services criteria add implementation guidance on cloud computing, AI and machine learning, and APIs. Comments are due 15 January 2027.",
+    eventDate: "2026-11-17",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 17 November 2026 the AICPA asked for comments on an exposure draft of the 2027 Description Criteria for a Description of a Service Organization's System in a SOC 2 Report. A related exposure draft on the Trust Services Criteria has the same comment deadline: 15 January 2027.",
+      },
+      { type: "h2", text: "What changes" },
+      {
+        type: "list",
+        items: [
+          "New implementation guidance on cloud computing, AI and machine learning, application programming interfaces (APIs) and modern software architectures.",
+          "The nine description areas are kept, including complementary subservice organization controls and significant system incidents.",
+          "More emphasis on applying materiality when deciding what the system description must include.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "SOC engagements are a full blueprint area of ISC (15–25%). The exam tests current criteria, so learn the existing DC 200 and trust services criteria until the update is final and effective.",
+      "Indian firms that provide SOC reporting support, and many SaaS and cloud companies based in India, will see these changes in their reports.",
+    ],
+    sources: [
+      {
+        label: "AICPA & CIMA: AICPA Seeks Feedback on Proposed Updates to SOC 2 Description Criteria (17 November 2026)",
+        url: "https://www.aicpa-cima.com/news/article/aicpa-seeks-feedback-on-proposed-updates-to-soc-2-r-description-criteria",
+      },
+    ],
+    related: [
+      { label: "ISC: SOC engagements", href: "/cpa/isc/soc-engagements" },
+      { label: "SOC 1 vs SOC 2 explained", href: "/blog/soc-1-vs-soc-2-reports" },
+    ],
+  },
+  {
+    slug: "irs-agency-financial-report-fy2026",
+    title: "GAO gives the IRS a clean audit opinion for the 27th year in a row",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The IRS's Agency Financial Report for fiscal 2026 reports unmodified opinions from the Government Accountability Office on both its financial statements and its internal control over financial reporting.",
+    eventDate: "2026-11-12",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 12 November 2026 the IRS published its Agency Financial Report for fiscal year 2026 (news release IR-2026-137, Publication 5456). For the 27th consecutive year, the Government Accountability Office (GAO) issued unmodified audit opinions on the IRS's financial statements and on its internal control over financial reporting.",
+      },
+      {
+        type: "p",
+        text: "The IRS also received its fourth consecutive Certificate of Excellence in Accountability Reporting, and a best-in-class award for its discussion of enterprise risk management.",
+      },
+    ],
+    whyItMatters: [
+      "It is a real example of an integrated audit: one auditor reporting on both the financial statements and internal control over financial reporting, as auditors of large US public companies do.",
+      "Remember the vocabulary for AUD: an 'unmodified' opinion is a clean opinion; qualified, adverse and disclaimers are modified opinions.",
+      "Government auditing (GAO's Yellow Book) and governmental reporting appear in AUD, FAR and BAR.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-137, IRS shares Agency Financial Report for fiscal year 2026 (12 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-shares-agency-financial-report-for-fiscal-year-2026",
+      },
+    ],
+    related: [
+      { label: "AUD: audit reports", href: "/cpa/aud/audit-reports" },
+      { label: "Audit opinions explained", href: "/blog/types-of-audit-opinions" },
+    ],
+  },
+  {
+    slug: "irs-get-ready-2027-filing-season",
+    title: "IRS starts its 'Get Ready' reminders for the 2027 filing season, flagging the new deductions",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The first reminder points taxpayers to the new deductions for qualified tips, overtime, car loan interest and seniors, and to online accounts and direct deposit as paper refund checks are phased out.",
+    eventDate: "2026-11-16",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 16 November 2026 the IRS issued the first of its 'Get Ready' reminders for returns filed in 2027 (news release IR-2026-140).",
+      },
+      {
+        type: "list",
+        items: [
+          "It highlights deductions under the new law for qualified tips, qualified overtime compensation, qualified passenger vehicle loan interest and the enhanced deduction for seniors.",
+          "It encourages taxpayers to use IRS online accounts and the IRS app.",
+          "It recommends direct deposit, noting that paper refund checks are being phased out.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "These deductions are new and will enter the exam as the tax-year window catches up. Check which tax year your review materials cover.",
+      "If you prepare US individual returns, the January–April 2027 season will be the first full season with these deductions.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-140, Take steps now to make tax filing in 2027 easier (16 November 2026)",
+        url: "https://www.irs.gov/newsroom/irs-reminder-take-steps-now-to-make-tax-filing-in-2027-easier",
+      },
+    ],
+    related: [
+      { label: "REG: adjustments and deductions", href: "/cpa/reg/individual-taxation-adjustments-and-deductions" },
+      { label: "2027 tax figures", href: "/pulse/irs-2027-inflation-adjustments" },
+    ],
+  },
+  {
+    slug: "fasb-cash-equivalents-digital-assets-proposal",
+    title: "FASB proposal: when certain digital assets can count as cash equivalents",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "A proposed update to Topic 230 would use illustrative examples to show how the cash equivalents definition applies to certain digital assets, and require annual disclosure of what cash equivalents contain. Comments close 19 November 2026.",
+    eventDate: "2026-09-30",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "FASB has an open proposal, Statement of Cash Flows (Topic 230): Cash Equivalents—Disclosure Enhancement and Evaluation of Certain Digital Assets, according to the Technical Accounting Forum's summary of FASB activity. We could not read FASB's own page, so this story is marked as reported.",
+      },
+      { type: "h2", text: "What it proposes" },
+      {
+        type: "list",
+        items: [
+          "Illustrative examples showing how the existing definition of cash equivalents applies to certain digital assets.",
+          "For entities that present such assets as cash equivalents, an annual disclosure of the significant components of cash equivalents and their amounts.",
+          "FASB asked for feedback on the examples, the disclosure, transition, effective date, and costs and benefits. Comments close on 19 November 2026.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Cash equivalents are short-term, highly liquid investments readily convertible to known amounts of cash with insignificant risk of changes in value — a definition FAR tests directly. The proposal would apply it to digital assets rather than change it.",
+      "It is a proposal. Most crypto assets are still accounted for under ASC 350-60 at fair value, not as cash equivalents.",
+    ],
+    sources: [{ label: "Technical Accounting Forum: Q3 2026 FASB updates", url: "https://technicalaccountingforum.com/q3-2026-fasb-updates/" }],
+    related: [
+      { label: "FAR: statement of cash flows", href: "/cpa/far/statement-of-cash-flows" },
+      { label: "FAR: cash and receivables", href: "/cpa/far/cash-receivables-and-bad-debts" },
+    ],
+  },
+  {
+    slug: "fasb-codification-improvements-proposal-2026",
+    title: "FASB's codification improvements proposal: 21 fixes, including removing 'extraordinary items' references",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "The proposal clarifies guidance, corrects errors and makes minor improvements across the Codification, such as comparative statements, the CECL practical expedient and long-lived asset impairment scope.",
+    eventDate: "2026-09-30",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "FASB's proposed Accounting Standards Update, Codification Improvements, addresses 21 separate issues to clarify existing guidance, correct errors or make minor improvements, according to the Technical Accounting Forum. Comments close on 19 November 2026.",
+      },
+      { type: "h2", text: "Examples of the issues" },
+      {
+        type: "list",
+        items: [
+          "Clarifying requirements for comparative financial statements.",
+          "Clarifying the scope of the practical expedient and policy election used in estimating expected credit losses.",
+          "Clarifying the scope of the guidance on impairment or disposal of long-lived assets.",
+          "Removing remaining references to extraordinary items.",
+          "Removing a reference to the implied fair value of goodwill.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Two of these tidy up changes candidates already study: extraordinary items were eliminated by ASU 2015-01, and implied fair value of goodwill went with ASU 2017-04's one-step impairment test.",
+      "Codification improvements rarely change practice, but they show how FASB keeps the Codification consistent.",
+    ],
+    sources: [{ label: "Technical Accounting Forum: Q3 2026 FASB updates", url: "https://technicalaccountingforum.com/q3-2026-fasb-updates/" }],
+    related: [
+      { label: "FAR: balance sheet and income statement", href: "/cpa/far/balance-sheet-and-income-statement-preparation" },
+      { label: "FAR: intangibles and goodwill", href: "/cpa/far/intangible-assets-and-goodwill" },
+    ],
+  },
+  {
+    slug: "nasba-cpa-mobile-app-one-year",
+    title: "NASBA's CPA Mobile App turns one: India is its second-largest Android market",
+    category: "candidates",
+    status: "confirmed",
+    summary:
+      "NASBA reports 87,590 downloads in the app's first year. India accounts for 20.3% of Android downloads and 3.42% on iOS. The app now shows Prometric appointments and accepts Apple Pay and Google Pay.",
+    eventDate: "2026-11-04",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 4 November 2026 NASBA marked one year of its CPA Mobile App, reporting 87,590 total downloads as of 2 November.",
+      },
+      {
+        type: "table",
+        head: ["Platform", "Downloads", "US share", "India share"],
+        rows: [
+          ["Android", "15,286", "52.8%", "20.3%"],
+          ["iOS", "80,873", "83.6%", "3.42%"],
+        ],
+      },
+      { type: "p", text: "Figures as published by NASBA. The platform figures add up to more than the stated total, and NASBA's post does not explain the difference." },
+      { type: "h2", text: "What the app does now" },
+      {
+        type: "list",
+        items: [
+          "Apple Pay and Google Pay for payments.",
+          "Prometric appointments shown in the app.",
+          "NASBot, NASBA's assistant, built in.",
+          "Planned: integration with licensing systems and more CPE audit functions.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "If you apply through a NASBA-served board, the app is an official way to track your exam steps from your phone.",
+      "India's large Android share shows how many Indian candidates are now in NASBA's pipeline.",
+    ],
+    sources: [
+      {
+        label: "NASBA: CPA Mobile App Celebrates One-Year Anniversary (4 November 2026)",
+        url: "https://nasba.org/blog/2026/11/04/cpa-mobile-app-celebrates-one-year-anniversary/",
+      },
+    ],
+    related: [
+      { label: "How to apply through NASBA", href: "/blog/how-to-apply-for-us-cpa-exam-through-nasba" },
+      { label: "Score release dates", href: "/cpa-score-release-dates" },
+    ],
+  },
+  {
+    slug: "aicpa-gambling-session-method-guidance-request",
+    title: "AICPA asks the IRS for clear rules on recording gambling wins and losses by 'session'",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "With a new 90% limit on deductible wagering losses, the AICPA wants Treasury to define a gambling session, set a safe harbor and say which records prove gains and losses.",
+    eventDate: "2026-11-12",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 12 November 2026 the AICPA asked Treasury and the IRS for practical guidance on the 'session method' for measuring and substantiating gambling gains and losses. It notes that proposed regulations (REG-113229-25) on Section 165(d) and Form W-2G do not address how taxpayers should measure, substantiate and report them, and refers to the new 90% limitation on wagering losses.",
+      },
+      { type: "h2", text: "The AICPA's three requests" },
+      {
+        type: "list",
+        items: [
+          "Define a gambling session and provide a safe harbor.",
+          "Specify which records substantiate gains and losses, including account histories and win-loss statements.",
+          "Apply the session method consistently across table games, horse racing and electronic gaming.",
+        ],
+      },
+    ],
+    whyItMatters: [
+      "Gambling winnings and losses are a REG gross income and deductions topic, and the 90% limit is a recent change. Check which rule your review materials use.",
+      "It shows how professional bodies influence guidance after a law changes, a process TCP's research area touches on.",
+    ],
+    sources: [
+      {
+        label: "AICPA & CIMA: AICPA Seeks Specific, Practical Guidance for Reporting Gambling Gains and Losses (12 November 2026)",
+        url: "https://www.aicpa-cima.com/news/article/aicpa-seeks-specific-practical-guidance-for-reporting-gambling-gains-and-losses",
+      },
+    ],
+    related: [
+      { label: "REG: gross income", href: "/cpa/reg/individual-taxation-gross-income" },
+      { label: "TCP: tax research", href: "/cpa/tcp/tax-research-and-documentation" },
+    ],
+  },
+  {
+    slug: "sec-fy2027-examination-priorities",
+    title: "SEC sets fiscal 2027 examination priorities, including 'super intelligence' and tokenization",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "The Division of Examinations will focus on adviser fiduciary duties, private funds and private credit, cybersecurity and operational resilience, emerging technologies and market infrastructure across more than 34,000 registrants.",
+    eventDate: "2026-10-23",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 23 October 2026 the SEC published its Division of Examinations' priorities for fiscal year 2027 (press release 2026-109). The examinations cover more than 34,000 registrants, such as investment advisers, broker-dealers and market infrastructure.",
+      },
+      { type: "h2", text: "Main areas" },
+      {
+        type: "list",
+        items: [
+          "Investment advisers' fiduciary obligations, conflicts of interest and compliance programmes.",
+          "Retail investor protection for complex, higher-risk and illiquid products.",
+          "Private funds and private credit.",
+          "Broker-dealer financial responsibility, trading, supervision and anti-money laundering.",
+          "Operational resiliency, cybersecurity and protection of customer information.",
+          "Emerging technologies, including what the SEC calls 'super intelligence'.",
+          "Market infrastructure, including Treasury clearing and tokenization.",
+        ],
+      },
+      { type: "p", text: "The SEC says the list is not exhaustive and its focus may change during the year." },
+    ],
+    whyItMatters: [
+      "Cybersecurity, customer data protection and operational resilience are ISC topics, seen here from the regulator's side.",
+      "Auditors of broker-dealers (overseen by the PCAOB) and SOC report providers to financial firms will see these priorities in their clients' risks.",
+    ],
+    sources: [
+      {
+        label: "SEC: Press release 2026-109, SEC Announces Fiscal Year 2027 Examination Priorities (23 October 2026)",
+        url: "https://www.sec.gov/newsroom/press-releases/2026-109-sec-announces-fiscal-year-2027-examination-priorities",
+      },
+    ],
+    related: [
+      { label: "ISC: security fundamentals", href: "/cpa/isc/security-fundamentals" },
+      { label: "ISC: incident response", href: "/cpa/isc/incident-response" },
+    ],
+  },
+  {
+    slug: "sec-false-filings-fraud-form-adv-form-d",
+    title: "SEC charges two entities over a $130 million fraud that used false SEC filings to look legitimate",
+    category: "industry",
+    status: "confirmed",
+    summary:
+      "The firms allegedly filed false Form ADV and Form D documents, then showed them to retail investors as proof of SEC 'licensing'. A filing on the SEC's website is not an SEC endorsement.",
+    eventDate: "2026-10-29",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 29 October 2026 the SEC charged BG Wealth Sharing Ltd and DSJ Exchange Pty Ltd in a fraud that raised about $130 million from tens of thousands of retail investors (press release 2026-110).",
+      },
+      {
+        type: "p",
+        text: "According to the SEC's complaint, the defendants submitted false Form ADV and Form D filings, which were publicly visible, and shared them with investors as supposed proof that they were licensed by the SEC. The SEC has removed the filings from its website and is seeking injunctions, disgorgement with interest and civil penalties.",
+      },
+    ],
+    whyItMatters: [
+      "Forms filed with the SEC are not reviewed or approved just because they appear on its website. Investors, and the accountants advising them, should not treat a filing as an endorsement.",
+      "Form D relates to exempt private offerings under Regulation D, and Form ADV to investment adviser registration — both touch BAR and REG securities topics.",
+      "Scams often target Indian retail investors with 'SEC registered' claims. Verify through official sources, never through documents a promoter sends.",
+    ],
+    sources: [
+      {
+        label: "SEC: Press release 2026-110, Two Entities Charged in $130 Million Fraud Scheme That Used False SEC Filings (29 October 2026)",
+        url: "https://www.sec.gov/newsroom/press-releases/2026-110-two-entities-charged-130-million-fraud-scheme-used-false-sec-filings-boost-investor-confidence",
+      },
+    ],
+    related: [
+      { label: "BAR: public company reporting", href: "/cpa/bar/public-company-reporting-topics" },
+      { label: "AUD: fraud risk", href: "/cpa/aud/fraud-risk" },
+    ],
+  },
+  {
     slug: "irs-fiscal-2026-results",
     title: "IRS fiscal 2026: a record $5.6 trillion collected and an average income tax rate of 12.6%",
     category: "accounting-regulation",
