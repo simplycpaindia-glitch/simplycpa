@@ -13,6 +13,169 @@ const NASBA_PATHWAYS = "https://nasba.org/pathways/";
  */
 export const PULSE_ARTICLES: PulseArticle[] = [
   {
+    slug: "irs-fiscal-2026-results",
+    title: "IRS fiscal 2026: a record $5.6 trillion collected and an average income tax rate of 12.6%",
+    category: "accounting-regulation",
+    status: "confirmed",
+    summary:
+      "Collections rose nearly 5%, refunds claimed rose 17% and the average refund 11%. The IRS also reports $38 billion of identity-theft refund fraud stopped and fast growth in online accounts.",
+    eventDate: "2026-10-29",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 29 October 2026 the IRS reported its results for fiscal year 2026 (news release IR-2026-129). The figures below are as it published them.",
+      },
+      {
+        type: "table",
+        head: ["Measure", "Fiscal 2026"],
+        rows: [
+          ["Taxes collected", "$5.6 trillion, up nearly 5%"],
+          ["Average federal income tax rate (tax year 2025 returns filed by mid-July)", "12.6%, down 4% from 2025"],
+          ["Total refunds claimed", "Up 17%"],
+          ["Average refund", "Up 11%"],
+          ["E-filers refunded in under 21 days", "About 90%"],
+          ["Refunds by direct deposit", "Up 12%"],
+          ["Identity-theft refund fraud stopped", "About $38 billion"],
+        ],
+      },
+      { type: "h2", text: "Digital services" },
+      {
+        type: "list",
+        items: [
+          "Individual Online Account users rose 34% to about 37.6 million, with payments up 57% to more than $133.6 billion.",
+          "Tax Pro Account users rose 57% to about 513,000.",
+          "More than 90% of Form 940 and more than 80% of Form 941 employment tax returns were processed electronically.",
+          "The IRS says nearly 70 million Trump Accounts are open and 27 million funded.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The IRS says the average rate fell across all income categories.",
+      },
+    ],
+    whyItMatters: [
+      "The 2025 law changes (extra deductions, a higher child tax credit and more) are now visible in real returns. REG and TCP will test them as they come into the exam's tax-year window.",
+      "Tax teams in India serving US clients will see the same trend: more refunds, more electronic processing and more use of the IRS's online accounts.",
+      "Identity-theft refund fraud is a reminder of why preparers have strict rules on protecting client data.",
+    ],
+    sources: [
+      {
+        label: "IRS: IR-2026-129, IRS achieved historic performance in 2026 for American taxpayers (29 October 2026)",
+        url: "https://www.irs.gov/newsroom/irs-achieved-historic-performance-in-2026-for-american-taxpayers-efficiently-delivering-new-tax-benefits-to-working-families",
+      },
+    ],
+    related: [
+      { label: "REG: filing status, credits and AMT", href: "/cpa/reg/filing-status-credits-and-amt" },
+      { label: "REG: IRS procedures", href: "/cpa/reg/irs-procedures-and-appeals" },
+    ],
+  },
+  {
+    slug: "fasb-2026-final-standards-pik-dividends-sale-restrictions",
+    title: "FASB's 2026 final standards so far: PIK dividends and equity securities with sale restrictions",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "ASU 2026-01 sets how paid-in-kind dividends on equity-classified preferred stock are first measured. ASU 2026-03 requires investment companies to reflect contractual sale restrictions in fair value.",
+    eventDate: "2026-09-30",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "FASB has issued several final Accounting Standards Updates in 2026. This story covers two that firms' technical summaries describe in detail. We could not open FASB's own pages, so it is marked as reported.",
+      },
+      { type: "h2", text: "ASU 2026-01: paid-in-kind dividends on preferred stock" },
+      {
+        type: "list",
+        items: [
+          "Title: Equity (Topic 505): Initial Measurement of Paid-in-Kind Dividends on Equity-Classified Preferred Stock. Issued in spring 2026.",
+          "The rule: in-scope PIK dividends are initially measured using the PIK rate stated in the preferred stock agreement, applied to the liquidation value of the outstanding preferred stock. Practice had varied, with some issuers using fair value.",
+          "The entry: debit retained earnings (or additional paid-in capital if there is a deficit), credit preferred stock.",
+          "Scope: preferred stock classified in permanent or temporary equity. Liability-classified preferred stock is excluded.",
+          "Effective: annual periods beginning after 15 December 2026, so 2027 for calendar-year companies. Early adoption is permitted, with a choice of prospective or modified retrospective transition.",
+        ],
+      },
+      { type: "h2", text: "ASU 2026-03: equity securities subject to contractual sale restrictions" },
+      {
+        type: "list",
+        items: [
+          "Title: Fair Value Measurement (Topic 820): Investment Companies with Equity Securities Subject to Contractual Sale Restrictions. Issued in September 2026.",
+          "The rule: an exception to Topic 820 that requires a contractual restriction on selling an equity security to be considered in measuring its fair value. Investment companies must also disclose the discount attributable to the restriction.",
+          "Effective: annual periods beginning after 15 December 2027, with early adoption permitted.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The exception is notable because under ASC 820 a contractual sale restriction is usually treated as a characteristic of the holder, not of the asset, and so is not reflected in fair value.",
+      },
+    ],
+    whyItMatters: [
+      "FAR tests preferred stock and dividends, and BAR tests fair value. Both updates are effective in 2027 or later, so check when they become eligible for testing before you study them.",
+      "The ASC 820 rule that entity-specific restrictions don't reduce fair value is a classic exam point. ASU 2026-03 is a narrow exception for investment companies, so don't over-apply it.",
+    ],
+    sources: [
+      { label: "Uniqus: FASB's Accounting Standards Update ASU 2026-01", url: "https://uniqus.com/fasbs-accounting-standards-update-asu-2026-01/" },
+      { label: "Technical Accounting Forum: Q3 2026 FASB updates", url: "https://technicalaccountingforum.com/q3-2026-fasb-updates/" },
+    ],
+    related: [
+      { label: "FAR: equity and EPS", href: "/cpa/far/equity-and-earnings-per-share" },
+      { label: "FAR: investments", href: "/cpa/far/investments-debt-and-equity-securities" },
+      { label: "Fair value levels explained", href: "/blog/fair-value-hierarchy-level-1-2-3" },
+    ],
+  },
+  {
+    slug: "fasb-mortgage-servicing-rights-recapture-proposal",
+    title: "FASB proposal: include 'recapture' when valuing residential mortgage servicing rights",
+    category: "accounting-regulation",
+    status: "reported",
+    summary:
+      "The proposed update to Subtopic 860-50 would require servicers to include the value of refinancing a borrower and keeping the servicing. The American Bankers Association wants the guidance made less prescriptive.",
+    eventDate: "2026-11-10",
+    published: "2026-11-17",
+    verified: "2026-11-17",
+    body: [
+      {
+        type: "p",
+        text: "On 23 September 2026 FASB proposed amendments to Transfers and Servicing—Servicing Assets and Liabilities (Subtopic 860-50), based on a recommendation of the Emerging Issues Task Force, the Journal of Accountancy reported.",
+      },
+      { type: "h2", text: "The issue" },
+      {
+        type: "p",
+        text: "'Recapture' is a servicer's ability to persuade a borrower to refinance and keep servicing the new loan. Current guidance does not say whether that value belongs in the measurement of a residential mortgage servicing right, and practice varies.",
+      },
+      { type: "h2", text: "What FASB proposes" },
+      {
+        type: "p",
+        text: "An entity would include the effects of recapture when measuring a residential mortgage servicing right, valuing all rights and obligations of the servicing contract, including recapture, under Topic 820, Fair Value Measurement. The comment period closed in November.",
+      },
+      { type: "h2", text: "The banks' response" },
+      {
+        type: "p",
+        text: "In a letter reported by the ABA Banking Journal on 10 November 2026, the American Bankers Association asked FASB to change guidance that it says limits preparers' use of a market participant perspective, to point preparers to existing fair value guidance, and to keep the proposed effective date and transition. It warned against \"unnecessary prescriptiveness\".",
+      },
+    ],
+    whyItMatters: [
+      "Servicing assets are a FAR transfers topic, and the market participant perspective is central to fair value in BAR. Learn the current rules for the exam; this is a proposal.",
+      "Mortgage servicing valuation is common work at Indian centres supporting US banks and mortgage companies.",
+    ],
+    sources: [
+      {
+        label: "Journal of Accountancy: FASB proposes update to residential mortgage servicing rights guidance (23 September 2026)",
+        url: "https://www.journalofaccountancy.com/news/2026/sep/fasb-proposes-update-to-residential-mortgage-servicing-rights-guidance/",
+      },
+      {
+        label: "ABA Banking Journal: ABA suggests changes to mortgage servicing rights accounting standards update (10 November 2026)",
+        url: "https://bankingjournal.aba.com/2026/11/aba-suggests-changes-to-mortgage-servicing-rights-accounting-standards-update/",
+      },
+    ],
+    related: [
+      { label: "FAR: receivables", href: "/cpa/far/cash-receivables-and-bad-debts" },
+      { label: "Fair value levels explained", href: "/blog/fair-value-hierarchy-level-1-2-3" },
+    ],
+  },
+  {
     slug: "sec-enforcement-results-fy2026",
     title: "SEC enforcement in fiscal 2026: 348 actions, $1.095 billion ordered, auditors among those charged",
     category: "accounting-regulation",
